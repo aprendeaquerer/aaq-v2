@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "chat": "Chat",
+    "pricing": "Premium",
+    "login": "Iniciar sesion",
+    "register": "Registrarse",
+    "logout": "Cerrar sesion"
+  },
+  "landing": {
+    "title": "Aprende a Querer",
+    "subtitle": "Tu coach emocional con inteligencia artificial",
+    "description": "Descubre tu estilo de apego, mejora tus relaciones y recibe coaching personalizado con Eldric.",
+    "cta": "Comenzar ahora",
+    "feature1_title": "Test de Apego",
+    "feature1_desc": "Descubre tu estilo de apego con nuestro test de 10 preguntas.",
+    "feature2_title": "Coach Emocional",
+    "feature2_desc": "Habla con Eldric, tu coach emocional personalizado.",
+    "feature3_title": "Basado en Ciencia",
+    "feature3_desc": "Contenido basado en teoria del apego y libros especializados."
+  },
+  "auth": {
+    "email": "Correo electronico",
+    "password": "Contrasena",
+    "login": "Iniciar sesion",
+    "register": "Registrarse",
+    "no_account": "No tienes cuenta?",
+    "has_account": "Ya tienes cuenta?",
+    "verify_email": "Verificar correo",
+    "enter_code": "Ingresa el codigo de verificacion",
+    "send_code": "Enviar codigo"
+  },
+  "chat": {
+    "placeholder": "Escribe tu mensaje...",
+    "send": "Enviar",
+    "thinking": "Eldric esta pensando...",
+    "guest_mode": "Modo invitado"
+  }
+}

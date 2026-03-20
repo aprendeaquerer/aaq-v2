@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "home": "Home",
+    "chat": "Chat",
+    "pricing": "Premium",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "landing": {
+    "title": "Learn to Love",
+    "subtitle": "Your AI-powered emotional coach",
+    "description": "Discover your attachment style, improve your relationships, and receive personalized coaching with Eldric.",
+    "cta": "Get started",
+    "feature1_title": "Attachment Test",
+    "feature1_desc": "Discover your attachment style with our 10-question test.",
+    "feature2_title": "Emotional Coach",
+    "feature2_desc": "Talk to Eldric, your personalized emotional coach.",
+    "feature3_title": "Science-Based",
+    "feature3_desc": "Content based on attachment theory and specialized books."
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "register": "Register",
+    "no_account": "Don't have an account?",
+    "has_account": "Already have an account?",
+    "verify_email": "Verify email",
+    "enter_code": "Enter verification code",
+    "send_code": "Send code"
+  },
+  "chat": {
+    "placeholder": "Type your message...",
+    "send": "Send",
+    "thinking": "Eldric is thinking...",
+    "guest_mode": "Guest mode"
+  }
+}
