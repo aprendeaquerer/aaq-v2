@@ -24,7 +24,7 @@ async def get_current_user(
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
 
     user_id = payload.get("sub")
-    result = await db.execute(select(User).where(User.id == user_id))
+    result = await db.execute(select(User).where(User.user_id == user_id))
     user = result.scalar_one_or_none()
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
@@ -45,5 +45,5 @@ async def get_optional_user(
         return None
 
     user_id = payload.get("sub")
-    result = await db.execute(select(User).where(User.id == user_id))
+    result = await db.execute(select(User).where(User.user_id == user_id))
     return result.scalar_one_or_none()

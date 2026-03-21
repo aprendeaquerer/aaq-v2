@@ -15,7 +15,7 @@ async def get_profile(
     user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
-    result = await db.execute(select(UserProfile).where(UserProfile.user_id == user.id))
+    result = await db.execute(select(UserProfile).where(UserProfile.user_id == user.user_id))
     profile = result.scalar_one_or_none()
 
     return UserProfileResponse(
@@ -39,10 +39,10 @@ async def update_profile(
     user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
-    result = await db.execute(select(UserProfile).where(UserProfile.user_id == user.id))
+    result = await db.execute(select(UserProfile).where(UserProfile.user_id == user.user_id))
     profile = result.scalar_one_or_none()
     if not profile:
-        profile = UserProfile(user_id=user.id)
+        profile = UserProfile(user_id=user.user_id)
         db.add(profile)
 
     update_data = updates.model_dump(exclude_unset=True)

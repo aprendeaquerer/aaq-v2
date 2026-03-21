@@ -27,7 +27,7 @@ async def create_checkout_session(user: User, success_url: str, cancel_url: str)
         mode="payment",
         success_url=success_url,
         cancel_url=cancel_url,
-        client_reference_id=user.id,
+        client_reference_id=user.user_id,
         customer_email=user.email,
     )
     return session.url
@@ -46,7 +46,7 @@ async def handle_webhook(db: AsyncSession, payload: bytes, sig_header: str) -> N
         session = event["data"]["object"]
         user_id = session.get("client_reference_id")
         if user_id:
-            result = await db.execute(select(User).where(User.id == user_id))
+            result = await db.execute(select(User).where(User.user_id == user_id))
             user = result.scalar_one_or_none()
             if user:
                 user.is_premium = True

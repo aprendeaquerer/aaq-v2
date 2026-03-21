@@ -22,7 +22,7 @@ async def register_user(db: AsyncSession, email: str, password: str, preferred_l
     db.add(user)
     await db.flush()
 
-    profile = UserProfile(user_id=user.id)
+    profile = UserProfile(user_id=user.user_id)
     db.add(profile)
     await db.commit()
     await db.refresh(user)
@@ -35,8 +35,8 @@ async def login_user(db: AsyncSession, email: str, password: str) -> tuple[User,
     if not user or not verify_password(password, user.hashed_password):
         raise ValueError("Invalid email or password")
 
-    access_token = create_access_token(user.id)
-    refresh_token = create_refresh_token(user.id)
+    access_token = create_access_token(user.user_id)
+    refresh_token = create_refresh_token(user.user_id)
     return user, access_token, refresh_token
 
 
@@ -46,13 +46,13 @@ async def refresh_tokens(db: AsyncSession, refresh_token: str) -> tuple[str, str
         raise ValueError("Invalid refresh token")
 
     user_id = payload.get("sub")
-    result = await db.execute(select(User).where(User.id == user_id))
+    result = await db.execute(select(User).where(User.user_id == user_id))
     user = result.scalar_one_or_none()
     if not user:
         raise ValueError("User not found")
 
-    new_access = create_access_token(user.id)
-    new_refresh = create_refresh_token(user.id)
+    new_access = create_access_token(user.user_id)
+    new_refresh = create_refresh_token(user.user_id)
     return new_access, new_refresh
 
 

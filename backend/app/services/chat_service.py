@@ -27,7 +27,7 @@ _guest_counts: Dict[str, int] = {}
 async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRequest) -> ChatResponse:
     """Main chat orchestrator."""
     language = request.language or "es"
-    user_id = user.id if user else request.guest_id
+    user_id = user.user_id if user else request.guest_id
 
     # Enforce guest limit
     if not user and user_id:
@@ -386,7 +386,7 @@ async def _count_messages(db: AsyncSession, user_id: str) -> int:
 
 
 async def _save_message(db: AsyncSession, user_id: str, role: str, content: str, language: str) -> None:
-    msg = Conversation(user_id=user_id, role=role, content=content, language=language)
+    msg = Conversation(user_id=user_id, role=role, content=content)
     db.add(msg)
     await db.commit()
 
@@ -395,7 +395,7 @@ async def _load_history(db: AsyncSession, user_id: str, limit: int = 50) -> List
     result = await db.execute(
         select(Conversation.role, Conversation.content)
         .where(Conversation.user_id == user_id)
-        .order_by(Conversation.created_at.desc())
+        .order_by(Conversation.timestamp.desc())
         .limit(limit)
     )
     rows = result.all()

@@ -34,7 +34,7 @@ async def login(request: LoginRequest, db: AsyncSession = Depends(get_db)):
     return LoginResponse(
         access_token=access_token,
         refresh_token=refresh_token,
-        user_id=user.id,
+        user_id=user.user_id,
         email=user.email,
         is_premium=user.is_premium,
         preferred_language=user.preferred_language,
@@ -51,13 +51,13 @@ async def refresh(request: RefreshRequest, db: AsyncSession = Depends(get_db)):
     payload = auth_service.decode_token(access_token)
     from sqlalchemy import select
     from app.models.user import User
-    result = await db.execute(select(User).where(User.id == payload["sub"]))
+    result = await db.execute(select(User).where(User.user_id == payload["sub"]))
     user = result.scalar_one()
 
     return LoginResponse(
         access_token=access_token,
         refresh_token=refresh_token,
-        user_id=user.id,
+        user_id=user.user_id,
         email=user.email,
         is_premium=user.is_premium,
         preferred_language=user.preferred_language,
