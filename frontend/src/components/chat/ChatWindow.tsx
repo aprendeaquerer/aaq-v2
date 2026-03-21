@@ -17,15 +17,17 @@ export default function ChatWindow() {
   const { isAuthenticated } = useAuth();
   const { messages, isLoading, sendMessage } = useChat(language);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const greetingSent = useRef(false);
 
   // Auto-scroll to bottom
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
   }, [messages, isLoading]);
 
-  // Send initial greeting on mount
+  // Send initial greeting once (ref prevents React strict mode double-fire)
   useEffect(() => {
-    if (messages.length === 0) {
+    if (!greetingSent.current) {
+      greetingSent.current = true;
       sendMessage('saludo inicial', isAuthenticated);
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps

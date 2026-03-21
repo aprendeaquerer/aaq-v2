@@ -91,48 +91,45 @@ async def _handle_greeting(
     db: AsyncSession, user_id: str, message: str, language: str, profile: Optional[UserProfile]
 ) -> ChatResponse:
     """Handle the initial greeting state."""
-    # Check if user has conversation history (returning user)
-    history_count = await _count_messages(db, user_id)
+    # If user sends a valid choice (A/B/C), advance the state
+    choice_upper = message.strip().upper()[:1]
+    if choice_upper in ("A", "B", "C"):
+        next_state = sm.get_greeting_next_state(message)
+        await _set_state(db, user_id, next_state)
 
-    if history_count == 0:
-        # First visit - show welcome + options
-        await _set_state(db, user_id, sm.ChatState.GREETING)
+        if next_state == sm.ChatState.SELF_Q1:
+            question = test_service.get_question(1, "self", language)
+            return ChatResponse(
+                type="test_question",
+                data={
+                    "question_number": 1,
+                    "total_questions": 10,
+                    "question_text": question["question"],
+                    "options": question["options"],
+                    "test_type": "self",
+                },
+                language=language,
+            )
+
+        # Chat mode
         return ChatResponse(
-            type="greeting",
-            data={
-                "message": _get_welcome_message(language, profile),
-                "options": [
-                    {"id": "A", "text": _t("take_test", language)},
-                    {"id": "B", "text": _t("chat_now", language)},
-                    {"id": "C", "text": _t("learn_more", language)},
-                ],
-                "is_first_visit": True,
-            },
+            type="conversation",
+            data={"message": _get_chat_start_message(language, profile)},
             language=language,
         )
 
-    # Process greeting choice
-    next_state = sm.get_greeting_next_state(message)
-    await _set_state(db, user_id, next_state)
-
-    if next_state == sm.ChatState.SELF_Q1:
-        question = test_service.get_question(1, "self", language)
-        return ChatResponse(
-            type="test_question",
-            data={
-                "question_number": 1,
-                "total_questions": 10,
-                "question_text": question["question"],
-                "options": question["options"],
-                "test_type": "self",
-            },
-            language=language,
-        )
-
-    # Chat mode
+    # No valid choice yet — show the welcome message with options
     return ChatResponse(
-        type="conversation",
-        data={"message": _get_chat_start_message(language, profile)},
+        type="greeting",
+        data={
+            "message": _get_welcome_message(language, profile),
+            "options": [
+                {"id": "A", "text": _t("take_test", language)},
+                {"id": "B", "text": _t("chat_now", language)},
+                {"id": "C", "text": _t("learn_more", language)},
+            ],
+            "is_first_visit": True,
+        },
         language=language,
     )
 
