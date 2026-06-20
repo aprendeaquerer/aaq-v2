@@ -1,26 +1,32 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import type { Language } from '@/lib/constants';
 import esMessages from '@/i18n/messages/es.json';
 import enMessages from '@/i18n/messages/en.json';
 import ruMessages from '@/i18n/messages/ru.json';
 
-const messages: Record<Language, Record<string, any>> = {
+type TranslationTree = {
+  [key: string]: string | TranslationTree;
+};
+
+const languages: Language[] = ['es', 'en', 'ru'];
+
+const messages: Record<Language, TranslationTree> = {
   es: esMessages,
   en: enMessages,
   ru: ruMessages,
 };
 
-export function useLanguage() {
-  const [language, setLanguageState] = useState<Language>('es');
+function getStoredLanguage(): Language {
+  if (typeof window === 'undefined') return 'es';
 
-  useEffect(() => {
-    const stored = localStorage.getItem('language') as Language;
-    if (stored && ['es', 'en', 'ru'].includes(stored)) {
-      setLanguageState(stored);
-    }
-  }, []);
+  const stored = localStorage.getItem('language');
+  return languages.includes(stored as Language) ? (stored as Language) : 'es';
+}
+
+export function useLanguage() {
+  const [language, setLanguageState] = useState<Language>(() => getStoredLanguage());
 
   const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
@@ -30,11 +36,11 @@ export function useLanguage() {
   const t = useCallback(
     (key: string): string => {
       const parts = key.split('.');
-      let value: any = messages[language];
+      let value: string | TranslationTree | undefined = messages[language];
       for (const part of parts) {
-        value = value?.[part];
+        value = typeof value === 'object' ? value[part] : undefined;
       }
-      return (typeof value === 'string' ? value : key) as string;
+      return typeof value === 'string' ? value : key;
     },
     [language]
   );

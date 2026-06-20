@@ -24,8 +24,8 @@ export default function RegisterPage() {
       await register(email, password, language);
       await login(email, password);
       router.push('/chat');
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Registration failed');
     } finally {
       setLoading(false);
     }

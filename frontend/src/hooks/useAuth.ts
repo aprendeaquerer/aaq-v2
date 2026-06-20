@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import * as api from '@/lib/api';
-import type { LoginResponse } from '@/lib/types';
 
 interface AuthUser {
   user_id: string;
@@ -11,21 +10,23 @@ interface AuthUser {
   preferred_language: string;
 }
 
-export function useAuth() {
-  const [user, setUser] = useState<AuthUser | null>(null);
-  const [loading, setLoading] = useState(true);
+function getStoredUser(): AuthUser | null {
+  if (typeof window === 'undefined') return null;
 
-  useEffect(() => {
-    const stored = localStorage.getItem('user');
-    if (stored) {
-      try {
-        setUser(JSON.parse(stored));
-      } catch {
-        api.clearTokens();
-      }
-    }
-    setLoading(false);
-  }, []);
+  const stored = localStorage.getItem('user');
+  if (!stored) return null;
+
+  try {
+    return JSON.parse(stored) as AuthUser;
+  } catch {
+    api.clearTokens();
+    return null;
+  }
+}
+
+export function useAuth() {
+  const [user, setUser] = useState<AuthUser | null>(() => getStoredUser());
+  const loading = false;
 
   const login = useCallback(async (email: string, password: string) => {
     const data = await api.login(email, password);

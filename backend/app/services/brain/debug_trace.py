@@ -1,0 +1,181 @@
+from typing import Any, Dict, List, Optional
+
+from app.services.brain.types import BrainContext
+
+
+def step(stage: str, title: str, detail: str, payload: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    return {
+        "stage": stage,
+        "title": title,
+        "detail": detail,
+        "payload": payload or {},
+    }
+
+
+def build_conversation_debug(
+    *,
+    user_message: str,
+    language: str,
+    user_id: Optional[str],
+    current_state: str,
+    history_count: int,
+    history_characters: int,
+    brain_context: BrainContext,
+    system_prompt: str,
+    response_text: str,
+    ai_error: Optional[str] = None,
+) -> Dict[str, Any]:
+    chunks = [
+        {
+            "id": chunk.id,
+            "article_id": chunk.article_id,
+            "title": chunk.title,
+            "section": chunk.section,
+            "domain": chunk.domain,
+            "language": chunk.language,
+            "topics": chunk.topics,
+            "score": chunk.score,
+            "preview": _preview(chunk.content),
+        }
+        for chunk in brain_context.knowledge_chunks
+    ]
+    memories = [
+        {
+            "id": memory["id"],
+            "type": memory["type"],
+            "summary": memory["summary"],
+            "visibility": memory["visibility"],
+            "sensitivity": memory["sensitivity"],
+        }
+        for memory in brain_context.user_memories
+    ]
+    steps: List[Dict[str, Any]] = [
+        step(
+            "input",
+            "Message received",
+            "The backend accepted the user message and resolved chat identity/state.",
+            {
+                "language": language,
+                "user_id": user_id,
+                "message_preview": _preview(user_message, 180),
+                "state": current_state,
+            },
+        ),
+        step(
+            "conversation_history",
+            "Conversation context loaded",
+            "Recent messages were loaded from the database and trimmed for context.",
+            {"messages": history_count, "characters": history_characters},
+        ),
+        step(
+            "brain_router",
+            "Brain router selected domains",
+            f"Intent detected as '{brain_context.intent}'.",
+            {"domains": brain_context.domains, "intent": brain_context.intent},
+        ),
+        step(
+            "knowledge_brain",
+            "Knowledge brain searched",
+            f"{len(chunks)} article sections matched the message.",
+            {"chunks": chunks},
+        ),
+        step(
+            "memory_brain",
+            "User memory brain searched",
+            f"{len(memories)} active memories matched the message.",
+            {"memories": memories},
+        ),
+        step(
+            "prompt_packet",
+            "Prompt packet composed",
+            "Eldric received personality, profile context, retrieved knowledge, retrieved memories, and response strategy.",
+            {
+                "system_prompt_characters": len(system_prompt),
+                "knowledge_chunks": len(chunks),
+                "user_memories": len(memories),
+            },
+        ),
+    ]
+    if ai_error:
+        steps.append(
+            step(
+                "ai_provider",
+                "AI provider returned an error",
+                "A fallback response was returned so the debug trace can still be inspected.",
+                {"error": ai_error},
+            )
+        )
+    steps.append(
+        step(
+            "assistant_response",
+            "Assistant response saved",
+            "The assistant response was generated or replaced with a fallback, then persisted to the conversations table.",
+            {"response_characters": len(response_text)},
+        )
+    )
+
+    return {
+        "enabled": True,
+        "mode": "developer_trace",
+        "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+        "reasoning_summary": _reasoning_summary(brain_context, chunks, memories),
+        "steps": steps,
+    }
+
+
+def build_state_debug(
+    *,
+    user_message: str,
+    language: str,
+    user_id: Optional[str],
+    current_state: str,
+    next_state: Optional[str] = None,
+    response_type: str,
+) -> Dict[str, Any]:
+    steps = [
+        step(
+            "input",
+            "Message received",
+            "The backend accepted the user message and resolved chat identity/state.",
+            {
+                "language": language,
+                "user_id": user_id,
+                "message_preview": _preview(user_message, 180),
+                "state": current_state,
+            },
+        ),
+        step(
+            "state_machine",
+            "State machine handled message",
+            "The message was handled by the guided flow instead of the free conversation brain.",
+            {
+                "current_state": current_state,
+                "next_state": next_state,
+                "response_type": response_type,
+            },
+        ),
+    ]
+    return {
+        "enabled": True,
+        "mode": "developer_trace",
+        "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+        "reasoning_summary": f"Handled by chat state '{current_state}' with response type '{response_type}'.",
+        "steps": steps,
+    }
+
+
+def _reasoning_summary(brain_context: BrainContext, chunks: List[Dict[str, Any]], memories: List[Dict[str, Any]]) -> str:
+    domains = ", ".join(brain_context.domains) if brain_context.domains else "no specific domain"
+    knowledge_part = f"{len(chunks)} knowledge sections"
+    memory_part = f"{len(memories)} user memories"
+    return (
+        f"Detected intent '{brain_context.intent}', routed to {domains}, "
+        f"then composed the answer from {knowledge_part}, {memory_part}, profile context, and recent history."
+    )
+
+
+def _preview(text: str, limit: int = 260) -> str:
+    compact = " ".join((text or "").split())
+    if len(compact) <= limit:
+        return compact
+    return compact[: limit - 1].rstrip() + "..."

@@ -1,5 +1,5 @@
 import { API_URL } from './constants';
-import type { LoginResponse, ChatResponse, UserProfile } from './types';
+import type { LoginResponse, ChatResponse, UserProfile, UserMemory } from './types';
 
 function getTokens(): { access: string | null; refresh: string | null } {
   if (typeof window === 'undefined') return { access: null, refresh: null };
@@ -113,8 +113,13 @@ export async function verifyEmail(email: string, code: string) {
 
 // --- Chat ---
 
-export async function sendMessage(message: string, language: string = 'es', guestId?: string): Promise<ChatResponse> {
-  const body: Record<string, string> = { message, language };
+export async function sendMessage(
+  message: string,
+  language: string = 'es',
+  guestId?: string,
+  debug: boolean = false
+): Promise<ChatResponse> {
+  const body: Record<string, string | boolean> = { message, language, debug };
   if (guestId) body.guest_id = guestId;
 
   const res = await fetchWithAuth(`${API_URL}/chat/message`, {
@@ -139,6 +144,24 @@ export async function updateProfile(updates: Partial<UserProfile>): Promise<User
     body: JSON.stringify(updates),
   });
   if (!res.ok) throw new Error('Failed to update profile');
+  return res.json();
+}
+
+// --- Memory ---
+
+export async function getUserMemories(): Promise<UserMemory[]> {
+  const res = await fetchWithAuth(`${API_URL}/memory`);
+  if (!res.ok) throw new Error('Failed to fetch memories');
+  const data: { memories: UserMemory[] } = await res.json();
+  return data.memories;
+}
+
+export async function updateUserMemory(id: string, updates: Partial<UserMemory>): Promise<UserMemory> {
+  const res = await fetchWithAuth(`${API_URL}/memory/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify(updates),
+  });
+  if (!res.ok) throw new Error('Failed to update memory');
   return res.json();
 }
 

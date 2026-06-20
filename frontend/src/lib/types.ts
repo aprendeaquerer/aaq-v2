@@ -10,8 +10,38 @@ export interface LoginResponse {
 
 export interface ChatResponse {
   type: 'greeting' | 'test_question' | 'test_results' | 'conversation' | 'paywall' | 'partner_offer' | 'affirmation' | 'collecting_info';
-  data: Record<string, any>;
+  data: ChatData;
   language: string;
+}
+
+export type ChatData = Record<string, unknown> & {
+  message?: string;
+  options?: TestOption[];
+  debug?: BotDebugTrace;
+};
+
+export interface BotDebugTrace {
+  enabled: boolean;
+  mode: string;
+  note: string;
+  reasoning_summary: string;
+  steps: BotDebugStep[];
+}
+
+export interface BotDebugStep {
+  stage: string;
+  title: string;
+  detail: string;
+  payload: Record<string, unknown>;
+}
+
+export interface DebugSession {
+  id: string;
+  userMessage: string;
+  status: 'processing' | 'complete' | 'error';
+  startedAt: Date;
+  completedAt?: Date;
+  trace?: BotDebugTrace;
 }
 
 export interface TestOption {
@@ -62,11 +92,22 @@ export interface UserProfile {
   email_verified: boolean;
 }
 
+export interface UserMemory {
+  id: string;
+  type: string;
+  summary: string;
+  curated_summary: string | null;
+  visibility: string;
+  sensitivity: string;
+  confidence: number;
+  status: string;
+}
+
 export interface ChatMessage {
   id: string;
   role: 'user' | 'assistant';
   content: string;
   type?: ChatResponse['type'];
-  data?: Record<string, any>;
+  data?: ChatData;
   timestamp: Date;
 }

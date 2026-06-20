@@ -12,7 +12,10 @@ from app.models.user import User, UserProfile
 from app.schemas.message import ChatRequest, ChatResponse
 from app.services.ai.factory import get_ai_provider
 from app.services.ai.prompts import get_eldric_prompt
-from app.services import knowledge_service
+from app.services.brain import build_brain_context
+from app.services.brain.debug_trace import build_conversation_debug, build_state_debug
+from app.services.brain.memory_capture import capture_candidate_memories
+from app.services.brain.prompt_composer import compose_brain_prompt
 from app.services import state_machine as sm
 from app.services import test_service
 from app.data.test_questions import get_style_description, get_relationship_description
@@ -57,19 +60,24 @@ async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRe
 
     # Route based on state
     if current_state == sm.ChatState.GREETING:
-        return await _handle_greeting(db, user_id, message, language, profile)
+        response = await _handle_greeting(db, user_id, message, language, profile)
+        return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
 
     if sm.is_test_state(current_state):
-        return await _handle_test_answer(db, user_id, current_state, message, language)
+        response = await _handle_test_answer(db, user_id, current_state, message, language)
+        return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
 
     if current_state == sm.ChatState.SELF_RESULTS:
-        return await _handle_post_results(db, user_id, message, language, user)
+        response = await _handle_post_results(db, user_id, message, language, user)
+        return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
 
     if current_state == sm.ChatState.PARTNER_OFFER:
-        return await _handle_partner_offer(db, user_id, message, language)
+        response = await _handle_partner_offer(db, user_id, message, language)
+        return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
 
     if current_state == sm.ChatState.PARTNER_RESULTS:
-        return await _handle_partner_results(db, user_id, language)
+        response = await _handle_partner_results(db, user_id, language)
+        return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
 
     if current_state == sm.ChatState.PAYWALL:
         # User is at paywall, check if they should proceed
@@ -77,14 +85,15 @@ async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRe
             await _set_state(db, user_id, sm.ChatState.CONVERSATION)
             current_state = sm.ChatState.CONVERSATION
         else:
-            return ChatResponse(
+            response = ChatResponse(
                 type="paywall",
                 data={"message": _get_paywall_message(language)},
                 language=language,
             )
+            return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
 
     # Default: conversation mode with AI
-    return await _handle_conversation(db, user_id, message, language, profile)
+    return await _handle_conversation(db, user_id, message, language, profile, request.debug, current_state)
 
 
 async def _handle_greeting(
@@ -278,7 +287,13 @@ async def _handle_partner_results(
 
 
 async def _handle_conversation(
-    db: AsyncSession, user_id: str, message: str, language: str, profile: Optional[UserProfile]
+    db: AsyncSession,
+    user_id: str,
+    message: str,
+    language: str,
+    profile: Optional[UserProfile],
+    debug: bool = False,
+    current_state: str = sm.ChatState.CONVERSATION,
 ) -> ChatResponse:
     """Handle free conversation with AI."""
     # Save user message
@@ -286,10 +301,10 @@ async def _handle_conversation(
 
     # Load conversation history
     history = await _load_history(db, user_id, limit=50)
+    history_characters = sum(len(msg["content"]) for msg in history)
 
-    # Extract keywords and get knowledge
-    keywords = knowledge_service.extract_keywords(message, language)
-    knowledge = await knowledge_service.get_relevant_knowledge(db, keywords, language, user_id)
+    # Retrieve file-backed knowledge brain and database-backed user memory brain
+    brain_context = await build_brain_context(db, user_id, message, language)
 
     # Build system prompt
     base_prompt = get_eldric_prompt(language)
@@ -310,23 +325,52 @@ async def _handle_conversation(
         if context_parts:
             base_prompt += "\n\nCONTEXTO DEL USUARIO:\n" + "\n".join(context_parts)
 
-    system_prompt = knowledge_service.inject_knowledge(base_prompt, knowledge)
+    system_prompt = compose_brain_prompt(base_prompt, brain_context)
 
     # Call AI
     ai = get_ai_provider()
-    response_text = await ai.chat(
-        system_prompt=system_prompt,
-        messages=history,
-        temperature=0.7,
-        max_tokens=1000,
-    )
+    ai_error = None
+    try:
+        response_text = await ai.chat(
+            system_prompt=system_prompt,
+            messages=history,
+            temperature=0.7,
+            max_tokens=1000,
+        )
+    except Exception as exc:
+        ai_error = f"{type(exc).__name__}: {str(exc)[:500]}"
+        response_text = _get_ai_error_message(language)
 
     # Save assistant message
     await _save_message(db, user_id, "assistant", response_text, language)
 
+    captured_memories = await capture_candidate_memories(db, user_id, message, language) if debug else []
+
+    data = {"message": response_text}
+    if debug:
+        trace = build_conversation_debug(
+            user_message=message,
+            language=language,
+            user_id=user_id,
+            current_state=current_state,
+            history_count=len(history),
+            history_characters=history_characters,
+            brain_context=brain_context,
+            system_prompt=system_prompt,
+            response_text=response_text,
+            ai_error=ai_error,
+        )
+        trace["steps"].append({
+            "stage": "memory_capture",
+            "title": "Candidate memories captured",
+            "detail": f"{len(captured_memories)} candidate memories were written to the user memory brain.",
+            "payload": {"candidates": captured_memories},
+        })
+        data["debug"] = trace
+
     return ChatResponse(
         type="conversation",
-        data={"message": response_text},
+        data=data,
         language=language,
     )
 
@@ -414,6 +458,26 @@ async def _get_profile(db: AsyncSession, user_id: str) -> Optional[UserProfile]:
     return result.scalar_one_or_none()
 
 
+def _attach_state_debug(
+    response: ChatResponse,
+    debug: bool,
+    message: str,
+    language: str,
+    user_id: Optional[str],
+    current_state: str,
+) -> ChatResponse:
+    if not debug:
+        return response
+    response.data["debug"] = build_state_debug(
+        user_message=message,
+        language=language,
+        user_id=user_id,
+        current_state=current_state,
+        response_type=response.type,
+    )
+    return response
+
+
 # --- i18n strings ---
 
 _TRANSLATIONS = {
@@ -465,5 +529,14 @@ def _get_paywall_message(language: str) -> str:
         "es": "Para acceder al test de pareja, afirmaciones diarias personalizadas, y chat ilimitado, hazte premium por solo $9.99!",
         "en": "To access the partner test, personalized daily affirmations, and unlimited chat, go premium for just $9.99!",
         "ru": "Для доступа к тесту партнера и персональным аффирмациям оформите премиум за $9.99!",
+    }
+    return messages.get(language, messages["es"])
+
+
+def _get_ai_error_message(language: str) -> str:
+    messages = {
+        "es": "Ahora mismo tengo un problema conectando con el modelo de IA, pero he dejado el proceso en el panel de debug para que puedas verlo.",
+        "en": "I'm having trouble connecting to the AI model right now, but I left the process in the debug panel so you can inspect it.",
+        "ru": "Сейчас есть проблема с подключением к модели ИИ, но процесс оставлен в панели debug для проверки.",
     }
     return messages.get(language, messages["es"])

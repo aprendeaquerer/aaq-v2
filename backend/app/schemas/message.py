@@ -7,6 +7,7 @@ class ChatRequest(BaseModel):
     message: str
     language: str = "es"
     guest_id: Optional[str] = None
+    debug: bool = False
 
 
 class ChatResponse(BaseModel):

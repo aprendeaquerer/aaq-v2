@@ -3,10 +3,10 @@ Migrate data from legacy tables to new v2 tables.
 
 Copies:
 - user_profile -> user_profiles (with new UUID IDs)
-- eldric_knowledge + eldric_knowledge_es + eldric_knowledge_ru -> knowledge (unified)
 - test_state -> test_states (restructured)
 
 Does NOT modify the old tables.
+Legacy knowledge tables are no longer migrated into Postgres. Curated knowledge now lives under /brain.
 
 Usage: cd /Users/pedro/AAQ/backend && source venv/bin/activate && python scripts/migrate_data.py
 """
@@ -16,7 +16,6 @@ import json
 import sys
 import uuid
 from pathlib import Path
-from datetime import datetime, timezone
 
 # Add backend root to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -29,10 +28,6 @@ def gen_id():
     return str(uuid.uuid4())
 
 
-def utcnow():
-    return datetime.now(timezone.utc)
-
-
 async def migrate():
     # asyncpg needs a plain postgresql:// URL (not postgresql+asyncpg://)
     db_url = settings.DATABASE_URL.replace("postgresql+asyncpg://", "postgresql://")
@@ -40,55 +35,9 @@ async def migrate():
 
     print("Connected to database.")
 
-    # --- 1. Migrate knowledge tables ---
-    print("\n--- Migrating knowledge ---")
-
-    # Check if knowledge table already has data
-    existing = await conn.fetchval("SELECT COUNT(*) FROM knowledge")
-    if existing > 0:
-        print(f"  Knowledge table already has {existing} rows, skipping.")
-    else:
-        # Migrate eldric_knowledge_es -> knowledge (language='es')
-        es_rows = await conn.fetch("SELECT id, content, tags, book, chapter, created_at FROM eldric_knowledge_es")
-        print(f"  eldric_knowledge_es: {len(es_rows)} rows")
-        for row in es_rows:
-            await conn.execute(
-                "INSERT INTO knowledge (content, tags, book, chapter, language, created_at) VALUES ($1, $2, $3, $4, $5, $6)",
-                row['content'], row['tags'], row.get('book'), row.get('chapter'), 'es', row.get('created_at') or utcnow()
-            )
-
-        # Migrate eldric_knowledge (English)
-        en_rows = await conn.fetch("SELECT id, content, tags, book, chapter, created_at FROM eldric_knowledge")
-        print(f"  eldric_knowledge (en): {len(en_rows)} rows")
-        for row in en_rows:
-            await conn.execute(
-                "INSERT INTO knowledge (content, tags, book, chapter, language, created_at) VALUES ($1, $2, $3, $4, $5, $6)",
-                row['content'], row['tags'], row.get('book'), row.get('chapter'), 'en', row.get('created_at') or utcnow()
-            )
-
-        # Migrate eldric_knowledge_en if it exists and has different data
-        try:
-            en2_rows = await conn.fetch("SELECT id, content, tags, book, chapter, created_at FROM eldric_knowledge_en")
-            print(f"  eldric_knowledge_en: {len(en2_rows)} rows")
-            for row in en2_rows:
-                await conn.execute(
-                    "INSERT INTO knowledge (content, tags, book, chapter, language, created_at) VALUES ($1, $2, $3, $4, $5, $6)",
-                    row['content'], row['tags'], row.get('book'), row.get('chapter'), 'en', row.get('created_at') or utcnow()
-                )
-        except Exception as e:
-            print(f"  eldric_knowledge_en: skipped ({e})")
-
-        # Migrate eldric_knowledge_ru
-        ru_rows = await conn.fetch("SELECT id, content, tags, book, chapter, created_at FROM eldric_knowledge_ru")
-        print(f"  eldric_knowledge_ru: {len(ru_rows)} rows")
-        for row in ru_rows:
-            await conn.execute(
-                "INSERT INTO knowledge (content, tags, book, chapter, language, created_at) VALUES ($1, $2, $3, $4, $5, $6)",
-                row['content'], row['tags'], row.get('book'), row.get('chapter'), 'ru', row.get('created_at') or utcnow()
-            )
-
-        total = await conn.fetchval("SELECT COUNT(*) FROM knowledge")
-        print(f"  Total knowledge rows migrated: {total}")
+    # --- 1. Knowledge migration intentionally skipped ---
+    print("\n--- Knowledge migration skipped ---")
+    print("  Curated knowledge now lives in /brain and is not stored in Postgres.")
 
     # --- 2. Migrate user_profile -> user_profiles ---
     print("\n--- Migrating user profiles ---")

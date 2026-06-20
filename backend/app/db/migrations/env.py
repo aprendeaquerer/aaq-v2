@@ -12,7 +12,7 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from app.config import settings
 from app.models.base import Base
-from app.models import User, UserProfile, Conversation, TestState, Knowledge, Affirmation
+from app.models import User, UserProfile, Conversation, TestState, Affirmation, UserMemory
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
