@@ -12,11 +12,12 @@ from typing import Dict, Iterable, List, Tuple
 
 from app.services.brain.types import KnowledgeChunk
 
-SUPPORTED_DOMAINS = ("attachment", "relationships", "polarity", "somatics")
+SUPPORTED_DOMAINS = ("attachment", "relationships", "polarity", "somatics", "self_improvement")
 STOPWORDS = {
-    "a", "al", "and", "are", "as", "at", "be", "but", "con", "de", "del", "el", "en",
-    "for", "i", "in", "is", "it", "la", "las", "lo", "los", "me", "mi", "my", "of",
-    "on", "or", "para", "que", "se", "si", "the", "to", "un", "una", "y", "yo",
+    "a", "al", "and", "are", "as", "at", "be", "but", "como", "con", "cuando", "de",
+    "del", "el", "en", "for", "i", "in", "is", "it", "la", "las", "lo", "los", "mas",
+    "me", "mi", "my", "no", "of", "on", "or", "para", "por", "que", "se", "si", "the",
+    "to", "un", "una", "y", "yo",
 }
 
 
@@ -62,7 +63,9 @@ def route_domains(message: str) -> List[str]:
     keyword_map = {
         "attachment": (
             "apego", "attachment", "ansioso", "anxious", "evitativo", "avoidant",
-            "abandono", "abandonment", "rechazo", "seguro", "secure",
+            "abandono", "abandonment", "rechazo", "seguro", "secure", "ciclo",
+            "cycle", "ruptura", "repair", "reparar", "reparacion", "traicion",
+            "betrayal", "infidelidad", "confianza", "trust", "lesion", "injury",
         ),
         "relationships": (
             "relacion", "relationship", "pareja", "partner", "conflicto", "conflict",
@@ -75,6 +78,12 @@ def route_domains(message: str) -> List[str]:
         "somatics": (
             "cuerpo", "body", "somatico", "somatic", "nervioso", "nervous", "vagal",
             "meditar", "meditation", "respirar", "breath", "ansiedad", "anxiety",
+        ),
+        "self_improvement": (
+            "conciencia", "consciousness", "mejorar", "improve", "crecimiento", "growth",
+            "habito", "habit", "disciplina", "discipline", "proposito", "purpose",
+            "valores", "values", "mindset", "sombra", "shadow", "madurez", "maturity",
+            "responsabilidad", "responsibility", "presencia", "awareness", "self-awareness",
         ),
     }
     for domain, words in keyword_map.items():
@@ -233,4 +242,3 @@ def _domain_from_path(path: Path) -> str:
 def _slug(value: str) -> str:
     slug = re.sub(r"[^a-zA-Z0-9]+", "-", value.lower()).strip("-")
     return slug or "section"
-

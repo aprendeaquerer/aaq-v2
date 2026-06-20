@@ -61,4 +61,3 @@ Use natural language examples Eldric can adapt, not copy mechanically.
 ## Source Notes
 
 - Source, author, chapter, link, or editorial note.
-

@@ -11,7 +11,11 @@ venv/
 # Node
 node_modules/
 .next/
+.vercel/
 
 # OS
 .DS_Store
 *.swp
+
+# Local assistant/tooling state
+.claude/
