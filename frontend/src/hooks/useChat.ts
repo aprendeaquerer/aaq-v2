@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from 'react';
 import * as api from '@/lib/api';
+import { API_URL } from '@/lib/constants';
 import type { BotDebugTrace, ChatMessage, ChatResponse, DebugSession } from '@/lib/types';
 
 let messageIdCounter = 0;
@@ -94,7 +95,12 @@ export function useChat(language: string = 'es') {
                         stage: 'error',
                         title: 'Request failed',
                         detail: error instanceof Error ? error.message : 'Unknown error',
-                        payload: {},
+                        payload: {
+                          api_url: API_URL,
+                          request_url: `${API_URL}/chat/message`,
+                          page_url: window.location.href,
+                          online: navigator.onLine,
+                        },
                       },
                     ],
                   },
