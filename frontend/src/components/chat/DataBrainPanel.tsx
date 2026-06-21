@@ -51,6 +51,7 @@ export default function DataBrainPanel({
   const [isKnowledgeLoading, setIsKnowledgeLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [knowledgeError, setKnowledgeError] = useState<string | null>(null);
+  const [selectedKnowledgeChunk, setSelectedKnowledgeChunk] = useState<KnowledgeChunk | null>(null);
 
   const loadMemories = useCallback(async () => {
     if (!isAuthenticated) {
@@ -147,7 +148,11 @@ export default function DataBrainPanel({
                   </div>
                   <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                     {rows.map((chunk) => (
-                      <KnowledgeCard key={chunk.id} chunk={chunk} />
+                      <KnowledgeCard
+                        key={chunk.id}
+                        chunk={chunk}
+                        onOpen={() => setSelectedKnowledgeChunk(chunk)}
+                      />
                     ))}
                   </div>
                 </section>
@@ -160,6 +165,13 @@ export default function DataBrainPanel({
           <div className="min-h-0 flex-1 overflow-hidden rounded border border-[#042648]/12 bg-white">
             <KnowledgeConstellation chunks={knowledgeChunks} />
           </div>
+        )}
+
+        {selectedKnowledgeChunk && (
+          <KnowledgeReader
+            chunk={selectedKnowledgeChunk}
+            onClose={() => setSelectedKnowledgeChunk(null)}
+          />
         )}
       </BrainShell>
     );
@@ -427,9 +439,13 @@ function LiveCandidateCard({ candidate, index }: { candidate: LiveCandidate; ind
   );
 }
 
-function KnowledgeCard({ chunk }: { chunk: KnowledgeChunk }) {
+function KnowledgeCard({ chunk, onOpen }: { chunk: KnowledgeChunk; onOpen: () => void }) {
   return (
-    <article className="rounded border border-[#042648]/12 bg-white px-3 py-3">
+    <button
+      type="button"
+      onClick={onOpen}
+      className="rounded border border-[#042648]/12 bg-white px-3 py-3 text-left transition hover:border-[#042648]/35 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[#042648]/30"
+    >
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="text-sm font-bold">{chunk.title}</div>
@@ -450,7 +466,63 @@ function KnowledgeCard({ chunk }: { chunk: KnowledgeChunk }) {
           </span>
         ))}
       </div>
-    </article>
+      <div className="mt-3 text-xs font-bold text-[#042648]/55">Open full text</div>
+    </button>
+  );
+}
+
+function KnowledgeReader({ chunk, onClose }: { chunk: KnowledgeChunk; onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-[#042648]/35 px-4 py-6">
+      <div className="flex max-h-full w-full max-w-4xl flex-col overflow-hidden rounded border border-[#042648]/18 bg-white shadow-xl">
+        <div className="border-b border-[#042648]/12 px-4 py-3">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-[0.08em] text-[#042648]/48">
+                {formatType(chunk.domain)} / {chunk.language || 'multi'}
+              </div>
+              <h3 className="mt-1 text-lg font-bold text-[#042648]">{chunk.title}</h3>
+              <p className="mt-1 text-sm text-[#042648]/62">{chunk.section}</p>
+            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded border border-[#042648]/15 px-3 py-1.5 text-sm font-semibold text-[#042648]/70 transition hover:bg-[#F8FAF7]"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+
+        <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4">
+          <div className="mb-4 flex flex-wrap gap-1">
+            {chunk.topics.map((topic) => (
+              <span
+                key={`${chunk.id}-reader-${topic}`}
+                className="rounded bg-[#FFF6EA] px-2 py-0.5 text-[11px] font-semibold text-[#042648]/58"
+              >
+                {formatType(topic)}
+              </span>
+            ))}
+          </div>
+
+          <div className="whitespace-pre-wrap text-sm leading-7 text-[#042648]/82">
+            {chunk.content}
+          </div>
+
+          {chunk.source_notes && (
+            <div className="mt-5 rounded border border-[#042648]/10 bg-[#F8FAF7] px-3 py-3">
+              <div className="text-xs font-bold uppercase tracking-[0.08em] text-[#042648]/48">
+                Source Notes
+              </div>
+              <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-[#042648]/70">
+                {chunk.source_notes}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
