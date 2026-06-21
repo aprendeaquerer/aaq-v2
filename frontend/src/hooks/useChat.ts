@@ -3,7 +3,7 @@
 import { useState, useCallback, useRef } from 'react';
 import * as api from '@/lib/api';
 import { API_URL } from '@/lib/constants';
-import type { BotDebugTrace, ChatMessage, ChatResponse, DebugSession } from '@/lib/types';
+import type { BotDebugTrace, ChatMessage, ChatResponse, DebugSession, StoredChatMessage } from '@/lib/types';
 
 let messageIdCounter = 0;
 function generateId(): string {
@@ -71,6 +71,21 @@ export function useChat(language: string = 'es') {
               ? prev
               : [...prev, assistantMessage]
           );
+        }
+
+        if (response.type === 'session' && Array.isArray(response.data.messages)) {
+          const restoredMessages = (response.data.messages as StoredChatMessage[])
+            .filter((msg) => msg.content && (msg.role === 'user' || msg.role === 'assistant'))
+            .map<ChatMessage>((msg) => ({
+              id: generateId(),
+              role: msg.role,
+              content: msg.content,
+              timestamp: new Date(),
+            }));
+
+          if (restoredMessages.length > 0) {
+            setMessages(restoredMessages);
+          }
         }
       } catch (error) {
         setDebugSessions((prev) => [

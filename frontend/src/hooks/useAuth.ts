@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import * as api from '@/lib/api';
 
 interface AuthUser {
@@ -27,6 +27,16 @@ function getStoredUser(): AuthUser | null {
 export function useAuth() {
   const [user, setUser] = useState<AuthUser | null>(() => getStoredUser());
   const loading = false;
+
+  useEffect(() => {
+    const syncStoredUser = () => setUser(getStoredUser());
+    window.addEventListener('storage', syncStoredUser);
+    window.addEventListener('aaq-auth-cleared', syncStoredUser);
+    return () => {
+      window.removeEventListener('storage', syncStoredUser);
+      window.removeEventListener('aaq-auth-cleared', syncStoredUser);
+    };
+  }, []);
 
   const login = useCallback(async (email: string, password: string) => {
     const data = await api.login(email, password);

@@ -16,9 +16,11 @@ function setTokens(access: string, refresh: string) {
 }
 
 export function clearTokens() {
+  if (typeof window === 'undefined') return;
   localStorage.removeItem('access_token');
   localStorage.removeItem('refresh_token');
   localStorage.removeItem('user');
+  window.dispatchEvent(new Event('aaq-auth-cleared'));
 }
 
 async function fetchWithAuth(url: string, options: RequestInit = {}): Promise<Response> {
@@ -54,6 +56,22 @@ async function fetchWithAuth(url: string, options: RequestInit = {}): Promise<Re
   }
 
   return response;
+}
+
+async function fetchWithoutAuth(url: string, options: RequestInit = {}): Promise<Response> {
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    ...(options.headers as Record<string, string>),
+  };
+  delete headers.Authorization;
+  delete headers.authorization;
+  return fetch(url, { ...options, headers });
+}
+
+async function responseError(response: Response, fallback: string): Promise<Error> {
+  const body = await response.text().catch(() => '');
+  const detail = body ? `${fallback} (${response.status}): ${body.slice(0, 300)}` : `${fallback} (${response.status})`;
+  return new Error(detail);
 }
 
 // --- Auth ---
@@ -123,8 +141,12 @@ export async function getChatSession(
   if (guestId) params.set('guest_id', guestId);
 
   const res = await fetchWithAuth(`${API_URL}/chat/session?${params.toString()}`);
-  if (!res.ok) throw new Error('Failed to load chat session');
-  return res.json();
+  if (res.ok) return res.json();
+
+  const fallbackRes = await fetchWithoutAuth(`${API_URL}/chat/session?${params.toString()}`);
+  if (fallbackRes.ok) return fallbackRes.json();
+
+  throw await responseError(res, 'Failed to load chat session');
 }
 
 export async function sendMessage(

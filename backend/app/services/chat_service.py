@@ -48,11 +48,13 @@ async def handle_session(
         response = _build_greeting_response(language, profile)
         return _attach_state_debug(response, debug, "session_start", language, user_id, current_state)
 
+    history = await _load_history(db, user_id, limit=30)
     response = ChatResponse(
         type="session",
         data={
             "state": current_state,
             "message": "",
+            "messages": history,
         },
         language=language,
     )

@@ -16,9 +16,15 @@ export interface ChatResponse {
 
 export type ChatData = Record<string, unknown> & {
   message?: string;
+  messages?: StoredChatMessage[];
   options?: TestOption[];
   debug?: BotDebugTrace;
 };
+
+export interface StoredChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
 
 export interface BotDebugTrace {
   enabled: boolean;
