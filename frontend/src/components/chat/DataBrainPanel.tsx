@@ -52,6 +52,7 @@ export default function DataBrainPanel({
   const [error, setError] = useState<string | null>(null);
   const [knowledgeError, setKnowledgeError] = useState<string | null>(null);
   const [selectedKnowledgeChunk, setSelectedKnowledgeChunk] = useState<KnowledgeChunk | null>(null);
+  const [selectedMemory, setSelectedMemory] = useState<UserMemory | null>(null);
 
   const loadMemories = useCallback(async () => {
     if (!isAuthenticated) {
@@ -163,7 +164,10 @@ export default function DataBrainPanel({
 
         {mode === 'constellation' && knowledgeChunks.length > 0 && (
           <div className="min-h-0 flex-1 overflow-hidden rounded border border-[#042648]/12 bg-white">
-            <KnowledgeConstellation chunks={knowledgeChunks} />
+            <KnowledgeConstellation
+              chunks={knowledgeChunks}
+              onOpenChunk={setSelectedKnowledgeChunk}
+            />
           </div>
         )}
 
@@ -291,8 +295,12 @@ export default function DataBrainPanel({
 
       {mode === 'constellation' && memories.length > 0 && (
         <div className="min-h-0 flex-1 overflow-hidden rounded border border-[#042648]/12 bg-white">
-          <Constellation memories={memories} />
+          <Constellation memories={memories} onOpenMemory={setSelectedMemory} />
         </div>
+      )}
+
+      {selectedMemory && (
+        <MemoryReader memory={selectedMemory} onClose={() => setSelectedMemory(null)} />
       )}
     </BrainShell>
   );
@@ -389,6 +397,63 @@ function MemoryCard({ memory }: { memory: UserMemory }) {
         <span>{Math.round(memory.confidence * 100)}% confidence</span>
       </div>
     </article>
+  );
+}
+
+function MemoryReader({ memory, onClose }: { memory: UserMemory; onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-[#042648]/35 px-4 py-6">
+      <div className="flex max-h-full w-full max-w-3xl flex-col overflow-hidden rounded border border-[#042648]/18 bg-white shadow-xl">
+        <div className="border-b border-[#042648]/12 px-4 py-3">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-[0.08em] text-[#042648]/48">
+                {formatType(memory.type)} / {memory.visibility}
+              </div>
+              <h3 className="mt-1 text-lg font-bold text-[#042648]">User Memory</h3>
+              <p className="mt-1 text-sm text-[#042648]/62">{formatTimestamp(memory.updated_at)}</p>
+            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded border border-[#042648]/15 px-3 py-1.5 text-sm font-semibold text-[#042648]/70 transition hover:bg-[#F8FAF7]"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+
+        <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4">
+          <div className="mb-4 flex flex-wrap gap-2 text-xs font-semibold text-[#042648]/58">
+            <span className="rounded bg-[#FFF6EA] px-2 py-0.5">{memory.status}</span>
+            <span className="rounded bg-[#FFF6EA] px-2 py-0.5">{memory.sensitivity}</span>
+            <span className="rounded bg-[#FFF6EA] px-2 py-0.5">
+              {Math.round(memory.confidence * 100)}% confidence
+            </span>
+          </div>
+
+          {memory.curated_summary && (
+            <section className="mb-4">
+              <div className="text-xs font-bold uppercase tracking-[0.08em] text-[#042648]/48">
+                User Visible Summary
+              </div>
+              <p className="mt-2 whitespace-pre-wrap text-sm leading-7 text-[#042648]/82">
+                {memory.curated_summary}
+              </p>
+            </section>
+          )}
+
+          <section>
+            <div className="text-xs font-bold uppercase tracking-[0.08em] text-[#042648]/48">
+              Raw Summary
+            </div>
+            <p className="mt-2 whitespace-pre-wrap text-sm leading-7 text-[#042648]/82">
+              {memory.summary}
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -526,7 +591,13 @@ function KnowledgeReader({ chunk, onClose }: { chunk: KnowledgeChunk; onClose: (
   );
 }
 
-function Constellation({ memories }: { memories: UserMemory[] }) {
+function Constellation({
+  memories,
+  onOpenMemory,
+}: {
+  memories: UserMemory[];
+  onOpenMemory: (memory: UserMemory) => void;
+}) {
   const nodes = useMemo(() => buildConstellationNodes(memories), [memories]);
   const groups = useMemo(() => Array.from(new Set(memories.map((memory) => memory.type))), [memories]);
 
@@ -573,7 +644,19 @@ function Constellation({ memories }: { memories: UserMemory[] }) {
         ))}
 
         {nodes.map((node) => (
-          <g key={node.memory.id}>
+          <g
+            key={node.memory.id}
+            role="button"
+            tabIndex={0}
+            className="cursor-pointer outline-none"
+            onClick={() => onOpenMemory(node.memory)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                onOpenMemory(node.memory);
+              }
+            }}
+          >
             <circle
               cx={node.x}
               cy={node.y}
@@ -582,6 +665,7 @@ function Constellation({ memories }: { memories: UserMemory[] }) {
               stroke={node.color.border}
               strokeWidth="2"
             />
+            <title>{`${formatType(node.memory.type)} - ${node.memory.curated_summary || node.memory.summary}`}</title>
             <text
               x={node.x}
               y={node.y + 4}
@@ -596,19 +680,30 @@ function Constellation({ memories }: { memories: UserMemory[] }) {
 
       <div className="absolute bottom-3 left-3 right-3 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
         {nodes.slice(0, 6).map((node) => (
-          <div key={`legend-${node.memory.id}`} className="rounded border border-[#042648]/10 bg-white/95 px-3 py-2 text-xs">
+          <button
+            key={`legend-${node.memory.id}`}
+            type="button"
+            onClick={() => onOpenMemory(node.memory)}
+            className="rounded border border-[#042648]/10 bg-white/95 px-3 py-2 text-left text-xs transition hover:border-[#042648]/35"
+          >
             <div className="font-bold text-[#042648]">{formatType(node.memory.type)}</div>
             <div className="mt-1 line-clamp-2 text-[#042648]/65">
               {node.memory.curated_summary || node.memory.summary}
             </div>
-          </div>
+          </button>
         ))}
       </div>
     </div>
   );
 }
 
-function KnowledgeConstellation({ chunks }: { chunks: KnowledgeChunk[] }) {
+function KnowledgeConstellation({
+  chunks,
+  onOpenChunk,
+}: {
+  chunks: KnowledgeChunk[];
+  onOpenChunk: (chunk: KnowledgeChunk) => void;
+}) {
   const nodes = useMemo(() => buildKnowledgeConstellationNodes(chunks), [chunks]);
   const groups = useMemo(() => Array.from(new Set(chunks.map((chunk) => chunk.domain))), [chunks]);
 
@@ -664,7 +759,19 @@ function KnowledgeConstellation({ chunks }: { chunks: KnowledgeChunk[] }) {
         ))}
 
         {nodes.map((node) => (
-          <g key={node.chunk.id}>
+          <g
+            key={node.chunk.id}
+            role="button"
+            tabIndex={0}
+            className="cursor-pointer outline-none"
+            onClick={() => onOpenChunk(node.chunk)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                onOpenChunk(node.chunk);
+              }
+            }}
+          >
             <circle
               cx={node.x}
               cy={node.y}
@@ -680,10 +787,15 @@ function KnowledgeConstellation({ chunks }: { chunks: KnowledgeChunk[] }) {
 
       <div className="absolute bottom-3 left-3 right-3 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
         {nodes.slice(0, 6).map((node) => (
-          <div key={`knowledge-legend-${node.chunk.id}`} className="rounded border border-[#042648]/10 bg-white/95 px-3 py-2 text-xs">
+          <button
+            key={`knowledge-legend-${node.chunk.id}`}
+            type="button"
+            onClick={() => onOpenChunk(node.chunk)}
+            className="rounded border border-[#042648]/10 bg-white/95 px-3 py-2 text-left text-xs transition hover:border-[#042648]/35"
+          >
             <div className="font-bold text-[#042648]">{node.chunk.title}</div>
             <div className="mt-1 text-[#042648]/55">{formatType(node.chunk.domain)} / {node.chunk.section}</div>
-          </div>
+          </button>
         ))}
       </div>
     </div>
