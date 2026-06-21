@@ -35,9 +35,9 @@ export default function ChatWindow() {
   useEffect(() => {
     if (!sessionInitialized.current) {
       sessionInitialized.current = true;
-      initializeSession(isAuthenticated);
+      initializeSession();
     }
-  }, [initializeSession, isAuthenticated]);
+  }, [initializeSession]);
 
   const getOptionDisplayText = (text: string) => {
     const optionId = text.trim().toUpperCase();

@@ -33,12 +33,12 @@ export function useChat(language: string = 'es') {
   }, []);
 
   const initializeSession = useCallback(
-    async (isAuthenticated: boolean) => {
+    async () => {
       setIsLoading(true);
       const debugSessionId = generateId();
 
       try {
-        const guestId = isAuthenticated ? undefined : getGuestId();
+        const guestId = getGuestId();
         const response = await api.getChatSession(language, guestId, true);
         setLastResponse(response);
 

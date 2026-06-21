@@ -11,8 +11,15 @@ function getTokens(): { access: string | null; refresh: string | null } {
 }
 
 function setTokens(access: string, refresh: string) {
+  if (typeof window === 'undefined') return;
   localStorage.setItem('access_token', access);
   localStorage.setItem('refresh_token', refresh);
+  window.dispatchEvent(new Event('aaq-auth-updated'));
+}
+
+export function hasAuthTokens(): boolean {
+  const { access, refresh } = getTokens();
+  return Boolean(access || refresh);
 }
 
 export function clearTokens() {
@@ -24,11 +31,17 @@ export function clearTokens() {
 }
 
 async function fetchWithAuth(url: string, options: RequestInit = {}): Promise<Response> {
-  const { access } = getTokens();
+  let { access, refresh } = getTokens();
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     ...(options.headers as Record<string, string>),
   };
+
+  if (!access && refresh) {
+    access = await refreshAccessToken(refresh);
+    refresh = getTokens().refresh;
+  }
+
   if (access) {
     headers['Authorization'] = `Bearer ${access}`;
   }
@@ -37,25 +50,39 @@ async function fetchWithAuth(url: string, options: RequestInit = {}): Promise<Re
 
   // If 401, try refreshing the token
   if (response.status === 401) {
-    const { refresh } = getTokens();
+    refresh = getTokens().refresh;
     if (refresh) {
-      const refreshRes = await fetch(`${API_URL}/auth/refresh`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ refresh_token: refresh }),
-      });
-      if (refreshRes.ok) {
-        const data: LoginResponse = await refreshRes.json();
-        setTokens(data.access_token, data.refresh_token);
-        headers['Authorization'] = `Bearer ${data.access_token}`;
+      const nextAccess = await refreshAccessToken(refresh);
+      if (nextAccess) {
+        headers['Authorization'] = `Bearer ${nextAccess}`;
         response = await fetch(url, { ...options, headers });
-      } else {
-        clearTokens();
       }
     }
   }
 
   return response;
+}
+
+async function refreshAccessToken(refresh: string): Promise<string | null> {
+  const refreshRes = await fetch(`${API_URL}/auth/refresh`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ refresh_token: refresh }),
+  });
+  if (!refreshRes.ok) {
+    clearTokens();
+    return null;
+  }
+
+  const data: LoginResponse = await refreshRes.json();
+  setTokens(data.access_token, data.refresh_token);
+  localStorage.setItem('user', JSON.stringify({
+    user_id: data.user_id,
+    email: data.email,
+    is_premium: data.is_premium,
+    preferred_language: data.preferred_language,
+  }));
+  return data.access_token;
 }
 
 async function fetchWithoutAuth(url: string, options: RequestInit = {}): Promise<Response> {

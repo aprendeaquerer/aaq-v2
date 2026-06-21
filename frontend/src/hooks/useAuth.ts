@@ -13,6 +13,11 @@ interface AuthUser {
 function getStoredUser(): AuthUser | null {
   if (typeof window === 'undefined') return null;
 
+  if (!api.hasAuthTokens()) {
+    localStorage.removeItem('user');
+    return null;
+  }
+
   const stored = localStorage.getItem('user');
   if (!stored) return null;
 
@@ -32,9 +37,11 @@ export function useAuth() {
     const syncStoredUser = () => setUser(getStoredUser());
     window.addEventListener('storage', syncStoredUser);
     window.addEventListener('aaq-auth-cleared', syncStoredUser);
+    window.addEventListener('aaq-auth-updated', syncStoredUser);
     return () => {
       window.removeEventListener('storage', syncStoredUser);
       window.removeEventListener('aaq-auth-cleared', syncStoredUser);
+      window.removeEventListener('aaq-auth-updated', syncStoredUser);
     };
   }, []);
 
