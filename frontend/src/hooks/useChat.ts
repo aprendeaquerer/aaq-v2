@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import * as api from '@/lib/api';
 import { API_URL } from '@/lib/constants';
 import type { BotDebugTrace, ChatMessage, ChatResponse, DebugSession, StoredChatMessage } from '@/lib/types';
@@ -10,12 +10,63 @@ function generateId(): string {
   return `msg_${Date.now()}_${++messageIdCounter}`;
 }
 
+const DEBUG_STORAGE_KEY = 'aaq_debug_sessions_v1';
+const MAX_DEBUG_SESSIONS = 20;
+
+function limitDebugSessions(sessions: DebugSession[]): DebugSession[] {
+  return sessions.slice(-MAX_DEBUG_SESSIONS);
+}
+
+function loadStoredDebugSessions(): DebugSession[] {
+  if (typeof window === 'undefined') return [];
+
+  try {
+    const stored = window.localStorage.getItem(DEBUG_STORAGE_KEY);
+    if (!stored) return [];
+    const rows = JSON.parse(stored);
+    if (!Array.isArray(rows)) return [];
+
+    return limitDebugSessions(
+      rows
+        .filter((row): row is Record<string, unknown> => Boolean(row) && typeof row === 'object')
+        .map((row) => ({
+          id: typeof row.id === 'string' ? row.id : generateId(),
+          userMessage: typeof row.userMessage === 'string' ? row.userMessage : 'Restored debug trace',
+          status: row.status === 'processing' || row.status === 'error' ? row.status : 'complete',
+          startedAt: row.startedAt ? new Date(String(row.startedAt)) : new Date(),
+          completedAt: row.completedAt ? new Date(String(row.completedAt)) : undefined,
+          trace: row.trace as BotDebugTrace | undefined,
+        }))
+    );
+  } catch {
+    return [];
+  }
+}
+
+function storeDebugSessions(sessions: DebugSession[]) {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(DEBUG_STORAGE_KEY, JSON.stringify(limitDebugSessions(sessions)));
+  } catch {
+    // Debug persistence is helpful, but never worth breaking the chat.
+  }
+}
+
+function clearStoredDebugSessions() {
+  if (typeof window === 'undefined') return;
+  window.localStorage.removeItem(DEBUG_STORAGE_KEY);
+}
+
 export function useChat(language: string = 'es') {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [lastResponse, setLastResponse] = useState<ChatResponse | null>(null);
-  const [debugSessions, setDebugSessions] = useState<DebugSession[]>([]);
+  const [debugSessions, setDebugSessions] = useState<DebugSession[]>(() => loadStoredDebugSessions());
   const guestIdRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    storeDebugSessions(debugSessions);
+  }, [debugSessions]);
 
   // Get or create guest ID
   const getGuestId = useCallback(() => {
@@ -44,7 +95,7 @@ export function useChat(language: string = 'es') {
 
         const trace = response.data.debug as BotDebugTrace | undefined;
         if (trace) {
-          setDebugSessions((prev) => [
+          setDebugSessions((prev) => limitDebugSessions([
             ...prev,
             {
               id: debugSessionId,
@@ -54,7 +105,7 @@ export function useChat(language: string = 'es') {
               completedAt: new Date(),
               trace,
             },
-          ]);
+          ]));
         }
 
         if (response.type === 'greeting' && response.data.message) {
@@ -88,7 +139,7 @@ export function useChat(language: string = 'es') {
           }
         }
       } catch (error) {
-        setDebugSessions((prev) => [
+        setDebugSessions((prev) => limitDebugSessions([
           ...prev,
           {
             id: debugSessionId,
@@ -116,7 +167,7 @@ export function useChat(language: string = 'es') {
               ],
             },
           },
-        ]);
+        ]));
       } finally {
         setIsLoading(false);
       }
@@ -136,7 +187,7 @@ export function useChat(language: string = 'es') {
       setMessages((prev) => [...prev, userMessage]);
       setIsLoading(true);
       const debugSessionId = generateId();
-      setDebugSessions((prev) => [
+      setDebugSessions((prev) => limitDebugSessions([
         ...prev,
         {
           id: debugSessionId,
@@ -144,7 +195,7 @@ export function useChat(language: string = 'es') {
           status: 'processing',
           startedAt: new Date(),
         },
-      ]);
+      ]));
 
       try {
         const guestId = getGuestId();
@@ -152,11 +203,11 @@ export function useChat(language: string = 'es') {
         setLastResponse(response);
         const trace = response.data.debug as BotDebugTrace | undefined;
         setDebugSessions((prev) =>
-          prev.map((session) =>
+          limitDebugSessions(prev.map((session) =>
             session.id === debugSessionId
               ? { ...session, status: 'complete', completedAt: new Date(), trace }
               : session
-          )
+          ))
         );
 
         // Add assistant message
@@ -171,7 +222,7 @@ export function useChat(language: string = 'es') {
         setMessages((prev) => [...prev, assistantMessage]);
       } catch (error) {
         setDebugSessions((prev) =>
-          prev.map((session) =>
+          limitDebugSessions(prev.map((session) =>
             session.id === debugSessionId
               ? {
                   ...session,
@@ -198,7 +249,7 @@ export function useChat(language: string = 'es') {
                   },
                 }
               : session
-          )
+          ))
         );
         const errorMessage: ChatMessage = {
           id: generateId(),
@@ -218,6 +269,7 @@ export function useChat(language: string = 'es') {
     setMessages([]);
     setLastResponse(null);
     setDebugSessions([]);
+    clearStoredDebugSessions();
   }, []);
 
   return { messages, isLoading, lastResponse, debugSessions, initializeSession, sendMessage, clearMessages };
