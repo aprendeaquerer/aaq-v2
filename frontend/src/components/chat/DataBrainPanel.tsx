@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import * as api from '@/lib/api';
 import { useLanguage } from '@/hooks/useLanguage';
-import type { DebugSession, KnowledgeChunk, UserMemory } from '@/lib/types';
+import type { DebugSession, KnowledgeChunk, UserMemory, UserProfile } from '@/lib/types';
 
 type BrainMode = 'text' | 'constellation';
 export type BrainTab = 'data' | 'knowledge' | 'live';
@@ -46,6 +46,7 @@ export default function DataBrainPanel({
   const { language } = useLanguage();
   const [mode, setMode] = useState<BrainMode>('text');
   const [memories, setMemories] = useState<UserMemory[]>([]);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
   const [knowledgeChunks, setKnowledgeChunks] = useState<KnowledgeChunk[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isKnowledgeLoading, setIsKnowledgeLoading] = useState(false);
@@ -86,9 +87,29 @@ export default function DataBrainPanel({
     }
   }, [language]);
 
+  const loadProfile = useCallback(async () => {
+    if (!isAuthenticated) {
+      setProfile(null);
+      return;
+    }
+
+    try {
+      const nextProfile = await api.getProfile();
+      setProfile(nextProfile);
+    } catch {
+      setProfile(null);
+    }
+  }, [isAuthenticated]);
+
   useEffect(() => {
     void loadMemories();
   }, [loadMemories, refreshKey]);
+
+  useEffect(() => {
+    if (activeTab === 'data' || activeTab === 'live') {
+      void loadProfile();
+    }
+  }, [activeTab, loadProfile, refreshKey]);
 
   useEffect(() => {
     if (activeTab === 'knowledge') {
@@ -225,6 +246,7 @@ export default function DataBrainPanel({
           </div>
 
           <aside className="min-h-0 overflow-y-auto rounded border border-[#042648]/12 bg-white">
+            <ProfileSummary profile={profile} />
             <div className="border-b border-[#042648]/10 px-3 py-2">
               <h3 className="text-sm font-bold text-[#042648]">Stored Now</h3>
               <p className="mt-1 text-xs text-[#042648]/60">
@@ -256,6 +278,10 @@ export default function DataBrainPanel({
         <BrainModeToggle mode={mode} onChange={setMode} />
       }
     >
+      <div className="mb-4">
+        <ProfileSummary profile={profile} />
+      </div>
+
       {error && (
         <div className="mb-3 rounded border border-[#A33A3A]/25 bg-[#FFF0F0] px-3 py-2 text-sm text-[#7A1F1F]">
           {error}
@@ -377,6 +403,71 @@ function BrainModeToggle({ mode, onChange }: { mode: BrainMode; onChange: (mode:
       </button>
     </div>
   );
+}
+
+function ProfileSummary({ profile }: { profile: UserProfile | null }) {
+  const rows = profile ? buildProfileRows(profile) : [];
+
+  return (
+    <section className="rounded border border-[#042648]/12 bg-white">
+      <div className="border-b border-[#042648]/10 px-3 py-2">
+        <h3 className="text-sm font-bold text-[#042648]">User Profile</h3>
+        <p className="mt-1 text-xs text-[#042648]/60">
+          Structured context captured from tests, profile, and chat.
+        </p>
+      </div>
+
+      <div className="grid gap-2 p-3 md:grid-cols-2 xl:grid-cols-3">
+        {rows.length > 0 ? (
+          rows.map(([label, value]) => (
+            <div key={label} className="rounded bg-[#F8FAF7] px-3 py-2">
+              <div className="text-[11px] font-bold uppercase tracking-[0.06em] text-[#042648]/45">
+                {label}
+              </div>
+              <div className="mt-1 break-words text-sm font-semibold text-[#042648]/80">
+                {value}
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="text-sm text-[#042648]/60">No structured profile fields yet.</p>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function buildProfileRows(profile: UserProfile): [string, string][] {
+  const rows: [string, string][] = [];
+  addRow(rows, 'Name', profile.nombre);
+  addRow(rows, 'Age', profile.edad);
+  addRow(rows, 'Gender', profile.genero);
+  addRow(rows, 'Has partner', formatBoolean(profile.tiene_pareja));
+  addRow(rows, 'Partner name', profile.nombre_pareja);
+  addRow(rows, 'Partner age', profile.edad_pareja);
+  addRow(rows, 'Partner gender', profile.genero_pareja);
+  addRow(rows, 'Time together', profile.tiempo_pareja);
+  addRow(rows, 'Orientation', profile.orientacion);
+  addRow(rows, 'Relationship type', profile.tipo_relacion);
+  addRow(rows, 'Lives together', formatBoolean(profile.convive_con_pareja));
+  addRow(rows, 'Has children', formatBoolean(profile.tiene_hijos));
+  addRow(rows, 'Attachment style', profile.attachment_style);
+  addRow(rows, 'Partner attachment', profile.partner_attachment_style);
+  addRow(rows, 'Relationship status', profile.relationship_status);
+  addRow(rows, 'Language', profile.preferred_language);
+  addRow(rows, 'Premium', formatBoolean(profile.is_premium));
+  addRow(rows, 'Email verified', formatBoolean(profile.email_verified));
+  return rows;
+}
+
+function addRow(rows: [string, string][], label: string, value: string | number | null | undefined) {
+  if (value === null || value === undefined || value === '') return;
+  rows.push([label, String(value)]);
+}
+
+function formatBoolean(value: boolean | null | undefined): string | null {
+  if (value === null || value === undefined) return null;
+  return value ? 'Yes' : 'No';
 }
 
 function MemoryCard({ memory }: { memory: UserMemory }) {
