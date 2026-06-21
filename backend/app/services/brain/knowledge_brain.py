@@ -82,6 +82,11 @@ def route_domains(message: str) -> List[str]:
             "abandono", "abandonment", "rechazo", "seguro", "secure", "ciclo",
             "cycle", "ruptura", "repair", "reparar", "reparacion", "traicion",
             "betrayal", "infidelidad", "confianza", "trust", "lesion", "injury",
+            "desorganizado", "disorganized", "desamor", "desenamor", "falling out",
+            "dopamina", "dopamine", "oxitocina", "oxytocin", "vasopresina",
+            "vasopressin", "cortisol", "coregulacion", "coregulation", "terapia",
+            "therapy", "reality testing", "prueba de realidad", "fear testing",
+            "earned secure", "apego ganado", "contrato secreto", "secret contract",
         ),
         "relationships": (
             "relacion", "relationship", "pareja", "partner", "conflicto", "conflict",
