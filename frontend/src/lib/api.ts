@@ -1,5 +1,6 @@
 import { API_URL } from './constants';
-import type { LoginResponse, ChatResponse, UserProfile, UserMemory, KnowledgeBrain } from './types';
+import knowledgeBrainFallback from '@/data/knowledgeBrain.json';
+import type { LoginResponse, ChatResponse, UserProfile, UserMemory, KnowledgeBrain, KnowledgeChunk } from './types';
 
 function getTokens(): { access: string | null; refresh: string | null } {
   if (typeof window === 'undefined') return { access: null, refresh: null };
@@ -169,9 +170,27 @@ export async function updateUserMemory(id: string, updates: Partial<UserMemory>)
 
 export async function getKnowledgeBrain(language?: string): Promise<KnowledgeBrain> {
   const query = language ? `?language=${encodeURIComponent(language)}` : '';
-  const res = await fetchWithAuth(`${API_URL}/brain/knowledge${query}`);
-  if (!res.ok) throw new Error('Failed to fetch knowledge brain');
-  return res.json();
+  try {
+    const res = await fetchWithAuth(`${API_URL}/brain/knowledge${query}`);
+    if (!res.ok) throw new Error('Failed to fetch knowledge brain');
+    return res.json();
+  } catch {
+    const fallback = knowledgeBrainFallback as KnowledgeBrain;
+    if (!language) return fallback;
+    const chunks = fallback.chunks.filter((chunk) => chunk.language === language || chunk.language === 'multi' || chunk.language === '');
+    return {
+      chunks,
+      domains: countBy(chunks, 'domain'),
+      articles: countBy(chunks, 'article_id'),
+    };
+  }
+}
+
+function countBy(rows: KnowledgeChunk[], key: 'domain' | 'article_id'): Record<string, number> {
+  return rows.reduce<Record<string, number>>((counts, row) => {
+    counts[row[key]] = (counts[row[key]] || 0) + 1;
+    return counts;
+  }, {});
 }
 
 // --- Payment ---
