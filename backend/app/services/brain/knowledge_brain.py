@@ -87,6 +87,11 @@ def route_domains(message: str) -> List[str]:
             "vasopressin", "cortisol", "coregulacion", "coregulation", "terapia",
             "therapy", "reality testing", "prueba de realidad", "fear testing",
             "earned secure", "apego ganado", "contrato secreto", "secret contract",
+            "carp", "cyberball", "secure mode", "modo seguro", "secure priming",
+            "rejection sensitivity", "sensibilidad al rechazo", "ainsworth",
+            "strange situation", "situacion extraña", "base segura", "secure base",
+            "inversion rapida", "invierto emocionalmente", "emotionally invested",
+            "fast attachment", "apego rapido",
         ),
         "relationships": (
             "relacion", "relationship", "pareja", "partner", "conflicto", "conflict",
@@ -95,6 +100,11 @@ def route_domains(message: str) -> List[str]:
             "herida relacional", "heridas", "rechazo", "juicio", "desbordamiento",
             "desconfianza", "insuficiencia", "inseguridad", "reaseguro", "ruptura",
             "reparacion", "inner child", "niño interior",
+            "my ex", "mi ex", "breakup", "ruptura amorosa", "closure", "cierre", "move on",
+            "soltar", "duelo", "grief", "potential", "potencial", "settling",
+            "conformarse", "mind reading", "leer la mente", "pedir", "asking",
+            "needs", "necesidades", "resentimiento", "attunement", "sintonia",
+            "valores", "values", "self compassion", "autocompasion",
         ),
         "polarity": (
             "masculino", "masculine", "femenino", "feminine", "polaridad", "polarity",

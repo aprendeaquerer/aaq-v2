@@ -874,6 +874,726 @@
       "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Adam Lane Smith/Why Therapy Isnt Fixing Attachment - Adam Lane Smith.docx`\n- Source: Adam Lane Smith, \"Why Therapy Isn't Fixing Attachment\"\n- Video source noted in document: `https://www.youtube.com/watch?v=u74RpmSI6Uo`\n- Processed as a curated internal brain article, not a verbatim transcript."
     },
     {
+      "id": "ainsworth-strange-situation-secure-base/coaching-moves",
+      "article_id": "ainsworth-strange-situation-secure-base",
+      "title": "Ainsworth - Strange Situation And Secure Base",
+      "section": "Coaching Moves",
+      "content": "- Volver al concepto central: \"Esta relación funciona como base segura o como fuente de alarma?\"\n- Preguntar si la persona puede explorar mas porque se siente respaldada.\n- Separar etiqueta de función: \"Que conducta aparece cuando hay separación o reunión?\"\n- Usar el ciclo salir-volver-salir para explicar autonomía sana.\n- Recordar que el apego es relacional: cambia según la figura, contexto y experiencias repetidas.\n- Evitar convertir ciencia descriptiva en destino personal.",
+      "preview": "- Volver al concepto central: \"Esta relación funciona como base segura o como fuente de alarma?\" - Preguntar si la persona puede explorar mas porque se siente respaldada. - Separar etiqueta de función: \"Que conducta apar...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "ainsworth",
+        "strange_situation",
+        "secure_base",
+        "infant_attachment",
+        "separation_reunion",
+        "attachment_classification"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Infants Ainsworth-Patterns-of-Attachment.pdf`\n- Source: Mary D. Salter Ainsworth, Mary C. Blehar, Everett Waters, Sally N. Wall, `Patterns of Attachment`\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "ainsworth-strange-situation-secure-base/core-thesis",
+      "article_id": "ainsworth-strange-situation-secure-base",
+      "title": "Ainsworth - Strange Situation And Secure Base",
+      "section": "Core Thesis",
+      "content": "El aporte central de Ainsworth es que el apego se observa mejor como organización relacional: cómo un niño usa a una figura disponible como base segura para explorar y como refugio al activarse la alarma. La Strange Situation no define identidades fijas; muestra patrones de conducta en una relación específica, especialmente en separación y reunión.",
+      "preview": "El aporte central de Ainsworth es que el apego se observa mejor como organización relacional: cómo un niño usa a una figura disponible como base segura para explorar y como refugio al activarse la alarma. La Strange Situ...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "ainsworth",
+        "strange_situation",
+        "secure_base",
+        "infant_attachment",
+        "separation_reunion",
+        "attachment_classification"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Infants Ainsworth-Patterns-of-Attachment.pdf`\n- Source: Mary D. Salter Ainsworth, Mary C. Blehar, Everett Waters, Sally N. Wall, `Patterns of Attachment`\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "ainsworth-strange-situation-secure-base/example-eldric-language",
+      "article_id": "ainsworth-strange-situation-secure-base",
+      "title": "Ainsworth - Strange Situation And Secure Base",
+      "section": "Example Eldric Language",
+      "content": "\"La base segura no te encierra. Te da suficiente respaldo para salir al mundo.\"\n\n\"Una etiqueta de apego resume conducta; no explica toda tu alma ni decide tu futuro.\"",
+      "preview": "\"La base segura no te encierra. Te da suficiente respaldo para salir al mundo.\" \"Una etiqueta de apego resume conducta; no explica toda tu alma ni decide tu futuro.\"",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "ainsworth",
+        "strange_situation",
+        "secure_base",
+        "infant_attachment",
+        "separation_reunion",
+        "attachment_classification"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Infants Ainsworth-Patterns-of-Attachment.pdf`\n- Source: Mary D. Salter Ainsworth, Mary C. Blehar, Everett Waters, Sally N. Wall, `Patterns of Attachment`\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "ainsworth-strange-situation-secure-base/key-principles",
+      "article_id": "ainsworth-strange-situation-secure-base",
+      "title": "Ainsworth - Strange Situation And Secure Base",
+      "section": "Key Principles",
+      "content": "- La seguridad no se mide solo por cuánto contacto busca el niño, sino por si puede explorar con confianza y volver al cuidador cuando necesita.\n- Una base segura permite movimiento: salir a explorar, volver por regulación y salir de nuevo.\n- La separación activa el sistema de apego; la reunión revela mucho sobre confianza, protesta, evitación o ambivalencia.\n- El grupo seguro usa al cuidador para calmarse y retomar exploración.\n- Los patrones evitativos o resistentes son conductas de prueba en una relación, no rasgos globales de personalidad.\n- Ainsworth y posteriores investigadores advierten contra reificar etiquetas como \"evitativo\" o \"resistente.\"\n- La Strange Situation debe conectarse con observaciones reales del hogar; no reemplaza todo contexto cultural o familiar.\n- El apego desorganizado se añadió después para describir respuestas contradictorias, temerosas o desorganizadas que no encajaban bien en ABC.\n- La teoría de apego no es una teoría de un test; es una teoría sobre seguridad, disponibilidad, respuesta y exploración en relaciones.",
+      "preview": "- La seguridad no se mide solo por cuánto contacto busca el niño, sino por si puede explorar con confianza y volver al cuidador cuando necesita. - Una base segura permite movimiento: salir a explorar, volver por regulaci...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "ainsworth",
+        "strange_situation",
+        "secure_base",
+        "infant_attachment",
+        "separation_reunion",
+        "attachment_classification"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Infants Ainsworth-Patterns-of-Attachment.pdf`\n- Source: Mary D. Salter Ainsworth, Mary C. Blehar, Everett Waters, Sally N. Wall, `Patterns of Attachment`\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "ainsworth-strange-situation-secure-base/practices",
+      "article_id": "ainsworth-strange-situation-secure-base",
+      "title": "Ainsworth - Strange Situation And Secure Base",
+      "section": "Practices",
+      "content": "### Secure Base Reflection\n\nElegir una relación y responder:\n\n1. Cuando estoy con esta persona, exploro mas o me vigilo mas?\n2. Si me activo, puedo volver y recibir calma?\n3. Después de reparar, retomo vida con mas libertad?\n\n### Label Deflation\n\nCambiar \"soy evitativo\" por:\n\n\"Cuando siento demanda o separación en esta relación, mi conducta tiende a...\"\n\n### Separation-Reunion Review\n\nDespués de distancia o conflicto, observar qué ocurre en la reunión: calma, castigo, evitación, protesta, reparación, ambivalencia o regreso a exploración.",
+      "preview": "### Secure Base Reflection Elegir una relación y responder: 1. Cuando estoy con esta persona, exploro mas o me vigilo mas? 2. Si me activo, puedo volver y recibir calma? 3. Después de reparar, retomo vida con mas liberta...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "ainsworth",
+        "strange_situation",
+        "secure_base",
+        "infant_attachment",
+        "separation_reunion",
+        "attachment_classification"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Infants Ainsworth-Patterns-of-Attachment.pdf`\n- Source: Mary D. Salter Ainsworth, Mary C. Blehar, Everett Waters, Sally N. Wall, `Patterns of Attachment`\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "ainsworth-strange-situation-secure-base/related-concepts",
+      "article_id": "ainsworth-strange-situation-secure-base",
+      "title": "Ainsworth - Strange Situation And Secure Base",
+      "section": "Related Concepts",
+      "content": "- secure-base\n- strange-situation\n- separation-reunion\n- infant-attachment\n- attachment-as-relationship\n- exploration-system\n- disorganized-attachment",
+      "preview": "- secure-base - strange-situation - separation-reunion - infant-attachment - attachment-as-relationship - exploration-system - disorganized-attachment",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "ainsworth",
+        "strange_situation",
+        "secure_base",
+        "infant_attachment",
+        "separation_reunion",
+        "attachment_classification"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Infants Ainsworth-Patterns-of-Attachment.pdf`\n- Source: Mary D. Salter Ainsworth, Mary C. Blehar, Everett Waters, Sally N. Wall, `Patterns of Attachment`\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "ainsworth-strange-situation-secure-base/source-notes",
+      "article_id": "ainsworth-strange-situation-secure-base",
+      "title": "Ainsworth - Strange Situation And Secure Base",
+      "section": "Source Notes",
+      "content": "- Source document: `/Users/pedro/Desktop/Archivo/Infants Ainsworth-Patterns-of-Attachment.pdf`\n- Source: Mary D. Salter Ainsworth, Mary C. Blehar, Everett Waters, Sally N. Wall, `Patterns of Attachment`\n- Processed as a curated internal brain article, not a verbatim transcript.",
+      "preview": "- Source document: `/Users/pedro/Desktop/Archivo/Infants Ainsworth-Patterns-of-Attachment.pdf` - Source: Mary D. Salter Ainsworth, Mary C. Blehar, Everett Waters, Sally N. Wall, `Patterns of Attachment` - Processed as a...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "ainsworth",
+        "strange_situation",
+        "secure_base",
+        "infant_attachment",
+        "separation_reunion",
+        "attachment_classification"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Infants Ainsworth-Patterns-of-Attachment.pdf`\n- Source: Mary D. Salter Ainsworth, Mary C. Blehar, Everett Waters, Sally N. Wall, `Patterns of Attachment`\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "ainsworth-strange-situation-secure-base/when-not-to-use-this",
+      "article_id": "ainsworth-strange-situation-secure-base",
+      "title": "Ainsworth - Strange Situation And Secure Base",
+      "section": "When Not To Use This",
+      "content": "- No diagnosticar a adultos directamente con categorías de bebés.\n- No usar la Strange Situation como prueba universal fuera de su contexto sin cautela.\n- No asumir que un patrón con una figura se generaliza automáticamente a todas las relaciones.\n- No culpar simplistamente a una madre o cuidador por todo el estilo futuro.\n- No usar categorías de apego para excusar daño, negligencia o falta de responsabilidad actual.",
+      "preview": "- No diagnosticar a adultos directamente con categorías de bebés. - No usar la Strange Situation como prueba universal fuera de su contexto sin cautela. - No asumir que un patrón con una figura se generaliza automáticame...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "ainsworth",
+        "strange_situation",
+        "secure_base",
+        "infant_attachment",
+        "separation_reunion",
+        "attachment_classification"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Infants Ainsworth-Patterns-of-Attachment.pdf`\n- Source: Mary D. Salter Ainsworth, Mary C. Blehar, Everett Waters, Sally N. Wall, `Patterns of Attachment`\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "ainsworth-strange-situation-secure-base/when-this-applies",
+      "article_id": "ainsworth-strange-situation-secure-base",
+      "title": "Ainsworth - Strange Situation And Secure Base",
+      "section": "When This Applies",
+      "content": "- El usuario necesita una base científica para entender apego sin convertirlo en etiquetas rígidas.\n- Hay confusión entre apego seguro e independencia sin necesidad.\n- Se quiere explicar por qué la seguridad aumenta exploración, juego, aprendizaje y autonomía.\n- Alguien usa \"soy evitativo\" o \"soy ansioso\" como identidad total.\n- Se necesita una referencia para hablar de separación, reunión, protesta, evitación y base segura.",
+      "preview": "- El usuario necesita una base científica para entender apego sin convertirlo en etiquetas rígidas. - Hay confusión entre apego seguro e independencia sin necesidad. - Se quiere explicar por qué la seguridad aumenta expl...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "ainsworth",
+        "strange_situation",
+        "secure_base",
+        "infant_attachment",
+        "separation_reunion",
+        "attachment_classification"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Infants Ainsworth-Patterns-of-Attachment.pdf`\n- Source: Mary D. Salter Ainsworth, Mary C. Blehar, Everett Waters, Sally N. Wall, `Patterns of Attachment`\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-rejection-secure-mode-carp/coaching-moves",
+      "article_id": "amir-levine-rejection-secure-mode-carp",
+      "title": "Amir Levine - From Rejection To Secure Mode",
+      "section": "Coaching Moves",
+      "content": "- Nombrar la herida de exclusión sin ridiculizarla.\n- Buscar datos: \"Que pasó realmente? Que historia agregó mi sistema?\"\n- Identificar quienes ya son CARP y subir su prioridad.\n- Preparar una intervención CARP: \"Estoy practicando ser mas consistente y responsivo, y me ayudaría que nuestra relación también tenga mas de eso.\"\n- Bajar la inversión en vínculos que solo ofrecen intermitencia.\n- Invitar a la persona a dar atención como generosidad: responder, incluir, reconocer.",
+      "preview": "- Nombrar la herida de exclusión sin ridiculizarla. - Buscar datos: \"Que pasó realmente? Que historia agregó mi sistema?\" - Identificar quienes ya son CARP y subir su prioridad. - Preparar una intervención CARP: \"Estoy p...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "rejection_sensitivity",
+        "secure_mode",
+        "carp",
+        "cyberball_effect",
+        "secure_priming",
+        "attachment_topography"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How To Stop Feeling Rejected and Start Feeling Secure - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How To Stop Feeling Rejected and Start Feeling Secure\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-rejection-secure-mode-carp/core-thesis",
+      "article_id": "amir-levine-rejection-secure-mode-carp",
+      "title": "Amir Levine - From Rejection To Secure Mode",
+      "section": "Core Thesis",
+      "content": "La sensación de rechazo no es \"drama\"; el cerebro social la registra como amenaza. Para sentirse mas seguro, Levine propone crear un entorno relacional enriquecido: personas y conductas consistentes, disponibles, responsivas, predecibles y realmente relacionales. La seguridad se practica en micro-interacciones repetidas, no solo entendiendo la infancia.",
+      "preview": "La sensación de rechazo no es \"drama\"; el cerebro social la registra como amenaza. Para sentirse mas seguro, Levine propone crear un entorno relacional enriquecido: personas y conductas consistentes, disponibles, respons...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "rejection_sensitivity",
+        "secure_mode",
+        "carp",
+        "cyberball_effect",
+        "secure_priming",
+        "attachment_topography"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How To Stop Feeling Rejected and Start Feeling Secure - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How To Stop Feeling Rejected and Start Feeling Secure\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-rejection-secure-mode-carp/example-eldric-language",
+      "article_id": "amir-levine-rejection-secure-mode-carp",
+      "title": "Amir Levine - From Rejection To Secure Mode",
+      "section": "Example Eldric Language",
+      "content": "\"Tu cerebro no esta exagerando porque quiera drama; esta tratando la exclusión como peligro. Ahora necesitamos datos y vínculos que le enseñen una historia mas segura.\"\n\n\"No tienes que cortar con odio para dejar de poner a alguien primero.\"",
+      "preview": "\"Tu cerebro no esta exagerando porque quiera drama; esta tratando la exclusión como peligro. Ahora necesitamos datos y vínculos que le enseñen una historia mas segura.\" \"No tienes que cortar con odio para dejar de poner...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "rejection_sensitivity",
+        "secure_mode",
+        "carp",
+        "cyberball_effect",
+        "secure_priming",
+        "attachment_topography"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How To Stop Feeling Rejected and Start Feeling Secure - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How To Stop Feeling Rejected and Start Feeling Secure\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-rejection-secure-mode-carp/key-principles",
+      "article_id": "amir-levine-rejection-secure-mode-carp",
+      "title": "Amir Levine - From Rejection To Secure Mode",
+      "section": "Key Principles",
+      "content": "- El apego adulto es flexible: una persona puede tener distintos patrones con distintas relaciones.\n- La infancia importa, pero no determina por completo el estilo adulto; el cerebro actual sigue actualizando modelos de relación.\n- La exclusión, incluso pequeña, puede activar dolor, baja autoestima y sensación de menos agencia.\n- La inclusión repetida y confiable ayuda al sistema a entrar en \"modo seguro.\"\n- CARP significa Consistent, Available, Responsive, Predictable, y debe vivirse en relación, no solo pensarse.\n- La seguridad requiere consistencia; recompensas intermitentes pueden intensificar apego inseguro.\n- Las micro-interacciones importan: saludar, responder, incluir, mirar, escribir, recordar.\n- Si una relación no puede ser CARP, se puede bajar prioridad sin odio: responder con cariño, iniciar menos y alimentar mas los vínculos seguros.\n- La seguridad también desbloquea energía mental, creatividad y exploración.",
+      "preview": "- El apego adulto es flexible: una persona puede tener distintos patrones con distintas relaciones. - La infancia importa, pero no determina por completo el estilo adulto; el cerebro actual sigue actualizando modelos de...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "rejection_sensitivity",
+        "secure_mode",
+        "carp",
+        "cyberball_effect",
+        "secure_priming",
+        "attachment_topography"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How To Stop Feeling Rejected and Start Feeling Secure - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How To Stop Feeling Rejected and Start Feeling Secure\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-rejection-secure-mode-carp/practices",
+      "article_id": "amir-levine-rejection-secure-mode-carp",
+      "title": "Amir Levine - From Rejection To Secure Mode",
+      "section": "Practices",
+      "content": "### CARP Audit\n\nPara cada relación importante, puntuar de 1 a 5:\n\n1. Consistente.\n2. Disponible.\n3. Responsiva.\n4. Predecible.\n5. Relacional: la otra persona realmente me registra.\n\nLuego elegir una relación segura para nutrir y una relación insegura para ajustar.\n\n### Secure Mode Micro-Practice\n\nDurante una semana, hacer tres gestos pequeños por día: responder un mensaje, saludar con presencia, agradecer, incluir, preguntar o recordar algo importante.\n\n### Wall Tennis With Love\n\nSi alguien no puede ofrecer mas, responder con calidez cuando venga, pero iniciar menos. La energía liberada va hacia personas mas seguras, no hacia resentimiento.",
+      "preview": "### CARP Audit Para cada relación importante, puntuar de 1 a 5: 1. Consistente. 2. Disponible. 3. Responsiva. 4. Predecible. 5. Relacional: la otra persona realmente me registra. Luego elegir una relación segura para nut...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "rejection_sensitivity",
+        "secure_mode",
+        "carp",
+        "cyberball_effect",
+        "secure_priming",
+        "attachment_topography"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How To Stop Feeling Rejected and Start Feeling Secure - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How To Stop Feeling Rejected and Start Feeling Secure\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-rejection-secure-mode-carp/related-concepts",
+      "article_id": "amir-levine-rejection-secure-mode-carp",
+      "title": "Amir Levine - From Rejection To Secure Mode",
+      "section": "Related Concepts",
+      "content": "- secure-mode\n- carp\n- rejection-sensitivity\n- cyberball-effect\n- secure-priming\n- attachment-topography\n- micro-interactions",
+      "preview": "- secure-mode - carp - rejection-sensitivity - cyberball-effect - secure-priming - attachment-topography - micro-interactions",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "rejection_sensitivity",
+        "secure_mode",
+        "carp",
+        "cyberball_effect",
+        "secure_priming",
+        "attachment_topography"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How To Stop Feeling Rejected and Start Feeling Secure - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How To Stop Feeling Rejected and Start Feeling Secure\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-rejection-secure-mode-carp/source-notes",
+      "article_id": "amir-levine-rejection-secure-mode-carp",
+      "title": "Amir Levine - From Rejection To Secure Mode",
+      "section": "Source Notes",
+      "content": "- Source document: `/Users/pedro/Desktop/Archivo/How To Stop Feeling Rejected and Start Feeling Secure - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How To Stop Feeling Rejected and Start Feeling Secure\"\n- Processed as a curated internal brain article, not a verbatim transcript.",
+      "preview": "- Source document: `/Users/pedro/Desktop/Archivo/How To Stop Feeling Rejected and Start Feeling Secure - Amir Levine - Transcript.pdf` - Source: Amir Levine, \"How To Stop Feeling Rejected and Start Feeling Secure\" - Proc...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "rejection_sensitivity",
+        "secure_mode",
+        "carp",
+        "cyberball_effect",
+        "secure_priming",
+        "attachment_topography"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How To Stop Feeling Rejected and Start Feeling Secure - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How To Stop Feeling Rejected and Start Feeling Secure\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-rejection-secure-mode-carp/when-not-to-use-this",
+      "article_id": "amir-levine-rejection-secure-mode-carp",
+      "title": "Amir Levine - From Rejection To Secure Mode",
+      "section": "When Not To Use This",
+      "content": "- No usar CARP para exigir que todos estén disponibles todo el tiempo.\n- No confundir inclusión con no tener límites o no poder decir que no.\n- No hacer \"wall tennis\" como castigo pasivo-agresivo; es ajustar prioridad con amor.\n- No usar secure priming para negar dolor, duelo o trauma real.\n- No aplicar como sustituto de ayuda clínica cuando hay crisis, aislamiento severo o riesgo.",
+      "preview": "- No usar CARP para exigir que todos estén disponibles todo el tiempo. - No confundir inclusión con no tener límites o no poder decir que no. - No hacer \"wall tennis\" como castigo pasivo-agresivo; es ajustar prioridad co...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "rejection_sensitivity",
+        "secure_mode",
+        "carp",
+        "cyberball_effect",
+        "secure_priming",
+        "attachment_topography"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How To Stop Feeling Rejected and Start Feeling Secure - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How To Stop Feeling Rejected and Start Feeling Secure\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-rejection-secure-mode-carp/when-this-applies",
+      "article_id": "amir-levine-rejection-secure-mode-carp",
+      "title": "Amir Levine - From Rejection To Secure Mode",
+      "section": "When This Applies",
+      "content": "- El usuario se siente rechazado por señales pequeñas: no ser incluido, no recibir respuesta, ver distancia social.\n- Hay fijación en personas inconsistentes mientras se ignora a quienes son estables.\n- La persona quiere pasar de analizar su apego a construir un entorno seguro.\n- Una relación importante necesita una conversación sobre consistencia, disponibilidad y respuesta.\n- El usuario busca formas concretas de practicar seguridad con amigos, pareja, familia o comunidad.",
+      "preview": "- El usuario se siente rechazado por señales pequeñas: no ser incluido, no recibir respuesta, ver distancia social. - Hay fijación en personas inconsistentes mientras se ignora a quienes son estables. - La persona quiere...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "rejection_sensitivity",
+        "secure_mode",
+        "carp",
+        "cyberball_effect",
+        "secure_priming",
+        "attachment_topography"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How To Stop Feeling Rejected and Start Feeling Secure - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How To Stop Feeling Rejected and Start Feeling Secure\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-how-attachment-works/coaching-moves",
+      "article_id": "amir-levine-how-attachment-works",
+      "title": "Amir Levine - How Attachment Works",
+      "section": "Coaching Moves",
+      "content": "- Normalizar la necesidad de contacto seguro sin convertirla en urgencia absoluta.\n- Preguntar: \"Esta relación regula tu sistema o lo mantiene en vigilancia constante?\"\n- Identificar micro-necesidades concretas: respuesta, inclusión, previsibilidad, consideración, presencia.\n- Dirigir atención hacia personas seguras que el sistema ignora por parecer \"aburridas.\"\n- Diferenciar \"me afecta lo que haces\" de \"eres responsable de todo mi estado interno.\"\n- Ayudar al evitativo a ver que atender necesidades temprano suele ser menos invasivo que esperar a la crisis.",
+      "preview": "- Normalizar la necesidad de contacto seguro sin convertirla en urgencia absoluta. - Preguntar: \"Esta relación regula tu sistema o lo mantiene en vigilancia constante?\" - Identificar micro-necesidades concretas: respuest...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "attachment_science",
+        "secure_people",
+        "emotional_regulation",
+        "micro_needs",
+        "secure_base",
+        "interdependence"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How Attachment Works - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How Attachment Works\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-how-attachment-works/core-thesis",
+      "article_id": "amir-levine-how-attachment-works",
+      "title": "Amir Levine - How Attachment Works",
+      "section": "Core Thesis",
+      "content": "El apego no es una debilidad ni una falla de independencia. Es un sistema biológico y relacional que regula seguridad, exploración y estrés. Las relaciones seguras funcionan porque reducen amenaza, responden a micro-necesidades y permiten que la persona tenga mas energía para crear, explorar y vivir.",
+      "preview": "El apego no es una debilidad ni una falla de independencia. Es un sistema biológico y relacional que regula seguridad, exploración y estrés. Las relaciones seguras funcionan porque reducen amenaza, responden a micro-nece...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "attachment_science",
+        "secure_people",
+        "emotional_regulation",
+        "micro_needs",
+        "secure_base",
+        "interdependence"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How Attachment Works - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How Attachment Works\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-how-attachment-works/example-eldric-language",
+      "article_id": "amir-levine-how-attachment-works",
+      "title": "Amir Levine - How Attachment Works",
+      "section": "Example Eldric Language",
+      "content": "\"No eres menos maduro por necesitar contacto. Tu sistema de apego esta hecho para encontrar seguridad en presencia confiable.\"\n\n\"Una relación segura no ocupa toda tu mente. Te libera la mente.\"",
+      "preview": "\"No eres menos maduro por necesitar contacto. Tu sistema de apego esta hecho para encontrar seguridad en presencia confiable.\" \"Una relación segura no ocupa toda tu mente. Te libera la mente.\"",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "attachment_science",
+        "secure_people",
+        "emotional_regulation",
+        "micro_needs",
+        "secure_base",
+        "interdependence"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How Attachment Works - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How Attachment Works\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-how-attachment-works/key-principles",
+      "article_id": "amir-levine-how-attachment-works",
+      "title": "Amir Levine - How Attachment Works",
+      "section": "Key Principles",
+      "content": "- Las personas no están diseñadas para regularse completamente solas; la conexión segura es una de las formas mas potentes de regulación emocional.\n- Una relación insegura puede generar mucho sufrimiento porque activa el mismo sistema que debería dar seguridad.\n- Los estilos de apego describen estrategias mas o menos efectivas, no identidades fijas ni diagnósticos.\n- La sensibilidad al peligro relacional varía: el ansioso detecta amenazas muy rápido, el evitativo se inquieta con demasiada cercanía y el seguro suele asumir disponibilidad.\n- Una misma persona puede sentirse segura con alguien y ansiosa o evitativa con otra.\n- Las personas seguras suelen atender micro-necesidades antes de que se vuelvan enormes.\n- La seguridad no requiere gestos grandiosos; necesita señales pequeñas, consistentes y oportunas.\n- Sentirse seguro libera exploración: cuando alguien tiene una base segura, puede mirar al mundo en vez de vigilar el vínculo.\n- Estar apartado de alguien seguro no es lo mismo que sentirse solo; la seguridad interna se sostiene porque el vínculo se siente disponible.",
+      "preview": "- Las personas no están diseñadas para regularse completamente solas; la conexión segura es una de las formas mas potentes de regulación emocional. - Una relación insegura puede generar mucho sufrimiento porque activa el...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "attachment_science",
+        "secure_people",
+        "emotional_regulation",
+        "micro_needs",
+        "secure_base",
+        "interdependence"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How Attachment Works - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How Attachment Works\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-how-attachment-works/practices",
+      "article_id": "amir-levine-how-attachment-works",
+      "title": "Amir Levine - How Attachment Works",
+      "section": "Practices",
+      "content": "### Secure People Inventory\n\nListar cinco personas que suelen responder, aparecer, escuchar o incluir. Preguntar:\n\n1. A quien estoy subestimando porque no hay drama?\n2. Con quien mi cuerpo descansa?\n3. Que micro-gesto puedo nutrir esta semana?\n\n### Micro-Need Translation\n\nConvertir una queja grande en una señal pequeña:\n\n\"No te importo\" puede volverse \"cuando cambien los planes, necesito que me avises temprano.\"\n\n### Regulation Check\n\nDespués de hablar con alguien, observar: mas calma, mas claridad, mas energía, mas apertura. Si el efecto repetido es miedo, confusión o agotamiento, la relación necesita revisión.",
+      "preview": "### Secure People Inventory Listar cinco personas que suelen responder, aparecer, escuchar o incluir. Preguntar: 1. A quien estoy subestimando porque no hay drama? 2. Con quien mi cuerpo descansa? 3. Que micro-gesto pued...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "attachment_science",
+        "secure_people",
+        "emotional_regulation",
+        "micro_needs",
+        "secure_base",
+        "interdependence"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How Attachment Works - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How Attachment Works\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-how-attachment-works/related-concepts",
+      "article_id": "amir-levine-how-attachment-works",
+      "title": "Amir Levine - How Attachment Works",
+      "section": "Related Concepts",
+      "content": "- secure-base\n- emotional-regulation\n- micro-needs\n- interdependence\n- secure-people\n- attachment-radar\n- exploration-system",
+      "preview": "- secure-base - emotional-regulation - micro-needs - interdependence - secure-people - attachment-radar - exploration-system",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "attachment_science",
+        "secure_people",
+        "emotional_regulation",
+        "micro_needs",
+        "secure_base",
+        "interdependence"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How Attachment Works - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How Attachment Works\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-how-attachment-works/source-notes",
+      "article_id": "amir-levine-how-attachment-works",
+      "title": "Amir Levine - How Attachment Works",
+      "section": "Source Notes",
+      "content": "- Source document: `/Users/pedro/Desktop/Archivo/How Attachment Works - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How Attachment Works\"\n- Processed as a curated internal brain article, not a verbatim transcript.",
+      "preview": "- Source document: `/Users/pedro/Desktop/Archivo/How Attachment Works - Amir Levine - Transcript.pdf` - Source: Amir Levine, \"How Attachment Works\" - Processed as a curated internal brain article, not a verbatim transcri...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "attachment_science",
+        "secure_people",
+        "emotional_regulation",
+        "micro_needs",
+        "secure_base",
+        "interdependence"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How Attachment Works - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How Attachment Works\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-how-attachment-works/when-not-to-use-this",
+      "article_id": "amir-levine-how-attachment-works",
+      "title": "Amir Levine - How Attachment Works",
+      "section": "When Not To Use This",
+      "content": "- No usar interdependencia para justificar dependencia total, control o incapacidad de estar a solas.\n- No llamar \"apego\" a cualquier demanda de disponibilidad inmediata.\n- No romantizar relaciones que regulan a corto plazo pero dañan a largo plazo.\n- No usar \"micro-necesidades\" para exigir lectura mental perfecta.\n- No aplicar si hay abuso, coerción, peligro físico o manipulación; ahí la prioridad es seguridad y apoyo externo.",
+      "preview": "- No usar interdependencia para justificar dependencia total, control o incapacidad de estar a solas. - No llamar \"apego\" a cualquier demanda de disponibilidad inmediata. - No romantizar relaciones que regulan a corto pl...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "attachment_science",
+        "secure_people",
+        "emotional_regulation",
+        "micro_needs",
+        "secure_base",
+        "interdependence"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How Attachment Works - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How Attachment Works\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "amir-levine-how-attachment-works/when-this-applies",
+      "article_id": "amir-levine-how-attachment-works",
+      "title": "Amir Levine - How Attachment Works",
+      "section": "When This Applies",
+      "content": "- El usuario se avergüenza de necesitar contacto, respuesta o apoyo emocional.\n- La persona cree que una relación sana debería no afectarle fisiológicamente.\n- Hay confusión entre independencia madura y desconexión defensiva.\n- La pareja o amistad se siente agotadora porque no cumple su función de seguridad.\n- El usuario necesita valorar mas a las personas estables que no generan drama.",
+      "preview": "- El usuario se avergüenza de necesitar contacto, respuesta o apoyo emocional. - La persona cree que una relación sana debería no afectarle fisiológicamente. - Hay confusión entre independencia madura y desconexión defen...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "attachment_science",
+        "secure_people",
+        "emotional_regulation",
+        "micro_needs",
+        "secure_base",
+        "interdependence"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How Attachment Works - Amir Levine - Transcript.pdf`\n- Source: Amir Levine, \"How Attachment Works\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "nathalie-emotionally-invested-too-quickly/coaching-moves",
+      "article_id": "nathalie-emotionally-invested-too-quickly",
+      "title": "Nathalie - How Not To Get Emotionally Invested Too Quickly",
+      "section": "Coaching Moves",
+      "content": "- Preguntar: \"Que parte de esta persona conozco y que parte estoy imaginando?\"\n- Identificar la necesidad que cubre la fantasía: seguridad, valor, control, amor, pertenencia.\n- Crear reglas de ritmo antes de dating, no en plena activación.\n- Validar a la parte joven que teme no estar a salvo sin conexión.\n- Revisar si la vida del usuario tiene suficientes fuentes de nutrición fuera del romance.\n- Diseñar interrupciones del patrón: pausa, lista de realidad, actividad propia, contacto con amigos.",
+      "preview": "- Preguntar: \"Que parte de esta persona conozco y que parte estoy imaginando?\" - Identificar la necesidad que cubre la fantasía: seguridad, valor, control, amor, pertenencia. - Crear reglas de ritmo antes de dating, no e...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "anxious_attachment",
+        "fast_attachment",
+        "apego_rapido",
+        "invierto_emocionalmente",
+        "emocionalmente",
+        "rapido",
+        "dating_boundaries",
+        "fantasy_projection",
+        "self_awareness",
+        "inner_child"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to NOT get emotionally invested too quickly - nathalie - Transcript espanol-ingles.pdf`\n- Source: Nathalie, \"How to NOT get emotionally invested too quickly\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "nathalie-emotionally-invested-too-quickly/core-thesis",
+      "article_id": "nathalie-emotionally-invested-too-quickly",
+      "title": "Nathalie - How Not To Get Emotionally Invested Too Quickly",
+      "section": "Core Thesis",
+      "content": "Invertirse emocionalmente demasiado rápido suele ser una estrategia de apego ansioso: el sistema hambriento de conexión convierte señales pequeñas en futuro, certeza y seguridad. La salida no es vergüenza ni frialdad, sino conciencia, ritmo, límites internos, vida propia nutrida y ver a la persona real antes de entregar el corazón completo.",
+      "preview": "Invertirse emocionalmente demasiado rápido suele ser una estrategia de apego ansioso: el sistema hambriento de conexión convierte señales pequeñas en futuro, certeza y seguridad. La salida no es vergüenza ni frialdad, si...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "anxious_attachment",
+        "fast_attachment",
+        "apego_rapido",
+        "invierto_emocionalmente",
+        "emocionalmente",
+        "rapido",
+        "dating_boundaries",
+        "fantasy_projection",
+        "self_awareness",
+        "inner_child"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to NOT get emotionally invested too quickly - nathalie - Transcript espanol-ingles.pdf`\n- Source: Nathalie, \"How to NOT get emotionally invested too quickly\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "nathalie-emotionally-invested-too-quickly/example-eldric-language",
+      "article_id": "nathalie-emotionally-invested-too-quickly",
+      "title": "Nathalie - How Not To Get Emotionally Invested Too Quickly",
+      "section": "Example Eldric Language",
+      "content": "\"No estás enamorada de datos suficientes todavía; estás sintiendo mucha esperanza sobre huecos que tu sistema llenó.\"\n\n\"Ir despacio no es apagar el corazón. Es darle tiempo a la realidad para alcanzar a la emoción.\"",
+      "preview": "\"No estás enamorada de datos suficientes todavía; estás sintiendo mucha esperanza sobre huecos que tu sistema llenó.\" \"Ir despacio no es apagar el corazón. Es darle tiempo a la realidad para alcanzar a la emoción.\"",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "anxious_attachment",
+        "fast_attachment",
+        "apego_rapido",
+        "invierto_emocionalmente",
+        "emocionalmente",
+        "rapido",
+        "dating_boundaries",
+        "fantasy_projection",
+        "self_awareness",
+        "inner_child"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to NOT get emotionally invested too quickly - nathalie - Transcript espanol-ingles.pdf`\n- Source: Nathalie, \"How to NOT get emotionally invested too quickly\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "nathalie-emotionally-invested-too-quickly/key-principles",
+      "article_id": "nathalie-emotionally-invested-too-quickly",
+      "title": "Nathalie - How Not To Get Emotionally Invested Too Quickly",
+      "section": "Key Principles",
+      "content": "- La inversión rápida no ocurre porque la persona sea tonta; cumple una función de seguridad, validación o control.\n- Cuando hubo carencia o inconsistencia afectiva, la conexión puede sentirse como supervivencia.\n- Para apegarse intensamente a alguien desconocido, el sistema tiene que rellenar huecos con fantasía.\n- \"Lo supe al mirarlo\" puede ser intuición, pero también puede ser herida activada buscando cercanía urgente.\n- La fantasía calma temporalmente porque hace sentir amor, control, valor o protección.\n- La conciencia tiene que llegar al momento real, no solo después de la caída.\n- Los vínculos que valen la pena pueden sobrevivir el ritmo lento.\n- Tener una vida amplia reduce la tentación de hacer de una persona nueva la única fuente de seguridad.\n- Los límites internos en dating son tan importantes como los límites con la otra persona.",
+      "preview": "- La inversión rápida no ocurre porque la persona sea tonta; cumple una función de seguridad, validación o control. - Cuando hubo carencia o inconsistencia afectiva, la conexión puede sentirse como supervivencia. - Para...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "anxious_attachment",
+        "fast_attachment",
+        "apego_rapido",
+        "invierto_emocionalmente",
+        "emocionalmente",
+        "rapido",
+        "dating_boundaries",
+        "fantasy_projection",
+        "self_awareness",
+        "inner_child"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to NOT get emotionally invested too quickly - nathalie - Transcript espanol-ingles.pdf`\n- Source: Nathalie, \"How to NOT get emotionally invested too quickly\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "nathalie-emotionally-invested-too-quickly/practices",
+      "article_id": "nathalie-emotionally-invested-too-quickly",
+      "title": "Nathalie - How Not To Get Emotionally Invested Too Quickly",
+      "section": "Practices",
+      "content": "### Reality Versus Fantasy List\n\nDividir una hoja:\n\n1. Datos que se de esta persona.\n2. Cosas que estoy proyectando.\n3. Señales que todavía necesito observar.\n4. Necesidades mías que esta fantasía esta calmando.\n\n### Slow Dating Boundary\n\nAntes de salir, definir:\n\n\"Hasta ver consistencia, no voy a reorganizar mi vida alrededor de esta persona. Voy a mantener mis planes, amistades y descanso.\"\n\n### Pattern Interrupt\n\nCuando aparezca la fantasía:\n\n\"Estoy haciendo X porque necesito sentir Y. Tiene sentido. Pero este camino me lleva a Z. Una forma mas segura de cuidar esa necesidad ahora es A.\"",
+      "preview": "### Reality Versus Fantasy List Dividir una hoja: 1. Datos que se de esta persona. 2. Cosas que estoy proyectando. 3. Señales que todavía necesito observar. 4. Necesidades mías que esta fantasía esta calmando. ### Slow D...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "anxious_attachment",
+        "fast_attachment",
+        "apego_rapido",
+        "invierto_emocionalmente",
+        "emocionalmente",
+        "rapido",
+        "dating_boundaries",
+        "fantasy_projection",
+        "self_awareness",
+        "inner_child"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to NOT get emotionally invested too quickly - nathalie - Transcript espanol-ingles.pdf`\n- Source: Nathalie, \"How to NOT get emotionally invested too quickly\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "nathalie-emotionally-invested-too-quickly/related-concepts",
+      "article_id": "nathalie-emotionally-invested-too-quickly",
+      "title": "Nathalie - How Not To Get Emotionally Invested Too Quickly",
+      "section": "Related Concepts",
+      "content": "- anxious-attachment\n- fast-attachment\n- fantasy-projection\n- dating-boundaries\n- inner-child\n- self-abandonment\n- emotional-investment",
+      "preview": "- anxious-attachment - fast-attachment - fantasy-projection - dating-boundaries - inner-child - self-abandonment - emotional-investment",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "anxious_attachment",
+        "fast_attachment",
+        "apego_rapido",
+        "invierto_emocionalmente",
+        "emocionalmente",
+        "rapido",
+        "dating_boundaries",
+        "fantasy_projection",
+        "self_awareness",
+        "inner_child"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to NOT get emotionally invested too quickly - nathalie - Transcript espanol-ingles.pdf`\n- Source: Nathalie, \"How to NOT get emotionally invested too quickly\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "nathalie-emotionally-invested-too-quickly/source-notes",
+      "article_id": "nathalie-emotionally-invested-too-quickly",
+      "title": "Nathalie - How Not To Get Emotionally Invested Too Quickly",
+      "section": "Source Notes",
+      "content": "- Source document: `/Users/pedro/Desktop/Archivo/How to NOT get emotionally invested too quickly - nathalie - Transcript espanol-ingles.pdf`\n- Source: Nathalie, \"How to NOT get emotionally invested too quickly\"\n- Processed as a curated internal brain article, not a verbatim transcript.",
+      "preview": "- Source document: `/Users/pedro/Desktop/Archivo/How to NOT get emotionally invested too quickly - nathalie - Transcript espanol-ingles.pdf` - Source: Nathalie, \"How to NOT get emotionally invested too quickly\" - Process...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "anxious_attachment",
+        "fast_attachment",
+        "apego_rapido",
+        "invierto_emocionalmente",
+        "emocionalmente",
+        "rapido",
+        "dating_boundaries",
+        "fantasy_projection",
+        "self_awareness",
+        "inner_child"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to NOT get emotionally invested too quickly - nathalie - Transcript espanol-ingles.pdf`\n- Source: Nathalie, \"How to NOT get emotionally invested too quickly\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "nathalie-emotionally-invested-too-quickly/when-not-to-use-this",
+      "article_id": "nathalie-emotionally-invested-too-quickly",
+      "title": "Nathalie - How Not To Get Emotionally Invested Too Quickly",
+      "section": "When Not To Use This",
+      "content": "- No usar ritmo lento para jugar, manipular o fingir desinterés.\n- No convertir varias opciones de dating en evasión de intimidad o falta de honestidad.\n- No invalidar una conexión genuina; el punto es comprobar realidad antes de proyectar futuro.\n- No tratar el apego ansioso como defecto de carácter.\n- No aplicar si hay señales reales de peligro o falta de respeto; ahí no se necesita esperar mas datos.",
+      "preview": "- No usar ritmo lento para jugar, manipular o fingir desinterés. - No convertir varias opciones de dating en evasión de intimidad o falta de honestidad. - No invalidar una conexión genuina; el punto es comprobar realidad...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "anxious_attachment",
+        "fast_attachment",
+        "apego_rapido",
+        "invierto_emocionalmente",
+        "emocionalmente",
+        "rapido",
+        "dating_boundaries",
+        "fantasy_projection",
+        "self_awareness",
+        "inner_child"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to NOT get emotionally invested too quickly - nathalie - Transcript espanol-ingles.pdf`\n- Source: Nathalie, \"How to NOT get emotionally invested too quickly\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "nathalie-emotionally-invested-too-quickly/when-this-applies",
+      "article_id": "nathalie-emotionally-invested-too-quickly",
+      "title": "Nathalie - How Not To Get Emotionally Invested Too Quickly",
+      "section": "When This Applies",
+      "content": "- El usuario se obsesiona después de pocas citas o mensajes.\n- Se abandonan trabajo, amigos, hobbies o descanso para estar disponible para alguien nuevo.\n- Hay fantasías de futuro antes de conocer carácter, consistencia y valores.\n- La falta de respuesta genera una reacción emocional desproporcionada.\n- La persona quiere salir de \"todos los huevos en una canasta\" sin cerrarse al amor.",
+      "preview": "- El usuario se obsesiona después de pocas citas o mensajes. - Se abandonan trabajo, amigos, hobbies o descanso para estar disponible para alguien nuevo. - Hay fantasías de futuro antes de conocer carácter, consistencia...",
+      "domain": "attachment",
+      "language": "es",
+      "topics": [
+        "anxious_attachment",
+        "fast_attachment",
+        "apego_rapido",
+        "invierto_emocionalmente",
+        "emocionalmente",
+        "rapido",
+        "dating_boundaries",
+        "fantasy_projection",
+        "self_awareness",
+        "inner_child"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to NOT get emotionally invested too quickly - nathalie - Transcript espanol-ingles.pdf`\n- Source: Nathalie, \"How to NOT get emotionally invested too quickly\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
       "id": "secure-love-ch01-problem-beneath-problem/coaching-moves",
       "article_id": "secure-love-ch01-problem-beneath-problem",
       "title": "Secure Love Ch 1 - The Problem Beneath The Problem",
@@ -2593,6 +3313,375 @@
       "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Julie Menanno/Secure Love Book Club Ch9 - Julie Menanno.docx`\n- Source: Julie Menanno, Secure Love Book Club, Chapter 9, \"Attachment Injuries and Repair\"\n- Video source noted in document: `https://www.youtube.com/watch?v=1ySGJFjy4rw`\n- Processed as a curated internal brain article, not a verbatim transcript."
     },
     {
+      "id": "transform-your-relationship-self-compassion-values/coaching-moves",
+      "article_id": "transform-your-relationship-self-compassion-values",
+      "title": "How To Transform Your Relationship",
+      "section": "Coaching Moves",
+      "content": "- Cambiar el tono: \"Como hablarías con una parte pequeña de ti que esta asustada?\"\n- Preguntar que patrón protege y de que intenta salvar a la persona.\n- Diferenciar incomodidad de señal de peligro.\n- Devolver la agencia: \"Que acción tuya evitaría seguir en el mismo loop?\"\n- Identificar valores no negociables y traducirlos en decisiones.\n- Sacar al usuario de la obsesión por el otro hacia límite, comunicación o elección.",
+      "preview": "- Cambiar el tono: \"Como hablarías con una parte pequeña de ti que esta asustada?\" - Preguntar que patrón protege y de que intenta salvar a la persona. - Diferenciar incomodidad de señal de peligro. - Devolver la agencia...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "self_compassion",
+        "relationship_patterns",
+        "discomfort_capacity",
+        "values",
+        "accountability",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Transform Your Relationship - Transcript.pdf`\n- Source: \"How to Transform Your Relationship\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "transform-your-relationship-self-compassion-values/core-thesis",
+      "article_id": "transform-your-relationship-self-compassion-values",
+      "title": "How To Transform Your Relationship",
+      "section": "Core Thesis",
+      "content": "Transformar la forma de relacionarse empieza por cambiar el tono interno: curiosidad y compasión en lugar de vergüenza y juicio. Desde ahí se construye capacidad para sentir incomodidad, mirar la propia contribución al patrón, conocer valores y actuar con límites en vez de obsesionarse con controlar al otro.",
+      "preview": "Transformar la forma de relacionarse empieza por cambiar el tono interno: curiosidad y compasión en lugar de vergüenza y juicio. Desde ahí se construye capacidad para sentir incomodidad, mirar la propia contribución al p...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "self_compassion",
+        "relationship_patterns",
+        "discomfort_capacity",
+        "values",
+        "accountability",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Transform Your Relationship - Transcript.pdf`\n- Source: \"How to Transform Your Relationship\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "transform-your-relationship-self-compassion-values/example-eldric-language",
+      "article_id": "transform-your-relationship-self-compassion-values",
+      "title": "How To Transform Your Relationship",
+      "section": "Example Eldric Language",
+      "content": "\"La vergüenza no cura el patrón; solo lo obliga a esconderse mejor.\"\n\n\"No necesitas una vida sin incomodidad. Necesitas suficiente respeto propio para no dejar que la incomodidad decida por ti.\"",
+      "preview": "\"La vergüenza no cura el patrón; solo lo obliga a esconderse mejor.\" \"No necesitas una vida sin incomodidad. Necesitas suficiente respeto propio para no dejar que la incomodidad decida por ti.\"",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "self_compassion",
+        "relationship_patterns",
+        "discomfort_capacity",
+        "values",
+        "accountability",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Transform Your Relationship - Transcript.pdf`\n- Source: \"How to Transform Your Relationship\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "transform-your-relationship-self-compassion-values/key-principles",
+      "article_id": "transform-your-relationship-self-compassion-values",
+      "title": "How To Transform Your Relationship",
+      "section": "Key Principles",
+      "content": "- La forma en que una persona trata sus emociones y necesidades se vuelve el molde de lo que espera y tolera.\n- Nadie se avergüenza hasta salir de un patrón; los patrones son protecciones que necesitan seguridad para cambiar.\n- Si la necesidad interna se vive con vergüenza, puede salir como ataque, culpa, explosión o autoabandono.\n- El proceso de sanar no elimina toda incomodidad; desarrolla capacidad para sentirla sin obedecerla.\n- No todo dolor indica que algo va mal; a veces solo significa que algo importa.\n- Obsesionarse con lo que el otro hace evita mirar la propia acción pendiente.\n- La responsabilidad no es culpa total; es recuperar poder sobre el siguiente paso.\n- Conocer valores ayuda a elegir pareja y a construir una vida coherente.\n- La compatibilidad se vuelve difícil de evaluar si la persona no se conoce a sí misma.",
+      "preview": "- La forma en que una persona trata sus emociones y necesidades se vuelve el molde de lo que espera y tolera. - Nadie se avergüenza hasta salir de un patrón; los patrones son protecciones que necesitan seguridad para cam...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "self_compassion",
+        "relationship_patterns",
+        "discomfort_capacity",
+        "values",
+        "accountability",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Transform Your Relationship - Transcript.pdf`\n- Source: \"How to Transform Your Relationship\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "transform-your-relationship-self-compassion-values/practices",
+      "article_id": "transform-your-relationship-self-compassion-values",
+      "title": "How To Transform Your Relationship",
+      "section": "Practices",
+      "content": "### Compassion Reframe\n\nCambiar \"soy demasiado\" por:\n\n\"Hay una necesidad aquí. Puedo escucharla sin convertirla en ataque ni en autoabandono.\"\n\n### Mirror Question\n\nCuando aparezca obsesión:\n\n\"Que estoy evitando hacer mientras estudio tanto al otro?\"\n\n### Values Check\n\nElegir cinco valores y preguntar:\n\n1. Mi relación actual los honra?\n2. Mi forma de actuar los honra?\n3. Que límite o conversación haría mi vida mas coherente?",
+      "preview": "### Compassion Reframe Cambiar \"soy demasiado\" por: \"Hay una necesidad aquí. Puedo escucharla sin convertirla en ataque ni en autoabandono.\" ### Mirror Question Cuando aparezca obsesión: \"Que estoy evitando hacer mientra...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "self_compassion",
+        "relationship_patterns",
+        "discomfort_capacity",
+        "values",
+        "accountability",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Transform Your Relationship - Transcript.pdf`\n- Source: \"How to Transform Your Relationship\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "transform-your-relationship-self-compassion-values/related-concepts",
+      "article_id": "transform-your-relationship-self-compassion-values",
+      "title": "How To Transform Your Relationship",
+      "section": "Related Concepts",
+      "content": "- self-compassion\n- discomfort-capacity\n- accountability\n- values\n- self-abandonment\n- relationship-patterns\n- boundaries",
+      "preview": "- self-compassion - discomfort-capacity - accountability - values - self-abandonment - relationship-patterns - boundaries",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "self_compassion",
+        "relationship_patterns",
+        "discomfort_capacity",
+        "values",
+        "accountability",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Transform Your Relationship - Transcript.pdf`\n- Source: \"How to Transform Your Relationship\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "transform-your-relationship-self-compassion-values/source-notes",
+      "article_id": "transform-your-relationship-self-compassion-values",
+      "title": "How To Transform Your Relationship",
+      "section": "Source Notes",
+      "content": "- Source document: `/Users/pedro/Desktop/Archivo/How to Transform Your Relationship - Transcript.pdf`\n- Source: \"How to Transform Your Relationship\"\n- Processed as a curated internal brain article, not a verbatim transcript.",
+      "preview": "- Source document: `/Users/pedro/Desktop/Archivo/How to Transform Your Relationship - Transcript.pdf` - Source: \"How to Transform Your Relationship\" - Processed as a curated internal brain article, not a verbatim transcr...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "self_compassion",
+        "relationship_patterns",
+        "discomfort_capacity",
+        "values",
+        "accountability",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Transform Your Relationship - Transcript.pdf`\n- Source: \"How to Transform Your Relationship\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "transform-your-relationship-self-compassion-values/when-not-to-use-this",
+      "article_id": "transform-your-relationship-self-compassion-values",
+      "title": "How To Transform Your Relationship",
+      "section": "When Not To Use This",
+      "content": "- No usar \"mira tu parte\" para culpar a alguien por abuso, manipulación o negligencia.\n- No convertir compasión en ausencia de responsabilidad.\n- No normalizar incomodidad que viene de peligro real.\n- No pedir tolerancia emocional infinita para sostener una relación dañina.\n- No usar valores como juicio moral contra quien simplemente quiere otra vida.",
+      "preview": "- No usar \"mira tu parte\" para culpar a alguien por abuso, manipulación o negligencia. - No convertir compasión en ausencia de responsabilidad. - No normalizar incomodidad que viene de peligro real. - No pedir tolerancia...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "self_compassion",
+        "relationship_patterns",
+        "discomfort_capacity",
+        "values",
+        "accountability",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Transform Your Relationship - Transcript.pdf`\n- Source: \"How to Transform Your Relationship\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "transform-your-relationship-self-compassion-values/when-this-applies",
+      "article_id": "transform-your-relationship-self-compassion-values",
+      "title": "How To Transform Your Relationship",
+      "section": "When This Applies",
+      "content": "- El usuario intenta sanar desde vergüenza, dureza o autoataque.\n- Hay loops de \"por que ellos hacen esto?\" sin acción propia nueva.\n- La persona quiere no sentir nada en dating o no sufrir nunca.\n- Hay autoabandono al primer signo de pushback.\n- La relación pide límites, comunicación o salida, pero el usuario se queda analizando al otro.",
+      "preview": "- El usuario intenta sanar desde vergüenza, dureza o autoataque. - Hay loops de \"por que ellos hacen esto?\" sin acción propia nueva. - La persona quiere no sentir nada en dating o no sufrir nunca. - Hay autoabandono al p...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "self_compassion",
+        "relationship_patterns",
+        "discomfort_capacity",
+        "values",
+        "accountability",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Transform Your Relationship - Transcript.pdf`\n- Source: \"How to Transform Your Relationship\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "mind-reading-needs-ask-to-be-known/coaching-moves",
+      "article_id": "mind-reading-needs-ask-to-be-known",
+      "title": "I Do Not Want To Have To Ask",
+      "section": "Coaching Moves",
+      "content": "- Validar el deseo bajo la frase: \"Quieres ser visto sin tener que pelear por existir.\"\n- Separar estándar básico de preferencia comunicable.\n- Convertir expectativa secreta en invitación clara.\n- Trabajar la vergüenza de necesitar.\n- Observar respuesta: cuidado, curiosidad, negociación, defensividad o desprecio.\n- Ayudar a distinguir \"tuvo que aprender\" de \"no quiere considerar.\"",
+      "preview": "- Validar el deseo bajo la frase: \"Quieres ser visto sin tener que pelear por existir.\" - Separar estándar básico de preferencia comunicable. - Convertir expectativa secreta en invitación clara. - Trabajar la vergüenza d...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "needs_communication",
+        "necesidades",
+        "pedirlo",
+        "sepa",
+        "attunement",
+        "vulnerability",
+        "mind_reading",
+        "resentment",
+        "asking"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/I Don't Want to Have to Ask, I Want Them to Know - Transcript.pdf`\n- Source: \"I Don't Want to Have to Ask, I Want Them to Know\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "mind-reading-needs-ask-to-be-known/core-thesis",
+      "article_id": "mind-reading-needs-ask-to-be-known",
+      "title": "I Do Not Want To Have To Ask",
+      "section": "Core Thesis",
+      "content": "\"No quiero tener que pedirlo, quiero que lo sepan\" suele expresar una necesidad profunda de ser visto, considerado y sintonizado. Esa necesidad es legítima, pero si no se comunica, puede transformarse en expectativas secretas, resentimiento y pruebas. El precio de ser amado de forma nutritiva es vulnerabilidad: mostrar deseos, pedir y observar cómo responde la otra persona.",
+      "preview": "\"No quiero tener que pedirlo, quiero que lo sepan\" suele expresar una necesidad profunda de ser visto, considerado y sintonizado. Esa necesidad es legítima, pero si no se comunica, puede transformarse en expectativas sec...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "needs_communication",
+        "necesidades",
+        "pedirlo",
+        "sepa",
+        "attunement",
+        "vulnerability",
+        "mind_reading",
+        "resentment",
+        "asking"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/I Don't Want to Have to Ask, I Want Them to Know - Transcript.pdf`\n- Source: \"I Don't Want to Have to Ask, I Want Them to Know\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "mind-reading-needs-ask-to-be-known/example-eldric-language",
+      "article_id": "mind-reading-needs-ask-to-be-known",
+      "title": "I Do Not Want To Have To Ask",
+      "section": "Example Eldric Language",
+      "content": "\"Tu deseo de ser conocido es sagrado. Pero para que alguien te conozca, algo de ti tiene que salir de su escondite.\"\n\n\"Pedir no rebaja tu valor. Te da datos sobre quien quiere aprender a amarte.\"",
+      "preview": "\"Tu deseo de ser conocido es sagrado. Pero para que alguien te conozca, algo de ti tiene que salir de su escondite.\" \"Pedir no rebaja tu valor. Te da datos sobre quien quiere aprender a amarte.\"",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "needs_communication",
+        "necesidades",
+        "pedirlo",
+        "sepa",
+        "attunement",
+        "vulnerability",
+        "mind_reading",
+        "resentment",
+        "asking"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/I Don't Want to Have to Ask, I Want Them to Know - Transcript.pdf`\n- Source: \"I Don't Want to Have to Ask, I Want Them to Know\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "mind-reading-needs-ask-to-be-known/key-principles",
+      "article_id": "mind-reading-needs-ask-to-be-known",
+      "title": "I Do Not Want To Have To Ask",
+      "section": "Key Principles",
+      "content": "- Querer ser anticipado no es necesariamente entitlement; puede venir de hambre de attunement.\n- Si en el pasado las necesidades fueron rechazadas o avergonzadas, pedir puede sentirse humillante.\n- Las necesidades no desaparecen por callarlas; salen sideways como resentimiento, pasivo-agresión o pruebas.\n- Proyectar necesidades no dichas puede llevar a concluir \"no me ama\" sin haber dado información clara.\n- Pedir desde tierra no es rogar; es una invitación a conocer cómo amarte.\n- Una buena pareja no lee la mente perfectamente, pero le importa aprender.\n- Pedir permite ver carácter: cuidado, curiosidad, defensividad, desprecio o dismissiveness.\n- La otra persona no siempre tiene que decir que sí; la calidad de la respuesta importa.\n- Las relaciones mueren por silencio cuando el silencio reemplaza intimidad.",
+      "preview": "- Querer ser anticipado no es necesariamente entitlement; puede venir de hambre de attunement. - Si en el pasado las necesidades fueron rechazadas o avergonzadas, pedir puede sentirse humillante. - Las necesidades no des...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "needs_communication",
+        "necesidades",
+        "pedirlo",
+        "sepa",
+        "attunement",
+        "vulnerability",
+        "mind_reading",
+        "resentment",
+        "asking"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/I Don't Want to Have to Ask, I Want Them to Know - Transcript.pdf`\n- Source: \"I Don't Want to Have to Ask, I Want Them to Know\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "mind-reading-needs-ask-to-be-known/practices",
+      "article_id": "mind-reading-needs-ask-to-be-known",
+      "title": "I Do Not Want To Have To Ask",
+      "section": "Practices",
+      "content": "### Need Ownership\n\nCompletar:\n\n\"Estoy esperando que sepa X. La necesidad debajo es Y. Una forma clara de pedirlo seria Z.\"\n\n### Invitation Script\n\n\"Me gusta sentirme amado de esta forma: X. Me haría feliz recibir mas Y. No lo digo como reproche; quiero dejarte conocerme mejor.\"\n\n### Response Discernment\n\nDespués de pedir, observar:\n\n1. Escucha o minimiza?\n2. Tiene curiosidad o se defiende?\n3. Negocia con cuidado o ridiculiza?\n4. Hay cambio observable?",
+      "preview": "### Need Ownership Completar: \"Estoy esperando que sepa X. La necesidad debajo es Y. Una forma clara de pedirlo seria Z.\" ### Invitation Script \"Me gusta sentirme amado de esta forma: X. Me haría feliz recibir mas Y. No...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "needs_communication",
+        "necesidades",
+        "pedirlo",
+        "sepa",
+        "attunement",
+        "vulnerability",
+        "mind_reading",
+        "resentment",
+        "asking"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/I Don't Want to Have to Ask, I Want Them to Know - Transcript.pdf`\n- Source: \"I Don't Want to Have to Ask, I Want Them to Know\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "mind-reading-needs-ask-to-be-known/related-concepts",
+      "article_id": "mind-reading-needs-ask-to-be-known",
+      "title": "I Do Not Want To Have To Ask",
+      "section": "Related Concepts",
+      "content": "- needs-communication\n- attunement\n- mind-reading\n- resentment\n- vulnerability\n- secret-expectations\n- asking-as-invitation",
+      "preview": "- needs-communication - attunement - mind-reading - resentment - vulnerability - secret-expectations - asking-as-invitation",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "needs_communication",
+        "necesidades",
+        "pedirlo",
+        "sepa",
+        "attunement",
+        "vulnerability",
+        "mind_reading",
+        "resentment",
+        "asking"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/I Don't Want to Have to Ask, I Want Them to Know - Transcript.pdf`\n- Source: \"I Don't Want to Have to Ask, I Want Them to Know\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "mind-reading-needs-ask-to-be-known/source-notes",
+      "article_id": "mind-reading-needs-ask-to-be-known",
+      "title": "I Do Not Want To Have To Ask",
+      "section": "Source Notes",
+      "content": "- Source document: `/Users/pedro/Desktop/Archivo/I Don't Want to Have to Ask, I Want Them to Know - Transcript.pdf`\n- Source: \"I Don't Want to Have to Ask, I Want Them to Know\"\n- Processed as a curated internal brain article, not a verbatim transcript.",
+      "preview": "- Source document: `/Users/pedro/Desktop/Archivo/I Don't Want to Have to Ask, I Want Them to Know - Transcript.pdf` - Source: \"I Don't Want to Have to Ask, I Want Them to Know\" - Processed as a curated internal brain art...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "needs_communication",
+        "necesidades",
+        "pedirlo",
+        "sepa",
+        "attunement",
+        "vulnerability",
+        "mind_reading",
+        "resentment",
+        "asking"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/I Don't Want to Have to Ask, I Want Them to Know - Transcript.pdf`\n- Source: \"I Don't Want to Have to Ask, I Want Them to Know\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "mind-reading-needs-ask-to-be-known/when-not-to-use-this",
+      "article_id": "mind-reading-needs-ask-to-be-known",
+      "title": "I Do Not Want To Have To Ask",
+      "section": "When Not To Use This",
+      "content": "- No pedir por bare minimum básico como respeto, honestidad o decencia; si falta eso, el problema es la elección de pareja.\n- No usar comunicación de necesidades para entrenar a alguien que responde con desprecio o humillación.\n- No convertir pedir en controlar exactamente cómo debe amar el otro.\n- No negar que algunas personas sí tienen baja consideración aunque se les pida.\n- No culpar a la persona herida por tener miedo a pedir; se trabaja con compasión.",
+      "preview": "- No pedir por bare minimum básico como respeto, honestidad o decencia; si falta eso, el problema es la elección de pareja. - No usar comunicación de necesidades para entrenar a alguien que responde con desprecio o humil...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "needs_communication",
+        "necesidades",
+        "pedirlo",
+        "sepa",
+        "attunement",
+        "vulnerability",
+        "mind_reading",
+        "resentment",
+        "asking"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/I Don't Want to Have to Ask, I Want Them to Know - Transcript.pdf`\n- Source: \"I Don't Want to Have to Ask, I Want Them to Know\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "mind-reading-needs-ask-to-be-known/when-this-applies",
+      "article_id": "mind-reading-needs-ask-to-be-known",
+      "title": "I Do Not Want To Have To Ask",
+      "section": "When This Applies",
+      "content": "- El usuario espera que alguien sepa lo que necesita sin decirlo.\n- Hay resentimiento difuso, frustración o pruebas secretas.\n- Pedir se siente como mendigar, molestar o ser demasiado.\n- La persona quiere ser profundamente vista pero no se deja ver.\n- Una relación necesita conversaciones sobre preferencias, deseo, necesidades y cuidado.",
+      "preview": "- El usuario espera que alguien sepa lo que necesita sin decirlo. - Hay resentimiento difuso, frustración o pruebas secretas. - Pedir se siente como mendigar, molestar o ser demasiado. - La persona quiere ser profundamen...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "needs_communication",
+        "necesidades",
+        "pedirlo",
+        "sepa",
+        "attunement",
+        "vulnerability",
+        "mind_reading",
+        "resentment",
+        "asking"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/I Don't Want to Have to Ask, I Want Them to Know - Transcript.pdf`\n- Source: \"I Don't Want to Have to Ask, I Want Them to Know\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
       "id": "inner-work-relationships-eight-wounds/coaching-moves",
       "article_id": "inner-work-relationships-eight-wounds",
       "title": "Inner Work Of Relationships - Las Ocho Heridas",
@@ -2933,6 +4022,348 @@
         "accountability"
       ],
       "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "jay-shetty-move-on-from-ex/coaching-moves",
+      "article_id": "jay-shetty-move-on-from-ex",
+      "title": "Jay Shetty - How To Move On From Your Ex",
+      "section": "Coaching Moves",
+      "content": "- Diferenciar persona, sensación y fantasía: \"Que sentimiento estoy intentando recuperar?\"\n- Cortar alimento de la fantasía: redes, fotos, playlists, mensajes antiguos.\n- Escribir razones de incompatibilidad sin demonizar al ex.\n- Crear rituales nuevos para los momentos del día mas activados.\n- Transformar worth into needs: \"Que me enseñó esto sobre mis necesidades, no sobre mi valor?\"\n- Preparar recaídas: extrañar no es señal de regresar, es señal de capítulo significativo.",
+      "preview": "- Diferenciar persona, sensación y fantasía: \"Que sentimiento estoy intentando recuperar?\" - Cortar alimento de la fantasía: redes, fotos, playlists, mensajes antiguos. - Escribir razones de incompatibilidad sin demoniza...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "breakup_recovery",
+        "moving_on",
+        "closure",
+        "grief",
+        "identity_rebuild",
+        "fantasy_detox"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Move On From Your Ex - Jay Shetty - Transcript.pdf`\n- Source: Jay Shetty, \"How to Move On From Your Ex\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "jay-shetty-move-on-from-ex/core-thesis",
+      "article_id": "jay-shetty-move-on-from-ex",
+      "title": "Jay Shetty - How To Move On From Your Ex",
+      "section": "Core Thesis",
+      "content": "Soltar a un ex no es borrar la historia ni demostrar que no importó. Es dejar de alimentar la fantasía, reconstruir identidad, crear nuevos rituales y convertir el dolor en aprendizaje. Muchas veces la mente no persigue a la persona completa, sino la sensación de sentirse elegido, visto o vivo que asoció con esa relación.",
+      "preview": "Soltar a un ex no es borrar la historia ni demostrar que no importó. Es dejar de alimentar la fantasía, reconstruir identidad, crear nuevos rituales y convertir el dolor en aprendizaje. Muchas veces la mente no persigue...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "breakup_recovery",
+        "moving_on",
+        "closure",
+        "grief",
+        "identity_rebuild",
+        "fantasy_detox"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Move On From Your Ex - Jay Shetty - Transcript.pdf`\n- Source: Jay Shetty, \"How to Move On From Your Ex\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "jay-shetty-move-on-from-ex/example-eldric-language",
+      "article_id": "jay-shetty-move-on-from-ex",
+      "title": "Jay Shetty - How To Move On From Your Ex",
+      "section": "Example Eldric Language",
+      "content": "\"No tienes que convencerte de que no importó. Tienes que dejar de usar lo que importó para quedarte atado a una versión que ya no existe.\"\n\n\"Extrañar no siempre es una brújula. A veces es abstinencia de una rutina emocional.\"",
+      "preview": "\"No tienes que convencerte de que no importó. Tienes que dejar de usar lo que importó para quedarte atado a una versión que ya no existe.\" \"Extrañar no siempre es una brújula. A veces es abstinencia de una rutina emocion...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "breakup_recovery",
+        "moving_on",
+        "closure",
+        "grief",
+        "identity_rebuild",
+        "fantasy_detox"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Move On From Your Ex - Jay Shetty - Transcript.pdf`\n- Source: Jay Shetty, \"How to Move On From Your Ex\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "jay-shetty-move-on-from-ex/key-principles",
+      "article_id": "jay-shetty-move-on-from-ex",
+      "title": "Jay Shetty - How To Move On From Your Ex",
+      "section": "Key Principles",
+      "content": "- Una ruptura duele emocional y físicamente porque rompe vínculos, rutinas, identidad y química de apego.\n- La búsqueda de cierre suele ser búsqueda de confirmación: \"quiero saber que importé.\"\n- El cerebro reescribe conversaciones para encontrar una versión donde la historia no termine.\n- Moverse no significa que la relación fue falsa; algo puede ser real y aun así terminar.\n- Tiempo solo no cura si se usa para mirar fotos, revisar redes o sostener esperanza intermitente.\n- Extrañar a alguien no significa que esa persona sea destino.\n- El duelo es sano; convertirlo en identidad detiene la recuperación.\n- La pregunta útil cambia de \"por qué se fue?\" a \"que necesito aprender sobre mis necesidades?\"\n- Una relación futura necesita dos personas dispuestas a hacer que funcione, no solo una esperando.",
+      "preview": "- Una ruptura duele emocional y físicamente porque rompe vínculos, rutinas, identidad y química de apego. - La búsqueda de cierre suele ser búsqueda de confirmación: \"quiero saber que importé.\" - El cerebro reescribe con...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "breakup_recovery",
+        "moving_on",
+        "closure",
+        "grief",
+        "identity_rebuild",
+        "fantasy_detox"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Move On From Your Ex - Jay Shetty - Transcript.pdf`\n- Source: Jay Shetty, \"How to Move On From Your Ex\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "jay-shetty-move-on-from-ex/practices",
+      "article_id": "jay-shetty-move-on-from-ex",
+      "title": "Jay Shetty - How To Move On From Your Ex",
+      "section": "Practices",
+      "content": "### Fantasy Detox\n\nDurante siete días, remover o bloquear tres fuentes de reactivación: redes, fotos visibles, conversaciones repetidas, música asociada o revisar actividad.\n\n### Two Storylines\n\nEscribir:\n\n1. Lo bonito y real que existió.\n2. Lo que no funcionaba, se repetía o dolía.\n\nLa mente necesita la historia completa, no solo el highlight reel.\n\n### Ritual Rebuild\n\nIdentificar tres momentos de mayor activación y asignar un nuevo ancla: caminar, gimnasio, terapia, cena con amigos, clase, lectura o llamada segura.",
+      "preview": "### Fantasy Detox Durante siete días, remover o bloquear tres fuentes de reactivación: redes, fotos visibles, conversaciones repetidas, música asociada o revisar actividad. ### Two Storylines Escribir: 1. Lo bonito y rea...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "breakup_recovery",
+        "moving_on",
+        "closure",
+        "grief",
+        "identity_rebuild",
+        "fantasy_detox"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Move On From Your Ex - Jay Shetty - Transcript.pdf`\n- Source: Jay Shetty, \"How to Move On From Your Ex\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "jay-shetty-move-on-from-ex/related-concepts",
+      "article_id": "jay-shetty-move-on-from-ex",
+      "title": "Jay Shetty - How To Move On From Your Ex",
+      "section": "Related Concepts",
+      "content": "- breakup-grief\n- closure\n- fantasy-detox\n- identity-rebuild\n- rituals\n- anxious-rumination\n- moving-on",
+      "preview": "- breakup-grief - closure - fantasy-detox - identity-rebuild - rituals - anxious-rumination - moving-on",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "breakup_recovery",
+        "moving_on",
+        "closure",
+        "grief",
+        "identity_rebuild",
+        "fantasy_detox"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Move On From Your Ex - Jay Shetty - Transcript.pdf`\n- Source: Jay Shetty, \"How to Move On From Your Ex\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "jay-shetty-move-on-from-ex/source-notes",
+      "article_id": "jay-shetty-move-on-from-ex",
+      "title": "Jay Shetty - How To Move On From Your Ex",
+      "section": "Source Notes",
+      "content": "- Source document: `/Users/pedro/Desktop/Archivo/How to Move On From Your Ex - Jay Shetty - Transcript.pdf`\n- Source: Jay Shetty, \"How to Move On From Your Ex\"\n- Processed as a curated internal brain article, not a verbatim transcript.",
+      "preview": "- Source document: `/Users/pedro/Desktop/Archivo/How to Move On From Your Ex - Jay Shetty - Transcript.pdf` - Source: Jay Shetty, \"How to Move On From Your Ex\" - Processed as a curated internal brain article, not a verba...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "breakup_recovery",
+        "moving_on",
+        "closure",
+        "grief",
+        "identity_rebuild",
+        "fantasy_detox"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Move On From Your Ex - Jay Shetty - Transcript.pdf`\n- Source: Jay Shetty, \"How to Move On From Your Ex\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "jay-shetty-move-on-from-ex/when-not-to-use-this",
+      "article_id": "jay-shetty-move-on-from-ex",
+      "title": "Jay Shetty - How To Move On From Your Ex",
+      "section": "When Not To Use This",
+      "content": "- No usar \"moverse\" para reprimir duelo legítimo.\n- No forzar gratitud o propósito demasiado pronto.\n- No aplicar contacto cero de forma rígida si hay hijos, temas legales o acuerdos necesarios.\n- No convertir \"todo esta dentro de mí\" en negar el impacto real de una relación dañina.\n- No usar esperanza de crecimiento para volver a una dinámica sin cambio real.",
+      "preview": "- No usar \"moverse\" para reprimir duelo legítimo. - No forzar gratitud o propósito demasiado pronto. - No aplicar contacto cero de forma rígida si hay hijos, temas legales o acuerdos necesarios. - No convertir \"todo esta...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "breakup_recovery",
+        "moving_on",
+        "closure",
+        "grief",
+        "identity_rebuild",
+        "fantasy_detox"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Move On From Your Ex - Jay Shetty - Transcript.pdf`\n- Source: Jay Shetty, \"How to Move On From Your Ex\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "jay-shetty-move-on-from-ex/when-this-applies",
+      "article_id": "jay-shetty-move-on-from-ex",
+      "title": "Jay Shetty - How To Move On From Your Ex",
+      "section": "When This Applies",
+      "content": "- El usuario piensa en su ex todos los días y se siente atrapado.\n- Hay obsesión con cierre, explicación, redes sociales o señales de regreso.\n- La persona sabe que la relación no funcionaba pero extraña la esperanza.\n- Hay pérdida de estructura diaria después de la ruptura.\n- El dolor toca autoestima, identidad o miedo a no volver a sentirse elegido.",
+      "preview": "- El usuario piensa en su ex todos los días y se siente atrapado. - Hay obsesión con cierre, explicación, redes sociales o señales de regreso. - La persona sabe que la relación no funcionaba pero extraña la esperanza. -...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "breakup_recovery",
+        "moving_on",
+        "closure",
+        "grief",
+        "identity_rebuild",
+        "fantasy_detox"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/How to Move On From Your Ex - Jay Shetty - Transcript.pdf`\n- Source: Jay Shetty, \"How to Move On From Your Ex\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "stop-settling-for-potential/coaching-moves",
+      "article_id": "stop-settling-for-potential",
+      "title": "Stop Settling For Potential",
+      "section": "Coaching Moves",
+      "content": "- Separar evidencia de esperanza: \"Que hechos actuales sostienen esta visión?\"\n- Preguntar: \"Que conversación hemos tenido y que cambió después?\"\n- Definir plazo y métrica de cambio si la persona decide esperar.\n- Nombrar el costo de quedarse en espera.\n- Revisar si el usuario esta rescatando, criando o gestionando a la otra persona.\n- Ayudar a elegir desde el presente, no desde la promesa.",
+      "preview": "- Separar evidencia de esperanza: \"Que hechos actuales sostienen esta visión?\" - Preguntar: \"Que conversación hemos tenido y que cambió después?\" - Definir plazo y métrica de cambio si la persona decide esperar. - Nombra...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "settling_for_potential",
+        "dating_standards",
+        "reality_check",
+        "future_fantasy",
+        "commitment",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/HOW TO STOP SETTLING FOR POTENTIAL - Transcript.pdf`\n- Source: \"How to Stop Settling for Potential\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "stop-settling-for-potential/core-thesis",
+      "article_id": "stop-settling-for-potential",
+      "title": "Stop Settling For Potential",
+      "section": "Core Thesis",
+      "content": "Conformarse con potencial es vincularse mas con la versión imaginada de alguien que con su conducta actual. La esperanza puede ser hermosa, pero cuando no hay cambios observables, compromiso real ni satisfacción presente, la persona no esta amando realidad: esta esperando que la fantasía se vuelva vida.",
+      "preview": "Conformarse con potencial es vincularse mas con la versión imaginada de alguien que con su conducta actual. La esperanza puede ser hermosa, pero cuando no hay cambios observables, compromiso real ni satisfacción presente...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "settling_for_potential",
+        "dating_standards",
+        "reality_check",
+        "future_fantasy",
+        "commitment",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/HOW TO STOP SETTLING FOR POTENTIAL - Transcript.pdf`\n- Source: \"How to Stop Settling for Potential\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "stop-settling-for-potential/example-eldric-language",
+      "article_id": "stop-settling-for-potential",
+      "title": "Stop Settling For Potential",
+      "section": "Example Eldric Language",
+      "content": "\"El potencial no es mentira, pero tampoco es una relación. Una relación es lo que alguien practica contigo hoy.\"\n\n\"La paciencia se vuelve autoabandono cuando solo una persona esta usando el tiempo para cambiar.\"",
+      "preview": "\"El potencial no es mentira, pero tampoco es una relación. Una relación es lo que alguien practica contigo hoy.\" \"La paciencia se vuelve autoabandono cuando solo una persona esta usando el tiempo para cambiar.\"",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "settling_for_potential",
+        "dating_standards",
+        "reality_check",
+        "future_fantasy",
+        "commitment",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/HOW TO STOP SETTLING FOR POTENTIAL - Transcript.pdf`\n- Source: \"How to Stop Settling for Potential\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "stop-settling-for-potential/key-principles",
+      "article_id": "stop-settling-for-potential",
+      "title": "Stop Settling For Potential",
+      "section": "Key Principles",
+      "content": "- El potencial se vuelve trampa cuando la relación vive en \"si cambiara X, todo seria increíble.\"\n- Fantasear con un futuro donde la otra persona es muy distinta puede impedir ver quien es hoy.\n- Esperar compromiso, madurez o disponibilidad sin señales de cambio sostiene relaciones insatisfactorias.\n- Repetir la misma queja con amigos suele indicar que el patrón no se mueve.\n- Perdonar la misma conducta sin cambio refuerza el ciclo.\n- Una conversación puede iniciar cambio, pero el cambio real se ve en pequeñas conductas repetidas.\n- La esperanza sana mira evidencia; la fantasía ignora evidencia.\n- La pregunta central es: \"Si nada cambiara, elegiría esta relación como es?\"",
+      "preview": "- El potencial se vuelve trampa cuando la relación vive en \"si cambiara X, todo seria increíble.\" - Fantasear con un futuro donde la otra persona es muy distinta puede impedir ver quien es hoy. - Esperar compromiso, madu...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "settling_for_potential",
+        "dating_standards",
+        "reality_check",
+        "future_fantasy",
+        "commitment",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/HOW TO STOP SETTLING FOR POTENTIAL - Transcript.pdf`\n- Source: \"How to Stop Settling for Potential\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "stop-settling-for-potential/practices",
+      "article_id": "stop-settling-for-potential",
+      "title": "Stop Settling For Potential",
+      "section": "Practices",
+      "content": "### Current Reality Inventory\n\nCompletar:\n\n1. Como es esta relación hoy?\n2. Que estoy esperando que cambie?\n3. Que evidencia real de cambio existe?\n4. Si esto siguiera igual seis meses, que elegiría?\n\n### Change Evidence Rule\n\nNo contar palabras como cambio. Contar conductas pequeñas, repetidas, observables y sostenidas.\n\n### Potential Cost Map\n\nEscribir lo que cuesta esperar: energía, autoestima, tiempo, oportunidades, paz, amistades, deseo, claridad.",
+      "preview": "### Current Reality Inventory Completar: 1. Como es esta relación hoy? 2. Que estoy esperando que cambie? 3. Que evidencia real de cambio existe? 4. Si esto siguiera igual seis meses, que elegiría? ### Change Evidence Ru...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "settling_for_potential",
+        "dating_standards",
+        "reality_check",
+        "future_fantasy",
+        "commitment",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/HOW TO STOP SETTLING FOR POTENTIAL - Transcript.pdf`\n- Source: \"How to Stop Settling for Potential\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "stop-settling-for-potential/related-concepts",
+      "article_id": "stop-settling-for-potential",
+      "title": "Stop Settling For Potential",
+      "section": "Related Concepts",
+      "content": "- settling-for-potential\n- dating-standards\n- reality-check\n- future-fantasy\n- boundaries\n- self-abandonment\n- commitment-clarity",
+      "preview": "- settling-for-potential - dating-standards - reality-check - future-fantasy - boundaries - self-abandonment - commitment-clarity",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "settling_for_potential",
+        "dating_standards",
+        "reality_check",
+        "future_fantasy",
+        "commitment",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/HOW TO STOP SETTLING FOR POTENTIAL - Transcript.pdf`\n- Source: \"How to Stop Settling for Potential\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "stop-settling-for-potential/source-notes",
+      "article_id": "stop-settling-for-potential",
+      "title": "Stop Settling For Potential",
+      "section": "Source Notes",
+      "content": "- Source document: `/Users/pedro/Desktop/Archivo/HOW TO STOP SETTLING FOR POTENTIAL - Transcript.pdf`\n- Source: \"How to Stop Settling for Potential\"\n- Processed as a curated internal brain article, not a verbatim transcript.",
+      "preview": "- Source document: `/Users/pedro/Desktop/Archivo/HOW TO STOP SETTLING FOR POTENTIAL - Transcript.pdf` - Source: \"How to Stop Settling for Potential\" - Processed as a curated internal brain article, not a verbatim transcr...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "settling_for_potential",
+        "dating_standards",
+        "reality_check",
+        "future_fantasy",
+        "commitment",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/HOW TO STOP SETTLING FOR POTENTIAL - Transcript.pdf`\n- Source: \"How to Stop Settling for Potential\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "stop-settling-for-potential/when-not-to-use-this",
+      "article_id": "stop-settling-for-potential",
+      "title": "Stop Settling For Potential",
+      "section": "When Not To Use This",
+      "content": "- No usarlo para exigir perfección inmediata.\n- No negar que las personas pueden crecer cuando hay voluntad, acciones y tiempo.\n- No abandonar una relación sana solo porque todavía hay áreas inmaduras.\n- No convertir estándares en lista rígida que impide conocer a alguien real.\n- No aplicar sin considerar contexto: duelo, enfermedad, estrés o transiciones pueden afectar temporalmente.",
+      "preview": "- No usarlo para exigir perfección inmediata. - No negar que las personas pueden crecer cuando hay voluntad, acciones y tiempo. - No abandonar una relación sana solo porque todavía hay áreas inmaduras. - No convertir est...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "settling_for_potential",
+        "dating_standards",
+        "reality_check",
+        "future_fantasy",
+        "commitment",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/HOW TO STOP SETTLING FOR POTENTIAL - Transcript.pdf`\n- Source: \"How to Stop Settling for Potential\"\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "stop-settling-for-potential/when-this-applies",
+      "article_id": "stop-settling-for-potential",
+      "title": "Stop Settling For Potential",
+      "section": "When This Applies",
+      "content": "- El usuario ama lo que alguien podría ser, no lo que esta siendo.\n- Hay promesas, disculpas o planes futuros sin conducta nueva.\n- La persona se siente en espera: espera conexión, compromiso, claridad o responsabilidad.\n- La relación depende de justificar, explicar o rescatar al otro.\n- Se confunde paciencia con autoabandono.",
+      "preview": "- El usuario ama lo que alguien podría ser, no lo que esta siendo. - Hay promesas, disculpas o planes futuros sin conducta nueva. - La persona se siente en espera: espera conexión, compromiso, claridad o responsabilidad....",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "settling_for_potential",
+        "dating_standards",
+        "reality_check",
+        "future_fantasy",
+        "commitment",
+        "boundaries"
+      ],
+      "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/HOW TO STOP SETTLING FOR POTENTIAL - Transcript.pdf`\n- Source: \"How to Stop Settling for Potential\"\n- Processed as a curated internal brain article, not a verbatim transcript."
     },
     {
       "id": "inner-work-three-step-process/coaching-moves",
@@ -3278,8 +4709,8 @@
     }
   ],
   "domains": {
-    "attachment": 135,
-    "relationships": 18,
+    "attachment": 171,
+    "relationships": 54,
     "self_improvement": 18
   },
   "articles": {
@@ -3288,6 +4719,10 @@
     "adam-lane-smith-avoidant-falling-in-love-20-steps": 9,
     "adam-lane-smith-secure-attachment-12-steps": 9,
     "adam-lane-smith-therapy-attachment-skills": 9,
+    "ainsworth-strange-situation-secure-base": 9,
+    "amir-levine-rejection-secure-mode-carp": 9,
+    "amir-levine-how-attachment-works": 9,
+    "nathalie-emotionally-invested-too-quickly": 9,
     "secure-love-ch01-problem-beneath-problem": 9,
     "secure-love-ch02-understanding-attachment-theory": 9,
     "secure-love-ch03-whats-your-attachment-style": 9,
@@ -3298,8 +4733,12 @@
     "secure-love-ch07-reaching-and-responding": 9,
     "secure-love-ch08-repair-after-conflict": 9,
     "secure-love-ch09-attachment-injuries-and-repair": 9,
+    "transform-your-relationship-self-compassion-values": 9,
+    "mind-reading-needs-ask-to-be-known": 9,
     "inner-work-relationships-eight-wounds": 9,
     "inner-work-relationships-system": 9,
+    "jay-shetty-move-on-from-ex": 9,
+    "stop-settling-for-potential": 9,
     "inner-work-three-step-process": 9,
     "inner-work-individual-system": 9
   }
