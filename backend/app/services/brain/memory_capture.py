@@ -73,7 +73,10 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
             0.72,
         ))
 
-    if any(phrase in lower for phrase in ("me siento", "i feel", "siento que", "i get")):
+    if any(phrase in lower for phrase in (
+        "me siento", "i feel", "siento que", "i get", "me molesta", "me duele",
+        "me preocupa", "me frustra", "me da rabia", "no me gusta",
+    )):
         candidates.append(_candidate(
             "emotional_pattern",
             f"User described this emotional experience: {text}",
@@ -81,7 +84,7 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
             0.42,
         ))
 
-    if any(phrase in lower for phrase in ("quiero", "me gustaria", "i want", "i would like")):
+    if any(phrase in lower for phrase in ("quiero", "me gustaria", "me gustaría", "necesito", "i want", "i would like", "i need")):
         candidates.append(_candidate(
             "goal",
             f"User expressed a possible goal or desire: {text}",
@@ -99,7 +102,77 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
             0.46,
         ))
 
-    return candidates[:2]
+    if _looks_like_relationship_pattern(lower):
+        candidates.append(_candidate(
+            "relationship_pattern",
+            f"User described a recurring relationship pattern: {text}",
+            f"A recurring relationship pattern may be: {text}",
+            0.50,
+        ))
+
+    if _looks_like_conflict_context(lower):
+        candidates.append(_candidate(
+            "relationship_conflict",
+            f"User described a relationship conflict context: {text}",
+            f"This relationship conflict context may matter later: {text}",
+            0.44,
+        ))
+
+    if _looks_like_partner_stance(lower):
+        candidates.append(_candidate(
+            "partner_stance",
+            f"User described their partner's stance or framing: {text}",
+            f"Your partner's stance or framing may be: {text}",
+            0.40,
+        ))
+
+    return candidates[:3]
+
+
+def _looks_like_relationship_pattern(lower: str) -> bool:
+    recurrence_terms = (
+        "siempre", "cada vez", "normalmente", "a menudo", "muchas veces",
+        "often", "always", "usually", "every time",
+    )
+    relationship_terms = (
+        "mi pareja", "pareja", "ella", "el ", "él", "novia", "novio",
+        "my partner", "girlfriend", "boyfriend", "wife", "husband",
+    )
+    pattern_terms = (
+        "evita", "evitar", "avoid", "avoids", "se cierra", "se aleja",
+        "no habla", "no quiere hablar", "conflicto", "pelea", "discusion",
+        "discusión", "argument", "fight", "shuts down", "withdraws",
+    )
+    return (
+        any(term in lower for term in recurrence_terms)
+        and any(term in lower for term in relationship_terms)
+        and any(term in lower for term in pattern_terms)
+    )
+
+
+def _looks_like_conflict_context(lower: str) -> bool:
+    relationship_terms = (
+        "mi pareja", "pareja", "ella", "el ", "él", "novia", "novio",
+        "my partner", "girlfriend", "boyfriend", "wife", "husband",
+    )
+    conflict_terms = (
+        "conflicto", "pelea", "discusion", "discusión", "discutimos",
+        "argument", "fight", "fighting", "repair", "reparar",
+    )
+    return any(term in lower for term in relationship_terms) and any(term in lower for term in conflict_terms)
+
+
+def _looks_like_partner_stance(lower: str) -> bool:
+    relationship_terms = (
+        "mi pareja", "pareja", "ella", "el ", "él", "novia", "novio",
+        "my partner", "girlfriend", "boyfriend", "wife", "husband",
+    )
+    stance_terms = (
+        "dice que", "cree que", "piensa que", "siente que", "segun ella",
+        "según ella", "segun el", "según él", "says that", "thinks that",
+        "believes that", "identity", "identidad", "mi problema", "my problem",
+    )
+    return any(term in lower for term in relationship_terms) and any(term in lower for term in stance_terms)
 
 
 def _candidate(memory_type: str, summary: str, curated_summary: str, confidence: float) -> Dict:
@@ -129,4 +202,3 @@ async def _similar_memory_exists(db: AsyncSession, user_id: str, summary: str) -
 
 def _normalize(value: str) -> str:
     return re.sub(r"\s+", " ", value.lower()).strip()
-

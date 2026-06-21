@@ -359,7 +359,7 @@ async def _handle_conversation(
     # Save assistant message
     await _save_message(db, user_id, "assistant", response_text, language)
 
-    captured_memories = await capture_candidate_memories(db, user_id, message, language) if debug else []
+    captured_memories = await capture_candidate_memories(db, user_id, message, language)
 
     data = {"message": response_text}
     if debug:
