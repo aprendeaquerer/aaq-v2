@@ -331,7 +331,7 @@ export default function DataBrainPanel({
   return (
     <BrainShell
       title="Data Brain"
-      subtitle="Persistent user-visible memories."
+      subtitle="Stable profile fields plus user-visible memories from the conversation."
       countLabel={`${memories.length} memories`}
       openHref="/brain?tab=data"
       standalone={standalone}
@@ -472,9 +472,9 @@ function ProfileSummary({ profile }: { profile: UserProfile | null }) {
   return (
     <section className="rounded border border-[#042648]/12 bg-white">
       <div className="border-b border-[#042648]/10 px-3 py-2">
-        <h3 className="text-sm font-bold text-[#042648]">User Profile</h3>
+        <h3 className="text-sm font-bold text-[#042648]">Stable Profile</h3>
         <p className="mt-1 text-xs text-[#042648]/60">
-          Structured context captured from tests, profile, and chat.
+          Identity, relationship facts, and attachment context captured from tests and chat.
         </p>
       </div>
 
@@ -491,7 +491,9 @@ function ProfileSummary({ profile }: { profile: UserProfile | null }) {
             </div>
           ))
         ) : (
-          <p className="text-sm text-[#042648]/60">No structured profile fields yet.</p>
+          <p className="text-sm text-[#042648]/60">
+            No stable profile fields yet. Feelings, goals, and patterns appear as memories below.
+          </p>
         )}
       </div>
     </section>

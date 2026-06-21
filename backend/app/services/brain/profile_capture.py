@@ -17,10 +17,14 @@ PROFILE_FIELDS = {
     "nombre_pareja",
     "edad_pareja",
     "genero_pareja",
+    "tiempo_pareja",
     "orientacion",
     "tipo_relacion",
     "convive_con_pareja",
     "tiene_hijos",
+    "attachment_style",
+    "partner_attachment_style",
+    "relationship_status",
 }
 
 
@@ -125,6 +129,22 @@ def _extract_profile_updates(message: str) -> Dict[str, object]:
         updates["tipo_relacion"] = relationship_type
         updates["tiene_pareja"] = True
 
+    user_attachment = _detect_user_attachment_style(lower)
+    if user_attachment:
+        updates["attachment_style"] = user_attachment
+
+    partner_attachment = _detect_partner_attachment_style(lower)
+    if partner_attachment:
+        updates["partner_attachment_style"] = partner_attachment
+        updates["tiene_pareja"] = True
+
+    relationship_status = _detect_relationship_status(
+        updates.get("attachment_style"),
+        updates.get("partner_attachment_style"),
+    )
+    if relationship_status:
+        updates["relationship_status"] = relationship_status
+
     if any(phrase in lower for phrase in ("mi pareja", "mi novia", "mi novio", "my partner", "girlfriend", "boyfriend")):
         updates.setdefault("tiene_pareja", True)
 
@@ -153,7 +173,9 @@ def _first_name_match(text: str, patterns: tuple[str, ...]) -> Optional[str]:
     for pattern in patterns:
         match = re.search(pattern, text, flags=re.IGNORECASE)
         if match:
-            return _format_name(match.group(1))
+            name = _format_name(match.group(1))
+            if _looks_like_person_name(name):
+                return name
     return None
 
 
@@ -162,6 +184,31 @@ def _format_name(name: str) -> str:
     if not cleaned:
         return cleaned
     return cleaned[0].upper() + cleaned[1:]
+
+
+def _looks_like_person_name(name: str) -> bool:
+    lower = name.lower()
+    non_names = {
+        "de",
+        "un",
+        "una",
+        "hombre",
+        "mujer",
+        "pareja",
+        "ansioso",
+        "ansiosa",
+        "evitativo",
+        "evitativa",
+        "desorganizado",
+        "desorganizada",
+        "seguro",
+        "segura",
+        "anxious",
+        "avoidant",
+        "disorganized",
+        "secure",
+    }
+    return lower not in non_names
 
 
 def _detect_user_gender(lower: str) -> Optional[str]:
@@ -207,4 +254,58 @@ def _detect_relationship_type(lower: str) -> Optional[str]:
         return "relacion_abierta"
     if any(phrase in lower for phrase in ("poliamor", "polyamory", "polyamorous")):
         return "poliamor"
+    return None
+
+
+def _detect_user_attachment_style(lower: str) -> Optional[str]:
+    patterns = (
+        r"\b(?:mi estilo de apego es|mi apego es|soy de apego|creo que soy de apego|creo que soy|i think i am|my attachment style is)\s+([a-záéíóúñ_-]+)",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, lower)
+        if match:
+            style = _normalize_attachment_style(match.group(1))
+            if style:
+                return style
+    return None
+
+
+def _detect_partner_attachment_style(lower: str) -> Optional[str]:
+    patterns = (
+        r"\b(?:mi pareja|mi novia|mi novio|mi mujer|mi marido|mi esposa|mi esposo)\s+(?:es|sea|parece|se muestra|tiene apego|creo que es|creo que tiene apego|quizas es|quizás es)\s+([a-záéíóúñ_-]+)",
+        r"\b(?:my partner|my girlfriend|my boyfriend|my wife|my husband)\s+(?:is|seems|has attachment|i think is)\s+([a-z_-]+)",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, lower)
+        if match:
+            style = _normalize_attachment_style(match.group(1))
+            if style:
+                return style
+    return None
+
+
+def _normalize_attachment_style(value: str) -> Optional[str]:
+    lower = value.lower().strip(" .,;:!?")
+    if lower in ("desorganizado", "desorganizada", "disorganized"):
+        return "disorganized"
+    if lower in ("evitativo", "evitativa", "avoidant"):
+        return "avoidant"
+    if lower in ("ansioso", "ansiosa", "anxious"):
+        return "anxious"
+    if lower in ("seguro", "segura", "secure"):
+        return "secure"
+    return None
+
+
+def _detect_relationship_status(
+    user_attachment: object,
+    partner_attachment: object,
+) -> Optional[str]:
+    pair = {str(user_attachment or ""), str(partner_attachment or "")}
+    if "anxious" in pair and "avoidant" in pair:
+        return "anxious_avoidant_dynamic"
+    if "disorganized" in pair:
+        return "disorganized_dynamic"
+    if pair == {"secure"}:
+        return "secure_dynamic"
     return None

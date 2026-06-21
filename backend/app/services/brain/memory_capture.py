@@ -70,12 +70,13 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
     )
     if user_name_match:
         name = _format_name(user_name_match.group(1))
-        candidates.append(_candidate(
-            "profile_fact",
-            f"The user's name is {name}.",
-            f"Your name appears to be {name}.",
-            0.86,
-        ))
+        if _looks_like_person_name(name):
+            candidates.append(_candidate(
+                "profile_fact",
+                f"The user's name is {name}.",
+                f"Your name appears to be {name}.",
+                0.86,
+            ))
 
     user_age_match = re.search(r"\b(?:tengo|yo tengo)\s+(\d{1,2})\s*(?:anos|años)?\b", lower)
     if user_age_match:
@@ -95,12 +96,13 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
     )
     if partner_match:
         name = _format_name(partner_match.group(1))
-        candidates.append(_candidate(
-            "relationship_context",
-            f"The user's partner is named {name}.",
-            f"Your partner's name appears to be {name}.",
-            0.72,
-        ))
+        if _looks_like_person_name(name):
+            candidates.append(_candidate(
+                "relationship_context",
+                f"The user's partner is named {name}.",
+                f"Your partner's name appears to be {name}.",
+                0.72,
+            ))
 
     partner_age_match = re.search(
         r"\b(?:mi pareja|mi novia|mi novio|mi mujer|mi marido|mi esposa|mi esposo|ella|el|él)\s+(?:tiene|tendra|tendrá)\s+(\d{1,2})\s*(?:anos|años)?\b",
@@ -120,7 +122,10 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
 
     if any(phrase in lower for phrase in (
         "me siento", "i feel", "siento que", "i get", "me molesta", "me duele",
-        "me preocupa", "me frustra", "me da rabia", "no me gusta",
+        "me preocupa", "me frustra", "me da rabia", "no me gusta", "me da miedo",
+        "me da ansiedad", "tengo miedo", "tengo ansiedad", "estoy triste",
+        "estoy ansioso", "estoy ansiosa", "me siento inseguro", "me siento insegura",
+        "me siento solo", "me siento sola", "me agobia", "me angustia",
     )):
         candidates.append(_candidate(
             "emotional_pattern",
@@ -129,12 +134,27 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
             0.42,
         ))
 
-    if any(phrase in lower for phrase in ("quiero", "me gustaria", "me gustaría", "necesito", "i want", "i would like", "i need")):
+    if any(phrase in lower for phrase in (
+        "quiero", "me gustaria", "me gustaría", "quisiera", "necesito",
+        "mi objetivo es", "mi objetivo seria", "mi objetivo sería", "mi meta es",
+        "mi meta seria", "mi meta sería", "busco", "estoy intentando",
+        "estoy tratando", "me encantaria", "me encantaría", "quiero aprender",
+        "necesito aprender", "i want", "i would like", "i need", "my goal is",
+        "my objective is", "i am trying to",
+    )):
         candidates.append(_candidate(
             "goal",
             f"User expressed a possible goal or desire: {text}",
             f"You said this may matter to you: {text}",
             0.40,
+        ))
+
+    if _looks_like_attachment_context(lower):
+        candidates.append(_candidate(
+            "attachment_context",
+            f"User described an attachment-related context: {text}",
+            f"This attachment context may matter later: {text}",
+            0.48,
         ))
 
     if any(phrase in lower for phrase in ("cuando", "whenever", "when ")) and any(
@@ -220,6 +240,19 @@ def _looks_like_partner_stance(lower: str) -> bool:
     return any(term in lower for term in relationship_terms) and any(term in lower for term in stance_terms)
 
 
+def _looks_like_attachment_context(lower: str) -> bool:
+    attachment_terms = (
+        "apego", "attachment", "ansioso", "ansiosa", "anxious",
+        "evitativo", "evitativa", "avoidant", "desorganizado",
+        "desorganizada", "disorganized", "apego seguro", "secure attachment",
+    )
+    relationship_terms = (
+        "yo", "soy", "me siento", "mi pareja", "pareja", "mi novia", "mi novio",
+        "ella", "el ", "él", "my partner", "girlfriend", "boyfriend", "wife", "husband",
+    )
+    return any(term in lower for term in attachment_terms) and any(term in lower for term in relationship_terms)
+
+
 def _candidate(memory_type: str, summary: str, curated_summary: str, confidence: float) -> Dict:
     return {
         "type": memory_type,
@@ -235,6 +268,31 @@ def _format_name(name: str) -> str:
     if not cleaned:
         return cleaned
     return cleaned[0].upper() + cleaned[1:]
+
+
+def _looks_like_person_name(name: str) -> bool:
+    lower = name.lower()
+    non_names = {
+        "de",
+        "un",
+        "una",
+        "hombre",
+        "mujer",
+        "pareja",
+        "ansioso",
+        "ansiosa",
+        "evitativo",
+        "evitativa",
+        "desorganizado",
+        "desorganizada",
+        "seguro",
+        "segura",
+        "anxious",
+        "avoidant",
+        "disorganized",
+        "secure",
+    }
+    return lower not in non_names
 
 
 async def _similar_memory_exists(db: AsyncSession, user_id: str, summary: str) -> bool:
