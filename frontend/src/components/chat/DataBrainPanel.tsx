@@ -54,6 +54,7 @@ export default function DataBrainPanel({
   const [knowledgeError, setKnowledgeError] = useState<string | null>(null);
   const [selectedKnowledgeChunk, setSelectedKnowledgeChunk] = useState<KnowledgeChunk | null>(null);
   const [selectedMemory, setSelectedMemory] = useState<UserMemory | null>(null);
+  const [collapsedKnowledgeDomains, setCollapsedKnowledgeDomains] = useState<Set<string>>(new Set());
 
   const loadMemories = useCallback(async () => {
     if (!isAuthenticated) {
@@ -130,6 +131,31 @@ export default function DataBrainPanel({
   const liveCandidates = useMemo(() => extractLiveCandidates(debugSessions), [debugSessions]);
   const groupedMemories = useMemo(() => groupMemoriesByType(memories), [memories]);
   const groupedKnowledge = useMemo(() => groupKnowledgeByDomain(knowledgeChunks), [knowledgeChunks]);
+  const knowledgeDomains = useMemo(() => groupedKnowledge.map(([domain]) => domain), [groupedKnowledge]);
+
+  useEffect(() => {
+    setCollapsedKnowledgeDomains(new Set(knowledgeDomains));
+  }, [knowledgeDomains]);
+
+  const toggleKnowledgeDomain = (domain: string) => {
+    setCollapsedKnowledgeDomains((current) => {
+      const next = new Set(current);
+      if (next.has(domain)) {
+        next.delete(domain);
+      } else {
+        next.add(domain);
+      }
+      return next;
+    });
+  };
+
+  const collapseAllKnowledgeDomains = () => {
+    setCollapsedKnowledgeDomains(new Set(knowledgeDomains));
+  };
+
+  const expandAllKnowledgeDomains = () => {
+    setCollapsedKnowledgeDomains(new Set());
+  };
 
   if (activeTab === 'knowledge') {
     return (
@@ -155,28 +181,63 @@ export default function DataBrainPanel({
 
         {mode === 'text' && knowledgeChunks.length > 0 && (
           <div className="min-h-0 flex-1 overflow-y-auto pr-1">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded border border-[#042648]/12 bg-white px-3 py-2">
+              <div className="text-xs font-semibold text-[#042648]/55">
+                {knowledgeDomains.length} categories
+              </div>
+              <div className="flex rounded border border-[#042648]/15 bg-[#F8FAF7] p-1">
+                <button
+                  type="button"
+                  onClick={expandAllKnowledgeDomains}
+                  className="px-3 py-1.5 text-xs font-semibold text-[#042648]/70 transition hover:bg-white"
+                >
+                  Expand all
+                </button>
+                <button
+                  type="button"
+                  onClick={collapseAllKnowledgeDomains}
+                  className="px-3 py-1.5 text-xs font-semibold text-[#042648]/70 transition hover:bg-white"
+                >
+                  Fold all
+                </button>
+              </div>
+            </div>
             <div className="space-y-4">
               {groupedKnowledge.map(([domain, rows], groupIndex) => (
-                <section key={domain}>
-                  <div className="mb-2 flex items-center gap-2">
-                    <span
-                      className="h-2.5 w-2.5 rounded-full"
-                      style={{ backgroundColor: getTypeColor(groupIndex).border }}
-                    />
-                    <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#042648]/70">
-                      {formatType(domain)}
-                    </h3>
-                    <span className="text-xs text-[#042648]/45">{rows.length} chunks</span>
-                  </div>
-                  <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                    {rows.map((chunk) => (
-                      <KnowledgeCard
-                        key={chunk.id}
-                        chunk={chunk}
-                        onOpen={() => setSelectedKnowledgeChunk(chunk)}
+                <section key={domain} className="rounded border border-[#042648]/12 bg-white">
+                  <button
+                    type="button"
+                    onClick={() => toggleKnowledgeDomain(domain)}
+                    className="flex w-full items-center justify-between gap-3 px-3 py-3 text-left transition hover:bg-[#F8FAF7]"
+                    aria-expanded={!collapsedKnowledgeDomains.has(domain)}
+                  >
+                    <span className="flex min-w-0 items-center gap-2">
+                      <span
+                        className="h-2.5 w-2.5 rounded-full"
+                        style={{ backgroundColor: getTypeColor(groupIndex).border }}
                       />
-                    ))}
-                  </div>
+                      <span className="truncate text-sm font-bold uppercase tracking-[0.06em] text-[#042648]/70">
+                        {formatType(domain)}
+                      </span>
+                    </span>
+                    <span className="flex shrink-0 items-center gap-2">
+                      <span className="text-xs text-[#042648]/45">{rows.length} chunks</span>
+                      <span className="flex h-7 w-7 items-center justify-center rounded border border-[#042648]/15 bg-white text-sm font-bold text-[#042648]/60">
+                        {collapsedKnowledgeDomains.has(domain) ? '+' : '-'}
+                      </span>
+                    </span>
+                  </button>
+                  {!collapsedKnowledgeDomains.has(domain) && (
+                    <div className="grid gap-3 border-t border-[#042648]/10 bg-[#FFFDF8] p-3 md:grid-cols-2 xl:grid-cols-3">
+                      {rows.map((chunk) => (
+                        <KnowledgeCard
+                          key={chunk.id}
+                          chunk={chunk}
+                          onOpen={() => setSelectedKnowledgeChunk(chunk)}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </section>
               ))}
             </div>
