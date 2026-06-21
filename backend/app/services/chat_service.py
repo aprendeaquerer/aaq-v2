@@ -323,7 +323,14 @@ async def _handle_conversation(
     """Handle free conversation with AI."""
     # Save user message
     await _save_message(db, user_id, "user", message, language)
-    profile_updates = await capture_profile_fields(db, user_id, message)
+    profile_updates = {}
+    profile_capture_error = None
+    try:
+        profile_updates = await capture_profile_fields(db, user_id, message)
+    except Exception as exc:
+        await db.rollback()
+        profile_capture_error = f"{type(exc).__name__}: {str(exc)[:300]}"
+
     if profile_updates:
         profile = await _get_profile(db, user_id)
 
@@ -392,7 +399,13 @@ async def _handle_conversation(
     # Save assistant message
     await _save_message(db, user_id, "assistant", response_text, language)
 
-    captured_memories = await capture_candidate_memories(db, user_id, message, language)
+    captured_memories = []
+    memory_capture_error = None
+    try:
+        captured_memories = await capture_candidate_memories(db, user_id, message, language)
+    except Exception as exc:
+        await db.rollback()
+        memory_capture_error = f"{type(exc).__name__}: {str(exc)[:300]}"
 
     data = {"message": response_text}
     if debug:
@@ -411,14 +424,22 @@ async def _handle_conversation(
         trace["steps"].append({
             "stage": "profile_capture",
             "title": "Structured profile fields captured",
-            "detail": f"{len(profile_updates)} structured profile fields were updated from the user message.",
-            "payload": {"updates": profile_updates},
+            "detail": (
+                f"{len(profile_updates)} structured profile fields were updated from the user message."
+                if not profile_capture_error
+                else "Profile capture failed, so the chat response continued without profile updates."
+            ),
+            "payload": {"updates": profile_updates, "error": profile_capture_error},
         })
         trace["steps"].append({
             "stage": "memory_capture",
             "title": "Candidate memories captured",
-            "detail": f"{len(captured_memories)} candidate memories were written to the user memory brain.",
-            "payload": {"candidates": captured_memories},
+            "detail": (
+                f"{len(captured_memories)} candidate memories were written to the user memory brain."
+                if not memory_capture_error
+                else "Memory capture failed, so the chat response continued without new memories."
+            ),
+            "payload": {"candidates": captured_memories, "error": memory_capture_error},
         })
         data["debug"] = trace
 

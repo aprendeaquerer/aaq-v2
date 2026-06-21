@@ -6,7 +6,7 @@ from typing import Dict, Optional
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models.user import UserProfile
+from app.models.user import User, UserProfile
 
 
 PROFILE_FIELDS = {
@@ -29,6 +29,10 @@ async def capture_profile_fields(
     message: str,
 ) -> Dict[str, object]:
     if not user_id:
+        return {}
+
+    user_result = await db.execute(select(User.user_id).where(User.user_id == user_id))
+    if not user_result.scalar_one_or_none():
         return {}
 
     updates = _extract_profile_updates(message)
@@ -166,4 +170,3 @@ def _detect_relationship_type(lower: str) -> Optional[str]:
     if any(phrase in lower for phrase in ("poliamor", "polyamory", "polyamorous")):
         return "poliamor"
     return None
-
