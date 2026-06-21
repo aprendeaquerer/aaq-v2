@@ -15,6 +15,7 @@ from app.services.ai.prompts import get_eldric_prompt
 from app.services.brain import build_brain_context
 from app.services.brain.debug_trace import build_conversation_debug, build_state_debug
 from app.services.brain.memory_capture import capture_candidate_memories
+from app.services.brain.profile_capture import capture_profile_fields
 from app.services.brain.prompt_composer import compose_brain_prompt
 from app.services import state_machine as sm
 from app.services import test_service
@@ -313,6 +314,9 @@ async def _handle_conversation(
     """Handle free conversation with AI."""
     # Save user message
     await _save_message(db, user_id, "user", message, language)
+    profile_updates = await capture_profile_fields(db, user_id, message)
+    if profile_updates:
+        profile = await _get_profile(db, user_id)
 
     # Load conversation history
     history = await _load_history(db, user_id, limit=50)
@@ -329,10 +333,30 @@ async def _handle_conversation(
         context_parts = []
         if profile.nombre:
             context_parts.append(f"El usuario se llama {profile.nombre}.")
+        if profile.edad:
+            context_parts.append(f"Edad del usuario: {profile.edad}.")
+        if profile.genero:
+            context_parts.append(f"Genero del usuario: {profile.genero}.")
         if profile.attachment_style:
             context_parts.append(f"Su estilo de apego es: {profile.attachment_style}.")
+        if profile.tiene_pareja is not None:
+            context_parts.append(f"Tiene pareja: {'si' if profile.tiene_pareja else 'no'}.")
         if profile.nombre_pareja:
             context_parts.append(f"Su pareja se llama {profile.nombre_pareja}.")
+        if profile.edad_pareja:
+            context_parts.append(f"Edad de su pareja: {profile.edad_pareja}.")
+        if profile.genero_pareja:
+            context_parts.append(f"Genero de su pareja: {profile.genero_pareja}.")
+        if profile.tiempo_pareja:
+            context_parts.append(f"Tiempo de relacion: {profile.tiempo_pareja}.")
+        if profile.orientacion:
+            context_parts.append(f"Orientacion del usuario: {profile.orientacion}.")
+        if profile.tipo_relacion:
+            context_parts.append(f"Tipo de relacion: {profile.tipo_relacion}.")
+        if profile.convive_con_pareja is not None:
+            context_parts.append(f"Convive con su pareja: {'si' if profile.convive_con_pareja else 'no'}.")
+        if profile.tiene_hijos is not None:
+            context_parts.append(f"Tiene hijos: {'si' if profile.tiene_hijos else 'no'}.")
         if profile.partner_attachment_style:
             context_parts.append(f"El estilo de apego de su pareja es: {profile.partner_attachment_style}.")
         if profile.relationship_status and profile.relationship_status != "unknown":
@@ -375,6 +399,12 @@ async def _handle_conversation(
             response_text=response_text,
             ai_error=ai_error,
         )
+        trace["steps"].append({
+            "stage": "profile_capture",
+            "title": "Structured profile fields captured",
+            "detail": f"{len(profile_updates)} structured profile fields were updated from the user message.",
+            "payload": {"updates": profile_updates},
+        })
         trace["steps"].append({
             "stage": "memory_capture",
             "title": "Candidate memories captured",

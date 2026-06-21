@@ -81,9 +81,16 @@ export interface GreetingData {
 export interface UserProfile {
   nombre: string | null;
   edad: number | null;
+  genero: string | null;
   tiene_pareja: boolean | null;
   nombre_pareja: string | null;
+  edad_pareja: number | null;
+  genero_pareja: string | null;
   tiempo_pareja: string | null;
+  orientacion: string | null;
+  tipo_relacion: string | null;
+  convive_con_pareja: boolean | null;
+  tiene_hijos: boolean | null;
   attachment_style: string | null;
   partner_attachment_style: string | null;
   relationship_status: string | null;
