@@ -43,6 +43,10 @@ export default function ChatWindow() {
     sendMessage(text, isAuthenticated);
   };
 
+  const handleOptionSend = (optionId: string, optionText: string) => {
+    sendMessage(optionId, isAuthenticated, optionText);
+  };
+
   const handleTestAnswer = (optionId: string) => {
     sendMessage(optionId, isAuthenticated);
   };
@@ -119,7 +123,7 @@ export default function ChatWindow() {
                             {msg.data.options.map((opt: { id: string; text: string }) => (
                               <button
                                 key={opt.id}
-                                onClick={() => handleSend(opt.id)}
+                                onClick={() => handleOptionSend(opt.id, opt.text)}
                                 disabled={isLoading}
                                 className="text-left px-4 py-2 bg-white border border-[#042648]/20 rounded-xl text-sm hover:bg-[#F1DCF4] transition disabled:opacity-50"
                               >
@@ -143,7 +147,7 @@ export default function ChatWindow() {
                             {msg.data.options.map((opt: { id: string; text: string }) => (
                               <button
                                 key={opt.id}
-                                onClick={() => handleSend(opt.id)}
+                                onClick={() => handleOptionSend(opt.id, opt.text)}
                                 disabled={isLoading}
                                 className="text-left px-4 py-2 bg-white border border-[#042648]/20 rounded-xl text-sm hover:bg-[#F1DCF4] transition disabled:opacity-50"
                               >

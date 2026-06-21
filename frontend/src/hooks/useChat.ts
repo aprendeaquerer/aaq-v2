@@ -110,12 +110,12 @@ export function useChat(language: string = 'es') {
   );
 
   const sendMessage = useCallback(
-    async (text: string, isAuthenticated: boolean) => {
+    async (text: string, isAuthenticated: boolean, displayText?: string) => {
       // Add user message to chat
       const userMessage: ChatMessage = {
         id: generateId(),
         role: 'user',
-        content: text,
+        content: displayText ?? text,
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, userMessage]);
@@ -125,7 +125,7 @@ export function useChat(language: string = 'es') {
         ...prev,
         {
           id: debugSessionId,
-          userMessage: text,
+          userMessage: displayText ?? text,
           status: 'processing',
           startedAt: new Date(),
         },
