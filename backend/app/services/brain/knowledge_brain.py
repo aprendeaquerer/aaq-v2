@@ -86,6 +86,10 @@ def route_domains(message: str) -> List[str]:
         "relationships": (
             "relacion", "relationship", "pareja", "partner", "conflicto", "conflict",
             "comunicacion", "communication", "limite", "boundary", "cita", "dating",
+            "inner work of relationships", "conscious relationship", "relacion consciente",
+            "herida relacional", "heridas", "rechazo", "juicio", "desbordamiento",
+            "desconfianza", "insuficiencia", "inseguridad", "reaseguro", "ruptura",
+            "reparacion", "inner child", "niño interior",
         ),
         "polarity": (
             "masculino", "masculine", "femenino", "feminine", "polaridad", "polarity",
@@ -100,6 +104,9 @@ def route_domains(message: str) -> List[str]:
             "habito", "habit", "disciplina", "discipline", "proposito", "purpose",
             "valores", "values", "mindset", "sombra", "shadow", "madurez", "maturity",
             "responsabilidad", "responsibility", "presencia", "awareness", "self-awareness",
+            "inner work", "ego", "self", "creencia-raiz", "creencia raiz", "root belief",
+            "root program", "trigger", "triggers", "autoindagacion", "niño interior",
+            "inner child", "self-worth", "valor propio",
         ),
     }
     for domain, words in keyword_map.items():

@@ -1718,10 +1718,696 @@
         "emotional_processing"
       ],
       "source_notes": "- Source document: `/Users/pedro/Desktop/Archivo/Julie Menanno/Secure Love Book Club Ch9 - Julie Menanno.docx`\n- Source: Julie Menanno, Secure Love Book Club, Chapter 9, \"Attachment Injuries and Repair\"\n- Video source noted in document: `https://www.youtube.com/watch?v=1ySGJFjy4rw`\n- Processed as a curated internal brain article, not a verbatim transcript."
+    },
+    {
+      "id": "inner-work-relationships-eight-wounds/coaching-moves",
+      "article_id": "inner-work-relationships-eight-wounds",
+      "title": "Inner Work Of Relationships - Las Ocho Heridas",
+      "section": "Coaching Moves",
+      "content": "- Preguntar: \"qué miedo central está intentando confirmar o evitar esta reacción?\".\n- Distinguir el trigger presente de la experiencia original.\n- Nombrar la defensa con suavidad: \"esto puede estar protegiendo algo vulnerable\".\n- Buscar la necesidad infantil no cubierta y traducirla en una petición adulta.\n- Ofrecer apoyo específico según herida: consistencia, no crítica, co-regulación, reaseguro, transparencia, apreciación, respeto de límites o seguridad para vulnerabilidad.\n- Mantener límites claros cuando la defensa se vuelve dañina.",
+      "preview": "- Preguntar: \"qué miedo central está intentando confirmar o evitar esta reacción?\". - Distinguir el trigger presente de la experiencia original. - Nombrar la defensa con suavidad: \"esto puede estar protegiendo algo vulne...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "eight_wounds",
+        "inner_child",
+        "attachment_wounds",
+        "triggers",
+        "emotional_safety"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- The user-provided wound template marks rejection as higher-fidelity/verbatim-derived and several other wound profiles as reconstructed with the same template; this article treats them as curated operational summaries, not literal book text."
+    },
+    {
+      "id": "inner-work-relationships-eight-wounds/core-thesis",
+      "article_id": "inner-work-relationships-eight-wounds",
+      "title": "Inner Work Of Relationships - Las Ocho Heridas",
+      "section": "Core Thesis",
+      "content": "The Inner Work of Relationships organiza el nivel de herida relacional en ocho wounds: rechazo, juicio, desbordamiento, pérdida, desconfianza, insuficiencia, vulneración de límites e inseguridad. Cada herida tiene triggers, creencia-raíz, emoción primaria, necesidades infantiles no cubiertas, defensas hacia fuera y hacia dentro, problemas típicos de pareja, reparación individual y formas concretas de apoyar a la pareja.",
+      "preview": "The Inner Work of Relationships organiza el nivel de herida relacional en ocho wounds: rechazo, juicio, desbordamiento, pérdida, desconfianza, insuficiencia, vulneración de límites e inseguridad. Cada herida tiene trigge...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "eight_wounds",
+        "inner_child",
+        "attachment_wounds",
+        "triggers",
+        "emotional_safety"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- The user-provided wound template marks rejection as higher-fidelity/verbatim-derived and several other wound profiles as reconstructed with the same template; this article treats them as curated operational summaries, not literal book text."
+    },
+    {
+      "id": "inner-work-relationships-eight-wounds/example-eldric-language",
+      "article_id": "inner-work-relationships-eight-wounds",
+      "title": "Inner Work Of Relationships - Las Ocho Heridas",
+      "section": "Example Eldric Language",
+      "content": "\"La pregunta no es solo qué hizo tu pareja, sino qué herida leyó tu sistema en ese gesto. Rechazo, juicio, pérdida y límites se sienten muy distintos aunque todas puedan terminar en pelea.\"\n\n\"Puedes tener compasión por la herida de alguien y aun así poner un límite claro a la defensa que está usando.\"\n\n\"Si la herida es desbordamiento, más presión suele empeorar el cierre. La vía es bajar intensidad, hacer el siguiente paso más pequeño y asegurar retorno.\"",
+      "preview": "\"La pregunta no es solo qué hizo tu pareja, sino qué herida leyó tu sistema en ese gesto. Rechazo, juicio, pérdida y límites se sienten muy distintos aunque todas puedan terminar en pelea.\" \"Puedes tener compasión por la...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "eight_wounds",
+        "inner_child",
+        "attachment_wounds",
+        "triggers",
+        "emotional_safety"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- The user-provided wound template marks rejection as higher-fidelity/verbatim-derived and several other wound profiles as reconstructed with the same template; this article treats them as curated operational summaries, not literal book text."
+    },
+    {
+      "id": "inner-work-relationships-eight-wounds/key-principles",
+      "article_id": "inner-work-relationships-eight-wounds",
+      "title": "Inner Work Of Relationships - Las Ocho Heridas",
+      "section": "Key Principles",
+      "content": "- Las ocho heridas son lentes relacionales: cada una interpreta la conducta de la pareja desde un miedo central.\n- La herida no solo duele; también crea defensas que pueden confirmar la creencia que teme.\n- Cada herida puede expresarse en exceso o en defecto: atacar/controlar o retirarse/complacer/colapsar.\n- El apoyo sano responde a la necesidad infantil no cubierta sin reforzar conductas dañinas.\n- La reparación combina trabajo individual y prácticas del vínculo.\n- El orden relacional de las heridas es: rejection, judgment, overwhelm, loss, distrust, inadequacy, violation, insecurity.\n- Las heridas se corresponden con temas dañados del libro individual: vergüenza, culpa, apatía, duelo, miedo, carencia, ira y orgullo.\n- Nombrar una herida debe abrir compasión y responsabilidad, no etiquetar a la persona.",
+      "preview": "- Las ocho heridas son lentes relacionales: cada una interpreta la conducta de la pareja desde un miedo central. - La herida no solo duele; también crea defensas que pueden confirmar la creencia que teme. - Cada herida p...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "eight_wounds",
+        "inner_child",
+        "attachment_wounds",
+        "triggers",
+        "emotional_safety"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- The user-provided wound template marks rejection as higher-fidelity/verbatim-derived and several other wound profiles as reconstructed with the same template; this article treats them as curated operational summaries, not literal book text."
+    },
+    {
+      "id": "inner-work-relationships-eight-wounds/practices",
+      "article_id": "inner-work-relationships-eight-wounds",
+      "title": "Inner Work Of Relationships - Las Ocho Heridas",
+      "section": "Practices",
+      "content": "### Wound Map\n\n1. Rechazo: se activa con distancia, negligencia o abandono. Creencia: \"no soy digno de amor\". Emoción: vergüenza. Defensas: desapego, proyección, stonewalling, autosabotaje, retirada o miedo al abandono. Apoyo: límites respetados, presencia fiable, afecto consistente, reaseguro y compromiso claro.\n2. Juicio: se activa con crítica, corrección, comparación o desaprobación. Creencia: \"soy malo\" o \"hago todo mal\". Emoción: culpa. Defensas: perfeccionismo, control, crítica, justificación, autocrítica o disculpa excesiva. Apoyo: separar conducta de valor, validar esfuerzo, permitir errores y evitar el lenguaje de \"tú siempre\".\n3. Desbordamiento: se activa con intensidad, conflicto, presión o muchas demandas. Creencia: \"no puedo con esto\". Emoción: apatía, impotencia o agobio. Defensas: hipercontrol, irritabilidad, shutdown, evitación, desconexión o stonewalling. Apoyo: bajar intensidad, co-regular, ofrecer ayuda concreta, repartir carga y permitir ritmo.\n4. Pérdida: se activa con distancia, cambios, despedidas, silencios o separación. Creencia: \"todo lo que amo lo perderé\". Emoción: duelo y miedo a la pérdida. Defensas: aferramiento, control, celos, dependencia, frialdad anticipatoria o huida. Apoyo: consistencia, reaseguro de permanencia, avisar cambios y no amenazar con abandono.\n5. Desconfianza: se activa con secretismo, ambigüedad, promesas rotas o señales de traición. Creencia: \"me traicionarán\". Emoción: miedo o sospecha. Defensas: vigilancia, interrogatorio, celos, distancia emocional o hiperindependencia. Apoyo: transparencia, cumplir lo prometido, paciencia, previsibilidad y reparación de rupturas de confianza.\n6. Insuficiencia: se activa con comparación, fracaso, crítica de desempeño o sentirse menos. Creencia: \"no soy suficiente\". Emoción: carencia o anhelo. Defensas: sobreesfuerzo, logro compulsivo, competir, complacencia, necesidad de validación o rendición anticipada. Apoyo: apreciar quién es la persona, no comparar, expresar valoración y no condicionar afecto al logro.\n7. Vulneración de límites: se activa con invasión, irrespeto, control, manipulación o ignorar un \"no\". Creencia: \"mis límites no importan\". Emoción: ira o indignación. Defensas: ataque, muros rígidos, control, venganza, sumisión, congelamiento o autoabandono. Apoyo: respetar límites, pedir consentimiento, no presionar, validar autonomía y crear previsibilidad.\n8. Inseguridad: se activa con incertidumbre, feedback, vulnerabilidad, imprevisibilidad o pérdida de control. Creencia: \"no estoy a salvo si no controlo\". Emoción: inseguridad defendida con orgullo. Defensas: tener razón, rigidez, control, negar vulnerabilidad, ansiedad o búsqueda constante de reaseguro. Apoyo: recibir la vulnerabilidad con cuidado, no humillar errores, dar previsibilidad y sostener paciencia.\n\n### Identify The Wound By The Sentence\n\n- \"No le importo\" o \"me va a dejar\": mirar rechazo o pérdida.\n- \"Me está criticando\" o \"hago todo mal\": mirar juicio.\n- \"No puedo más\" o \"me bloqueo\": mirar desbordamiento.\n- \"Qué me oculta?\": mirar desconfianza.\n- \"No soy suficiente\": mirar insuficiencia.\n- \"Me invade\" o \"siempre cedo yo\": mirar vulneración de límites.\n- \"Tengo que tener razón\" o \"no puedo mostrar debilidad\": mirar inseguridad.\n\n### Support Without Enabling\n\n1. Validar la herida: \"entiendo que esto tocó algo sensible\".\n2. Nombrar la conducta concreta que sí necesita cambiar.\n3. Ofrecer el antídoto de la herida de forma específica.\n4. Pedir una respuesta adulta: pausa, reparación, límite, transparencia o comunicación.\n5. Si hay daño repetido, priorizar límites y ayuda externa.",
+      "preview": "### Wound Map 1. Rechazo: se activa con distancia, negligencia o abandono. Creencia: \"no soy digno de amor\". Emoción: vergüenza. Defensas: desapego, proyección, stonewalling, autosabotaje, retirada o miedo al abandono. A...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "eight_wounds",
+        "inner_child",
+        "attachment_wounds",
+        "triggers",
+        "emotional_safety"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- The user-provided wound template marks rejection as higher-fidelity/verbatim-derived and several other wound profiles as reconstructed with the same template; this article treats them as curated operational summaries, not literal book text."
+    },
+    {
+      "id": "inner-work-relationships-eight-wounds/related-concepts",
+      "article_id": "inner-work-relationships-eight-wounds",
+      "title": "Inner Work Of Relationships - Las Ocho Heridas",
+      "section": "Related Concepts",
+      "content": "- inner-work-relationships-system\n- attachment-wounds\n- inner-child-needs\n- emotional-safety\n- rupture-repair\n- boundaries\n- self-worth\n- jealousy\n- shutdown",
+      "preview": "- inner-work-relationships-system - attachment-wounds - inner-child-needs - emotional-safety - rupture-repair - boundaries - self-worth - jealousy - shutdown",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "eight_wounds",
+        "inner_child",
+        "attachment_wounds",
+        "triggers",
+        "emotional_safety"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- The user-provided wound template marks rejection as higher-fidelity/verbatim-derived and several other wound profiles as reconstructed with the same template; this article treats them as curated operational summaries, not literal book text."
+    },
+    {
+      "id": "inner-work-relationships-eight-wounds/source-notes",
+      "article_id": "inner-work-relationships-eight-wounds",
+      "title": "Inner Work Of Relationships - Las Ocho Heridas",
+      "section": "Source Notes",
+      "content": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- The user-provided wound template marks rejection as higher-fidelity/verbatim-derived and several other wound profiles as reconstructed with the same template; this article treats them as curated operational summaries, not literal book text.",
+      "preview": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "eight_wounds",
+        "inner_child",
+        "attachment_wounds",
+        "triggers",
+        "emotional_safety"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- The user-provided wound template marks rejection as higher-fidelity/verbatim-derived and several other wound profiles as reconstructed with the same template; this article treats them as curated operational summaries, not literal book text."
+    },
+    {
+      "id": "inner-work-relationships-eight-wounds/when-not-to-use-this",
+      "article_id": "inner-work-relationships-eight-wounds",
+      "title": "Inner Work Of Relationships - Las Ocho Heridas",
+      "section": "When Not To Use This",
+      "content": "- No usar las heridas como diagnóstico clínico o etiqueta fija.\n- No justificar abuso, control, invasión, gaslighting o maltrato como \"herida\".\n- No exigir que una persona herida consuele a quien la está dañando.\n- No presentar las heridas inferidas como texto literal del libro cuando la fuente las marca como reconstrucción.\n- No aplicar afirmaciones antes de validar emoción, límite y contexto.",
+      "preview": "- No usar las heridas como diagnóstico clínico o etiqueta fija. - No justificar abuso, control, invasión, gaslighting o maltrato como \"herida\". - No exigir que una persona herida consuele a quien la está dañando. - No pr...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "eight_wounds",
+        "inner_child",
+        "attachment_wounds",
+        "triggers",
+        "emotional_safety"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- The user-provided wound template marks rejection as higher-fidelity/verbatim-derived and several other wound profiles as reconstructed with the same template; this article treats them as curated operational summaries, not literal book text."
+    },
+    {
+      "id": "inner-work-relationships-eight-wounds/when-this-applies",
+      "article_id": "inner-work-relationships-eight-wounds",
+      "title": "Inner Work Of Relationships - Las Ocho Heridas",
+      "section": "When This Applies",
+      "content": "- El usuario pregunta qué herida puede estar activa en una relación.\n- La pareja repite un conflicto y necesita mapear el miedo subyacente.\n- Hay miedo al rechazo, crítica, cierre emocional, celos, sospecha, comparación, invasión de límites o rigidez defensiva.\n- El usuario quiere una guía concreta para apoyar a una pareja activada.\n- Se necesita pasar del síntoma visible a la creencia-raíz.",
+      "preview": "- El usuario pregunta qué herida puede estar activa en una relación. - La pareja repite un conflicto y necesita mapear el miedo subyacente. - Hay miedo al rechazo, crítica, cierre emocional, celos, sospecha, comparación,...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "eight_wounds",
+        "inner_child",
+        "attachment_wounds",
+        "triggers",
+        "emotional_safety"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- The user-provided wound template marks rejection as higher-fidelity/verbatim-derived and several other wound profiles as reconstructed with the same template; this article treats them as curated operational summaries, not literal book text."
+    },
+    {
+      "id": "inner-work-relationships-system/coaching-moves",
+      "article_id": "inner-work-relationships-system",
+      "title": "Inner Work Of Relationships - Sistema Relacional",
+      "section": "Coaching Moves",
+      "content": "- Identificar el circuito: trigger de A, herida de A, reacción de A, trigger de B, herida de B.\n- Preguntar cuál es el miedo central debajo de la reacción.\n- Traducir reproche en necesidad: \"cuando pasó X, se activó Y, y necesitabas Z\".\n- Separar conducta de valor: responsabilizar el impacto sin avergonzar la identidad.\n- Invitar a reparación antes que victoria.\n- Ofrecer lenguaje de reaseguro concreto, no promesas vagas.\n- Volver a límites si la reparación se usa para tolerar daño.\n- Nombrar progreso como más rapidez de reparación, no ausencia de conflicto.",
+      "preview": "- Identificar el circuito: trigger de A, herida de A, reacción de A, trigger de B, herida de B. - Preguntar cuál es el miedo central debajo de la reacción. - Traducir reproche en necesidad: \"cuando pasó X, se activó Y, y...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "conscious_relationship",
+        "inner_child",
+        "emotional_safety",
+        "rupture_repair",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-relationships-system/core-thesis",
+      "article_id": "inner-work-relationships-system",
+      "title": "Inner Work Of Relationships - Sistema Relacional",
+      "section": "Core Thesis",
+      "content": "El modelo relacional de Inner Work sostiene que la pareja es espejo y refugio: espejo porque activa heridas infantiles no resueltas, y refugio porque puede ofrecer una experiencia correctora de aceptación, seguridad y reparación. El amor consciente no se encuentra ya hecho; se construye cuando cada persona se responsabiliza de su activación, comunica desde la herida y repara sin atacar el valor propio ni el del otro.",
+      "preview": "El modelo relacional de Inner Work sostiene que la pareja es espejo y refugio: espejo porque activa heridas infantiles no resueltas, y refugio porque puede ofrecer una experiencia correctora de aceptación, seguridad y re...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "conscious_relationship",
+        "inner_child",
+        "emotional_safety",
+        "rupture_repair",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-relationships-system/example-eldric-language",
+      "article_id": "inner-work-relationships-system",
+      "title": "Inner Work Of Relationships - Sistema Relacional",
+      "section": "Example Eldric Language",
+      "content": "\"Esto suena a dos sistemas protegiendo heridas distintas al mismo tiempo. Antes de decidir quién tiene razón, miremos qué miedo se activó en cada lado.\"\n\n\"Puedes responsabilizarte de cómo reaccionaste sin aceptar que tu valor quede en juicio. La reparación sana no dice 'soy malo'; dice 'esto que hice tuvo impacto y puedo cuidarlo mejor'.\"\n\n\"Si no hay seguridad, pedir vulnerabilidad es demasiado pronto. Primero necesitamos fiabilidad, respeto y una señal clara de que lo que compartas no será usado contra ti.\"",
+      "preview": "\"Esto suena a dos sistemas protegiendo heridas distintas al mismo tiempo. Antes de decidir quién tiene razón, miremos qué miedo se activó en cada lado.\" \"Puedes responsabilizarte de cómo reaccionaste sin aceptar que tu v...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "conscious_relationship",
+        "inner_child",
+        "emotional_safety",
+        "rupture_repair",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-relationships-system/key-principles",
+      "article_id": "inner-work-relationships-system",
+      "title": "Inner Work Of Relationships - Sistema Relacional",
+      "section": "Key Principles",
+      "content": "- La calidad del vínculo depende del trabajo interno de cada miembro, no de arreglar al otro.\n- Las primeras relaciones con cuidadores instalan creencias sobre amor, confianza y valor propio.\n- El conflicto repetido suele ser una danza de dos heridas reactivándose.\n- El inner child es la parte vulnerable que reacciona cuando la pareja toca una herida.\n- La relación sana combina espejo y refugio: revela la herida y crea seguridad para repararla.\n- La reparación necesita accountability, reaseguro, motivación, ambiente seguro, self-worth, fiabilidad y respeto mutuo.\n- La vulnerabilidad solo es reparadora cuando hay suficiente seguridad emocional.\n- Quien ataca desde trauma puede estar pidiendo reaseguro, pero eso no elimina la necesidad de límites.\n- El cambio central de comunicación es pasar de culpa/defensa a responsabilidad/apertura/apoyo.\n- Rechazo o ruptura no deben convertirse en etiqueta de identidad.",
+      "preview": "- La calidad del vínculo depende del trabajo interno de cada miembro, no de arreglar al otro. - Las primeras relaciones con cuidadores instalan creencias sobre amor, confianza y valor propio. - El conflicto repetido suel...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "conscious_relationship",
+        "inner_child",
+        "emotional_safety",
+        "rupture_repair",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-relationships-system/practices",
+      "article_id": "inner-work-relationships-system",
+      "title": "Inner Work Of Relationships - Sistema Relacional",
+      "section": "Practices",
+      "content": "### Relational Trigger Map\n\n1. Nombrar la conducta concreta que activó el conflicto.\n2. Identificar qué herida se tocó: rechazo, juicio, desbordamiento, pérdida, desconfianza, insuficiencia, límites o inseguridad.\n3. Nombrar la defensa que apareció: ataque, retirada, control, complacencia, shutdown, crítica, celos o rigidez.\n4. Preguntar qué necesidad de inner child quedó descubierta.\n5. Formular una petición adulta y concreta.\n\n### Repair Conversation\n\n1. Cada persona nombra su activación sin diagnosticar a la otra.\n2. Cada persona asume una conducta específica y su impacto.\n3. Se ofrece reaseguro al aspecto herido sin negar límites.\n4. Se acuerda una conducta futura observable.\n5. Se cierra restaurando conexión: presencia, cuidado, claridad o descanso con hora de retorno.\n\n### Safety Before Vulnerability\n\n1. Revisar si hay respeto, consistencia y no castigo.\n2. Si falta seguridad, construir fiabilidad antes de pedir apertura profunda.\n3. Si hay seguridad suficiente, compartir miedo y necesidad en primera persona.\n4. Recibir la vulnerabilidad sin corregir, ridiculizar ni usarla como arma después.",
+      "preview": "### Relational Trigger Map 1. Nombrar la conducta concreta que activó el conflicto. 2. Identificar qué herida se tocó: rechazo, juicio, desbordamiento, pérdida, desconfianza, insuficiencia, límites o inseguridad. 3. Nomb...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "conscious_relationship",
+        "inner_child",
+        "emotional_safety",
+        "rupture_repair",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-relationships-system/related-concepts",
+      "article_id": "inner-work-relationships-system",
+      "title": "Inner Work Of Relationships - Sistema Relacional",
+      "section": "Related Concepts",
+      "content": "- inner-work-relationships-eight-wounds\n- rupture-repair\n- inner-child\n- emotional-safety\n- relationship-as-mirror\n- accountability-without-shame\n- self-abandonment",
+      "preview": "- inner-work-relationships-eight-wounds - rupture-repair - inner-child - emotional-safety - relationship-as-mirror - accountability-without-shame - self-abandonment",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "conscious_relationship",
+        "inner_child",
+        "emotional_safety",
+        "rupture_repair",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-relationships-system/source-notes",
+      "article_id": "inner-work-relationships-system",
+      "title": "Inner Work Of Relationships - Sistema Relacional",
+      "section": "Source Notes",
+      "content": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and inferential framing from the source files; not a verbatim reproduction.",
+      "preview": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "conscious_relationship",
+        "inner_child",
+        "emotional_safety",
+        "rupture_repair",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-relationships-system/when-not-to-use-this",
+      "article_id": "inner-work-relationships-system",
+      "title": "Inner Work Of Relationships - Sistema Relacional",
+      "section": "When Not To Use This",
+      "content": "- Si hay abuso, coerción, violencia, miedo real, manipulación sostenida o control coercitivo, no reducirlo a \"dos heridas\".\n- No usar \"la relación es un espejo\" para culpar al usuario por el daño recibido.\n- No pedir reaseguro ilimitado a una persona que está siendo dañada.\n- No confundir seguridad emocional con ausencia total de conflicto.\n- No forzar vulnerabilidad antes de construir fiabilidad y respeto.\n- No presentar inferencias o contexto externo como citas literales del libro.",
+      "preview": "- Si hay abuso, coerción, violencia, miedo real, manipulación sostenida o control coercitivo, no reducirlo a \"dos heridas\". - No usar \"la relación es un espejo\" para culpar al usuario por el daño recibido. - No pedir rea...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "conscious_relationship",
+        "inner_child",
+        "emotional_safety",
+        "rupture_repair",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-relationships-system/when-this-applies",
+      "article_id": "inner-work-relationships-system",
+      "title": "Inner Work Of Relationships - Sistema Relacional",
+      "section": "When This Applies",
+      "content": "- El usuario describe peleas de pareja con guion repetido.\n- Una conducta de la pareja dispara una reacción que parece más intensa que el evento.\n- Hay acusación, defensa, retirada, complacencia, control, celos, autoabandono o miedo al abandono.\n- La persona quiere entender la relación como espejo sin caer en auto-culpa.\n- El usuario necesita reparar después de conflicto.\n- La pareja quiere construir más seguridad, vulnerabilidad y comunicación abierta.",
+      "preview": "- El usuario describe peleas de pareja con guion repetido. - Una conducta de la pareja dispara una reacción que parece más intensa que el evento. - Hay acusación, defensa, retirada, complacencia, control, celos, autoaban...",
+      "domain": "relationships",
+      "language": "es",
+      "topics": [
+        "inner_work_relationships",
+        "conscious_relationship",
+        "inner_child",
+        "emotional_safety",
+        "rupture_repair",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/2-The-Inner-Work-of-Relationships.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Relationships_8Heridas_Plantilla.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work of Relationships: An Invitation to Heal Your Inner Child and Create a Conscious Relationship Together`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-three-step-process/coaching-moves",
+      "article_id": "inner-work-three-step-process",
+      "title": "Inner Work - Proceso De Tres Pasos",
+      "section": "Coaching Moves",
+      "content": "- Empezar por P1: \"qué pasó y qué sentiste?\".\n- En P2, buscar el significado profundo: \"qué dijo esto sobre ti, sobre el amor o sobre tu seguridad?\".\n- En P3, formular una narrativa que conserve responsabilidad y dignidad.\n- Si aparece autocrítica, bloquear el salto de \"fallé\" a \"soy un fallo\".\n- Si aparece proyección intensa, explorar qué parte propia está siendo vista en el otro.\n- Si aparece apatía, tratarla como defensa ante desbordamiento y proponer micro-movimiento.\n- Si aparece orgullo, suavizar la necesidad de tener razón hacia humildad y vulnerabilidad.",
+      "preview": "- Empezar por P1: \"qué pasó y qué sentiste?\". - En P2, buscar el significado profundo: \"qué dijo esto sobre ti, sobre el amor o sobre tu seguridad?\". - En P3, formular una narrativa que conserve responsabilidad y dignida...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "triggers",
+        "emotional_regulation",
+        "root_beliefs",
+        "narrative_replacement",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article focused on operational use in coaching/retrieval.\n- Not a verbatim transcript; consolidates repeated material from the user-provided knowledge documents."
+    },
+    {
+      "id": "inner-work-three-step-process/core-thesis",
+      "article_id": "inner-work-three-step-process",
+      "title": "Inner Work - Proceso De Tres Pasos",
+      "section": "Core Thesis",
+      "content": "El método práctico de Inner Work convierte la reactividad en elección consciente mediante tres movimientos: hacerse consciente del trigger, conectarlo con una creencia-raíz y un tema de consciencia, y reemplazar la narrativa antigua por una perspectiva más alta. El proceso funciona solo si primero se ve y se siente la emoción; usar afirmaciones antes de contactar la herida se vuelve bypass.",
+      "preview": "El método práctico de Inner Work convierte la reactividad en elección consciente mediante tres movimientos: hacerse consciente del trigger, conectarlo con una creencia-raíz y un tema de consciencia, y reemplazar la narra...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "triggers",
+        "emotional_regulation",
+        "root_beliefs",
+        "narrative_replacement",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article focused on operational use in coaching/retrieval.\n- Not a verbatim transcript; consolidates repeated material from the user-provided knowledge documents."
+    },
+    {
+      "id": "inner-work-three-step-process/example-eldric-language",
+      "article_id": "inner-work-three-step-process",
+      "title": "Inner Work - Proceso De Tres Pasos",
+      "section": "Example Eldric Language",
+      "content": "\"Vamos por capas: primero el trigger, luego la historia que se activó, y solo después la respuesta nueva. Tu sistema no necesita que lo convenzamos a la fuerza; necesita que lo escuchemos con precisión.\"\n\n\"La frase nueva tiene que hablarle a la creencia vieja. Si la raíz dice 'no soy suficiente', no basta con distraerte: necesitamos una experiencia y una acción que contradigan esa raíz.\"\n\n\"Que hoy hayas tardado diez minutos menos en volver a ti ya es progreso. Inner Work no mide perfección; mide recuperación.\"",
+      "preview": "\"Vamos por capas: primero el trigger, luego la historia que se activó, y solo después la respuesta nueva. Tu sistema no necesita que lo convenzamos a la fuerza; necesita que lo escuchemos con precisión.\" \"La frase nueva...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "triggers",
+        "emotional_regulation",
+        "root_beliefs",
+        "narrative_replacement",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article focused on operational use in coaching/retrieval.\n- Not a verbatim transcript; consolidates repeated material from the user-provided knowledge documents."
+    },
+    {
+      "id": "inner-work-three-step-process/key-principles",
+      "article_id": "inner-work-three-step-process",
+      "title": "Inner Work - Proceso De Tres Pasos",
+      "section": "Key Principles",
+      "content": "- Un trigger no crea la herida; revela dónde ya había una raíz sensible.\n- La reacción desproporcionada suele indicar que el sistema está respondiendo desde una memoria antigua.\n- El objetivo inicial no es arreglar la emoción sino observarla con curiosidad.\n- La creencia-raíz es la parte que convierte un evento presente en una historia global sobre identidad, amor, seguridad o valor.\n- La narrativa nueva se introduce después de nombrar la emoción y la raíz, no antes.\n- La repetición de respuestas nuevas entrena un patrón interno distinto.\n- El progreso se mide por reacciones más cortas, recuperación más rápida y más capacidad de elegir.\n- La accountability sana separa \"lo que hice\" de \"lo que valgo\".",
+      "preview": "- Un trigger no crea la herida; revela dónde ya había una raíz sensible. - La reacción desproporcionada suele indicar que el sistema está respondiendo desde una memoria antigua. - El objetivo inicial no es arreglar la em...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "triggers",
+        "emotional_regulation",
+        "root_beliefs",
+        "narrative_replacement",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article focused on operational use in coaching/retrieval.\n- Not a verbatim transcript; consolidates repeated material from the user-provided knowledge documents."
+    },
+    {
+      "id": "inner-work-three-step-process/practices",
+      "article_id": "inner-work-three-step-process",
+      "title": "Inner Work - Proceso De Tres Pasos",
+      "section": "Practices",
+      "content": "### P1 - Awareness\n\n1. Pausar antes de actuar.\n2. Nombrar el estímulo concreto: qué palabra, gesto, silencio, recuerdo o escena activó la reacción.\n3. Nombrar la emoción sin justificarla ni discutirla.\n4. Observar el cuerpo: tensión, cierre, calor, colapso, impulso de huir, atacar o complacer.\n\n### P2 - Connection\n\n1. Preguntar qué necesidad no cubierta aparece debajo.\n2. Preguntar qué herida se tocó: rechazo, juicio, abandono, desconfianza, insuficiencia, invasión, pérdida o inseguridad.\n3. Identificar la creencia-raíz en forma simple: \"no soy...\", \"no puedo...\", \"me van a...\", \"tengo que...\".\n4. Localizar el tema dominante: vergüenza, culpa, apatía, duelo, miedo, deseo/carencia, ira u orgullo.\n\n### P3 - Uproot And Replace\n\n1. Confirmar que la emoción fue reconocida, no tapada.\n2. Separar conducta de valor.\n3. Crear una frase de reemplazo que responda directamente a la creencia-raíz.\n4. Elegir una conducta pequeña coherente con la nueva narrativa.\n5. Repetir el proceso en momentos cotidianos para crear continuidad.\n\n### Theme To Response Map\n\n- Vergüenza: proteger valor innato y devolver la vergüenza a su origen.\n- Culpa: reparar conducta sin convertir el error en identidad.\n- Apatía: pedir ayuda, reducir carga y dar un paso mínimo.\n- Duelo: permitir tristeza y sostener presencia.\n- Miedo: distinguir pasado de presente y construir seguridad.\n- Carencia: volver a suficiencia y gratitud sin negar necesidades reales.\n- Ira: convertir ataque en límite.\n- Orgullo: soltar tener razón y abrir vulnerabilidad segura.",
+      "preview": "### P1 - Awareness 1. Pausar antes de actuar. 2. Nombrar el estímulo concreto: qué palabra, gesto, silencio, recuerdo o escena activó la reacción. 3. Nombrar la emoción sin justificarla ni discutirla. 4. Observar el cuer...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "triggers",
+        "emotional_regulation",
+        "root_beliefs",
+        "narrative_replacement",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article focused on operational use in coaching/retrieval.\n- Not a verbatim transcript; consolidates repeated material from the user-provided knowledge documents."
+    },
+    {
+      "id": "inner-work-three-step-process/related-concepts",
+      "article_id": "inner-work-three-step-process",
+      "title": "Inner Work - Proceso De Tres Pasos",
+      "section": "Related Concepts",
+      "content": "- inner-work-individual-system\n- emotional-awareness\n- trigger\n- root-program-belief\n- narrative-replacement\n- bypass-risk\n- shadow-work",
+      "preview": "- inner-work-individual-system - emotional-awareness - trigger - root-program-belief - narrative-replacement - bypass-risk - shadow-work",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "triggers",
+        "emotional_regulation",
+        "root_beliefs",
+        "narrative_replacement",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article focused on operational use in coaching/retrieval.\n- Not a verbatim transcript; consolidates repeated material from the user-provided knowledge documents."
+    },
+    {
+      "id": "inner-work-three-step-process/source-notes",
+      "article_id": "inner-work-three-step-process",
+      "title": "Inner Work - Proceso De Tres Pasos",
+      "section": "Source Notes",
+      "content": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article focused on operational use in coaching/retrieval.\n- Not a verbatim transcript; consolidates repeated material from the user-provided knowledge documents.",
+      "preview": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "triggers",
+        "emotional_regulation",
+        "root_beliefs",
+        "narrative_replacement",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article focused on operational use in coaching/retrieval.\n- Not a verbatim transcript; consolidates repeated material from the user-provided knowledge documents."
+    },
+    {
+      "id": "inner-work-three-step-process/when-not-to-use-this",
+      "article_id": "inner-work-three-step-process",
+      "title": "Inner Work - Proceso De Tres Pasos",
+      "section": "When Not To Use This",
+      "content": "- No usarlo para sobreanalizar una situación que requiere límite, salida, ayuda médica, intervención legal o apoyo de crisis.\n- No convertir el paso tres en pensamiento positivo compulsivo.\n- No pedir vulnerabilidad interna si el usuario está fuera de ventana de tolerancia; primero regular.\n- No usar \"tu trigger es tu maestro\" para invalidar daños reales causados por otros.\n- No aplicar afirmaciones que contradigan la experiencia emocional antes de escucharla.",
+      "preview": "- No usarlo para sobreanalizar una situación que requiere límite, salida, ayuda médica, intervención legal o apoyo de crisis. - No convertir el paso tres en pensamiento positivo compulsivo. - No pedir vulnerabilidad inte...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "triggers",
+        "emotional_regulation",
+        "root_beliefs",
+        "narrative_replacement",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article focused on operational use in coaching/retrieval.\n- Not a verbatim transcript; consolidates repeated material from the user-provided knowledge documents."
+    },
+    {
+      "id": "inner-work-three-step-process/when-this-applies",
+      "article_id": "inner-work-three-step-process",
+      "title": "Inner Work - Proceso De Tres Pasos",
+      "section": "When This Applies",
+      "content": "- El usuario nota que se activa, se bloquea, ataca, complace, controla o se retira.\n- Hay una emoción repetitiva que parece dominar la percepción.\n- La persona quiere transformar un patrón sin reprimirlo.\n- Aparecen frases como \"siempre me pasa\", \"no sé por qué reacciono así\", \"me tomó el cuerpo\" o \"no puedo evitarlo\".\n- El usuario busca una práctica concreta de autoindagación.",
+      "preview": "- El usuario nota que se activa, se bloquea, ataca, complace, controla o se retira. - Hay una emoción repetitiva que parece dominar la percepción. - La persona quiere transformar un patrón sin reprimirlo. - Aparecen fras...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "triggers",
+        "emotional_regulation",
+        "root_beliefs",
+        "narrative_replacement",
+        "accountability"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article focused on operational use in coaching/retrieval.\n- Not a verbatim transcript; consolidates repeated material from the user-provided knowledge documents."
+    },
+    {
+      "id": "inner-work-individual-system/coaching-moves",
+      "article_id": "inner-work-individual-system",
+      "title": "Inner Work - Sistema Individual",
+      "section": "Coaching Moves",
+      "content": "- Separar esencia de condicionamiento: \"esto es un programa aprendido, no tu identidad completa\".\n- Preguntar qué creencia profunda se activó debajo del evento.\n- Nombrar el tema dominante sin etiquetar a la persona como \"baja\" o dañada.\n- Ayudar a detectar el bucle: trigger, activación, defensa, confirmación de la creencia.\n- Validar la emoción antes de invitar a una nueva narrativa.\n- Distinguir responsabilidad sobre conducta de ataque al valor personal.\n- Tratar la sombra con curiosidad y humildad, no con condena.\n- Usar el sufrimiento como información: \"qué parte de ti está pidiendo ser vista?\".",
+      "preview": "- Separar esencia de condicionamiento: \"esto es un programa aprendido, no tu identidad completa\". - Preguntar qué creencia profunda se activó debajo del evento. - Nombrar el tema dominante sin etiquetar a la persona como...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "consciousness",
+        "ego_self",
+        "shadow_work",
+        "root_beliefs",
+        "emotional_maturity"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and marked inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-individual-system/core-thesis",
+      "article_id": "inner-work-individual-system",
+      "title": "Inner Work - Sistema Individual",
+      "section": "Core Thesis",
+      "content": "El modelo individual de Inner Work entiende a la persona como un Self intacto cubierto por capas de condicionamiento. El sufrimiento aparece cuando una herida temprana instala una creencia-raíz, esa creencia organiza un tema de consciencia, y la persona interpreta la vida desde esa lente. El trabajo interior no intenta fabricar valor personal, sino retirar identificación con ego, pensamiento y programas antiguos para volver a una relación más libre con la experiencia.",
+      "preview": "El modelo individual de Inner Work entiende a la persona como un Self intacto cubierto por capas de condicionamiento. El sufrimiento aparece cuando una herida temprana instala una creencia-raíz, esa creencia organiza un...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "consciousness",
+        "ego_self",
+        "shadow_work",
+        "root_beliefs",
+        "emotional_maturity"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and marked inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-individual-system/example-eldric-language",
+      "article_id": "inner-work-individual-system",
+      "title": "Inner Work - Sistema Individual",
+      "section": "Example Eldric Language",
+      "content": "\"No leería esto como una prueba de que algo está mal en ti. Lo miraría como un programa antiguo tomando el volante. La pregunta útil es: qué parte de ti aprendió que tenía que protegerse así?\"\n\n\"Antes de cambiar la narrativa, dejemos que la emoción tenga nombre. Si saltamos demasiado rápido a una frase positiva, la herida se queda sola debajo.\"\n\n\"Responsabilizarte de tu reacción no significa culparte por tu herida. Significa recuperar la parte de agencia que sí está en tus manos.\"",
+      "preview": "\"No leería esto como una prueba de que algo está mal en ti. Lo miraría como un programa antiguo tomando el volante. La pregunta útil es: qué parte de ti aprendió que tenía que protegerse así?\" \"Antes de cambiar la narrat...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "consciousness",
+        "ego_self",
+        "shadow_work",
+        "root_beliefs",
+        "emotional_maturity"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and marked inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-individual-system/key-principles",
+      "article_id": "inner-work-individual-system",
+      "title": "Inner Work - Sistema Individual",
+      "section": "Key Principles",
+      "content": "- La persona no está rota en su esencia; está condicionada por aprendizajes, heridas y defensas.\n- El ego es una identidad construida por acumulación, control, comparación y resistencia.\n- El Self es conciencia observadora, valor innato y capacidad de amor no condicionado.\n- Los temas de consciencia dañados tiñen percepción, emoción, lenguaje, conducta y vínculos.\n- El sufrimiento no es solo un problema a eliminar; puede funcionar como señal de dónde está la raíz.\n- La infancia instala creencias-programa como \"no soy digno\", \"no soy suficiente\", \"no puedo confiar\" o \"debo controlar\".\n- La sombra contiene partes negadas o no integradas que siguen gobernando desde fuera de la conciencia.\n- La reparación requiere ver la raíz, sentir la emoción y elegir una narrativa más alta sin usar positividad para evitar el dolor.\n- La responsabilidad personal se aplica a conducta y respuesta, no al valor intrínseco de la persona.\n- El trabajo no termina de una vez: nuevas etapas revelan nuevos puntos ciegos.",
+      "preview": "- La persona no está rota en su esencia; está condicionada por aprendizajes, heridas y defensas. - El ego es una identidad construida por acumulación, control, comparación y resistencia. - El Self es conciencia observado...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "consciousness",
+        "ego_self",
+        "shadow_work",
+        "root_beliefs",
+        "emotional_maturity"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and marked inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-individual-system/practices",
+      "article_id": "inner-work-individual-system",
+      "title": "Inner Work - Sistema Individual",
+      "section": "Practices",
+      "content": "### Map The Inner Loop\n\n1. Identificar el evento que disparó la reacción.\n2. Nombrar la emoción principal y la sensación corporal.\n3. Preguntar qué historia apareció sobre uno mismo, los demás o la vida.\n4. Buscar la creencia-raíz que esa historia protege.\n5. Observar qué defensa apareció: control, retirada, complacencia, ataque, negación, apatía o autosabotaje.\n6. Elegir una respuesta que cuide la realidad presente sin obedecer el programa antiguo.\n\n### Ego And Self Distinction\n\n1. Escribir qué está intentando controlar el ego.\n2. Nombrar qué teme que ocurra si deja de controlar.\n3. Preguntar qué diría el Self si no necesitara defender una identidad.\n4. Tomar una acción pequeña desde presencia, responsabilidad y respeto propio.\n\n### Shadow Check\n\n1. Detectar qué rasgo ajeno genera una reacción intensa.\n2. Preguntar si hay una versión negada, reprimida o temida de ese rasgo dentro de uno.\n3. Buscar qué protección cumple la condena.\n4. Integrar la información sin justificar conductas dañinas propias ni ajenas.",
+      "preview": "### Map The Inner Loop 1. Identificar el evento que disparó la reacción. 2. Nombrar la emoción principal y la sensación corporal. 3. Preguntar qué historia apareció sobre uno mismo, los demás o la vida. 4. Buscar la cree...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "consciousness",
+        "ego_self",
+        "shadow_work",
+        "root_beliefs",
+        "emotional_maturity"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and marked inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-individual-system/related-concepts",
+      "article_id": "inner-work-individual-system",
+      "title": "Inner Work - Sistema Individual",
+      "section": "Related Concepts",
+      "content": "- inner-work-three-step-process\n- root-program-belief\n- shadow-work\n- ego-self\n- emotional-regulation\n- self-worth\n- accountability-without-shame",
+      "preview": "- inner-work-three-step-process - root-program-belief - shadow-work - ego-self - emotional-regulation - self-worth - accountability-without-shame",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "consciousness",
+        "ego_self",
+        "shadow_work",
+        "root_beliefs",
+        "emotional_maturity"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and marked inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-individual-system/source-notes",
+      "article_id": "inner-work-individual-system",
+      "title": "Inner Work - Sistema Individual",
+      "section": "Source Notes",
+      "content": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and marked inferential framing from the source files; not a verbatim reproduction.",
+      "preview": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "consciousness",
+        "ego_self",
+        "shadow_work",
+        "root_beliefs",
+        "emotional_maturity"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and marked inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-individual-system/when-not-to-use-this",
+      "article_id": "inner-work-individual-system",
+      "title": "Inner Work - Sistema Individual",
+      "section": "When Not To Use This",
+      "content": "- Si hay crisis aguda, ideación de daño, abuso, violencia o síntomas clínicos severos, priorizar seguridad y apoyo profesional.\n- No usar el marco para decirle al usuario que \"creó\" abusos, traumas o daños reales.\n- No usar niveles de consciencia para jerarquizar, juzgar o avergonzar a una persona.\n- No saltar a afirmaciones o espiritualidad antes de validar la emoción y el cuerpo.\n- No convertir accountability en culpa, autoataque o minimización del impacto de otros.\n- No presentar inferencias o contexto externo como citas literales de Mathew Micheletti y Ashley Cottrell.",
+      "preview": "- Si hay crisis aguda, ideación de daño, abuso, violencia o síntomas clínicos severos, priorizar seguridad y apoyo profesional. - No usar el marco para decirle al usuario que \"creó\" abusos, traumas o daños reales. - No u...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "consciousness",
+        "ego_self",
+        "shadow_work",
+        "root_beliefs",
+        "emotional_maturity"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and marked inferential framing from the source files; not a verbatim reproduction."
+    },
+    {
+      "id": "inner-work-individual-system/when-this-applies",
+      "article_id": "inner-work-individual-system",
+      "title": "Inner Work - Sistema Individual",
+      "section": "When This Applies",
+      "content": "- El usuario describe patrones repetidos que parecen tener vida propia.\n- Hay vergüenza, culpa, apatía, miedo, ira, orgullo, comparación o autoataque persistente.\n- El usuario pregunta por qué reacciona de forma intensa ante estímulos pequeños.\n- La persona identifica una lucha entre su yo condicionado y una parte más sabia o presente.\n- El usuario busca lenguaje para entender triggers, sombra, ego, Self, creencias-raíz o transformación interior.\n- Hay interés en usar el sufrimiento como señal de trabajo, no como identidad.",
+      "preview": "- El usuario describe patrones repetidos que parecen tener vida propia. - Hay vergüenza, culpa, apatía, miedo, ira, orgullo, comparación o autoataque persistente. - El usuario pregunta por qué reacciona de forma intensa...",
+      "domain": "self_improvement",
+      "language": "es",
+      "topics": [
+        "inner_work",
+        "consciousness",
+        "ego_self",
+        "shadow_work",
+        "root_beliefs",
+        "emotional_maturity"
+      ],
+      "source_notes": "- Source documents: `/Users/pedro/Desktop/Archivo/Inner Work/1-The-Inner-Work.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner_Work_Base_Conocimiento.pdf`, `/Users/pedro/Desktop/Archivo/Inner Work/Inner-Work-Base-de-Conocimiento.pdf`\n- Source: Mathew Micheletti and Ashley Cottrell, `The Inner Work: An Invitation to True Freedom and Lasting Happiness`\n- Curated as an internal brain article, consolidating overlapping user-provided knowledge documents.\n- Includes explicit source ideas, document-level synthesis, and marked inferential framing from the source files; not a verbatim reproduction."
     }
   ],
   "domains": {
-    "attachment": 90
+    "attachment": 90,
+    "relationships": 18,
+    "self_improvement": 18
   },
   "articles": {
     "secure-love-ch01-problem-beneath-problem": 9,
@@ -1733,6 +2419,10 @@
     "secure-love-ch06-prevent-negative-cycle-evict-shame": 9,
     "secure-love-ch07-reaching-and-responding": 9,
     "secure-love-ch08-repair-after-conflict": 9,
-    "secure-love-ch09-attachment-injuries-and-repair": 9
+    "secure-love-ch09-attachment-injuries-and-repair": 9,
+    "inner-work-relationships-eight-wounds": 9,
+    "inner-work-relationships-system": 9,
+    "inner-work-three-step-process": 9,
+    "inner-work-individual-system": 9
   }
 }
