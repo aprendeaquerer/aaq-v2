@@ -9,7 +9,7 @@ export interface LoginResponse {
 }
 
 export interface ChatResponse {
-  type: 'greeting' | 'test_question' | 'test_results' | 'conversation' | 'paywall' | 'partner_offer' | 'affirmation' | 'collecting_info';
+  type: 'session' | 'greeting' | 'test_question' | 'test_results' | 'conversation' | 'paywall' | 'partner_offer' | 'affirmation' | 'collecting_info';
   data: ChatData;
   language: string;
 }

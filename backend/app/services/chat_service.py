@@ -28,6 +28,37 @@ GUEST_MESSAGE_LIMIT = 15
 _guest_counts: Dict[str, int] = {}
 
 
+async def handle_session(
+    db: AsyncSession,
+    user: Optional[User],
+    language: str = "es",
+    guest_id: Optional[str] = None,
+    debug: bool = False,
+) -> ChatResponse:
+    """Return the opening UI state without creating a chat message."""
+    user_id = user.user_id if user else guest_id
+    profile = await _get_profile(db, user_id) if user and user_id else None
+
+    if not user_id:
+        response = _build_greeting_response(language, profile)
+        return _attach_state_debug(response, debug, "session_start", language, user_id, sm.ChatState.GREETING)
+
+    current_state = await _get_current_state(db, user_id)
+    if current_state == sm.ChatState.GREETING:
+        response = _build_greeting_response(language, profile)
+        return _attach_state_debug(response, debug, "session_start", language, user_id, current_state)
+
+    response = ChatResponse(
+        type="session",
+        data={
+            "state": current_state,
+            "message": "",
+        },
+        language=language,
+    )
+    return _attach_state_debug(response, debug, "session_resume", language, user_id, current_state)
+
+
 async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRequest) -> ChatResponse:
     """Main chat orchestrator."""
     language = request.language or "es"
@@ -48,19 +79,7 @@ async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRe
             )
 
     if not user_id:
-        return ChatResponse(
-            type="greeting",
-            data={
-                "message": _get_welcome_message(language),
-                "options": [
-                    {"id": "A", "text": _t("take_test", language)},
-                    {"id": "B", "text": _t("chat_now", language)},
-                    {"id": "C", "text": _t("learn_more", language)},
-                ],
-                "is_first_visit": True,
-            },
-            language=language,
-        )
+        return _build_greeting_response(language)
 
     # Load user state
     current_state = await _get_current_state(db, user_id)
@@ -116,9 +135,9 @@ async def _handle_greeting(
     db: AsyncSession, user_id: str, message: str, language: str, profile: Optional[UserProfile]
 ) -> ChatResponse:
     """Handle the initial greeting state."""
-    # If user sends a valid choice (A/B/C), advance the state
+    # If user sends a valid choice (A-D), move into conversation with a tailored opening.
     choice_upper = message.strip().upper()[:1]
-    if choice_upper in ("A", "B", "C"):
+    if choice_upper in ("A", "B", "C", "D"):
         next_state = sm.get_greeting_next_state(message)
         await _set_state(db, user_id, next_state)
 
@@ -139,24 +158,12 @@ async def _handle_greeting(
         # Chat mode
         return ChatResponse(
             type="conversation",
-            data={"message": _get_chat_start_message(language, profile)},
+            data={"message": _get_chat_start_message(language, profile, choice_upper)},
             language=language,
         )
 
     # No valid choice yet — show the welcome message with options
-    return ChatResponse(
-        type="greeting",
-        data={
-            "message": _get_welcome_message(language, profile),
-            "options": [
-                {"id": "A", "text": _t("take_test", language)},
-                {"id": "B", "text": _t("chat_now", language)},
-                {"id": "C", "text": _t("learn_more", language)},
-            ],
-            "is_first_visit": True,
-        },
-        language=language,
-    )
+    return _build_greeting_response(language, profile)
 
 
 async def _handle_test_answer(
@@ -528,15 +535,16 @@ def _is_initial_greeting_message(message: str) -> bool:
 
 
 def _is_greeting_choice(message: str) -> bool:
-    return message.strip().upper()[:1] in {"A", "B", "C"}
+    return message.strip().upper()[:1] in {"A", "B", "C", "D"}
 
 
 # --- i18n strings ---
 
 _TRANSLATIONS = {
-    "take_test": {"es": "Hacer el test de apego", "en": "Take the attachment test", "ru": "Пройти тест привязанности"},
-    "chat_now": {"es": "Prefiero charlar", "en": "I prefer to chat", "ru": "Я предпочитаю поговорить"},
-    "learn_more": {"es": "Quiero saber mas sobre el apego", "en": "I want to learn about attachment", "ru": "Хочу узнать о привязанности"},
+    "tell_me_about_you": {"es": "Cuéntame sobre ti", "en": "Tell me about yourself", "ru": "Расскажите мне о себе"},
+    "ask_me_questions": {"es": "Hacerme preguntas", "en": "Ask me questions", "ru": "Задать мне вопросы"},
+    "share_goals": {"es": "Darme tus objetivos", "en": "Give me your goals", "ru": "Рассказать мне о ваших целях"},
+    "just_talk": {"es": "Solo quiero hablar", "en": "I just want to talk", "ru": "Я просто хочу поговорить"},
     "invalid_option": {"es": "Por favor, elige una opcion (A, B, C o D)", "en": "Please choose an option (A, B, C, or D)", "ru": "Пожалуйста, выберите вариант (A, B, C или D)"},
     "partner_test_offer": {"es": "Ahora puedes hacer el test sobre tu pareja para conocer su estilo de apego y la dinamica de tu relacion.", "en": "Now you can take the test about your partner to learn their attachment style and your relationship dynamic.", "ru": "Теперь вы можете пройти тест о вашем партнере."},
     "yes_partner_test": {"es": "Si, quiero hacer el test de mi pareja", "en": "Yes, I want to take the partner test", "ru": "Да, хочу пройти тест партнера"},
@@ -549,17 +557,64 @@ def _t(key: str, language: str) -> str:
     return _TRANSLATIONS.get(key, {}).get(language, _TRANSLATIONS.get(key, {}).get("es", key))
 
 
+def _build_greeting_response(language: str, profile: Optional[UserProfile] = None) -> ChatResponse:
+    return ChatResponse(
+        type="greeting",
+        data={
+            "message": _get_welcome_message(language, profile),
+            "options": [
+                {"id": "A", "text": _t("tell_me_about_you", language)},
+                {"id": "B", "text": _t("ask_me_questions", language)},
+                {"id": "C", "text": _t("share_goals", language)},
+                {"id": "D", "text": _t("just_talk", language)},
+            ],
+            "is_first_visit": True,
+        },
+        language=language,
+    )
+
+
 def _get_welcome_message(language: str, profile: Optional[UserProfile] = None) -> str:
     name = profile.nombre if profile and profile.nombre else ""
+    es_intro = f"{name}, soy Eldric." if name else "Soy Eldric."
+    en_intro = f"{name}, I'm Eldric." if name else "I'm Eldric."
+    ru_intro = f"{name}, я Эльдрик." if name else "Я Эльдрик."
     messages = {
-        "es": f"Hola{' ' + name if name else ''}! Soy Eldric, tu coach emocional. Estoy aqui para ayudarte a entender mejor tus relaciones y tu estilo de apego. Que te gustaria hacer?",
-        "en": f"Hi{' ' + name if name else ''}! I'm Eldric, your emotional coach. I'm here to help you better understand your relationships and attachment style. What would you like to do?",
-        "ru": f"Привет{' ' + name if name else ''}! Я Эльдрик, ваш эмоциональный коуч. Я здесь, чтобы помочь вам лучше понять ваши отношения. Что бы вы хотели сделать?",
+        "es": f"{es_intro} Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+        "en": f"{en_intro} I'm here to help you improve your relationships, with other people and with yourself. The more I know you, the more I can help. What would you like to do now?",
+        "ru": f"{ru_intro} Я здесь, чтобы помочь вам улучшить отношения с другими людьми и с собой. Чем лучше я вас узнаю, тем точнее смогу помочь. Что вы хотите сделать сейчас?",
     }
     return messages.get(language, messages["es"])
 
 
-def _get_chat_start_message(language: str, profile: Optional[UserProfile] = None) -> str:
+def _get_chat_start_message(language: str, profile: Optional[UserProfile] = None, choice: str = "") -> str:
+    name = profile.nombre if profile and profile.nombre else ""
+    choice = choice.upper()
+    by_choice = {
+        "A": {
+            "es": f"Me encantará conocerte{' ' + name if name else ''}. Cuéntame lo que sientas importante: quién eres, qué estás viviendo ahora, y qué te gustaría entender o cambiar.",
+            "en": f"I'd love to get to know you{' ' + name if name else ''}. Tell me what feels important: who you are, what you're living through, and what you'd like to understand or change.",
+            "ru": f"Мне будет радостно узнать вас лучше{' ' + name if name else ''}. Расскажите, что кажется важным: кто вы, что сейчас происходит и что вы хотите понять или изменить.",
+        },
+        "B": {
+            "es": "Claro. Empezamos suave: ¿qué área de tu vida relacional te gustaría entender mejor ahora mismo?",
+            "en": "Of course. Let's start gently: what area of your relational life would you like to understand better right now?",
+            "ru": "Конечно. Начнем мягко: какую часть вашей жизни в отношениях вы хотите лучше понять прямо сейчас?",
+        },
+        "C": {
+            "es": "Perfecto. Dame tus objetivos en tus palabras. Pueden ser concretos o todavía confusos; yo te ayudo a ordenarlos.",
+            "en": "Perfect. Give me your goals in your own words. They can be concrete or still messy; I'll help you organize them.",
+            "ru": "Отлично. Расскажите о целях своими словами. Они могут быть конкретными или пока неясными; я помогу их упорядочить.",
+        },
+        "D": {
+            "es": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+            "en": "I'm with you. Write however it comes out; it doesn't need to be perfectly organized.",
+            "ru": "Я с вами. Пишите так, как получается; не нужно сразу все идеально формулировать.",
+        },
+    }
+    if choice in by_choice:
+        return by_choice[choice].get(language, by_choice[choice]["es"])
+
     messages = {
         "es": "Genial! Cuentame, como van las cosas? Estoy aqui para lo que necesites.",
         "en": "Great! Tell me, how are things going? I'm here for whatever you need.",

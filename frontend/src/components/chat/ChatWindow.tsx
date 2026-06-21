@@ -20,24 +20,24 @@ type ChatTab = 'chat' | BrainTab;
 export default function ChatWindow() {
   const { language } = useLanguage();
   const { isAuthenticated } = useAuth();
-  const { messages, isLoading, debugSessions, sendMessage } = useChat(language);
+  const { messages, isLoading, debugSessions, initializeSession, sendMessage } = useChat(language);
   const [activeTab, setActiveTab] = useState<ChatTab>('chat');
   const memoryRefreshKey = messages.length + debugSessions.length;
   const scrollRef = useRef<HTMLDivElement>(null);
-  const greetingSent = useRef(false);
+  const sessionInitialized = useRef(false);
 
   // Auto-scroll to bottom
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
   }, [messages, isLoading]);
 
-  // Send initial greeting once (ref prevents React strict mode double-fire)
+  // Load opening session once (ref prevents React strict mode double-fire)
   useEffect(() => {
-    if (!greetingSent.current) {
-      greetingSent.current = true;
-      sendMessage('saludo inicial', isAuthenticated);
+    if (!sessionInitialized.current) {
+      sessionInitialized.current = true;
+      initializeSession(isAuthenticated);
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [initializeSession, isAuthenticated]);
 
   const handleSend = (text: string) => {
     sendMessage(text, isAuthenticated);

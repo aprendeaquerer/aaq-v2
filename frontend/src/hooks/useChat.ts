@@ -32,6 +32,83 @@ export function useChat(language: string = 'es') {
     return guestIdRef.current;
   }, []);
 
+  const initializeSession = useCallback(
+    async (isAuthenticated: boolean) => {
+      setIsLoading(true);
+      const debugSessionId = generateId();
+
+      try {
+        const guestId = isAuthenticated ? undefined : getGuestId();
+        const response = await api.getChatSession(language, guestId, true);
+        setLastResponse(response);
+
+        const trace = response.data.debug as BotDebugTrace | undefined;
+        if (trace) {
+          setDebugSessions((prev) => [
+            ...prev,
+            {
+              id: debugSessionId,
+              userMessage: response.type === 'greeting' ? 'Session start' : 'Session resume',
+              status: 'complete',
+              startedAt: new Date(),
+              completedAt: new Date(),
+              trace,
+            },
+          ]);
+        }
+
+        if (response.type === 'greeting' && response.data.message) {
+          const assistantMessage: ChatMessage = {
+            id: generateId(),
+            role: 'assistant',
+            content: response.data.message,
+            type: response.type,
+            data: response.data,
+            timestamp: new Date(),
+          };
+          setMessages((prev) =>
+            prev.some((msg) => msg.role === 'assistant' && msg.type === 'greeting')
+              ? prev
+              : [...prev, assistantMessage]
+          );
+        }
+      } catch (error) {
+        setDebugSessions((prev) => [
+          ...prev,
+          {
+            id: debugSessionId,
+            userMessage: 'Session start',
+            status: 'error',
+            startedAt: new Date(),
+            completedAt: new Date(),
+            trace: {
+              enabled: true,
+              mode: 'frontend_trace',
+              note: 'The session request failed before a backend debug trace was returned.',
+              reasoning_summary: 'The frontend session request failed.',
+              steps: [
+                {
+                  stage: 'error',
+                  title: 'Session request failed',
+                  detail: error instanceof Error ? error.message : 'Unknown error',
+                  payload: {
+                    api_url: API_URL,
+                    request_url: `${API_URL}/chat/session`,
+                    page_url: window.location.href,
+                    online: navigator.onLine,
+                  },
+                },
+              ],
+            },
+          },
+        ]);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [language, getGuestId]
+  );
+
   const sendMessage = useCallback(
     async (text: string, isAuthenticated: boolean) => {
       // Add user message to chat
@@ -128,5 +205,5 @@ export function useChat(language: string = 'es') {
     setDebugSessions([]);
   }, []);
 
-  return { messages, isLoading, lastResponse, debugSessions, sendMessage, clearMessages };
+  return { messages, isLoading, lastResponse, debugSessions, initializeSession, sendMessage, clearMessages };
 }

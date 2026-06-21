@@ -1,6 +1,6 @@
 from typing import Optional
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.session import get_db
@@ -9,6 +9,18 @@ from app.models.user import User
 from app.schemas.message import ChatRequest, ChatResponse
 
 router = APIRouter(prefix="/chat", tags=["chat"])
+
+
+@router.get("/session", response_model=ChatResponse)
+async def get_session(
+    language: str = Query("es"),
+    guest_id: Optional[str] = Query(None),
+    debug: bool = Query(False),
+    user: Optional[User] = Depends(get_optional_user),
+    db: AsyncSession = Depends(get_db),
+):
+    from app.services.chat_service import handle_session
+    return await handle_session(db, user, language=language, guest_id=guest_id, debug=debug)
 
 
 @router.post("/message", response_model=ChatResponse)

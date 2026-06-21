@@ -91,12 +91,8 @@ def get_next_test_state(current_state: str) -> str:
 def get_greeting_next_state(user_choice: str) -> str:
     """Determine next state from greeting menu choice."""
     choice = user_choice.strip().upper()
-    if choice.startswith("A"):
-        return ChatState.SELF_Q1
-    elif choice.startswith("B"):
+    if choice.startswith(("A", "B", "C", "D")):
         return ChatState.CONVERSATION
-    elif choice.startswith("C"):
-        return ChatState.CONVERSATION  # Info about attachment theory
     return ChatState.CONVERSATION
 
 

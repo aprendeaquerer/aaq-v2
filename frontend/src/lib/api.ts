@@ -114,6 +114,19 @@ export async function verifyEmail(email: string, code: string) {
 
 // --- Chat ---
 
+export async function getChatSession(
+  language: string = 'es',
+  guestId?: string,
+  debug: boolean = false
+): Promise<ChatResponse> {
+  const params = new URLSearchParams({ language, debug: String(debug) });
+  if (guestId) params.set('guest_id', guestId);
+
+  const res = await fetchWithAuth(`${API_URL}/chat/session?${params.toString()}`);
+  if (!res.ok) throw new Error('Failed to load chat session');
+  return res.json();
+}
+
 export async function sendMessage(
   message: string,
   language: string = 'es',
