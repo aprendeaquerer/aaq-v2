@@ -39,8 +39,18 @@ export default function ChatWindow() {
     }
   }, [initializeSession, isAuthenticated]);
 
+  const getOptionDisplayText = (text: string) => {
+    const optionId = text.trim().toUpperCase();
+    if (!['A', 'B', 'C', 'D'].includes(optionId)) return undefined;
+
+    const optionMessage = [...messages]
+      .reverse()
+      .find((msg) => msg.role === 'assistant' && msg.data?.options);
+    return optionMessage?.data?.options?.find((opt) => opt.id === optionId)?.text;
+  };
+
   const handleSend = (text: string) => {
-    sendMessage(text, isAuthenticated);
+    sendMessage(text, isAuthenticated, getOptionDisplayText(text));
   };
 
   const handleOptionSend = (optionId: string, optionText: string) => {

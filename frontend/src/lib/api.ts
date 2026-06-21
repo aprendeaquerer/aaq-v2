@@ -162,8 +162,15 @@ export async function sendMessage(
     method: 'POST',
     body: JSON.stringify(body),
   });
-  if (!res.ok) throw new Error('Failed to send message');
-  return res.json();
+  if (res.ok) return res.json();
+
+  const fallbackRes = await fetchWithoutAuth(`${API_URL}/chat/message`, {
+    method: 'POST',
+    body: JSON.stringify(body),
+  });
+  if (fallbackRes.ok) return fallbackRes.json();
+
+  throw await responseError(res, 'Failed to send message');
 }
 
 // --- Profile ---

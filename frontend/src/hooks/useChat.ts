@@ -147,7 +147,7 @@ export function useChat(language: string = 'es') {
       ]);
 
       try {
-        const guestId = isAuthenticated ? undefined : getGuestId();
+        const guestId = getGuestId();
         const response = await api.sendMessage(text, language, guestId, true);
         setLastResponse(response);
         const trace = response.data.debug as BotDebugTrace | undefined;
