@@ -58,6 +58,10 @@ async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRe
     profile = await _get_profile(db, user_id) if user else None
     message = request.message.strip()
 
+    if _is_initial_greeting_message(message):
+        response = await _handle_greeting(db, user_id, "", language, profile)
+        return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
+
     # Route based on state
     if current_state == sm.ChatState.GREETING:
         response = await _handle_greeting(db, user_id, message, language, profile)
@@ -476,6 +480,10 @@ def _attach_state_debug(
         response_type=response.type,
     )
     return response
+
+
+def _is_initial_greeting_message(message: str) -> bool:
+    return message.strip().lower() in {"saludo inicial", "initial greeting"}
 
 
 # --- i18n strings ---
