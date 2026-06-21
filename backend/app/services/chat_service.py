@@ -48,8 +48,16 @@ async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRe
 
     if not user_id:
         return ChatResponse(
-            type="conversation",
-            data={"message": _get_greeting_message(language)},
+            type="greeting",
+            data={
+                "message": _get_welcome_message(language),
+                "options": [
+                    {"id": "A", "text": _t("take_test", language)},
+                    {"id": "B", "text": _t("chat_now", language)},
+                    {"id": "C", "text": _t("learn_more", language)},
+                ],
+                "is_first_visit": True,
+            },
             language=language,
         )
 
