@@ -1,4 +1,7 @@
-export const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000').trim().replace(/\/$/, '');
+export const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000')
+  .replace(/\\n/g, '')
+  .trim()
+  .replace(/\/$/, '');
 
 export const LANGUAGES = ['es', 'en', 'ru'] as const;
 export type Language = (typeof LANGUAGES)[number];
