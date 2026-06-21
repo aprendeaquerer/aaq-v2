@@ -72,8 +72,11 @@ async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRe
 
     # Route based on state
     if current_state == sm.ChatState.GREETING:
-        response = await _handle_greeting(db, user_id, message, language, profile)
-        return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
+        if _is_greeting_choice(message):
+            response = await _handle_greeting(db, user_id, message, language, profile)
+            return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
+        await _set_state(db, user_id, sm.ChatState.CONVERSATION)
+        return await _handle_conversation(db, user_id, message, language, profile, request.debug, current_state)
 
     if sm.is_test_state(current_state):
         response = await _handle_test_answer(db, user_id, current_state, message, language)
@@ -492,6 +495,10 @@ def _attach_state_debug(
 
 def _is_initial_greeting_message(message: str) -> bool:
     return message.strip().lower() in {"saludo inicial", "initial greeting"}
+
+
+def _is_greeting_choice(message: str) -> bool:
+    return message.strip().upper()[:1] in {"A", "B", "C"}
 
 
 # --- i18n strings ---
