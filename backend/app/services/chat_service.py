@@ -102,16 +102,19 @@ async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRe
         return await _handle_conversation(db, user_id, message, language, profile, request.debug, current_state)
 
     if sm.is_test_state(current_state):
+        capture_info = await _capture_guided_message_data(db, user_id, message, language)
         response = await _handle_test_answer(db, user_id, current_state, message, language)
-        return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
+        return _attach_state_debug(response, request.debug, message, language, user_id, current_state, capture_info)
 
     if current_state == sm.ChatState.SELF_RESULTS:
+        capture_info = await _capture_guided_message_data(db, user_id, message, language)
         response = await _handle_post_results(db, user_id, message, language, user)
-        return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
+        return _attach_state_debug(response, request.debug, message, language, user_id, current_state, capture_info)
 
     if current_state == sm.ChatState.PARTNER_OFFER:
+        capture_info = await _capture_guided_message_data(db, user_id, message, language)
         response = await _handle_partner_offer(db, user_id, message, language)
-        return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
+        return _attach_state_debug(response, request.debug, message, language, user_id, current_state, capture_info)
 
     if current_state == sm.ChatState.PARTNER_RESULTS:
         response = await _handle_partner_results(db, user_id, language)
@@ -123,12 +126,13 @@ async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRe
             await _set_state(db, user_id, sm.ChatState.CONVERSATION)
             current_state = sm.ChatState.CONVERSATION
         else:
+            capture_info = await _capture_guided_message_data(db, user_id, message, language)
             response = ChatResponse(
                 type="paywall",
                 data={"message": _get_paywall_message(language)},
                 language=language,
             )
-            return _attach_state_debug(response, request.debug, message, language, user_id, current_state)
+            return _attach_state_debug(response, request.debug, message, language, user_id, current_state, capture_info)
 
     # Default: conversation mode with AI
     return await _handle_conversation(db, user_id, message, language, profile, request.debug, current_state)
@@ -453,6 +457,36 @@ async def _handle_conversation(
 
 # --- Helper functions ---
 
+async def _capture_guided_message_data(
+    db: AsyncSession,
+    user_id: str,
+    message: str,
+    language: str,
+) -> Dict[str, object]:
+    profile_updates = {}
+    profile_capture_error = None
+    memory_candidates = []
+    memory_capture_error = None
+
+    try:
+        profile_updates = await capture_profile_fields(db, user_id, message)
+    except Exception as exc:
+        await db.rollback()
+        profile_capture_error = f"{type(exc).__name__}: {str(exc)[:300]}"
+
+    try:
+        memory_candidates = await capture_candidate_memories(db, user_id, message, language)
+    except Exception as exc:
+        await db.rollback()
+        memory_capture_error = f"{type(exc).__name__}: {str(exc)[:300]}"
+
+    return {
+        "profile_updates": profile_updates,
+        "profile_capture_error": profile_capture_error,
+        "memory_candidates": memory_candidates,
+        "memory_capture_error": memory_capture_error,
+    }
+
 async def _get_current_state(db: AsyncSession, user_id: str) -> str:
     result = await db.execute(
         select(TestState.state).where(TestState.user_id == user_id).order_by(TestState.created_at.desc())
@@ -463,7 +497,7 @@ async def _get_current_state(db: AsyncSession, user_id: str) -> str:
 
 async def _set_state(db: AsyncSession, user_id: str, state: str) -> None:
     result = await db.execute(select(TestState).where(TestState.user_id == user_id).order_by(TestState.created_at.desc()))
-    test_state = result.scalar_one_or_none()
+    test_state = result.scalars().first()
     if test_state:
         test_state.state = state
     else:
@@ -541,6 +575,7 @@ def _attach_state_debug(
     language: str,
     user_id: Optional[str],
     current_state: str,
+    capture_info: Optional[Dict[str, object]] = None,
 ) -> ChatResponse:
     if not debug:
         return response
@@ -551,6 +586,33 @@ def _attach_state_debug(
         current_state=current_state,
         response_type=response.type,
     )
+    if capture_info:
+        response.data["debug"]["steps"].append({
+            "stage": "profile_capture",
+            "title": "Structured profile fields captured",
+            "detail": (
+                f"{len(capture_info.get('profile_updates') or {})} structured profile fields were updated from the user message."
+                if not capture_info.get("profile_capture_error")
+                else "Profile capture failed, so the guided response continued without profile updates."
+            ),
+            "payload": {
+                "updates": capture_info.get("profile_updates") or {},
+                "error": capture_info.get("profile_capture_error"),
+            },
+        })
+        response.data["debug"]["steps"].append({
+            "stage": "memory_capture",
+            "title": "Candidate memories captured",
+            "detail": (
+                f"{len(capture_info.get('memory_candidates') or [])} candidate memories were written to the user memory brain."
+                if not capture_info.get("memory_capture_error")
+                else "Memory capture failed, so the guided response continued without new memories."
+            ),
+            "payload": {
+                "candidates": capture_info.get("memory_candidates") or [],
+                "error": capture_info.get("memory_capture_error"),
+            },
+        })
     return response
 
 

@@ -71,8 +71,10 @@ def _extract_profile_updates(message: str) -> Dict[str, object]:
     user_name = _first_name_match(
         text,
         (
-            r"\b(?:me llamo|mi nombre es|soy)\s+([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)\b",
-            r"\b(?:my name is|i am|i'm)\s+([A-Za-z][\w-]+)\b",
+            r"\b(?:me llamo|mi nombre es)\s+([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)\b",
+            r"^\s*soy\s+([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)(?=\s*(?:,|\.|;|y tengo|tengo|$))",
+            r"\b(?:my name is)\s+([A-Za-z][\w-]+)\b",
+            r"^\s*(?:i am|i'm)\s+([A-Za-z][\w-]+)(?=\s*(?:,|\.|;|and i am|i am|$))",
         ),
     )
     if user_name:

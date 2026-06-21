@@ -61,13 +61,22 @@ async def capture_candidate_memories(
 def _extract_candidates(message: str, language: str) -> List[Dict]:
     text = " ".join(message.strip().split())
     lower = text.lower()
+    if _is_low_signal_message(lower):
+        return []
+
     candidates = []
 
     user_name_match = re.search(
-        r"\b(?:me llamo|mi nombre es|soy)\s+([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)\b",
+        r"\b(?:me llamo|mi nombre es)\s+([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)\b",
         text,
         flags=re.IGNORECASE,
     )
+    if not user_name_match:
+        user_name_match = re.search(
+            r"^\s*soy\s+([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)(?=\s*(?:,|\.|;|y tengo|tengo|$))",
+            text,
+            flags=re.IGNORECASE,
+        )
     if user_name_match:
         name = _format_name(user_name_match.group(1))
         if _looks_like_person_name(name):
@@ -120,12 +129,19 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
                 0.76,
             ))
 
+    candidates.extend(_extract_people_context(text))
+    candidates.extend(_extract_object_context(text))
+    candidates.extend(_extract_life_context(text))
+    candidates.extend(_extract_preferences_and_interests(text))
+    candidates.extend(_extract_values_context(text))
+
     if any(phrase in lower for phrase in (
         "me siento", "i feel", "siento que", "i get", "me molesta", "me duele",
         "me preocupa", "me frustra", "me da rabia", "no me gusta", "me da miedo",
         "me da ansiedad", "tengo miedo", "tengo ansiedad", "estoy triste",
         "estoy ansioso", "estoy ansiosa", "me siento inseguro", "me siento insegura",
         "me siento solo", "me siento sola", "me agobia", "me angustia",
+        "estoy confundido", "estoy confundida", "me cuesta", "i struggle",
     )):
         candidates.append(_candidate(
             "emotional_pattern",
@@ -139,6 +155,8 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
         "mi objetivo es", "mi objetivo seria", "mi objetivo sería", "mi meta es",
         "mi meta seria", "mi meta sería", "busco", "estoy intentando",
         "estoy tratando", "me encantaria", "me encantaría", "quiero aprender",
+        "quiero dejar de", "quiero empezar a", "tengo ganas de", "ojala",
+        "ojalá", "espero poder", "me gustaria poder", "me gustaría poder",
         "necesito aprender", "i want", "i would like", "i need", "my goal is",
         "my objective is", "i am trying to",
     )):
@@ -147,6 +165,14 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
             f"User expressed a possible goal or desire: {text}",
             f"You said this may matter to you: {text}",
             0.40,
+        ))
+
+    if _looks_like_support_interest(lower):
+        candidates.append(_candidate(
+            "support_interest",
+            f"User may be looking for support or resources: {text}",
+            f"You may be looking for support or resources around this: {text}",
+            0.36,
         ))
 
     if _looks_like_attachment_context(lower):
@@ -191,7 +217,169 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
             0.40,
         ))
 
-    return candidates[:6]
+    if _looks_like_knowledge_interest(lower):
+        candidates.append(_candidate(
+            "knowledge_interest",
+            f"User showed interest in a knowledge topic: {text}",
+            f"This topic may be useful to bring into future conversations: {text}",
+            0.34,
+        ))
+
+    if not candidates and _looks_like_personal_context(lower):
+        candidates.append(_candidate(
+            "personal_context",
+            f"User shared personal context: {text}",
+            f"You shared this personal context: {text}",
+            0.30,
+        ))
+
+    return _dedupe_candidates(candidates)[:10]
+
+
+def _is_low_signal_message(lower: str) -> bool:
+    normalized = _normalize(lower)
+    return normalized in {
+        "",
+        "a",
+        "b",
+        "c",
+        "d",
+        "hola",
+        "hello",
+        "hi",
+        "ok",
+        "okay",
+        "vale",
+        "gracias",
+        "thanks",
+        "session_start",
+        "saludo inicial",
+    }
+
+
+def _extract_people_context(text: str) -> List[Dict]:
+    people = []
+    relationship_pattern = re.compile(
+        r"\bmi\s+(madre|mama|mamá|padre|papa|papá|hermana|hermano|hija|hijo|"
+        r"amiga|amigo|ex|jefa|jefe|terapeuta|coach|mentor|mentora)\s+"
+        r"(?:se llama|es)\s+([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)",
+        flags=re.IGNORECASE,
+    )
+    for relation, raw_name in relationship_pattern.findall(text):
+        name = _format_name(raw_name)
+        if _looks_like_person_name(name):
+            people.append(_candidate(
+                "important_person",
+                f"The user mentioned {relation} named {name}.",
+                f"{name} may be an important person for you ({relation}).",
+                0.70,
+            ))
+    informal_pattern = re.compile(
+        r"\bmi\s+(madre|mama|mamá|padre|papa|papá|hermana|hermano|hija|hijo|"
+        r"amiga|amigo|ex|jefa|jefe|terapeuta|coach|mentor|mentora)\s+"
+        r"([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)\b",
+        flags=re.IGNORECASE,
+    )
+    for relation, raw_name in informal_pattern.findall(text):
+        name = _format_name(raw_name)
+        if _looks_like_person_name(name):
+            people.append(_candidate(
+                "important_person",
+                f"The user mentioned {relation} named {name}.",
+                f"{name} may be an important person for you ({relation}).",
+                0.58,
+            ))
+    lower = text.lower()
+    if any(term in lower for term in ("mi ex", "my ex")):
+        people.append(_candidate(
+            "important_person",
+            f"User mentioned an ex-partner in this context: {text}",
+            f"An ex-partner may matter in this context: {text}",
+            0.46,
+        ))
+    return people
+
+
+def _extract_object_context(text: str) -> List[Dict]:
+    lower = text.lower()
+    object_terms = (
+        "mi casa", "mi piso", "mi coche", "mi negocio", "mi empresa",
+        "mi proyecto", "mi libro", "mi diario", "mi cuerpo", "mi salud",
+        "mi rutina", "mi ciudad", "my house", "my car", "my business",
+        "my company", "my project", "my book", "my journal", "my body",
+        "my health", "my routine", "my city",
+    )
+    if not any(term in lower for term in object_terms):
+        return []
+    return [_candidate(
+        "object_or_project_context",
+        f"User mentioned an object, project, place, or life area that matters: {text}",
+        f"This object, project, place, or life area may matter later: {text}",
+        0.38,
+    )]
+
+
+def _extract_life_context(text: str) -> List[Dict]:
+    lower = text.lower()
+    contexts = []
+    if any(phrase in lower for phrase in ("trabajo como", "trabajo en", "mi trabajo", "my job", "i work as", "i work in")):
+        contexts.append(_candidate(
+            "life_context",
+            f"User shared work context: {text}",
+            f"Your work context may matter later: {text}",
+            0.46,
+        ))
+    if any(phrase in lower for phrase in ("vivo en", "vivo con", "vivo solo", "vivo sola", "i live in", "i live with", "i live alone")):
+        contexts.append(_candidate(
+            "life_context",
+            f"User shared living context: {text}",
+            f"Your living context may matter later: {text}",
+            0.46,
+        ))
+    if any(phrase in lower for phrase in ("estudio", "estoy estudiando", "i study", "i am studying")):
+        contexts.append(_candidate(
+            "life_context",
+            f"User shared study context: {text}",
+            f"Your study context may matter later: {text}",
+            0.42,
+        ))
+    return contexts
+
+
+def _extract_preferences_and_interests(text: str) -> List[Dict]:
+    lower = text.lower()
+    interests = []
+    preference_terms = (
+        "me gusta", "me gustan", "me encanta", "me encantan", "disfruto",
+        "prefiero", "no me gusta", "odio", "me interesa", "me interesan",
+        "estoy aprendiendo", "leo sobre", "i like", "i love", "i prefer",
+        "i dislike", "i hate", "i am interested in", "i'm interested in",
+    )
+    if any(term in lower for term in preference_terms):
+        interests.append(_candidate(
+            "interest_or_preference",
+            f"User shared an interest or preference: {text}",
+            f"This interest or preference may help personalize future conversations: {text}",
+            0.42,
+        ))
+    return interests
+
+
+def _extract_values_context(text: str) -> List[Dict]:
+    lower = text.lower()
+    value_terms = (
+        "para mi es importante", "para mí es importante", "valoro", "mis valores",
+        "necesito sentir", "me importa mucho", "no negocio", "my values",
+        "i value", "it matters to me", "important to me",
+    )
+    if not any(term in lower for term in value_terms):
+        return []
+    return [_candidate(
+        "value_or_need",
+        f"User described a value or need: {text}",
+        f"This value or need may matter later: {text}",
+        0.48,
+    )]
 
 
 def _looks_like_relationship_pattern(lower: str) -> bool:
@@ -251,6 +439,62 @@ def _looks_like_attachment_context(lower: str) -> bool:
         "ella", "el ", "él", "my partner", "girlfriend", "boyfriend", "wife", "husband",
     )
     return any(term in lower for term in attachment_terms) and any(term in lower for term in relationship_terms)
+
+
+def _looks_like_support_interest(lower: str) -> bool:
+    support_terms = (
+        "coach", "terapeuta", "psicologo", "psicólogo", "terapia", "sesion",
+        "sesión", "curso", "libro", "recurso", "ejercicio", "recomendar",
+        "recomiendas", "ayuda profesional", "coach", "therapist", "therapy",
+        "book", "resource", "exercise", "recommend",
+    )
+    return any(term in lower for term in support_terms)
+
+
+def _looks_like_knowledge_interest(lower: str) -> bool:
+    knowledge_terms = (
+        "apego", "attachment", "vagal", "somatico", "somático", "meditacion",
+        "meditación", "masculinidad", "feminidad", "polaridad", "conciencia",
+        "consciousness", "self improvement", "autoconocimiento", "relaciones",
+        "relationship", "inner child", "niño interior", "herida", "trauma",
+    )
+    question_or_interest_terms = (
+        "que es", "qué es", "como funciona", "cómo funciona", "quiero saber",
+        "quiero entender", "me interesa", "explicame", "explícame", "what is",
+        "how does", "i want to understand", "tell me about",
+    )
+    return any(term in lower for term in knowledge_terms) and any(term in lower for term in question_or_interest_terms)
+
+
+def _looks_like_personal_context(lower: str) -> bool:
+    personal_terms = (
+        "yo", "me ", "mi ", "mis ", "conmigo", "mi pareja", "mi novia",
+        "mi novio", "mi familia", "mi trabajo", "my ", "i ", "me ",
+    )
+    relational_or_inner_terms = (
+        "relacion", "relación", "pareja", "novia", "novio", "familia",
+        "amigo", "amiga", "trabajo", "siento", "pienso", "creo",
+        "necesito", "quiero", "miedo", "ansiedad", "triste", "enfado",
+        "culpa", "verguenza", "vergüenza", "relationship", "partner",
+        "feel", "think", "need", "want", "fear", "anxiety", "sad",
+    )
+    return (
+        len(lower) >= 24
+        and any(term in lower for term in personal_terms)
+        and any(term in lower for term in relational_or_inner_terms)
+    )
+
+
+def _dedupe_candidates(candidates: List[Dict]) -> List[Dict]:
+    deduped = []
+    seen = set()
+    for candidate in candidates:
+        key = (candidate["type"], _normalize(candidate["summary"])[:140])
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(candidate)
+    return deduped
 
 
 def _candidate(memory_type: str, summary: str, curated_summary: str, confidence: float) -> Dict:

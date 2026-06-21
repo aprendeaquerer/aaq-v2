@@ -21,8 +21,9 @@ async def retrieve_user_memories(
         select(UserMemory)
         .where(
             UserMemory.user_id == user_id,
-            UserMemory.status == "active",
+            UserMemory.status.in_(("candidate", "active")),
             UserMemory.visibility != "hidden",
+            UserMemory.confidence >= 0.30,
         )
         .order_by(UserMemory.updated_at.desc())
         .limit(50)
@@ -48,7 +49,8 @@ async def retrieve_user_memories(
             "curated_summary": memory.curated_summary or memory.summary,
             "visibility": memory.visibility,
             "sensitivity": memory.sensitivity,
+            "status": memory.status,
+            "confidence": memory.confidence,
         }
         for memory in selected
     ]
-

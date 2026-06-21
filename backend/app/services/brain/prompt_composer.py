@@ -17,8 +17,16 @@ def compose_brain_prompt(base_prompt: str, context: BrainContext) -> str:
     if context.user_memories:
         memory_lines = ["\n\nRELEVANT USER MEMORY BRAIN:"]
         for index, memory in enumerate(context.user_memories, start=1):
-            memory_lines.append(f"{index}. ({memory['type']}) {memory['summary']}")
-        memory_lines.append("Use these memories only if they are directly relevant. Do not invent memories.")
+            confidence = memory.get("confidence")
+            confidence_text = f", confidence {confidence:.2f}" if isinstance(confidence, (int, float)) else ""
+            memory_lines.append(
+                f"{index}. ({memory['type']}, {memory.get('status', 'memory')}{confidence_text}) "
+                f"{memory.get('curated_summary') or memory['summary']}"
+            )
+        memory_lines.append(
+            "Use these memories only if they are directly relevant. Candidate memories are useful but uncertain; "
+            "treat them gently and do not overstate them. Do not invent memories."
+        )
         sections.append("\n".join(memory_lines))
 
     if sections:

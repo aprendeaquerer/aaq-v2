@@ -46,6 +46,8 @@ def build_conversation_debug(
             "summary": memory["summary"],
             "visibility": memory["visibility"],
             "sensitivity": memory["sensitivity"],
+            "status": memory.get("status"),
+            "confidence": memory.get("confidence"),
         }
         for memory in brain_context.user_memories
     ]
@@ -82,7 +84,7 @@ def build_conversation_debug(
         step(
             "memory_brain",
             "User memory brain searched",
-            f"{len(memories)} active memories matched the message.",
+            f"{len(memories)} visible active/candidate memories matched the message.",
             {"memories": memories},
         ),
         step(
