@@ -96,9 +96,13 @@ def brain_root() -> Path:
     return Path(__file__).resolve().parents[4] / "brain" / "knowledge"
 
 
+def packaged_brain_root() -> Path:
+    return Path(__file__).resolve().parents[2] / "data" / "brain" / "knowledge"
+
+
 @lru_cache(maxsize=1)
 def _load_chunks() -> Tuple[KnowledgeChunk, ...]:
-    root = brain_root()
+    root = brain_root() if brain_root().exists() else packaged_brain_root()
     if not root.exists():
         return ()
 
