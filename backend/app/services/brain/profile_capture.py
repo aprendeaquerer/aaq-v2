@@ -10,6 +10,7 @@ from app.models.user import User, UserProfile
 
 
 PROFILE_FIELDS = {
+    "nombre",
     "edad",
     "genero",
     "tiene_pareja",
@@ -63,6 +64,27 @@ def _extract_profile_updates(message: str) -> Dict[str, object]:
     lower = text.lower()
     updates: Dict[str, object] = {}
 
+    user_name = _first_name_match(
+        text,
+        (
+            r"\b(?:me llamo|mi nombre es|soy)\s+([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)\b",
+            r"\b(?:my name is|i am|i'm)\s+([A-Za-z][\w-]+)\b",
+        ),
+    )
+    if user_name:
+        updates["nombre"] = user_name
+
+    partner_name = _first_name_match(
+        text,
+        (
+            r"\b(?:mi pareja|mi novia|mi novio|mi mujer|mi marido|mi esposa|mi esposo)\s+(?:se llama|es)\s+([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)\b",
+            r"\b(?:my partner|my girlfriend|my boyfriend|my wife|my husband)\s+(?:is|is called|is named|name is)\s+([A-Za-z][\w-]+)\b",
+        ),
+    )
+    if partner_name:
+        updates["nombre_pareja"] = partner_name
+        updates["tiene_pareja"] = True
+
     user_age = _first_int_match(
         lower,
         (
@@ -77,6 +99,7 @@ def _extract_profile_updates(message: str) -> Dict[str, object]:
         lower,
         (
             r"\b(?:mi pareja|mi novia|mi novio|mi mujer|mi marido|ella|el|él)\s+(?:tiene|tendra|tendrá)\s+(\d{1,2})\s*(?:anos|años|years old)?\b",
+            r"\b(?:se llama|es)\s+[\wáéíóúñ-]+\s+y\s+tiene\s+(\d{1,2})\s*(?:anos|años)?\b",
             r"\b(?:my partner|my girlfriend|my boyfriend|my wife|my husband|she|he)\s+(?:is)\s+(\d{1,2})\s*(?:years old)?\b",
         ),
     )
@@ -124,6 +147,21 @@ def _first_int_match(text: str, patterns: tuple[str, ...]) -> Optional[int]:
         if match:
             return int(match.group(1))
     return None
+
+
+def _first_name_match(text: str, patterns: tuple[str, ...]) -> Optional[str]:
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            return _format_name(match.group(1))
+    return None
+
+
+def _format_name(name: str) -> str:
+    cleaned = name.strip(" .,;:!?")
+    if not cleaned:
+        return cleaned
+    return cleaned[0].upper() + cleaned[1:]
 
 
 def _detect_user_gender(lower: str) -> Optional[str]:

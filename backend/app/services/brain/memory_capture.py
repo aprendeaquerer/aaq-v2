@@ -63,15 +63,60 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
     lower = text.lower()
     candidates = []
 
-    partner_match = re.search(r"(?:mi pareja se llama|my partner is called|my partner's name is)\s+([A-ZÁÉÍÓÚÑ][\wáéíóúñ-]+)", text)
+    user_name_match = re.search(
+        r"\b(?:me llamo|mi nombre es|soy)\s+([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)\b",
+        text,
+        flags=re.IGNORECASE,
+    )
+    if user_name_match:
+        name = _format_name(user_name_match.group(1))
+        candidates.append(_candidate(
+            "profile_fact",
+            f"The user's name is {name}.",
+            f"Your name appears to be {name}.",
+            0.86,
+        ))
+
+    user_age_match = re.search(r"\b(?:tengo|yo tengo)\s+(\d{1,2})\s*(?:anos|años)?\b", lower)
+    if user_age_match:
+        age = int(user_age_match.group(1))
+        if 13 <= age <= 100:
+            candidates.append(_candidate(
+                "profile_fact",
+                f"The user is {age} years old.",
+                f"You appear to be {age} years old.",
+                0.82,
+            ))
+
+    partner_match = re.search(
+        r"(?:mi pareja|mi novia|mi novio|mi mujer|mi marido|mi esposa|mi esposo)\s+(?:se llama|es)\s+([A-Za-zÁÉÍÓÚÑáéíóúñ][\wáéíóúñ-]+)",
+        text,
+        flags=re.IGNORECASE,
+    )
     if partner_match:
-        name = partner_match.group(1)
+        name = _format_name(partner_match.group(1))
         candidates.append(_candidate(
             "relationship_context",
             f"The user's partner is named {name}.",
             f"Your partner's name appears to be {name}.",
             0.72,
         ))
+
+    partner_age_match = re.search(
+        r"\b(?:mi pareja|mi novia|mi novio|mi mujer|mi marido|mi esposa|mi esposo|ella|el|él)\s+(?:tiene|tendra|tendrá)\s+(\d{1,2})\s*(?:anos|años)?\b",
+        lower,
+    )
+    if not partner_age_match:
+        partner_age_match = re.search(r"\b(?:se llama|es)\s+[\wáéíóúñ-]+\s+y\s+tiene\s+(\d{1,2})\s*(?:anos|años)?\b", lower)
+    if partner_age_match:
+        age = int(partner_age_match.group(1))
+        if 13 <= age <= 100:
+            candidates.append(_candidate(
+                "relationship_context",
+                f"The user's partner is {age} years old.",
+                f"Your partner appears to be {age} years old.",
+                0.76,
+            ))
 
     if any(phrase in lower for phrase in (
         "me siento", "i feel", "siento que", "i get", "me molesta", "me duele",
@@ -126,7 +171,7 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
             0.40,
         ))
 
-    return candidates[:3]
+    return candidates[:6]
 
 
 def _looks_like_relationship_pattern(lower: str) -> bool:
@@ -183,6 +228,13 @@ def _candidate(memory_type: str, summary: str, curated_summary: str, confidence:
         "confidence": confidence,
         "sensitivity": "normal",
     }
+
+
+def _format_name(name: str) -> str:
+    cleaned = name.strip(" .,;:!?")
+    if not cleaned:
+        return cleaned
+    return cleaned[0].upper() + cleaned[1:]
 
 
 async def _similar_memory_exists(db: AsyncSession, user_id: str, summary: str) -> bool:

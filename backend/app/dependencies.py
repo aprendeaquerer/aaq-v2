@@ -36,14 +36,18 @@ async def get_optional_user(
     credentials: Optional[HTTPAuthorizationCredentials] = Depends(security),
     db: AsyncSession = Depends(get_db),
 ) -> Optional[User]:
-    """Returns the user if authenticated, None if not (for guest access)."""
+    """Returns the user if unauthenticated, but rejects stale/bad auth headers."""
     if not credentials:
         return None
 
     payload = decode_token(credentials.credentials)
     if not payload or payload.get("type") != "access":
-        return None
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
 
     user_id = payload.get("sub")
     result = await db.execute(select(User).where(User.user_id == user_id))
-    return result.scalar_one_or_none()
+    user = result.scalar_one_or_none()
+    if not user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
+
+    return user
