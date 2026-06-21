@@ -54,7 +54,8 @@ async def handle_session(
         data={
             "state": current_state,
             "message": "",
-            "messages": history,
+            "recap_message": _build_session_recap(history, language),
+            "history_count": len(history),
         },
         language=language,
     )
@@ -551,6 +552,52 @@ def _attach_state_debug(
         response_type=response.type,
     )
     return response
+
+
+def _build_session_recap(history: List[Dict[str, str]], language: str) -> str:
+    user_messages = [
+        _shorten_for_recap(message["content"])
+        for message in history
+        if message.get("role") == "user" and message.get("content")
+    ]
+    user_messages = [message for message in user_messages if message]
+    recent_topics = user_messages[-3:]
+
+    if language == "en":
+        if recent_topics:
+            topics = "; ".join(recent_topics)
+            return (
+                "To pick up where we left off: in our last conversation we were talking about "
+                f"{topics}. I have that context loaded internally, but I won't paste the whole old "
+                "conversation here. Do you want to continue from there, or start with something new?"
+            )
+        return "I have your previous context loaded. Do you want to continue from where we left off, or start with something new?"
+
+    if language == "ru":
+        if recent_topics:
+            topics = "; ".join(recent_topics)
+            return (
+                "Чтобы продолжить с того места, где мы остановились: в прошлый раз мы говорили о "
+                f"{topics}. Этот контекст у меня загружен, но я не буду вставлять сюда всю старую "
+                "переписку. Хотите продолжить оттуда или начать новую тему?"
+            )
+        return "У меня загружен предыдущий контекст. Хотите продолжить с того места, где остановились, или начать новую тему?"
+
+    if recent_topics:
+        topics = "; ".join(recent_topics)
+        return (
+            "Para retomar: en nuestra última conversación estuvimos hablando de "
+            f"{topics}. Tengo ese contexto cargado internamente, pero no voy a pegar toda la "
+            "conversación antigua aquí. ¿Quieres seguir desde ahí o empezar con algo nuevo?"
+        )
+    return "Tengo cargado tu contexto anterior. ¿Quieres seguir desde donde lo dejamos o empezar con algo nuevo?"
+
+
+def _shorten_for_recap(content: str, limit: int = 120) -> str:
+    normalized = " ".join(content.strip().split())
+    if len(normalized) <= limit:
+        return normalized
+    return normalized[: limit - 1].rstrip() + "…"
 
 
 def _is_initial_greeting_message(message: str) -> bool:

@@ -124,7 +124,17 @@ export function useChat(language: string = 'es') {
           );
         }
 
-        if (response.type === 'session' && Array.isArray(response.data.messages)) {
+        if (response.type === 'session' && response.data.recap_message) {
+          const recapMessage: ChatMessage = {
+            id: generateId(),
+            role: 'assistant',
+            content: response.data.recap_message,
+            type: response.type,
+            data: response.data,
+            timestamp: new Date(),
+          };
+          setMessages([recapMessage]);
+        } else if (response.type === 'session' && Array.isArray(response.data.messages)) {
           const restoredMessages = (response.data.messages as StoredChatMessage[])
             .filter((msg) => msg.content && (msg.role === 'user' || msg.role === 'assistant'))
             .map<ChatMessage>((msg) => ({

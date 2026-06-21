@@ -16,6 +16,8 @@ export interface ChatResponse {
 
 export type ChatData = Record<string, unknown> & {
   message?: string;
+  recap_message?: string;
+  history_count?: number;
   messages?: StoredChatMessage[];
   options?: TestOption[];
   debug?: BotDebugTrace;
