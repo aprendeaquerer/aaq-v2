@@ -1,5 +1,5 @@
 import { API_URL } from './constants';
-import type { LoginResponse, ChatResponse, UserProfile, UserMemory } from './types';
+import type { LoginResponse, ChatResponse, UserProfile, UserMemory, KnowledgeBrain } from './types';
 
 function getTokens(): { access: string | null; refresh: string | null } {
   if (typeof window === 'undefined') return { access: null, refresh: null };
@@ -162,6 +162,15 @@ export async function updateUserMemory(id: string, updates: Partial<UserMemory>)
     body: JSON.stringify(updates),
   });
   if (!res.ok) throw new Error('Failed to update memory');
+  return res.json();
+}
+
+// --- Brain ---
+
+export async function getKnowledgeBrain(language?: string): Promise<KnowledgeBrain> {
+  const query = language ? `?language=${encodeURIComponent(language)}` : '';
+  const res = await fetchWithAuth(`${API_URL}/brain/knowledge${query}`);
+  if (!res.ok) throw new Error('Failed to fetch knowledge brain');
   return res.json();
 }
 

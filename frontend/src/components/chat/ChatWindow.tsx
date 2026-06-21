@@ -12,10 +12,10 @@ import PaywallModal from './PaywallModal';
 import TypingIndicator from './TypingIndicator';
 import ChatInput from './ChatInput';
 import DebugPanel from './DebugPanel';
-import DataBrainPanel from './DataBrainPanel';
+import DataBrainPanel, { type BrainTab } from './DataBrainPanel';
 import type { TestQuestionData, TestResultsData } from '@/lib/types';
 
-type ChatTab = 'chat' | 'data' | 'live';
+type ChatTab = 'chat' | BrainTab;
 
 export default function ChatWindow() {
   const { language } = useLanguage();
@@ -57,9 +57,22 @@ export default function ChatWindow() {
           <TabButton active={activeTab === 'data'} onClick={() => setActiveTab('data')}>
             Data Brain
           </TabButton>
+          <TabButton active={activeTab === 'knowledge'} onClick={() => setActiveTab('knowledge')}>
+            Knowledge Brain
+          </TabButton>
           <TabButton active={activeTab === 'live'} onClick={() => setActiveTab('live')}>
             Live Fill
           </TabButton>
+          {activeTab !== 'chat' && (
+            <a
+              href={`/brain?tab=${activeTab}`}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded border border-[#042648]/15 bg-white px-3 py-2 text-sm font-semibold text-[#042648]/70 transition hover:bg-[#F8FAF7]"
+            >
+              Open in new window
+            </a>
+          )}
         </div>
       </div>
 

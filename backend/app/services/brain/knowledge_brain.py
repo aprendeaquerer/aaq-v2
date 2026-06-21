@@ -57,6 +57,22 @@ def retrieve_knowledge(message: str, language: str = "es", limit: int = 6) -> Li
     return results
 
 
+def list_knowledge_chunks(language: str = "", domain: str = "") -> List[KnowledgeChunk]:
+    chunks = _load_chunks()
+    if not chunks:
+        return []
+
+    filtered = []
+    for chunk in chunks:
+        if language and chunk.language not in (language, "multi", ""):
+            continue
+        if domain and chunk.domain != domain:
+            continue
+        filtered.append(chunk)
+
+    return sorted(filtered, key=lambda item: (item.domain, item.title, item.section))
+
+
 def route_domains(message: str) -> List[str]:
     text = message.lower()
     domains = []

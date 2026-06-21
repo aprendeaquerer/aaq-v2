@@ -105,6 +105,25 @@ export interface UserMemory {
   updated_at?: string;
 }
 
+export interface KnowledgeChunk {
+  id: string;
+  article_id: string;
+  title: string;
+  section: string;
+  content: string;
+  preview: string;
+  domain: string;
+  language: string;
+  topics: string[];
+  source_notes: string | null;
+}
+
+export interface KnowledgeBrain {
+  chunks: KnowledgeChunk[];
+  domains: Record<string, number>;
+  articles: Record<string, number>;
+}
+
 export interface ChatMessage {
   id: string;
   role: 'user' | 'assistant';

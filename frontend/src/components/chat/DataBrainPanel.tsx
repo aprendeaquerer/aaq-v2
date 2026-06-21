@@ -3,16 +3,18 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import * as api from '@/lib/api';
-import type { DebugSession, UserMemory } from '@/lib/types';
+import { useLanguage } from '@/hooks/useLanguage';
+import type { DebugSession, KnowledgeChunk, UserMemory } from '@/lib/types';
 
 type BrainMode = 'text' | 'constellation';
-type BrainTab = 'data' | 'live';
+export type BrainTab = 'data' | 'knowledge' | 'live';
 
 interface Props {
   activeTab: BrainTab;
   debugSessions: DebugSession[];
   isAuthenticated: boolean;
   refreshKey: number;
+  standalone?: boolean;
 }
 
 interface LiveCandidate {
@@ -39,11 +41,16 @@ export default function DataBrainPanel({
   debugSessions,
   isAuthenticated,
   refreshKey,
+  standalone = false,
 }: Props) {
+  const { language } = useLanguage();
   const [mode, setMode] = useState<BrainMode>('text');
   const [memories, setMemories] = useState<UserMemory[]>([]);
+  const [knowledgeChunks, setKnowledgeChunks] = useState<KnowledgeChunk[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isKnowledgeLoading, setIsKnowledgeLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [knowledgeError, setKnowledgeError] = useState<string | null>(null);
 
   const loadMemories = useCallback(async () => {
     if (!isAuthenticated) {
@@ -64,9 +71,28 @@ export default function DataBrainPanel({
     }
   }, [isAuthenticated]);
 
+  const loadKnowledge = useCallback(async () => {
+    setIsKnowledgeLoading(true);
+    try {
+      const brain = await api.getKnowledgeBrain(language);
+      setKnowledgeChunks(brain.chunks);
+      setKnowledgeError(null);
+    } catch (loadError) {
+      setKnowledgeError(loadError instanceof Error ? loadError.message : 'Failed to fetch knowledge brain');
+    } finally {
+      setIsKnowledgeLoading(false);
+    }
+  }, [language]);
+
   useEffect(() => {
     void loadMemories();
   }, [loadMemories, refreshKey]);
+
+  useEffect(() => {
+    if (activeTab === 'knowledge') {
+      void loadKnowledge();
+    }
+  }, [activeTab, loadKnowledge]);
 
   useEffect(() => {
     if (!isAuthenticated || activeTab !== 'live') return;
@@ -80,12 +106,72 @@ export default function DataBrainPanel({
 
   const liveCandidates = useMemo(() => extractLiveCandidates(debugSessions), [debugSessions]);
   const groupedMemories = useMemo(() => groupMemoriesByType(memories), [memories]);
+  const groupedKnowledge = useMemo(() => groupKnowledgeByDomain(knowledgeChunks), [knowledgeChunks]);
+
+  if (activeTab === 'knowledge') {
+    return (
+      <BrainShell
+        title="Knowledge Brain"
+        subtitle="File-backed relationship, attachment, somatics, polarity, and growth knowledge."
+        countLabel={isKnowledgeLoading ? 'Loading...' : `${knowledgeChunks.length} chunks`}
+        openHref="/brain?tab=knowledge"
+        standalone={standalone}
+        toolbar={<BrainModeToggle mode={mode} onChange={setMode} />}
+      >
+        {knowledgeError && (
+          <div className="mb-3 rounded border border-[#A33A3A]/25 bg-[#FFF0F0] px-3 py-2 text-sm text-[#7A1F1F]">
+            {knowledgeError}
+          </div>
+        )}
+
+        {knowledgeChunks.length === 0 && !isKnowledgeLoading && (
+          <div className="rounded border border-dashed border-[#042648]/25 bg-white px-4 py-6 text-sm text-[#042648]/70">
+            No knowledge chunks were loaded.
+          </div>
+        )}
+
+        {mode === 'text' && knowledgeChunks.length > 0 && (
+          <div className="min-h-0 flex-1 overflow-y-auto pr-1">
+            <div className="space-y-4">
+              {groupedKnowledge.map(([domain, rows], groupIndex) => (
+                <section key={domain}>
+                  <div className="mb-2 flex items-center gap-2">
+                    <span
+                      className="h-2.5 w-2.5 rounded-full"
+                      style={{ backgroundColor: getTypeColor(groupIndex).border }}
+                    />
+                    <h3 className="text-sm font-bold uppercase tracking-[0.06em] text-[#042648]/70">
+                      {formatType(domain)}
+                    </h3>
+                    <span className="text-xs text-[#042648]/45">{rows.length} chunks</span>
+                  </div>
+                  <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                    {rows.map((chunk) => (
+                      <KnowledgeCard key={chunk.id} chunk={chunk} />
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {mode === 'constellation' && knowledgeChunks.length > 0 && (
+          <div className="min-h-0 flex-1 overflow-hidden rounded border border-[#042648]/12 bg-white">
+            <KnowledgeConstellation chunks={knowledgeChunks} />
+          </div>
+        )}
+      </BrainShell>
+    );
+  }
 
   if (!isAuthenticated) {
     return (
       <BrainShell
         title={activeTab === 'data' ? 'Data Brain' : 'Live Fill'}
         subtitle="Sign in to see user memory data."
+        openHref={`/brain?tab=${activeTab}`}
+        standalone={standalone}
       >
         <div className="rounded border border-dashed border-[#042648]/25 bg-white px-4 py-6 text-sm text-[#042648]/70">
           Guest chats are not written into the persistent user data brain.
@@ -100,6 +186,8 @@ export default function DataBrainPanel({
         title="Live Fill"
         subtitle="Candidate memories captured from this chat session."
         countLabel={`${liveCandidates.length} events`}
+        openHref="/brain?tab=live"
+        standalone={standalone}
       >
         <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div className="min-h-0 overflow-y-auto pr-1">
@@ -146,27 +234,10 @@ export default function DataBrainPanel({
       title="Data Brain"
       subtitle="Persistent user-visible memories."
       countLabel={`${memories.length} memories`}
+      openHref="/brain?tab=data"
+      standalone={standalone}
       toolbar={
-        <div className="flex rounded border border-[#042648]/15 bg-white p-1">
-          <button
-            type="button"
-            onClick={() => setMode('text')}
-            className={`px-3 py-1.5 text-xs font-semibold transition ${
-              mode === 'text' ? 'bg-[#042648] text-white' : 'text-[#042648]/70 hover:bg-[#F8FAF7]'
-            }`}
-          >
-            Text
-          </button>
-          <button
-            type="button"
-            onClick={() => setMode('constellation')}
-            className={`px-3 py-1.5 text-xs font-semibold transition ${
-              mode === 'constellation' ? 'bg-[#042648] text-white' : 'text-[#042648]/70 hover:bg-[#F8FAF7]'
-            }`}
-          >
-            Constellation
-          </button>
-        </div>
+        <BrainModeToggle mode={mode} onChange={setMode} />
       }
     >
       {error && (
@@ -219,12 +290,16 @@ function BrainShell({
   title,
   subtitle,
   countLabel,
+  openHref,
+  standalone,
   toolbar,
   children,
 }: {
   title: string;
   subtitle: string;
   countLabel?: string;
+  openHref?: string;
+  standalone?: boolean;
   toolbar?: ReactNode;
   children: ReactNode;
 }) {
@@ -242,9 +317,44 @@ function BrainShell({
             </span>
           )}
           {toolbar}
+          {openHref && !standalone && (
+            <a
+              href={openHref}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded border border-[#042648]/15 bg-white px-3 py-1.5 text-xs font-semibold text-[#042648]/70 transition hover:bg-[#F8FAF7]"
+            >
+              Open in new window
+            </a>
+          )}
         </div>
       </div>
       <div className="flex min-h-0 flex-1 flex-col">{children}</div>
+    </div>
+  );
+}
+
+function BrainModeToggle({ mode, onChange }: { mode: BrainMode; onChange: (mode: BrainMode) => void }) {
+  return (
+    <div className="flex rounded border border-[#042648]/15 bg-white p-1">
+      <button
+        type="button"
+        onClick={() => onChange('text')}
+        className={`px-3 py-1.5 text-xs font-semibold transition ${
+          mode === 'text' ? 'bg-[#042648] text-white' : 'text-[#042648]/70 hover:bg-[#F8FAF7]'
+        }`}
+      >
+        Text
+      </button>
+      <button
+        type="button"
+        onClick={() => onChange('constellation')}
+        className={`px-3 py-1.5 text-xs font-semibold transition ${
+          mode === 'constellation' ? 'bg-[#042648] text-white' : 'text-[#042648]/70 hover:bg-[#F8FAF7]'
+        }`}
+      >
+        Constellation
+      </button>
     </div>
   );
 }
@@ -313,6 +423,33 @@ function LiveCandidateCard({ candidate, index }: { candidate: LiveCandidate; ind
           />
         </div>
       )}
+    </article>
+  );
+}
+
+function KnowledgeCard({ chunk }: { chunk: KnowledgeChunk }) {
+  return (
+    <article className="rounded border border-[#042648]/12 bg-white px-3 py-3">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <div className="text-sm font-bold">{chunk.title}</div>
+          <div className="mt-1 text-xs text-[#042648]/55">{chunk.section}</div>
+        </div>
+        <span className="rounded-full border border-[#042648]/15 bg-[#F8FAF7] px-2 py-0.5 text-[11px] font-semibold text-[#042648]/60">
+          {chunk.language || 'multi'}
+        </span>
+      </div>
+      <p className="mt-3 text-sm leading-relaxed text-[#042648]/78">{chunk.preview}</p>
+      <div className="mt-3 flex flex-wrap gap-1">
+        {chunk.topics.slice(0, 5).map((topic) => (
+          <span
+            key={`${chunk.id}-${topic}`}
+            className="rounded bg-[#FFF6EA] px-2 py-0.5 text-[11px] font-semibold text-[#042648]/58"
+          >
+            {formatType(topic)}
+          </span>
+        ))}
+      </div>
     </article>
   );
 }
@@ -399,6 +536,88 @@ function Constellation({ memories }: { memories: UserMemory[] }) {
   );
 }
 
+function KnowledgeConstellation({ chunks }: { chunks: KnowledgeChunk[] }) {
+  const nodes = useMemo(() => buildKnowledgeConstellationNodes(chunks), [chunks]);
+  const groups = useMemo(() => Array.from(new Set(chunks.map((chunk) => chunk.domain))), [chunks]);
+
+  return (
+    <div className="relative h-full min-h-[520px] w-full overflow-hidden">
+      <svg className="h-full w-full" viewBox="0 0 960 600" role="img" aria-label="Knowledge brain constellation">
+        <rect width="960" height="600" fill="#FFFFFF" />
+        {groups.map((domain, index) => {
+          const color = getTypeColor(index);
+          const center = knowledgeGroupCenter(index, groups.length);
+          const count = chunks.filter((chunk) => chunk.domain === domain).length;
+          return (
+            <g key={`knowledge-group-${domain}`}>
+              <circle
+                cx={center.x}
+                cy={center.y}
+                r="58"
+                fill={color.bg}
+                stroke={color.border}
+                strokeWidth="2"
+              />
+              <text
+                x={center.x}
+                y={center.y - 3}
+                textAnchor="middle"
+                className="fill-[#042648] text-[12px] font-bold"
+              >
+                {formatType(domain)}
+              </text>
+              <text
+                x={center.x}
+                y={center.y + 15}
+                textAnchor="middle"
+                className="fill-[#042648]/70 text-[11px]"
+              >
+                {count} chunks
+              </text>
+            </g>
+          );
+        })}
+
+        {nodes.map((node) => (
+          <line
+            key={`knowledge-line-${node.chunk.id}`}
+            x1={node.group.x}
+            y1={node.group.y}
+            x2={node.x}
+            y2={node.y}
+            stroke={node.color.border}
+            strokeOpacity="0.28"
+            strokeWidth="1.4"
+          />
+        ))}
+
+        {nodes.map((node) => (
+          <g key={node.chunk.id}>
+            <circle
+              cx={node.x}
+              cy={node.y}
+              r={node.radius}
+              fill={node.color.bg}
+              stroke={node.color.border}
+              strokeWidth="1.8"
+            />
+            <title>{`${node.chunk.title} - ${node.chunk.section}`}</title>
+          </g>
+        ))}
+      </svg>
+
+      <div className="absolute bottom-3 left-3 right-3 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+        {nodes.slice(0, 6).map((node) => (
+          <div key={`knowledge-legend-${node.chunk.id}`} className="rounded border border-[#042648]/10 bg-white/95 px-3 py-2 text-xs">
+            <div className="font-bold text-[#042648]">{node.chunk.title}</div>
+            <div className="mt-1 text-[#042648]/55">{formatType(node.chunk.domain)} / {node.chunk.section}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function StatusBadge({ status }: { status: string }) {
   const isActive = status === 'active';
   return (
@@ -447,6 +666,16 @@ function groupMemoriesByType(memories: UserMemory[]): [string, UserMemory[]][] {
   return Array.from(grouped.entries());
 }
 
+function groupKnowledgeByDomain(chunks: KnowledgeChunk[]): [string, KnowledgeChunk[]][] {
+  const grouped = new Map<string, KnowledgeChunk[]>();
+  chunks.forEach((chunk) => {
+    const rows = grouped.get(chunk.domain) || [];
+    rows.push(chunk);
+    grouped.set(chunk.domain, rows);
+  });
+  return Array.from(grouped.entries());
+}
+
 function buildConstellationNodes(memories: UserMemory[]) {
   const groups = Array.from(new Set(memories.map((memory) => memory.type)));
   return memories.map((memory, index) => {
@@ -467,6 +696,26 @@ function buildConstellationNodes(memories: UserMemory[]) {
   });
 }
 
+function buildKnowledgeConstellationNodes(chunks: KnowledgeChunk[]) {
+  const groups = Array.from(new Set(chunks.map((chunk) => chunk.domain)));
+  return chunks.map((chunk, index) => {
+    const groupIndex = groups.indexOf(chunk.domain);
+    const center = knowledgeGroupCenter(groupIndex, groups.length);
+    const sameDomainIndex = chunks.slice(0, index).filter((item) => item.domain === chunk.domain).length;
+    const angle = sameDomainIndex * 1.32 + groupIndex * 0.5;
+    const distance = 86 + (sameDomainIndex % 6) * 22;
+
+    return {
+      chunk,
+      group: center,
+      x: center.x + Math.cos(angle) * distance,
+      y: center.y + Math.sin(angle) * distance,
+      radius: 8 + Math.min(9, chunk.topics.length * 1.8),
+      color: getTypeColor(groupIndex),
+    };
+  });
+}
+
 function groupCenter(index: number, total: number) {
   const centerX = 450;
   const centerY = 260;
@@ -475,6 +724,20 @@ function groupCenter(index: number, total: number) {
   const angle = (Math.PI * 2 * index) / total - Math.PI / 2;
   const radiusX = 245;
   const radiusY = 145;
+  return {
+    x: centerX + Math.cos(angle) * radiusX,
+    y: centerY + Math.sin(angle) * radiusY,
+  };
+}
+
+function knowledgeGroupCenter(index: number, total: number) {
+  const centerX = 480;
+  const centerY = 285;
+  if (total <= 1) return { x: centerX, y: centerY };
+
+  const angle = (Math.PI * 2 * index) / total - Math.PI / 2;
+  const radiusX = 285;
+  const radiusY = 175;
   return {
     x: centerX + Math.cos(angle) * radiusX,
     y: centerY + Math.sin(angle) * radiusY,
