@@ -63,5 +63,6 @@ def _to_response(memory: UserMemory) -> UserMemoryResponse:
         sensitivity=memory.sensitivity,
         confidence=memory.confidence,
         status=memory.status,
+        created_at=memory.created_at,
+        updated_at=memory.updated_at,
     )
-

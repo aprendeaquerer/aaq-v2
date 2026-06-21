@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List, Optional
 
 from pydantic import BaseModel
@@ -12,6 +13,8 @@ class UserMemoryResponse(BaseModel):
     sensitivity: str
     confidence: float
     status: str
+    created_at: datetime
+    updated_at: datetime
 
 
 class UserMemoryListResponse(BaseModel):
@@ -22,4 +25,3 @@ class UserMemoryUpdate(BaseModel):
     curated_summary: Optional[str] = None
     visibility: Optional[str] = None
     status: Optional[str] = None
-
