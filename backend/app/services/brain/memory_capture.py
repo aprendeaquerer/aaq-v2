@@ -7,6 +7,7 @@ is a confirmed fact.
 
 import json
 import re
+from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
 from sqlalchemy import select
@@ -14,21 +15,34 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.user_memory import UserMemory
 
+MEMORY_STOPWORDS = {
+    "a", "al", "and", "are", "as", "at", "be", "but", "como", "con", "cuando",
+    "de", "del", "el", "ella", "en", "for", "i", "in", "is", "it", "la", "las",
+    "lo", "los", "me", "mi", "my", "no", "of", "on", "or", "para", "por", "que",
+    "se", "si", "the", "to", "un", "una", "user", "usuario", "described",
+    "shared", "this", "context", "possible", "may", "matter", "later",
+}
+
 
 async def capture_candidate_memories(
     db: AsyncSession,
     user_id: Optional[str],
     message: str,
     language: str = "es",
-) -> List[Dict[str, str]]:
+) -> List[Dict[str, object]]:
     if not user_id:
         return []
 
     candidates = _extract_candidates(message, language)
-    created = []
+    changes = []
     for candidate in candidates:
-        if await _similar_memory_exists(db, user_id, candidate["summary"]):
+        existing_memory = await _find_similar_memory(db, user_id, candidate)
+        if existing_memory:
+            _reinforce_memory(existing_memory, candidate, language)
+            await db.flush()
+            changes.append(_memory_change(existing_memory, "reinforced"))
             continue
+
         memory = UserMemory(
             user_id=user_id,
             type=candidate["type"],
@@ -43,20 +57,11 @@ async def capture_candidate_memories(
         )
         db.add(memory)
         await db.flush()
-        created.append(
-            {
-                "id": memory.id,
-                "type": memory.type,
-                "summary": memory.summary,
-                "curated_summary": memory.curated_summary or memory.summary,
-                "status": memory.status,
-                "confidence": memory.confidence,
-            }
-        )
+        changes.append(_memory_change(memory, "created"))
 
-    if created:
+    if changes:
         await db.commit()
-    return created
+    return changes
 
 
 def _extract_candidates(message: str, language: str) -> List[Dict]:
@@ -552,19 +557,137 @@ def _looks_like_person_name(name: str) -> bool:
     return lower not in non_names
 
 
-async def _similar_memory_exists(db: AsyncSession, user_id: str, summary: str) -> bool:
+async def _find_similar_memory(db: AsyncSession, user_id: str, candidate: Dict) -> Optional[UserMemory]:
     result = await db.execute(
-        select(UserMemory.summary)
-        .where(UserMemory.user_id == user_id)
+        select(UserMemory)
+        .where(
+            UserMemory.user_id == user_id,
+            UserMemory.type == candidate["type"],
+            UserMemory.visibility != "hidden",
+            UserMemory.status.in_(("candidate", "active")),
+        )
         .order_by(UserMemory.updated_at.desc())
-        .limit(50)
+        .limit(100)
     )
-    normalized = _normalize(summary)
-    for row in result.all():
-        existing = _normalize(row[0])
-        if existing == normalized or normalized[:80] in existing:
-            return True
-    return False
+    normalized = _normalize(candidate["summary"])
+    memories = result.scalars().all()
+    for memory in memories:
+        if _normalize(memory.summary) == normalized:
+            return memory
+
+    if candidate["confidence"] >= 0.99:
+        return None
+
+    best_memory = None
+    best_score = 0.0
+    for memory in memories:
+        score = _memory_similarity(candidate, memory)
+        if score > best_score:
+            best_memory = memory
+            best_score = score
+
+    if best_score >= 0.58:
+        return best_memory
+    return None
+
+
+def _reinforce_memory(memory: UserMemory, candidate: Dict, language: str) -> None:
+    metadata = _load_metadata(memory.memory_metadata)
+    evidence_count = int(metadata.get("evidence_count") or 1) + 1
+    previous_confidence = float(memory.confidence or 0.0)
+
+    if candidate["confidence"] >= 0.99:
+        confidence = 1.0
+        status = "active"
+    else:
+        reinforcement = 0.10 if evidence_count <= 3 else 0.06
+        confidence = min(0.95, max(candidate["confidence"], previous_confidence + reinforcement))
+        status = memory.status
+        if evidence_count >= 3 and confidence >= 0.62:
+            confidence = max(confidence, 0.72)
+            status = "active"
+
+    memory.confidence = round(confidence, 2)
+    memory.status = status
+    memory.curated_summary = memory.curated_summary or candidate["curated_summary"]
+    metadata.update({
+        "language": language,
+        "capture": metadata.get("capture") or "heuristic_v1",
+        "evidence_count": evidence_count,
+        "last_evidence": candidate["summary"],
+        "reinforced_at": datetime.now(timezone.utc).isoformat(),
+    })
+    memory.memory_metadata = json.dumps(metadata)
+
+
+def _memory_similarity(candidate: Dict, memory: UserMemory) -> float:
+    candidate_text = f"{candidate['summary']} {candidate.get('curated_summary') or ''}"
+    memory_text = f"{memory.summary} {memory.curated_summary or ''}"
+    token_score = _token_overlap(_memory_tokens(candidate_text), _memory_tokens(memory_text))
+    tag_score = _token_overlap(_semantic_tags(candidate_text), _semantic_tags(memory_text))
+    if tag_score >= 0.67:
+        return max(token_score, tag_score)
+    return max(token_score, (token_score * 0.6) + (tag_score * 0.4))
+
+
+def _token_overlap(left: set[str], right: set[str]) -> float:
+    if not left or not right:
+        return 0.0
+    return len(left.intersection(right)) / min(len(left), len(right))
+
+
+def _memory_tokens(text: str) -> set[str]:
+    return {
+        word
+        for word in re.findall(r"[\wáéíóúñü]+", _normalize(text))
+        if len(word) > 2 and word not in MEMORY_STOPWORDS
+    }
+
+
+def _semantic_tags(text: str) -> set[str]:
+    lower = _normalize(text)
+    tags = set()
+    if any(term in lower for term in ("distancia", "se aleja", "aleja", "withdraw", "distance")):
+        tags.add("partner_distance")
+    if any(term in lower for term in ("evita", "evitar", "conflicto", "no quiere hablar", "avoid", "conflict")):
+        tags.add("conflict_avoidance")
+    if any(term in lower for term in ("solo", "sola", "no me quiere", "unwanted", "lonely", "rechaz")):
+        tags.add("lonely_or_unwanted")
+    if any(term in lower for term in ("defensiva", "defensivo", "defensive", "se defiende")):
+        tags.add("defensiveness")
+    if any(term in lower for term in ("contacto fisico", "contacto físico", "physical contact")):
+        tags.add("physical_contact")
+    if any(term in lower for term in ("celos", "jealous", "instagram", "redes sociales", "social media")):
+        tags.add("jealousy_social_media")
+    if any(term in lower for term in ("terminar", "dejar la relacion", "break up", "end the relationship")):
+        tags.add("ending_relationship")
+    if any(term in lower for term in ("quiero", "necesito", "busco", "goal", "want", "need")):
+        tags.add("goal_or_need")
+    return tags
+
+
+def _load_metadata(raw_metadata: Optional[str]) -> Dict[str, object]:
+    if not raw_metadata:
+        return {}
+    try:
+        parsed = json.loads(raw_metadata)
+    except (TypeError, json.JSONDecodeError):
+        return {}
+    return parsed if isinstance(parsed, dict) else {}
+
+
+def _memory_change(memory: UserMemory, action: str) -> Dict[str, object]:
+    metadata = _load_metadata(memory.memory_metadata)
+    return {
+        "id": memory.id,
+        "type": memory.type,
+        "summary": memory.summary,
+        "curated_summary": memory.curated_summary or memory.summary,
+        "status": memory.status,
+        "confidence": memory.confidence,
+        "action": action,
+        "evidence_count": metadata.get("evidence_count", 1),
+    }
 
 
 def _normalize(value: str) -> str:

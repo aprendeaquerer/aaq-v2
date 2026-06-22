@@ -438,9 +438,9 @@ async def _handle_conversation(
         })
         trace["steps"].append({
             "stage": "memory_capture",
-            "title": "Candidate memories captured",
+            "title": "Memory candidates captured or reinforced",
             "detail": (
-                f"{len(captured_memories)} candidate memories were written to the user memory brain."
+                f"{len(captured_memories)} memory candidates were created or reinforced in the user memory brain."
                 if not memory_capture_error
                 else "Memory capture failed, so the chat response continued without new memories."
             ),
@@ -602,9 +602,9 @@ def _attach_state_debug(
         })
         response.data["debug"]["steps"].append({
             "stage": "memory_capture",
-            "title": "Candidate memories captured",
+            "title": "Memory candidates captured or reinforced",
             "detail": (
-                f"{len(capture_info.get('memory_candidates') or [])} candidate memories were written to the user memory brain."
+                f"{len(capture_info.get('memory_candidates') or [])} memory candidates were created or reinforced in the user memory brain."
                 if not capture_info.get("memory_capture_error")
                 else "Memory capture failed, so the guided response continued without new memories."
             ),
