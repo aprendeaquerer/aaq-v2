@@ -13,6 +13,41 @@ from typing import Dict, Iterable, List, Tuple
 from app.services.brain.types import KnowledgeChunk
 
 SUPPORTED_DOMAINS = ("attachment", "relationships", "polarity", "somatics", "self_improvement")
+BREAKUP_ARTICLE_IDS = {"jay-shetty-move-on-from-ex"}
+BREAKUP_TOPICS = {"breakup_recovery", "breakup-grief", "closure"}
+EARLY_INVESTMENT_ARTICLE_IDS = {"nathalie-emotionally-invested-too-quickly"}
+EARLY_INVESTMENT_CUES = (
+    "me apego rapido", "me apego rápido", "apego rapido", "apego rápido",
+    "me engancho", "me engancho rapido", "me engancho rápido",
+    "invierto emocionalmente", "invertido emocionalmente",
+    "me ilusiono rapido", "me ilusiono rápido", "too quickly",
+    "fast attachment", "emotionally invested",
+)
+ACTIVE_CONFLICT_ARTICLE_IDS = {
+    "secure-love-ch01-problem-beneath-problem",
+    "secure-love-ch04-negative-cycle",
+    "secure-love-ch05-part1-interrupting-negative-cycle",
+    "secure-love-ch05-part2-interrupting-negative-cycle-qa",
+    "secure-love-ch07-reaching-and-responding",
+    "secure-love-ch08-repair-after-conflict",
+    "secure-love-ch09-attachment-injuries-and-repair",
+    "adam-lane-smith-avoidant-falling-in-love-20-steps",
+    "inner-work-relationships-system",
+    "inner-work-relationships-eight-wounds",
+    "mind-reading-needs-ask-to-be-known",
+}
+BREAKUP_CUES = (
+    "mi ex", "my ex", "ex pareja", "expareja", "ruptura amorosa", "breakup",
+    "move on", "superar a", "superar mi ex", "soltar a mi ex", "volver con mi ex",
+    "terminamos", "rompimos", "lo dejamos", "duelo amoroso",
+)
+ACTIVE_PARTNER_CUES = (
+    "mi pareja", "mi novia", "mi novio", "mi esposa", "mi esposo", "mi mujer",
+    "mi marido", "pareja", "novia", "novio", "ella", "el", "él", "olga",
+    "conflicto", "defensiva", "defensivo", "se defiende", "distancia",
+    "se aleja", "evita", "evita el conflicto", "hablar con ella", "hablar con el",
+    "hablar con él", "relacion", "relación",
+)
 STOPWORDS = {
     "a", "al", "and", "are", "as", "at", "be", "but", "como", "con", "cuando", "de",
     "del", "el", "en", "for", "i", "in", "is", "it", "la", "las", "lo", "los", "mas",
@@ -28,12 +63,23 @@ def retrieve_knowledge(message: str, language: str = "es", limit: int = 6) -> Li
 
     query_terms = _terms(message)
     routed_domains = route_domains(message)
+    active_partner_context = _looks_like_active_partner_context(message)
+    breakup_context = _looks_like_breakup_context(message)
     scored = []
 
     for chunk in chunks:
         if chunk.language not in (language, "multi", ""):
             continue
         score = _score_chunk(chunk, query_terms, routed_domains)
+        if breakup_context and _is_breakup_recovery_chunk(chunk):
+            score += 5
+        if active_partner_context:
+            if _is_active_conflict_chunk(chunk):
+                score += 4
+            if _is_breakup_recovery_chunk(chunk):
+                score -= 8
+            if _is_early_investment_chunk(chunk) and not _looks_like_early_investment_context(message):
+                score -= 6
         if score > 0:
             scored.append((score, chunk))
 
@@ -91,7 +137,9 @@ def route_domains(message: str) -> List[str]:
             "rejection sensitivity", "sensibilidad al rechazo", "ainsworth",
             "strange situation", "situacion extraña", "base segura", "secure base",
             "inversion rapida", "invierto emocionalmente", "emotionally invested",
-            "fast attachment", "apego rapido",
+            "fast attachment", "apego rapido", "defensiva", "defensive",
+            "defensivo", "distancia", "distance", "se aleja", "cerrarse",
+            "se cierra", "evita", "avoidance", "shutdown",
         ),
         "relationships": (
             "relacion", "relationship", "pareja", "partner", "conflicto", "conflict",
@@ -105,6 +153,8 @@ def route_domains(message: str) -> List[str]:
             "conformarse", "mind reading", "leer la mente", "pedir", "asking",
             "needs", "necesidades", "resentimiento", "attunement", "sintonia",
             "valores", "values", "self compassion", "autocompasion",
+            "defensiva", "defensive", "defensivo", "distancia", "distance",
+            "se aleja", "se cierra", "evita", "avoidance", "hablar con",
         ),
         "polarity": (
             "masculino", "masculine", "femenino", "feminine", "polaridad", "polarity",
@@ -267,6 +317,36 @@ def _score_chunk(chunk: KnowledgeChunk, query_terms: Iterable[str], routed_domai
         score += 3
     score += len(terms.intersection(set(chunk.topics))) * 2
     return float(score)
+
+
+def _looks_like_active_partner_context(message: str) -> bool:
+    text = message.lower()
+    if _looks_like_breakup_context(message):
+        return False
+    return any(cue in text for cue in ACTIVE_PARTNER_CUES)
+
+
+def _looks_like_breakup_context(message: str) -> bool:
+    text = message.lower()
+    return any(cue in text for cue in BREAKUP_CUES)
+
+
+def _is_breakup_recovery_chunk(chunk: KnowledgeChunk) -> bool:
+    topics = set(chunk.topics)
+    return chunk.article_id in BREAKUP_ARTICLE_IDS or bool(topics.intersection(BREAKUP_TOPICS))
+
+
+def _is_early_investment_chunk(chunk: KnowledgeChunk) -> bool:
+    return chunk.article_id in EARLY_INVESTMENT_ARTICLE_IDS
+
+
+def _is_active_conflict_chunk(chunk: KnowledgeChunk) -> bool:
+    return chunk.article_id in ACTIVE_CONFLICT_ARTICLE_IDS
+
+
+def _looks_like_early_investment_context(message: str) -> bool:
+    text = message.lower()
+    return any(cue in text for cue in EARLY_INVESTMENT_CUES)
 
 
 def _terms(text: str) -> List[str]:
