@@ -378,6 +378,18 @@ async def _handle_conversation(
             context_parts.append(f"Convive con su pareja: {'si' if profile.convive_con_pareja else 'no'}.")
         if profile.tiene_hijos is not None:
             context_parts.append(f"Tiene hijos: {'si' if profile.tiene_hijos else 'no'}.")
+        if profile.hijos_detalle:
+            context_parts.append(f"Detalle de hijos/familia nuclear: {profile.hijos_detalle}.")
+        if profile.trabajo_profesion:
+            context_parts.append(f"Trabajo/profesion declarada: {profile.trabajo_profesion}.")
+        if profile.convivencia:
+            context_parts.append(f"Convivencia declarada: {profile.convivencia}.")
+        if profile.ex_pareja_relevante is not None:
+            context_parts.append(f"Ex pareja relevante: {'si' if profile.ex_pareja_relevante else 'no'}.")
+        if profile.ex_pareja_contexto:
+            context_parts.append(f"Contexto factual de ex pareja: {profile.ex_pareja_contexto}.")
+        if profile.estructura_familiar_relevante:
+            context_parts.append(f"Estructura familiar relevante declarada: {profile.estructura_familiar_relevante}.")
         if profile.partner_attachment_style:
             context_parts.append(f"El estilo de apego de su pareja es: {profile.partner_attachment_style}.")
         if profile.relationship_status and profile.relationship_status != "unknown":

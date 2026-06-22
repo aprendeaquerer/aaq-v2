@@ -22,9 +22,12 @@ PROFILE_FIELDS = {
     "tipo_relacion",
     "convive_con_pareja",
     "tiene_hijos",
-    "attachment_style",
-    "partner_attachment_style",
-    "relationship_status",
+    "trabajo_profesion",
+    "convivencia",
+    "ex_pareja_relevante",
+    "ex_pareja_contexto",
+    "estructura_familiar_relevante",
+    "hijos_detalle",
 }
 
 
@@ -131,34 +134,50 @@ def _extract_profile_updates(message: str) -> Dict[str, object]:
         updates["tipo_relacion"] = relationship_type
         updates["tiene_pareja"] = True
 
-    user_attachment = _detect_user_attachment_style(lower)
-    if user_attachment:
-        updates["attachment_style"] = user_attachment
-
-    partner_attachment = _detect_partner_attachment_style(lower)
-    if partner_attachment:
-        updates["partner_attachment_style"] = partner_attachment
+    relationship_duration = _detect_relationship_duration(text)
+    if relationship_duration:
+        updates["tiempo_pareja"] = relationship_duration
         updates["tiene_pareja"] = True
 
-    relationship_status = _detect_relationship_status(
-        updates.get("attachment_style"),
-        updates.get("partner_attachment_style"),
-    )
-    if relationship_status:
-        updates["relationship_status"] = relationship_status
+    work = _detect_work(text)
+    if work:
+        updates["trabajo_profesion"] = work
+
+    living = _detect_living_situation(lower)
+    if living:
+        updates["convivencia"] = living
 
     if any(phrase in lower for phrase in ("mi pareja", "mi novia", "mi novio", "my partner", "girlfriend", "boyfriend")):
         updates.setdefault("tiene_pareja", True)
 
-    if any(phrase in lower for phrase in ("vivo con mi pareja", "vivimos juntos", "convivo con", "we live together", "live with my partner")):
+    does_not_live_with_partner = any(
+        phrase in lower
+        for phrase in ("no vivimos juntos", "no vivo con mi pareja", "we do not live together", "we don't live together")
+    )
+    if not does_not_live_with_partner and any(
+        phrase in lower for phrase in ("vivo con mi pareja", "vivimos juntos", "convivo con", "we live together", "live with my partner")
+    ):
         updates["convive_con_pareja"] = True
-    if any(phrase in lower for phrase in ("no vivimos juntos", "no vivo con mi pareja", "we do not live together", "we don't live together")):
+        updates.setdefault("convivencia", "pareja")
+    if does_not_live_with_partner:
         updates["convive_con_pareja"] = False
 
-    if any(phrase in lower for phrase in ("tengo hijos", "tenemos hijos", "soy padre", "soy madre", "i have kids", "i have children")):
-        updates["tiene_hijos"] = True
     if any(phrase in lower for phrase in ("no tengo hijos", "no tenemos hijos", "i don't have kids", "i do not have children")):
         updates["tiene_hijos"] = False
+    elif _has_children_signal(lower):
+        updates["tiene_hijos"] = True
+        children_detail = _detect_children_detail(text)
+        if children_detail:
+            updates["hijos_detalle"] = children_detail
+
+    ex_context = _detect_ex_context(text)
+    if ex_context:
+        updates["ex_pareja_relevante"] = True
+        updates["ex_pareja_contexto"] = ex_context
+
+    family_structure = _detect_family_structure(text)
+    if family_structure:
+        updates["estructura_familiar_relevante"] = family_structure
 
     return {field: value for field, value in updates.items() if field in PROFILE_FIELDS}
 
@@ -257,6 +276,117 @@ def _detect_relationship_type(lower: str) -> Optional[str]:
     if any(phrase in lower for phrase in ("poliamor", "polyamory", "polyamorous")):
         return "poliamor"
     return None
+
+
+def _detect_relationship_duration(text: str) -> Optional[str]:
+    patterns = (
+        r"\b(?:llevamos|estamos juntos desde hace|llevamos juntos|tenemos una relacion de|tenemos una relación de)\s+([^.,;!?]+)",
+        r"\b(?:mi relacion lleva|mi relación lleva|nuestra relacion lleva|nuestra relación lleva)\s+([^.,;!?]+)",
+        r"\b(?:we have been together for|we've been together for|our relationship is)\s+([^.,;!?]+)",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            return _clean_short_fact(match.group(1), max_words=8)
+    return None
+
+
+def _detect_work(text: str) -> Optional[str]:
+    patterns = (
+        r"\b(?:trabajo como|me dedico a|soy profesionalmente|mi trabajo es)\s+([^.,;!?]+)",
+        r"\b(?:trabajo en)\s+([^.,;!?]+)",
+        r"\b(?:i work as|my job is)\s+([^.,;!?]+)",
+        r"\b(?:i work in)\s+([^.,;!?]+)",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            return _clean_work_fact(match.group(1))
+    return None
+
+
+def _detect_living_situation(lower: str) -> Optional[str]:
+    if any(phrase in lower for phrase in ("no vivimos juntos", "no vivo con mi pareja", "we do not live together", "we don't live together")):
+        return None
+    if any(phrase in lower for phrase in ("vivo solo", "vivo sola", "i live alone")):
+        return "solo"
+    if any(phrase in lower for phrase in ("vivo con mi pareja", "vivimos juntos", "we live together", "live with my partner")):
+        return "pareja"
+    if any(phrase in lower for phrase in ("vivo con mis padres", "vivo con mi madre", "vivo con mi padre", "vivo con mi familia")):
+        return "familia"
+    if any(phrase in lower for phrase in ("vivo con amigos", "vivo con roommates", "vivo con companeros", "vivo con compañeros", "i live with roommates")):
+        return "compartida"
+    return None
+
+
+def _has_children_signal(lower: str) -> bool:
+    if any(phrase in lower for phrase in ("soy padre", "soy madre", "i have kids", "i have children")):
+        return True
+    return bool(re.search(r"\b(?:tengo|tenemos)\s+[^.,;!?]{0,40}\b(?:hijo|hija|hijos|hijas)\b", lower))
+
+
+def _detect_children_detail(text: str) -> Optional[str]:
+    if any(phrase in text.lower() for phrase in ("no tengo hijos", "no tenemos hijos", "i don't have kids", "i do not have children")):
+        return None
+    patterns = (
+        r"\b(?:tengo|tenemos)\s+([^.,;!?]*(?:hijo|hija|hijos|hijas)[^.,;!?]*)",
+        r"\b(?:mi hijo|mi hija|mis hijos|mis hijas)\s+([^.,;!?]+)",
+        r"\b(?:i have|we have)\s+([^.,;!?]*(?:kid|kids|child|children|son|daughter)[^.,;!?]*)",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            return _clean_short_fact(match.group(0), max_words=16)
+    return None
+
+
+def _detect_ex_context(text: str) -> Optional[str]:
+    lower = text.lower()
+    if not any(term in lower for term in ("mi ex", "ex pareja", "ex novia", "ex novio", "my ex", "ex partner")):
+        return None
+    for segment in re.split(r"(?<=[.!?])\s+|[;]", text):
+        segment_lower = segment.lower()
+        if any(term in segment_lower for term in ("mi ex", "ex pareja", "ex novia", "ex novio", "my ex", "ex partner")):
+            return _clean_short_fact(segment, max_words=20)
+    return _clean_short_fact(text, max_words=20)
+
+
+def _detect_family_structure(text: str) -> Optional[str]:
+    lower = text.lower()
+    family_terms = (
+        "mi madre", "mi padre", "mis padres", "mi hermano", "mi hermana",
+        "mis hermanos", "mi familia", "mi hijo", "mi hija", "mis hijos",
+        "my mother", "my father", "my parents", "my brother", "my sister",
+        "my family", "my son", "my daughter", "my children",
+    )
+    factual_terms = (
+        "vive", "viven", "vivo con", "tengo", "tenemos", "se llama",
+        "estoy a cargo", "cuido", "depende de mi", "depende de mí",
+        "lives", "live", "i have", "we have", "i care for",
+    )
+    if not any(term in lower for term in family_terms):
+        return None
+    if not any(term in lower for term in factual_terms):
+        return None
+    return _clean_short_fact(text, max_words=22)
+
+
+def _clean_short_fact(value: str, max_words: int = 12) -> str:
+    cleaned = " ".join(value.strip(" .,;:!?").split())
+    words = cleaned.split()
+    if len(words) > max_words:
+        cleaned = " ".join(words[:max_words])
+    return cleaned
+
+
+def _clean_work_fact(value: str) -> str:
+    cleaned = re.split(
+        r"\s+(?:y vivo|y vivimos|and i live|and we live)\b",
+        value.strip(" .,;:!?"),
+        maxsplit=1,
+        flags=re.IGNORECASE,
+    )[0]
+    return _clean_short_fact(cleaned, max_words=10)
 
 
 def _detect_user_attachment_style(lower: str) -> Optional[str]:

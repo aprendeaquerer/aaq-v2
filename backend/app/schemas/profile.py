@@ -16,6 +16,12 @@ class UserProfileResponse(BaseModel):
     tipo_relacion: Optional[str] = None
     convive_con_pareja: Optional[bool] = None
     tiene_hijos: Optional[bool] = None
+    trabajo_profesion: Optional[str] = None
+    convivencia: Optional[str] = None
+    ex_pareja_relevante: Optional[bool] = None
+    ex_pareja_contexto: Optional[str] = None
+    estructura_familiar_relevante: Optional[str] = None
+    hijos_detalle: Optional[str] = None
     attachment_style: Optional[str] = None
     partner_attachment_style: Optional[str] = None
     relationship_status: Optional[str] = None
@@ -37,4 +43,10 @@ class UserProfileUpdate(BaseModel):
     tipo_relacion: Optional[str] = None
     convive_con_pareja: Optional[bool] = None
     tiene_hijos: Optional[bool] = None
+    trabajo_profesion: Optional[str] = None
+    convivencia: Optional[str] = None
+    ex_pareja_relevante: Optional[bool] = None
+    ex_pareja_contexto: Optional[str] = None
+    estructura_familiar_relevante: Optional[str] = None
+    hijos_detalle: Optional[str] = None
     preferred_language: Optional[str] = None

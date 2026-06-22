@@ -99,6 +99,12 @@ export interface UserProfile {
   tipo_relacion: string | null;
   convive_con_pareja: boolean | null;
   tiene_hijos: boolean | null;
+  trabajo_profesion: string | null;
+  convivencia: string | null;
+  ex_pareja_relevante: boolean | null;
+  ex_pareja_contexto: string | null;
+  estructura_familiar_relevante: string | null;
+  hijos_detalle: string | null;
   attachment_style: string | null;
   partner_attachment_style: string | null;
   relationship_status: string | null;

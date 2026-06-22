@@ -474,7 +474,7 @@ function ProfileSummary({ profile }: { profile: UserProfile | null }) {
       <div className="border-b border-[#042648]/10 px-3 py-2">
         <h3 className="text-sm font-bold text-[#042648]">Stable Profile</h3>
         <p className="mt-1 text-xs text-[#042648]/60">
-          Identity, relationship facts, and attachment context captured from tests and chat.
+          Empirical facts captured from profile, tests, and chat.
         </p>
       </div>
 
@@ -510,13 +510,16 @@ function buildProfileRows(profile: UserProfile): [string, string][] {
   addRow(rows, 'Partner age', profile.edad_pareja);
   addRow(rows, 'Partner gender', profile.genero_pareja);
   addRow(rows, 'Time together', profile.tiempo_pareja);
-  addRow(rows, 'Orientation', profile.orientacion);
   addRow(rows, 'Relationship type', profile.tipo_relacion);
   addRow(rows, 'Lives together', formatBoolean(profile.convive_con_pareja));
+  addRow(rows, 'Living situation', profile.convivencia);
+  addRow(rows, 'Work', profile.trabajo_profesion);
   addRow(rows, 'Has children', formatBoolean(profile.tiene_hijos));
-  addRow(rows, 'Attachment style', profile.attachment_style);
-  addRow(rows, 'Partner attachment', profile.partner_attachment_style);
-  addRow(rows, 'Relationship status', profile.relationship_status);
+  addRow(rows, 'Children details', profile.hijos_detalle);
+  addRow(rows, 'Relevant ex', formatBoolean(profile.ex_pareja_relevante));
+  addRow(rows, 'Ex context', profile.ex_pareja_contexto);
+  addRow(rows, 'Family structure', profile.estructura_familiar_relevante);
+  addRow(rows, 'Orientation', profile.orientacion);
   addRow(rows, 'Language', profile.preferred_language);
   addRow(rows, 'Premium', formatBoolean(profile.is_premium));
   addRow(rows, 'Email verified', formatBoolean(profile.email_verified));
