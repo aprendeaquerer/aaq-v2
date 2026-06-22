@@ -13,7 +13,7 @@ from typing import Dict, Iterable, List, Tuple
 from app.services.brain.types import KnowledgeChunk
 
 SUPPORTED_DOMAINS = ("attachment", "relationships", "polarity", "somatics", "self_improvement")
-BREAKUP_ARTICLE_IDS = {"jay-shetty-move-on-from-ex"}
+BREAKUP_ARTICLE_IDS = {"jay-shetty-move-on-from-ex", "old-templates-breakup-no-contact-grief"}
 BREAKUP_TOPICS = {"breakup_recovery", "breakup-grief", "closure"}
 EARLY_INVESTMENT_ARTICLE_IDS = {"nathalie-emotionally-invested-too-quickly"}
 EARLY_INVESTMENT_CUES = (
@@ -35,6 +35,9 @@ ACTIVE_CONFLICT_ARTICLE_IDS = {
     "inner-work-relationships-system",
     "inner-work-relationships-eight-wounds",
     "mind-reading-needs-ask-to-be-known",
+    "old-templates-couple-dynamics-difference",
+    "old-templates-stay-or-go-decision",
+    "old-templates-lost-identity-in-relationship",
 }
 BREAKUP_CUES = (
     "mi ex", "my ex", "ex pareja", "expareja", "ruptura amorosa", "breakup",
@@ -140,6 +143,9 @@ def route_domains(message: str) -> List[str]:
             "fast attachment", "apego rapido", "defensiva", "defensive",
             "defensivo", "distancia", "distance", "se aleja", "cerrarse",
             "se cierra", "evita", "avoidance", "shutdown",
+            "persona no disponible", "personas no disponibles", "unavailable",
+            "familiaridad con seguridad", "self sourcing", "autocubrir",
+            "recondicionamiento", "herida nuclear", "migajas",
         ),
         "relationships": (
             "relacion", "relationship", "pareja", "partner", "conflicto", "conflict",
@@ -155,10 +161,19 @@ def route_domains(message: str) -> List[str]:
             "valores", "values", "self compassion", "autocompasion",
             "defensiva", "defensive", "defensivo", "distancia", "distance",
             "se aleja", "se cierra", "evita", "avoidance", "hablar con",
+            "no contacto", "no contact", "me quedo", "me voy", "stay or go",
+            "diferencia", "otredad", "lealtades", "dinamicas de pareja",
+            "señales confusas", "senales confusas", "claridad dating",
+            "texting", "perder identidad", "perdida de identidad",
+            "intensidad intimidad", "identidad en la relacion", "dating claridad",
         ),
         "polarity": (
             "masculino", "masculine", "femenino", "feminine", "polaridad", "polarity",
             "deseo", "desire", "liderar", "lead", "presencia", "presence",
+            "atraccion", "attraction", "despolarizacion", "depolarization",
+            "energia masculina", "energia femenina", "nice guy", "complacencia",
+            "holding frame", "sostener el marco", "tension emocional",
+            "liderazgo masculino", "masculine leadership", "grounded",
         ),
         "somatics": (
             "cuerpo", "body", "somatico", "somatic", "nervioso", "nervous", "vagal",
@@ -172,6 +187,11 @@ def route_domains(message: str) -> List[str]:
             "inner work", "ego", "self", "creencia-raiz", "creencia raiz", "root belief",
             "root program", "trigger", "triggers", "autoindagacion", "niño interior",
             "inner child", "self-worth", "valor propio",
+            "identidad", "identity", "reinvencion", "reinvention", "cambio",
+            "change", "limites", "boundaries", "paz interna", "inner peace",
+            "energia", "energy", "autoimagen", "self image", "duda", "self doubt",
+            "confianza", "confidence", "workflow growth", "reprogramacion",
+            "possible selves", "posibles yos", "agencia", "agency",
         ),
     }
     for domain, words in keyword_map.items():
