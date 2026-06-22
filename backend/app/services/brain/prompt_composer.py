@@ -24,8 +24,9 @@ def compose_brain_prompt(base_prompt: str, context: BrainContext) -> str:
                 f"{memory.get('curated_summary') or memory['summary']}"
             )
         memory_lines.append(
-            "Use these memories only if they are directly relevant. Candidate memories are useful but uncertain; "
-            "treat them gently and do not overstate them. Do not invent memories."
+            "Use these memories only if they are directly relevant. Active high-confidence memories are direct "
+            "user-given data. Candidate memories are saved and useful, but treat them gently and do not overstate "
+            "them. Do not invent memories."
         )
         sections.append("\n".join(memory_lines))
 

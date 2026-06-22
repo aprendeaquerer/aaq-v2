@@ -39,7 +39,15 @@ async def retrieve_user_memories(
         score = sum(1 for term in terms if term in text)
         ranked.append((score, memory))
 
-    ranked.sort(key=lambda item: (item[0], item[1].updated_at), reverse=True)
+    ranked.sort(
+        key=lambda item: (
+            item[0],
+            item[1].confidence,
+            1 if item[1].status == "active" else 0,
+            item[1].updated_at,
+        ),
+        reverse=True,
+    )
     selected = [memory for _, memory in ranked[:limit]]
     return [
         {

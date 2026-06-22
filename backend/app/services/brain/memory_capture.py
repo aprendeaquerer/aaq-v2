@@ -1,7 +1,8 @@
 """First-pass user memory capture.
 
-This deliberately creates candidate memories, not trusted facts. The goal is to
-make the memory brain observable while the product is still in development.
+Direct user-given facts are stored as active memories. Softer inferred context is
+stored as candidate memory so it remains visible and usable without pretending it
+is a confirmed fact.
 """
 
 import json
@@ -36,7 +37,7 @@ async def capture_candidate_memories(
             visibility="user_visible",
             sensitivity=candidate["sensitivity"],
             confidence=candidate["confidence"],
-            status="candidate",
+            status=candidate["status"],
             source_message_ids=json.dumps([]),
             memory_metadata=json.dumps({"language": language, "capture": "heuristic_v1"}),
         )
@@ -84,7 +85,8 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
                 "profile_fact",
                 f"The user's name is {name}.",
                 f"Your name appears to be {name}.",
-                0.86,
+                1.0,
+                status="active",
             ))
 
     user_age_match = re.search(r"\b(?:tengo|yo tengo)\s+(\d{1,2})\s*(?:anos|años)?\b", lower)
@@ -95,7 +97,8 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
                 "profile_fact",
                 f"The user is {age} years old.",
                 f"You appear to be {age} years old.",
-                0.82,
+                1.0,
+                status="active",
             ))
 
     partner_match = re.search(
@@ -110,7 +113,8 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
                 "relationship_context",
                 f"The user's partner is named {name}.",
                 f"Your partner's name appears to be {name}.",
-                0.72,
+                1.0,
+                status="active",
             ))
 
     partner_age_match = re.search(
@@ -126,7 +130,8 @@ def _extract_candidates(message: str, language: str) -> List[Dict]:
                 "relationship_context",
                 f"The user's partner is {age} years old.",
                 f"Your partner appears to be {age} years old.",
-                0.76,
+                1.0,
+                status="active",
             ))
 
     candidates.extend(_extract_people_context(text))
@@ -272,7 +277,8 @@ def _extract_people_context(text: str) -> List[Dict]:
                 "important_person",
                 f"The user mentioned {relation} named {name}.",
                 f"{name} may be an important person for you ({relation}).",
-                0.70,
+                1.0,
+                status="active",
             ))
     informal_pattern = re.compile(
         r"\bmi\s+(madre|mama|mamá|padre|papa|papá|hermana|hermano|hija|hijo|"
@@ -497,13 +503,20 @@ def _dedupe_candidates(candidates: List[Dict]) -> List[Dict]:
     return deduped
 
 
-def _candidate(memory_type: str, summary: str, curated_summary: str, confidence: float) -> Dict:
+def _candidate(
+    memory_type: str,
+    summary: str,
+    curated_summary: str,
+    confidence: float,
+    status: str = "candidate",
+) -> Dict:
     return {
         "type": memory_type,
         "summary": summary,
         "curated_summary": curated_summary,
         "confidence": confidence,
         "sensitivity": "normal",
+        "status": status,
     }
 
 
