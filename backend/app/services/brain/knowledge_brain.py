@@ -14,6 +14,7 @@ from app.services.brain.types import KnowledgeChunk
 
 SUPPORTED_DOMAINS = ("attachment", "relationships", "polarity", "somatics", "self_improvement")
 NON_CONTENT_SECTIONS = {"source notes", "related concepts"}
+AUXILIARY_CONTENT_SECTIONS = {"example eldric language"}
 BREAKUP_ARTICLE_IDS = {"jay-shetty-move-on-from-ex", "old-templates-breakup-no-contact-grief"}
 BREAKUP_TOPICS = {"breakup_recovery", "breakup-grief", "closure"}
 EARLY_INVESTMENT_ARTICLE_IDS = {"nathalie-emotionally-invested-too-quickly"}
@@ -290,11 +291,16 @@ def _parse_yaml_value(value: str):
 
 def _article_to_chunks(article: Dict) -> List[KnowledgeChunk]:
     sections = _split_sections(article["body"])
+    example_language = _section_content(sections, "Example Eldric Language")
     chunks = []
     for section, content in sections:
-        if section.strip().lower() in NON_CONTENT_SECTIONS:
+        section_key = section.strip().lower()
+        if section_key in NON_CONTENT_SECTIONS or section_key in AUXILIARY_CONTENT_SECTIONS:
             continue
-        if len(content.strip()) < 80:
+        chunk_content = content.strip()
+        if section_key == "coaching moves" and example_language:
+            chunk_content = f"{chunk_content}\n\nExample Eldric language:\n{example_language}"
+        if len(chunk_content.strip()) < 80:
             continue
         section_id = _slug(section)
         chunks.append(
@@ -303,7 +309,7 @@ def _article_to_chunks(article: Dict) -> List[KnowledgeChunk]:
                 article_id=article["id"],
                 title=article["title"],
                 section=section,
-                content=content.strip(),
+                content=chunk_content.strip(),
                 domain=article["domain"],
                 language=article["language"],
                 topics=article["topics"],
@@ -327,6 +333,13 @@ def _split_sections(body: str) -> List[Tuple[str, str]]:
 
 def _extract_section(body: str, section_name: str) -> str:
     for section, content in _split_sections(body):
+        if section.lower() == section_name.lower():
+            return content.strip()
+    return ""
+
+
+def _section_content(sections: List[Tuple[str, str]], section_name: str) -> str:
+    for section, content in sections:
         if section.lower() == section_name.lower():
             return content.strip()
     return ""
