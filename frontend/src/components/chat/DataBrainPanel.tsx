@@ -4,10 +4,11 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import * as api from '@/lib/api';
 import { useLanguage } from '@/hooks/useLanguage';
+import { personalityTestConversations } from '@/data/personalityTestConversations';
 import type { DebugSession, KnowledgeChunk, UserMemory, UserProfile } from '@/lib/types';
 
 type BrainMode = 'text' | 'constellation';
-export type BrainTab = 'data' | 'knowledge' | 'live';
+export type BrainTab = 'data' | 'knowledge' | 'live' | 'tests';
 
 interface Props {
   activeTab: BrainTab;
@@ -156,6 +157,26 @@ export default function DataBrainPanel({
   const expandAllKnowledgeDomains = () => {
     setCollapsedKnowledgeDomains(new Set());
   };
+
+  if (activeTab === 'tests') {
+    return (
+      <BrainShell
+        title="Personality Tests"
+        subtitle="Static QA conversations for the current relationship coach personality."
+        countLabel={`${personalityTestConversations.length} cases`}
+        openHref="/brain?tab=tests"
+        standalone={standalone}
+      >
+        <div className="min-h-0 flex-1 overflow-y-auto pr-1">
+          <div className="grid gap-4 xl:grid-cols-2">
+            {personalityTestConversations.map((conversation) => (
+              <PersonalityTestCard key={conversation.id} conversation={conversation} />
+            ))}
+          </div>
+        </div>
+      </BrainShell>
+    );
+  }
 
   if (activeTab === 'knowledge') {
     return (
@@ -463,6 +484,56 @@ function BrainModeToggle({ mode, onChange }: { mode: BrainMode; onChange: (mode:
         Constellation
       </button>
     </div>
+  );
+}
+
+function PersonalityTestCard({
+  conversation,
+}: {
+  conversation: (typeof personalityTestConversations)[number];
+}) {
+  return (
+    <article className="rounded border border-[#042648]/12 bg-white">
+      <div className="border-b border-[#042648]/10 px-3 py-3">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+              {formatType(conversation.kind)}
+            </div>
+            <h3 className="mt-1 text-base font-bold text-[#042648]">{conversation.title}</h3>
+          </div>
+          <span className="rounded border border-[#042648]/15 bg-[#F8FAF7] px-2 py-1 text-[11px] font-semibold text-[#042648]/60">
+            {conversation.turns.length} turns
+          </span>
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-[#042648]/68">{conversation.purpose}</p>
+      </div>
+
+      <div className="space-y-3 px-3 py-3">
+        {conversation.turns.map((turn, index) => (
+          <div
+            key={`${conversation.id}-${turn.role}-${index}`}
+            className={`rounded border px-3 py-2 ${
+              turn.role === 'assistant'
+                ? 'border-[#2F8F5B]/18 bg-[#EAF7EF]'
+                : 'border-[#042648]/10 bg-[#F8FAF7]'
+            }`}
+          >
+            <div className="mb-1 text-[11px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+              {turn.role === 'assistant' ? 'Bot' : 'Usuario'}
+            </div>
+            <p className="whitespace-pre-wrap text-sm leading-6 text-[#042648]/82">{turn.content}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="border-t border-[#042648]/10 bg-[#FFFDF8] px-3 py-3">
+        <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+          QA note
+        </div>
+        <p className="mt-1 text-sm leading-relaxed text-[#042648]/68">{conversation.qaNote}</p>
+      </div>
+    </article>
   );
 }
 
