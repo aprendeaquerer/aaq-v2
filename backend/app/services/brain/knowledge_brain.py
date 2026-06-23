@@ -13,6 +13,7 @@ from typing import Dict, Iterable, List, Tuple
 from app.services.brain.types import KnowledgeChunk
 
 SUPPORTED_DOMAINS = ("attachment", "relationships", "polarity", "somatics", "self_improvement")
+NON_CONTENT_SECTIONS = {"source notes", "related concepts"}
 BREAKUP_ARTICLE_IDS = {"jay-shetty-move-on-from-ex", "old-templates-breakup-no-contact-grief"}
 BREAKUP_TOPICS = {"breakup_recovery", "breakup-grief", "closure"}
 EARLY_INVESTMENT_ARTICLE_IDS = {"nathalie-emotionally-invested-too-quickly"}
@@ -291,6 +292,8 @@ def _article_to_chunks(article: Dict) -> List[KnowledgeChunk]:
     sections = _split_sections(article["body"])
     chunks = []
     for section, content in sections:
+        if section.strip().lower() in NON_CONTENT_SECTIONS:
+            continue
         if len(content.strip()) < 80:
             continue
         section_id = _slug(section)
