@@ -56,6 +56,9 @@ export default function DataBrainPanel({
   const [selectedKnowledgeChunk, setSelectedKnowledgeChunk] = useState<KnowledgeChunk | null>(null);
   const [selectedMemory, setSelectedMemory] = useState<UserMemory | null>(null);
   const [collapsedKnowledgeDomains, setCollapsedKnowledgeDomains] = useState<Set<string>>(new Set());
+  const [selectedPersonalityTestId, setSelectedPersonalityTestId] = useState(
+    personalityTestConversations[0]?.id || ''
+  );
 
   const loadMemories = useCallback(async () => {
     if (!isAuthenticated) {
@@ -133,6 +136,12 @@ export default function DataBrainPanel({
   const groupedMemories = useMemo(() => groupMemoriesByType(memories), [memories]);
   const groupedKnowledge = useMemo(() => groupKnowledgeByDomain(knowledgeChunks), [knowledgeChunks]);
   const knowledgeDomains = useMemo(() => groupedKnowledge.map(([domain]) => domain), [groupedKnowledge]);
+  const selectedPersonalityTest = useMemo(
+    () =>
+      personalityTestConversations.find((conversation) => conversation.id === selectedPersonalityTestId) ||
+      personalityTestConversations[0],
+    [selectedPersonalityTestId]
+  );
 
   useEffect(() => {
     setCollapsedKnowledgeDomains(new Set(knowledgeDomains));
@@ -162,16 +171,35 @@ export default function DataBrainPanel({
     return (
       <BrainShell
         title="Personality Tests"
-        subtitle="Static QA conversations for the current relationship coach personality."
-        countLabel={`${personalityTestConversations.length} cases`}
+        subtitle="Threaded QA conversations for the current relationship coach personality."
+        countLabel={`${personalityTestConversations.length} threads`}
         openHref="/brain?tab=tests"
         standalone={standalone}
       >
-        <div className="min-h-0 flex-1 overflow-y-auto pr-1">
-          <div className="grid gap-4 xl:grid-cols-2">
-            {personalityTestConversations.map((conversation) => (
-              <PersonalityTestCard key={conversation.id} conversation={conversation} />
-            ))}
+        <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[330px_minmax(0,1fr)]">
+          <aside className="min-h-0 overflow-y-auto rounded border border-[#042648]/12 bg-white">
+            <div className="border-b border-[#042648]/10 px-3 py-3">
+              <h3 className="text-sm font-bold text-[#042648]">Conversation Threads</h3>
+              <p className="mt-1 text-xs text-[#042648]/60">
+                20 scenarios with 10 user prompts each.
+              </p>
+            </div>
+            <div className="space-y-1 p-2">
+              {personalityTestConversations.map((conversation) => (
+                <PersonalityThreadButton
+                  key={conversation.id}
+                  conversation={conversation}
+                  isSelected={conversation.id === selectedPersonalityTest?.id}
+                  onSelect={() => setSelectedPersonalityTestId(conversation.id)}
+                />
+              ))}
+            </div>
+          </aside>
+
+          <div className="min-h-0 overflow-y-auto pr-1">
+            {selectedPersonalityTest && (
+              <PersonalityThreadReader conversation={selectedPersonalityTest} />
+            )}
           </div>
         </div>
       </BrainShell>
@@ -487,11 +515,43 @@ function BrainModeToggle({ mode, onChange }: { mode: BrainMode; onChange: (mode:
   );
 }
 
-function PersonalityTestCard({
+function PersonalityThreadButton({
+  conversation,
+  isSelected,
+  onSelect,
+}: {
+  conversation: (typeof personalityTestConversations)[number];
+  isSelected: boolean;
+  onSelect: () => void;
+}) {
+  const userPromptCount = conversation.turns.filter((turn) => turn.role === 'user').length;
+
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className={`w-full rounded border px-3 py-2 text-left transition ${
+        isSelected
+          ? 'border-[#042648] bg-[#042648] text-white'
+          : 'border-transparent bg-white text-[#042648] hover:border-[#042648]/15 hover:bg-[#F8FAF7]'
+      }`}
+    >
+      <div className="text-[11px] font-bold uppercase tracking-[0.08em] opacity-65">
+        {formatType(conversation.kind)}
+      </div>
+      <div className="mt-1 text-sm font-bold leading-snug">{conversation.title}</div>
+      <div className="mt-1 text-xs opacity-65">{userPromptCount} user prompts</div>
+    </button>
+  );
+}
+
+function PersonalityThreadReader({
   conversation,
 }: {
   conversation: (typeof personalityTestConversations)[number];
 }) {
+  const userPromptCount = conversation.turns.filter((turn) => turn.role === 'user').length;
+
   return (
     <article className="rounded border border-[#042648]/12 bg-white">
       <div className="border-b border-[#042648]/10 px-3 py-3">
@@ -503,7 +563,7 @@ function PersonalityTestCard({
             <h3 className="mt-1 text-base font-bold text-[#042648]">{conversation.title}</h3>
           </div>
           <span className="rounded border border-[#042648]/15 bg-[#F8FAF7] px-2 py-1 text-[11px] font-semibold text-[#042648]/60">
-            {conversation.turns.length} turns
+            {userPromptCount} user prompts / {conversation.turns.length} turns
           </span>
         </div>
         <p className="mt-2 text-sm leading-relaxed text-[#042648]/68">{conversation.purpose}</p>
