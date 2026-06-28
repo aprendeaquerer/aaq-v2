@@ -168,7 +168,7 @@ export default function DataBrainPanel({
 
   const runPersonalityScenario = async (conversation: (typeof personalityTestConversations)[number]) => {
     const startedAt = new Date();
-    const email = `qa+${conversation.id}-${startedAt.getTime()}@aprendeaquerer.local`;
+    const email = `qa+${conversation.id.slice(0, 24)}-${startedAt.getTime()}@aprendeaquerer.com`;
     setActualRuns((current) => ({
       ...current,
       [conversation.id]: {
