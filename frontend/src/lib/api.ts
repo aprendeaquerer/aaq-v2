@@ -244,7 +244,13 @@ export async function getKnowledgeBrain(language?: string): Promise<KnowledgeBra
     if (!res.ok) throw new Error('Failed to fetch knowledge brain');
     return res.json();
   } catch {
-    const fallback = knowledgeBrainFallback as KnowledgeBrain;
+    const fallback = {
+      ...knowledgeBrainFallback,
+      chunks: knowledgeBrainFallback.chunks.map((chunk) => ({
+        polarity_lane: '',
+        ...chunk,
+      })),
+    } as KnowledgeBrain;
     if (!language) return fallback;
     const chunks = fallback.chunks.filter((chunk) => chunk.language === language || chunk.language === 'multi' || chunk.language === '');
     return {

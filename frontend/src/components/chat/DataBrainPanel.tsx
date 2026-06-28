@@ -3,9 +3,10 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import * as api from '@/lib/api';
+import { API_URL } from '@/lib/constants';
 import { useLanguage } from '@/hooks/useLanguage';
-import { personalityTestConversations, type PersonalityTestKind } from '@/data/personalityTestConversations';
-import type { DebugSession, KnowledgeChunk, UserMemory, UserProfile } from '@/lib/types';
+import { personalityTestConversations } from '@/data/personalityTestConversations';
+import type { BotDebugStep, ChatResponse, DebugSession, KnowledgeChunk, UserMemory, UserProfile } from '@/lib/types';
 
 type BrainMode = 'text' | 'constellation';
 export type BrainTab = 'data' | 'knowledge' | 'live' | 'tests';
@@ -29,23 +30,24 @@ interface LiveCandidate {
   capturedAt: Date;
 }
 
-interface VisibleBotTrace {
-  intent: string;
-  loopStep: string;
-  knowledge: string;
-  knowledgeWhy: string;
-  notes: string[];
-  guardrails: string[];
-  memoryCandidates: VisibleMemoryCandidate[];
+
+interface ActualSimulationTurn {
+  prompt: string;
+  response: ChatResponse;
 }
 
-interface VisibleMemoryCandidate {
-  type: string;
-  summary: string;
-  confidence: number;
-  sensitivity: 'low' | 'medium' | 'high';
-  status: 'candidate' | 'reinforce' | 'not_saved';
-  reason: string;
+interface ActualSimulationRun {
+  status: 'running' | 'complete' | 'error';
+  email: string;
+  userId?: string;
+  startedAt: Date;
+  completedAt?: Date;
+  profile?: UserProfile;
+  selfTestResult?: ChatResponse;
+  setupResponses: ChatResponse[];
+  turns: ActualSimulationTurn[];
+  memories: UserMemory[];
+  error?: string;
 }
 
 const TYPE_COLORS = [
@@ -78,6 +80,8 @@ export default function DataBrainPanel({
   const [selectedPersonalityTestId, setSelectedPersonalityTestId] = useState(
     personalityTestConversations[0]?.id || ''
   );
+  const [actualRuns, setActualRuns] = useState<Record<string, ActualSimulationRun>>({});
+  const [isRunningAllPersonalityTests, setIsRunningAllPersonalityTests] = useState(false);
 
   const loadMemories = useCallback(async () => {
     if (!isAuthenticated) {
@@ -162,6 +166,55 @@ export default function DataBrainPanel({
     [selectedPersonalityTestId]
   );
 
+  const runPersonalityScenario = async (conversation: (typeof personalityTestConversations)[number]) => {
+    const startedAt = new Date();
+    const email = `qa+${conversation.id}-${startedAt.getTime()}@aprendeaquerer.local`;
+    setActualRuns((current) => ({
+      ...current,
+      [conversation.id]: {
+        status: 'running',
+        email,
+        startedAt,
+        setupResponses: [],
+        turns: [],
+        memories: [],
+      },
+    }));
+
+    try {
+      const result = await runActualPersonalitySimulation(conversation, email);
+      setActualRuns((current) => ({
+        ...current,
+        [conversation.id]: result,
+      }));
+    } catch (error) {
+      setActualRuns((current) => ({
+        ...current,
+        [conversation.id]: {
+          status: 'error',
+          email,
+          startedAt,
+          completedAt: new Date(),
+          setupResponses: [],
+          turns: [],
+          memories: [],
+          error: error instanceof Error ? error.message : 'Simulation failed',
+        },
+      }));
+    }
+  };
+
+  const runAllPersonalityScenarios = async () => {
+    setIsRunningAllPersonalityTests(true);
+    try {
+      for (const conversation of personalityTestConversations) {
+        await runPersonalityScenario(conversation);
+      }
+    } finally {
+      setIsRunningAllPersonalityTests(false);
+    }
+  };
+
   useEffect(() => {
     setCollapsedKnowledgeDomains(new Set(knowledgeDomains));
   }, [knowledgeDomains]);
@@ -217,7 +270,13 @@ export default function DataBrainPanel({
 
           <div className="min-h-0 overflow-y-auto pr-1">
             {selectedPersonalityTest && (
-              <PersonalityThreadReader conversation={selectedPersonalityTest} />
+              <PersonalityThreadReader
+                conversation={selectedPersonalityTest}
+                actualRun={actualRuns[selectedPersonalityTest.id]}
+                isRunningAll={isRunningAllPersonalityTests}
+                onRun={() => void runPersonalityScenario(selectedPersonalityTest)}
+                onRunAll={() => void runAllPersonalityScenarios()}
+              />
             )}
           </div>
         </div>
@@ -285,7 +344,7 @@ export default function DataBrainPanel({
                         style={{ backgroundColor: getTypeColor(groupIndex).border }}
                       />
                       <span className="truncate text-sm font-bold uppercase tracking-[0.06em] text-[#042648]/70">
-                        {formatType(domain)}
+                        {formatKnowledgeGroup(domain)}
                       </span>
                     </span>
                     <span className="flex shrink-0 items-center gap-2">
@@ -566,10 +625,19 @@ function PersonalityThreadButton({
 
 function PersonalityThreadReader({
   conversation,
+  actualRun,
+  isRunningAll,
+  onRun,
+  onRunAll,
 }: {
   conversation: (typeof personalityTestConversations)[number];
+  actualRun?: ActualSimulationRun;
+  isRunningAll: boolean;
+  onRun: () => void;
+  onRunAll: () => void;
 }) {
   const userPromptCount = conversation.turns.filter((turn) => turn.role === 'user').length;
+  const userPrompts = conversation.turns.filter((turn) => turn.role === 'user');
 
   return (
     <article className="rounded border border-[#042648]/12 bg-white">
@@ -586,34 +654,61 @@ function PersonalityThreadReader({
           </span>
         </div>
         <p className="mt-2 text-sm leading-relaxed text-[#042648]/68">{conversation.purpose}</p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={onRun}
+            disabled={actualRun?.status === 'running' || isRunningAll}
+            className="rounded bg-[#042648] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#042648]/90 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {actualRun?.status === 'running' ? 'Running actual bot...' : 'Run actual bot'}
+          </button>
+          <button
+            type="button"
+            onClick={onRunAll}
+            disabled={actualRun?.status === 'running' || isRunningAll}
+            className="rounded border border-[#042648]/20 bg-white px-3 py-2 text-xs font-bold text-[#042648]/70 transition hover:bg-[#F8FAF7] disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {isRunningAll ? 'Running all...' : 'Run all 20'}
+          </button>
+          {actualRun && (
+            <span className="rounded border border-[#042648]/15 bg-[#F8FAF7] px-3 py-2 text-xs font-semibold text-[#042648]/60">
+              {actualRun.status === 'complete' ? 'Last run complete' : actualRun.status}
+            </span>
+          )}
+        </div>
       </div>
 
-      <div className="space-y-3 px-3 py-3">
-        {conversation.turns.map((turn, index) => {
-          const previousUserTurn = getPreviousUserTurn(conversation.turns, index);
-          const assistantTurnNumber = getAssistantTurnNumber(conversation.turns, index);
-          const trace =
-            turn.role === 'assistant'
-              ? buildVisibleBotTrace(conversation, assistantTurnNumber, previousUserTurn, turn.content)
-              : null;
+      <div className="space-y-4 px-3 py-3">
+        <SimulationSetupCard conversation={conversation} />
 
-          return (
-            <div
-              key={`${conversation.id}-${turn.role}-${index}`}
-              className={`rounded border px-3 py-2 ${
-                turn.role === 'assistant'
-                  ? 'border-[#2F8F5B]/18 bg-[#EAF7EF]'
-                  : 'border-[#042648]/10 bg-[#F8FAF7]'
-              }`}
-            >
-              <div className="mb-1 text-[11px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
-                {turn.role === 'assistant' ? `Bot / Reply ${assistantTurnNumber}` : 'Usuario'}
+        <section className="rounded border border-[#042648]/10 bg-[#FFFDF8]">
+          <div className="border-b border-[#042648]/10 px-3 py-2">
+            <h4 className="text-sm font-bold text-[#042648]">Script Sent To Actual Bot</h4>
+            <p className="mt-1 text-xs text-[#042648]/60">
+              These are the user prompts the runner sends after register, login, profile setup, and optional self-test.
+            </p>
+          </div>
+          <div className="space-y-2 p-3">
+            {userPrompts.map((turn, index) => (
+              <div key={`${conversation.id}-prompt-${index}`} className="rounded bg-white px-3 py-2">
+                <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+                  Prompt {index + 1}
+                </div>
+                <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[#042648]/78">{turn.content}</p>
               </div>
-              <p className="whitespace-pre-wrap text-sm leading-6 text-[#042648]/82">{turn.content}</p>
-              {trace && <VisibleBotTracePanel trace={trace} />}
-            </div>
-          );
-        })}
+            ))}
+          </div>
+        </section>
+
+        {actualRun ? (
+          <ActualSimulationRunPanel run={actualRun} />
+        ) : (
+          <div className="rounded border border-dashed border-[#042648]/25 bg-white px-4 py-6 text-sm text-[#042648]/65">
+            Run this thread to create a real QA user and inspect actual bot responses, retrieved brain knowledge,
+            profile capture, memory capture, and user memory retrieval.
+          </div>
+        )}
       </div>
 
       <div className="border-t border-[#042648]/10 bg-[#FFFDF8] px-3 py-3">
@@ -626,56 +721,98 @@ function PersonalityThreadReader({
   );
 }
 
-function VisibleBotTracePanel({ trace }: { trace: VisibleBotTrace }) {
+function SimulationSetupCard({ conversation }: { conversation: (typeof personalityTestConversations)[number] }) {
+  const profile = conversation.simulation.profile;
+
   return (
-    <div className="mt-3 rounded border border-[#2F8F5B]/20 bg-white/70 px-3 py-3">
-      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-        <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#165A38]/70">
-          Visible Bot Trace
+    <section className="rounded border border-[#042648]/10 bg-white">
+      <div className="border-b border-[#042648]/10 px-3 py-2">
+        <h4 className="text-sm font-bold text-[#042648]">Real User Setup</h4>
+        <p className="mt-1 text-xs text-[#042648]/60">
+          The runner registers a fresh QA user, updates this profile, and tries the real attachment-test path if the backend offers it.
+        </p>
+      </div>
+      <div className="grid gap-2 p-3 md:grid-cols-2 xl:grid-cols-3">
+        {Object.entries(profile).map(([key, value]) => (
+          <div key={key} className="rounded bg-[#F8FAF7] px-3 py-2">
+            <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+              {formatType(key)}
+            </div>
+            <div className="mt-1 text-xs font-semibold text-[#042648]/78">{String(value)}</div>
+          </div>
+        ))}
+        <div className="rounded bg-[#F8FAF7] px-3 py-2">
+          <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+            Self Test Answers
+          </div>
+          <div className="mt-1 text-xs font-semibold text-[#042648]/78">
+            {conversation.simulation.selfTestAnswers.join(', ')}
+          </div>
         </div>
-        <div className="text-[11px] font-semibold text-[#042648]/45">
-          QA notes, not private chain-of-thought
-        </div>
       </div>
-
-      <div className="grid gap-2 md:grid-cols-2">
-        <TraceField label="Intent" value={trace.intent} />
-        <TraceField label="Loop Step" value={trace.loopStep} />
-        <TraceField label="Knowledge Chosen" value={trace.knowledge} />
-        <TraceField label="Why This Knowledge" value={trace.knowledgeWhy} />
-      </div>
-
-      <div className="mt-3 grid gap-2 lg:grid-cols-2">
-        <TraceList label="Notes Taken" values={trace.notes} />
-        <TraceList label="Guardrails Applied" values={trace.guardrails} />
-      </div>
-
-      <MemoryCaptureList candidates={trace.memoryCandidates} />
-    </div>
+    </section>
   );
 }
 
-function TraceField({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded bg-[#F8FAF7] px-3 py-2">
-      <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
-        {label}
+function ActualSimulationRunPanel({ run }: { run: ActualSimulationRun }) {
+  if (run.status === 'running') {
+    return (
+      <div className="rounded border border-[#042648]/12 bg-white px-4 py-6 text-sm text-[#042648]/70">
+        Running actual backend flow for {run.email}...
       </div>
-      <div className="mt-1 text-xs leading-5 text-[#042648]/78">{value}</div>
-    </div>
+    );
+  }
+
+  if (run.status === 'error') {
+    return (
+      <div className="rounded border border-[#A33A3A]/25 bg-[#FFF0F0] px-4 py-4 text-sm text-[#7A1F1F]">
+        {run.error || 'Simulation failed'}
+      </div>
+    );
+  }
+
+  return (
+    <section className="rounded border border-[#042648]/12 bg-white">
+      <div className="border-b border-[#042648]/10 px-3 py-3">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h4 className="text-sm font-bold text-[#042648]">Actual Bot Run</h4>
+            <p className="mt-1 text-xs text-[#042648]/60">
+              User {run.email} / {run.userId || 'unknown user id'}
+            </p>
+          </div>
+          <span className="rounded border border-[#2F8F5B]/25 bg-[#EAF7EF] px-2 py-1 text-[11px] font-bold text-[#165A38]">
+            {run.turns.length} real responses
+          </span>
+        </div>
+      </div>
+
+      <div className="space-y-3 p-3">
+        {run.profile && <ActualProfileSummary profile={run.profile} />}
+        {run.selfTestResult && <ActualSelfTestSummary response={run.selfTestResult} />}
+
+        {run.turns.map((turn, index) => (
+          <ActualTurnCard key={`${run.email}-${index}`} turn={turn} index={index} />
+        ))}
+
+        <ActualMemorySummary memories={run.memories} />
+      </div>
+    </section>
   );
 }
 
-function TraceList({ label, values }: { label: string; values: string[] }) {
+function ActualProfileSummary({ profile }: { profile: UserProfile }) {
+  const rows = buildProfileRows(profile);
   return (
-    <div className="rounded bg-[#F8FAF7] px-3 py-2">
-      <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
-        {label}
+    <div className="rounded border border-[#042648]/10 bg-[#FFFDF8] px-3 py-3">
+      <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+        Final Stored Profile
       </div>
-      <div className="mt-2 space-y-1.5">
-        {values.map((value, index) => (
-          <div key={`${label}-${index}`} className="text-xs leading-5 text-[#042648]/78">
-            {value}
+      <div className="mt-2 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+        {rows.map(([label, value]) => (
+          <div key={label} className="rounded bg-white px-2 py-1.5 text-xs">
+            <span className="font-bold text-[#042648]/55">{label}: </span>
+            <span className="text-[#042648]/78">{value}</span>
           </div>
         ))}
       </div>
@@ -683,396 +820,308 @@ function TraceList({ label, values }: { label: string; values: string[] }) {
   );
 }
 
-function MemoryCaptureList({ candidates }: { candidates: VisibleMemoryCandidate[] }) {
+function ActualSelfTestSummary({ response }: { response: ChatResponse }) {
+  const scores = response.data.scores && typeof response.data.scores === 'object'
+    ? response.data.scores as Record<string, number>
+    : {};
+
   return (
-    <div className="mt-3 rounded bg-[#FFFDF8] px-3 py-2">
-      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-        <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
-          Simulated Memory Capture
+    <div className="rounded border border-[#042648]/10 bg-[#FFFDF8] px-3 py-3">
+      <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+        Real Self-Test Result
+      </div>
+      <div className="mt-2 text-sm font-bold text-[#042648]">
+        {String(response.data.attachment_style || 'unknown')}
+      </div>
+      <div className="mt-2 flex flex-wrap gap-2 text-xs text-[#042648]/65">
+        {Object.entries(scores).map(([key, value]) => (
+          <span key={key} className="rounded bg-white px-2 py-1">
+            {formatType(key)}: {value}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ActualTurnCard({ turn, index }: { turn: ActualSimulationTurn; index: number }) {
+  const debug = turn.response.data.debug;
+  const knowledgeStep = getDebugStep(debug?.steps, 'knowledge_brain');
+  const memorySearchStep = getDebugStep(debug?.steps, 'memory_brain');
+  const memoryCaptureStep = getDebugStep(debug?.steps, 'memory_capture');
+  const profileCaptureStep = getDebugStep(debug?.steps, 'profile_capture');
+  const routerStep = getDebugStep(debug?.steps, 'brain_router');
+
+  return (
+    <article className="rounded border border-[#042648]/10 bg-[#F8FAF7]">
+      <div className="border-b border-[#042648]/10 px-3 py-2">
+        <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+          Actual Prompt {index + 1}
         </div>
-        <div className="text-[11px] font-semibold text-[#042648]/45">
-          QA preview, not a database write
-        </div>
+        <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[#042648]/80">{turn.prompt}</p>
       </div>
 
-      <div className="space-y-2">
-        {candidates.map((candidate, index) => (
-          <div
-            key={`${candidate.type}-${index}`}
-            className="rounded border border-[#042648]/10 bg-white px-3 py-2"
-          >
+      <div className="space-y-3 px-3 py-3">
+        <div className="rounded border border-[#2F8F5B]/18 bg-[#EAF7EF] px-3 py-2">
+          <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#165A38]/70">
+            Real Bot Response
+          </div>
+          <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[#042648]/82">
+            {String(turn.response.data.message || '')}
+          </p>
+        </div>
+
+        {debug && (
+          <div className="rounded border border-[#042648]/10 bg-white px-3 py-3">
+            <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+              Real Backend Debug
+            </div>
+            <p className="mt-1 text-xs leading-5 text-[#042648]/65">{debug.reasoning_summary}</p>
+
+            <div className="mt-3 grid gap-2 lg:grid-cols-2">
+              <DebugStepBlock title="Brain Router" step={routerStep} />
+              <DebugStepBlock title="Profile Capture" step={profileCaptureStep} />
+              <DebugKnowledgeBlock step={knowledgeStep} />
+              <DebugMemorySearchBlock step={memorySearchStep} />
+              <DebugMemoryCaptureBlock step={memoryCaptureStep} />
+            </div>
+          </div>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function DebugStepBlock({ title, step }: { title: string; step?: BotDebugStep }) {
+  return (
+    <div className="rounded bg-[#F8FAF7] px-3 py-2">
+      <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+        {title}
+      </div>
+      <p className="mt-1 text-xs leading-5 text-[#042648]/70">{step?.detail || 'No debug step returned.'}</p>
+      {step?.payload && Object.keys(step.payload).length > 0 && (
+        <pre className="mt-2 max-h-32 overflow-auto rounded bg-white p-2 text-[11px] leading-4 text-[#042648]/68">
+          {JSON.stringify(step.payload, null, 2)}
+        </pre>
+      )}
+    </div>
+  );
+}
+
+function DebugKnowledgeBlock({ step }: { step?: BotDebugStep }) {
+  const chunks = Array.isArray(step?.payload.chunks) ? step.payload.chunks as Record<string, unknown>[] : [];
+  return (
+    <div className="rounded bg-[#F8FAF7] px-3 py-2">
+      <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+        Knowledge Chosen From Brain
+      </div>
+      <p className="mt-1 text-xs leading-5 text-[#042648]/70">{step?.detail || 'No knowledge debug step returned.'}</p>
+      <div className="mt-2 space-y-2">
+        {chunks.map((chunk, index) => (
+          <div key={`${String(chunk.id)}-${index}`} className="rounded bg-white px-2 py-2 text-xs text-[#042648]/72">
+            <div className="font-bold text-[#042648]">{String(chunk.title || 'Untitled')}</div>
+            <div className="mt-1 text-[11px] text-[#042648]/55">
+              {String(chunk.domain || 'domain')} / {String(chunk.section || 'section')} / score {String(chunk.score ?? 'n/a')}
+            </div>
+            <p className="mt-1 leading-5">{String(chunk.preview || '')}</p>
+          </div>
+        ))}
+        {chunks.length === 0 && <p className="text-xs text-[#042648]/55">No chunks retrieved.</p>}
+      </div>
+    </div>
+  );
+}
+
+function DebugMemorySearchBlock({ step }: { step?: BotDebugStep }) {
+  const memories = Array.isArray(step?.payload.memories) ? step.payload.memories as Record<string, unknown>[] : [];
+  return (
+    <div className="rounded bg-[#F8FAF7] px-3 py-2">
+      <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+        User Memories Retrieved
+      </div>
+      <p className="mt-1 text-xs leading-5 text-[#042648]/70">{step?.detail || 'No memory search debug step returned.'}</p>
+      <div className="mt-2 space-y-2">
+        {memories.map((memory, index) => (
+          <div key={`${String(memory.id)}-${index}`} className="rounded bg-white px-2 py-2 text-xs text-[#042648]/72">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="text-xs font-bold text-[#042648]">{formatType(candidate.type)}</div>
-              <div className="flex flex-wrap gap-1.5 text-[11px] font-semibold text-[#042648]/58">
-                <span className="rounded bg-[#F8FAF7] px-2 py-0.5">{candidate.status}</span>
-                <span className="rounded bg-[#F8FAF7] px-2 py-0.5">{candidate.sensitivity}</span>
-                <span className="rounded bg-[#F8FAF7] px-2 py-0.5">
-                  {Math.round(candidate.confidence * 100)}% confidence
-                </span>
-              </div>
+              <div className="font-bold text-[#042648]">{formatType(String(memory.type || 'memory'))}</div>
+              <span className="text-[11px] text-[#042648]/55">
+                {String(memory.status || 'status')} / {Math.round(Number(memory.confidence || 0) * 100)}%
+              </span>
             </div>
-            <p className="mt-2 text-xs leading-5 text-[#042648]/78">{candidate.summary}</p>
-            <p className="mt-1 text-[11px] leading-4 text-[#042648]/50">{candidate.reason}</p>
-            <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-[#042648]/10">
-              <div
-                className="h-full rounded-full bg-[#2F8F5B]"
-                style={{ width: `${Math.round(candidate.confidence * 100)}%` }}
-              />
-            </div>
+            <p className="mt-1 leading-5">{String(memory.summary || '')}</p>
           </div>
         ))}
+        {memories.length === 0 && <p className="text-xs text-[#042648]/55">No memories retrieved for this prompt.</p>}
       </div>
     </div>
   );
 }
 
-function getPreviousUserTurn(turns: (typeof personalityTestConversations)[number]['turns'], index: number): string {
-  for (let currentIndex = index - 1; currentIndex >= 0; currentIndex -= 1) {
-    if (turns[currentIndex].role === 'user') {
-      return turns[currentIndex].content;
+function DebugMemoryCaptureBlock({ step }: { step?: BotDebugStep }) {
+  const candidates = Array.isArray(step?.payload.candidates) ? step.payload.candidates as Record<string, unknown>[] : [];
+  return (
+    <div className="rounded bg-[#F8FAF7] px-3 py-2 lg:col-span-2">
+      <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+        Memory Capture Written By Backend
+      </div>
+      <p className="mt-1 text-xs leading-5 text-[#042648]/70">{step?.detail || 'No memory capture debug step returned.'}</p>
+      <div className="mt-2 grid gap-2 md:grid-cols-2">
+        {candidates.map((candidate, index) => (
+          <div key={`${String(candidate.id)}-${index}`} className="rounded bg-white px-2 py-2 text-xs text-[#042648]/72">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="font-bold text-[#042648]">{formatType(String(candidate.type || 'memory'))}</div>
+              <span className="text-[11px] text-[#042648]/55">
+                {String(candidate.change || candidate.status || 'candidate')} / {Math.round(Number(candidate.confidence || 0) * 100)}%
+              </span>
+            </div>
+            <p className="mt-1 leading-5">{String(candidate.summary || candidate.curated_summary || '')}</p>
+          </div>
+        ))}
+        {candidates.length === 0 && <p className="text-xs text-[#042648]/55">No new memory candidates captured.</p>}
+      </div>
+    </div>
+  );
+}
+
+function ActualMemorySummary({ memories }: { memories: UserMemory[] }) {
+  return (
+    <div className="rounded border border-[#042648]/10 bg-[#FFFDF8] px-3 py-3">
+      <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+        Final Stored User Memories
+      </div>
+      <div className="mt-2 grid gap-2 md:grid-cols-2">
+        {memories.map((memory) => (
+          <div key={memory.id} className="rounded bg-white px-3 py-2 text-xs text-[#042648]/72">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="font-bold text-[#042648]">{formatType(memory.type)}</div>
+              <span className="text-[11px] text-[#042648]/55">
+                {memory.status} / {memory.sensitivity} / {Math.round(memory.confidence * 100)}%
+              </span>
+            </div>
+            <p className="mt-1 leading-5">{memory.curated_summary || memory.summary}</p>
+          </div>
+        ))}
+        {memories.length === 0 && <p className="text-xs text-[#042648]/55">No visible memories stored.</p>}
+      </div>
+    </div>
+  );
+}
+
+function getDebugStep(steps: BotDebugStep[] | undefined, stage: string): BotDebugStep | undefined {
+  return steps?.find((step) => step.stage === stage);
+}
+
+async function runActualPersonalitySimulation(
+  conversation: (typeof personalityTestConversations)[number],
+  email: string
+): Promise<ActualSimulationRun> {
+  const password = `QA-${Date.now()}-aaq`;
+  const startedAt = new Date();
+  const setupResponses: ChatResponse[] = [];
+  const turns: ActualSimulationTurn[] = [];
+
+  await qaRequest('/auth/register', {
+    method: 'POST',
+    body: JSON.stringify({
+      email,
+      password,
+      preferred_language: 'es',
+    }),
+  });
+
+  const login = await qaRequest('/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  }) as {
+    access_token: string;
+    user_id: string;
+  };
+
+  const token = login.access_token;
+
+  await qaRequest('/profile', {
+    method: 'PUT',
+    token,
+    body: JSON.stringify(conversation.simulation.profile),
+  });
+
+  setupResponses.push(await qaRequest('/chat/session?language=es&debug=true', { method: 'GET', token }) as ChatResponse);
+  const testStartResponse = await sendQaMessage(token, 'A');
+  setupResponses.push(testStartResponse);
+
+  let selfTestResult: ChatResponse | undefined;
+  if (testStartResponse.type === 'test_question') {
+    for (const answer of conversation.simulation.selfTestAnswers) {
+      const response = await sendQaMessage(token, answer);
+      setupResponses.push(response);
+      if (response.type === 'test_results') {
+        selfTestResult = response;
+      }
     }
+
+    setupResponses.push(await sendQaMessage(token, 'B'));
   }
-  return '';
-}
+  setupResponses.push(await sendQaMessage(token, conversation.simulation.setupMessage));
 
-function getAssistantTurnNumber(turns: (typeof personalityTestConversations)[number]['turns'], index: number): number {
-  return turns.slice(0, index + 1).filter((turn) => turn.role === 'assistant').length;
-}
+  const prompts = conversation.turns.filter((turn) => turn.role === 'user').map((turn) => turn.content);
+  for (const prompt of prompts) {
+    const response = await sendQaMessage(token, prompt);
+    turns.push({ prompt, response });
+  }
 
-function buildVisibleBotTrace(
-  conversation: (typeof personalityTestConversations)[number],
-  assistantTurnNumber: number,
-  previousUserTurn: string,
-  assistantContent: string
-): VisibleBotTrace {
-  const knowledge = getScenarioKnowledge(conversation.id, conversation.kind);
-  const followUpQuestion = extractLastQuestion(assistantContent);
+  const profile = await qaRequest('/profile', { method: 'GET', token }) as UserProfile;
+  const memoriesResponse = await qaRequest('/memory', { method: 'GET', token }) as { memories: UserMemory[] };
 
   return {
-    intent: getTraceIntent(conversation.kind, assistantTurnNumber, previousUserTurn),
-    loopStep: getTraceLoopStep(conversation.kind, assistantTurnNumber, assistantContent),
-    knowledge: knowledge.title,
-    knowledgeWhy: getKnowledgeWhy(knowledge.why, previousUserTurn, assistantTurnNumber),
-    notes: [
-      `User signal: ${compactText(previousUserTurn, 150)}`,
-      `State tracked: ${getStateTracked(conversation.kind, assistantTurnNumber)}`,
-      `Next information gap: ${followUpQuestion || 'No follow-up; the user asked for reflection only.'}`,
-    ],
-    guardrails: getTraceGuardrails(conversation.kind, assistantContent),
-    memoryCandidates: buildMemoryCandidates(conversation, assistantTurnNumber, previousUserTurn, assistantContent),
+    status: 'complete',
+    email,
+    userId: login.user_id,
+    startedAt,
+    completedAt: new Date(),
+    profile,
+    selfTestResult,
+    setupResponses,
+    turns,
+    memories: memoriesResponse.memories,
   };
 }
 
-function getTraceIntent(kind: PersonalityTestKind, turnNumber: number, userTurn: string): string {
-  if (kind === 'seguridad') return 'Safety triage before relationship coaching.';
-  if (kind === 'resistencia' && turnNumber >= 4) return 'Respect resistance and stay in rapport-only mode.';
-  if (kind === 'desahogo' && turnNumber <= 2) return 'Venting: reflect emotional content before solving.';
-  if (kind === 'duda' && turnNumber === 1) return 'Concrete question: answer directly, then check the missing context.';
-  if (userTurn.toLowerCase().includes('quiero') || userTurn.toLowerCase().includes('creo que')) {
-    return 'Problem-solving: respond to the chosen path without taking the decision away.';
-  }
-  return 'Problem mapping: separate facts, assumptions, feelings, and next missing data.';
+async function sendQaMessage(token: string, message: string): Promise<ChatResponse> {
+  return qaRequest('/chat/message', {
+    method: 'POST',
+    token,
+    body: JSON.stringify({
+      message,
+      language: 'es',
+      debug: true,
+    }),
+  }) as Promise<ChatResponse>;
 }
 
-function getTraceLoopStep(kind: PersonalityTestKind, turnNumber: number, assistantContent: string): string {
-  if (kind === 'seguridad') return turnNumber <= 2 ? 'Safety check' : 'Immediate support plan';
-  if (kind === 'resistencia' && !assistantContent.includes('?')) return 'Reflect only';
-  if (kind === 'desahogo' && turnNumber <= 3) return 'Rapport / devolver';
-  if (kind === 'duda' && turnNumber <= 2) return 'Answer / clarify';
-  if (turnNumber <= 3) return 'Entiende / escucha';
-  if (turnNumber <= 5) return 'Explicación';
-  if (turnNumber <= 7) return 'Soluciones';
-  return 'Plan de acción / seguimiento';
-}
-
-function getScenarioKnowledge(id: string, kind: PersonalityTestKind): { title: string; why: string } {
-  const map: Record<string, { title: string; why: string }> = {
-    'control-digital-pareja-hetero': {
-      title: 'Boundaries without coercion; privacy as a relationship limit.',
-      why: 'The user describes phone access, guilt, jealousy, and pressure around privacy.',
-    },
-    'hombre-gay-exclusividad': {
-      title: 'Dating clarity signals; explicit agreements over mind-reading.',
-      why: 'The issue is undefined exclusivity and app use without a shared agreement.',
-    },
-    'persona-no-binaria-relacion-abierta': {
-      title: 'Open relationship care agreements; jealousy as information.',
-      why: 'The user wants non-monogamy but needs reconnection rituals and emotional care.',
-    },
-    'matrimonio-carga-mental': {
-      title: 'Couple dynamics; responsibility by area instead of task delegation.',
-      why: 'The problem is invisible labor and household ownership, not a single task.',
-    },
-    'ex-vuelve-divorcio': {
-      title: 'Breakup repair; evidence of changed behavior before re-entry.',
-      why: 'The user is emotionally activated by an ex and needs facts before nostalgia.',
-    },
-    'hombre-joven-rechazo': {
-      title: 'Rejection resilience and reading reciprocity.',
-      why: 'The user turns a specific rejection into a global self-worth conclusion.',
-    },
-    'distancia-bisexual': {
-      title: 'Long-distance reconnection agreements.',
-      why: 'The trigger is distance, delayed contact, and fear of being replaced.',
-    },
-    'hombre-trans-citas': {
-      title: 'Dating disclosure with safety, consent, and pacing.',
-      why: 'The user needs agency around when and how to share sensitive identity information.',
-    },
-    'lesbianas-convivencia-silencio': {
-      title: 'Negative cycle repair; pause with return.',
-      why: 'The pattern is withdrawal, pursuit, and unresolved repair after conflict.',
-    },
-    'viudo-mayor-citas': {
-      title: 'Grief and new attachment; permission without replacement.',
-      why: 'The user feels guilt about dating after loss and needs a small next step.',
-    },
-    'embarazo-compromiso': {
-      title: 'Relationship decision under practical pressure.',
-      why: 'Pregnancy creates immediate needs for presence, logistics, and support.',
-    },
-    'ruptura-no-contacto': {
-      title: 'No-contact grief plan; impulse delay and stimulus reduction.',
-      why: 'The user is in acute breakup distress and wants to write from anxiety.',
-    },
-    'familia-religion-pareja': {
-      title: 'Partner-family boundary; values without contempt.',
-      why: 'The user is between family pressure, faith, and a partner who reacts with anger.',
-    },
-    'intimidad-consentimiento': {
-      title: 'Consent and sexual pressure; desire differences with boundaries.',
-      why: 'The user reports pressure and emotional consequences after saying no.',
-    },
-    'ghosting-apps': {
-      title: 'Dating apps: pattern over isolated response time.',
-      why: 'The user is interpreting response delay as proof of low interest.',
-    },
-    'apego-ansioso-whatsapp': {
-      title: 'Anxious activation loop; interrupt checking before conflict.',
-      why: 'The user checks WhatsApp status and turns delay into lack of importance.',
-    },
-    'violencia-control-aislamiento': {
-      title: 'Safety rules for coercive control and isolation.',
-      why: 'Keys removed and isolation from friends indicate real safety risk.',
-    },
-    'amenaza-suicidio-ruptura': {
-      title: 'Self-harm crisis response; emergency support before coaching.',
-      why: 'The user states suicidal intent tonight, so safety overrides relationship advice.',
-    },
-    'poliamor-limites': {
-      title: 'Polyamory agreements; reliability and information boundaries.',
-      why: 'The issue is canceled plans and too much intimate detail, not the structure itself.',
-    },
-    'resistencia-no-consejos': {
-      title: 'Resistance handling; rapport and reflection without advice.',
-      why: 'The user explicitly asks for no advice and wants emotional reflection.',
-    },
+async function qaRequest(
+  path: string,
+  options: RequestInit & { token?: string }
+): Promise<unknown> {
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    ...(options.headers as Record<string, string> | undefined),
   };
-
-  return map[id] || {
-    title: `${formatType(kind)} response rules.`,
-    why: 'The response follows the selected conversation mode and one-question rule.',
-  };
-}
-
-function getKnowledgeWhy(baseWhy: string, previousUserTurn: string, turnNumber: number): string {
-  const turnSignal = previousUserTurn ? `Turn ${turnNumber} signal: ${compactText(previousUserTurn, 90)}` : '';
-  return turnSignal ? `${baseWhy} ${turnSignal}` : baseWhy;
-}
-
-function getStateTracked(kind: PersonalityTestKind, turnNumber: number): string {
-  if (kind === 'seguridad') return 'Current risk, immediate support, access to safe people, and next safety action.';
-  if (kind === 'resistencia') return 'Resistance level, preferred depth, and whether to stop asking questions.';
-  if (turnNumber <= 3) return 'Facts versus assumptions, emotional load, and missing context.';
-  if (turnNumber <= 6) return 'Emerging pattern, attempted fixes, and viable options.';
-  return 'Chosen option, concrete action, timing, and success indicators.';
-}
-
-function getTraceGuardrails(kind: PersonalityTestKind, assistantContent: string): string[] {
-  const guardrails = ['One question maximum.', 'No diagnosis of user or other people.', 'No promise of outcome.'];
-
-  if (kind === 'seguridad') {
-    guardrails.push('Prioritize safety over relationship strategy.');
-    guardrails.push('Escalate to human/emergency support when risk is present.');
+  if (options.token) {
+    headers.Authorization = `Bearer ${options.token}`;
   }
 
-  if (kind === 'resistencia' || !assistantContent.includes('?')) {
-    guardrails.push('Do not insist when the user resists exploration.');
+  const response = await fetch(`${API_URL}${path}`, {
+    ...options,
+    headers,
+  });
+
+  if (!response.ok) {
+    const body = await response.text().catch(() => '');
+    throw new Error(`${path} failed (${response.status}): ${body.slice(0, 400)}`);
   }
 
-  if (assistantContent.includes('límite') || assistantContent.includes('seguridad')) {
-    guardrails.push('Keep responsibility with the user; offer options, not orders.');
-  }
-
-  return guardrails;
-}
-
-function buildMemoryCandidates(
-  conversation: (typeof personalityTestConversations)[number],
-  turnNumber: number,
-  previousUserTurn: string,
-  assistantContent: string
-): VisibleMemoryCandidate[] {
-  if (!previousUserTurn) {
-    return [notSavedMemory('No user message available for this assistant turn.')];
-  }
-
-  if (conversation.kind === 'seguridad') {
-    return [
-      {
-        type: conversation.id === 'amenaza-suicidio-ruptura' ? 'safety_self_harm_risk' : 'safety_relationship_risk',
-        summary: compactText(`Safety-relevant disclosure: ${previousUserTurn}`, 170),
-        confidence: conversation.id === 'amenaza-suicidio-ruptura' ? 0.96 : 0.92,
-        sensitivity: 'high',
-        status: turnNumber <= 2 ? 'candidate' : 'reinforce',
-        reason: 'High-sensitivity memory because the user disclosed current risk, coercive control, or need for immediate support.',
-      },
-    ];
-  }
-
-  if (conversation.kind === 'resistencia' && !assistantContent.includes('?')) {
-    return [
-      {
-        type: 'conversation_preference',
-        summary: 'User prefers reflection-only support in this moment and does not want advice or analysis.',
-        confidence: 0.9,
-        sensitivity: 'medium',
-        status: 'reinforce',
-        reason: 'Repeated explicit preference across the thread; useful for tone and response depth.',
-      },
-    ];
-  }
-
-  if (turnNumber === 1) {
-    return [
-      {
-        type: 'relationship_context',
-        summary: compactText(`Initial scenario context: ${previousUserTurn}`, 170),
-        confidence: previousUserTurn.toLowerCase().includes('soy ') ? 0.88 : 0.8,
-        sensitivity: inferSensitivity(previousUserTurn),
-        status: 'candidate',
-        reason: 'Opening message contains stable context about identity, relationship structure, and the presenting issue.',
-      },
-    ];
-  }
-
-  if (isActionPlanTurn(previousUserTurn, assistantContent, turnNumber)) {
-    return [
-      {
-        type: 'action_plan',
-        summary: compactText(`Chosen next step or plan signal: ${previousUserTurn}`, 170),
-        confidence: 0.84,
-        sensitivity: inferSensitivity(previousUserTurn),
-        status: 'candidate',
-        reason: 'The user selected a path, timing, script, or concrete next action that should be followed up later.',
-      },
-    ];
-  }
-
-  if (isUserPreferenceTurn(previousUserTurn)) {
-    return [
-      {
-        type: 'user_preference',
-        summary: compactText(`Preference or boundary expressed: ${previousUserTurn}`, 170),
-        confidence: 0.78,
-        sensitivity: inferSensitivity(previousUserTurn),
-        status: 'candidate',
-        reason: 'The user stated a preference, fear, boundary, or desired response style that can improve future support.',
-      },
-    ];
-  }
-
-  if (turnNumber <= 6) {
-    return [
-      {
-        type: 'relationship_pattern',
-        summary: compactText(`Pattern detail from user: ${previousUserTurn}`, 170),
-        confidence: 0.72,
-        sensitivity: inferSensitivity(previousUserTurn),
-        status: 'candidate',
-        reason: 'The message adds behavioral evidence about the recurring relational pattern.',
-      },
-    ];
-  }
-
-  return [notSavedMemory('No new stable memory; this turn mostly continues the current conversation state.')];
-}
-
-function notSavedMemory(summary: string): VisibleMemoryCandidate {
-  return {
-    type: 'transient_context',
-    summary,
-    confidence: 0.35,
-    sensitivity: 'low',
-    status: 'not_saved',
-    reason: 'Useful inside this thread, but too temporary or repetitive for persistent user memory.',
-  };
-}
-
-function inferSensitivity(value: string): VisibleMemoryCandidate['sensitivity'] {
-  const lowerValue = value.toLowerCase();
-  if (
-    lowerValue.includes('matar') ||
-    lowerValue.includes('suicid') ||
-    lowerValue.includes('llaves') ||
-    lowerValue.includes('sexo') ||
-    lowerValue.includes('embarazada') ||
-    lowerValue.includes('trans') ||
-    lowerValue.includes('violencia')
-  ) {
-    return 'high';
-  }
-  if (
-    lowerValue.includes('familia') ||
-    lowerValue.includes('relig') ||
-    lowerValue.includes('culpa') ||
-    lowerValue.includes('ansiedad') ||
-    lowerValue.includes('celos') ||
-    lowerValue.includes('ex')
-  ) {
-    return 'medium';
-  }
-  return 'low';
-}
-
-function isActionPlanTurn(userTurn: string, assistantContent: string, turnNumber: number): boolean {
-  const lowerUserTurn = userTurn.toLowerCase();
-  const lowerAssistantContent = assistantContent.toLowerCase();
-  return (
-    turnNumber >= 6 &&
-    (lowerUserTurn.includes('mañana') ||
-      lowerUserTurn.includes('jueves') ||
-      lowerUserTurn.includes('viernes') ||
-      lowerUserTurn.includes('domingo') ||
-      lowerUserTurn.includes('hoy') ||
-      lowerUserTurn.includes('sí') ||
-      lowerUserTurn.includes('quiero') ||
-      lowerAssistantContent.includes('plan'))
-  );
-}
-
-function isUserPreferenceTurn(userTurn: string): boolean {
-  const lowerUserTurn = userTurn.toLowerCase();
-  return (
-    lowerUserTurn.includes('quiero') ||
-    lowerUserTurn.includes('necesito') ||
-    lowerUserTurn.includes('me da miedo') ||
-    lowerUserTurn.includes('me gustaría') ||
-    lowerUserTurn.includes('prefiero') ||
-    lowerUserTurn.includes('me serviría')
-  );
-}
-
-function extractLastQuestion(content: string): string {
-  const match = content.match(/([^.\n!?]*\?)/g);
-  if (!match || match.length === 0) return '';
-  return match[match.length - 1].trim();
-}
-
-function compactText(value: string, maxLength: number): string {
-  const compacted = value.replace(/\s+/g, ' ').trim();
-  if (compacted.length <= maxLength) return compacted;
-  return `${compacted.slice(0, maxLength - 3)}...`;
+  return response.json();
 }
 
 function ProfileSummary({ profile }: { profile: UserProfile | null }) {
@@ -1310,7 +1359,7 @@ function KnowledgeReader({ chunk, onClose }: { chunk: KnowledgeChunk; onClose: (
           <div className="flex items-start justify-between gap-4">
             <div>
               <div className="text-xs font-bold uppercase tracking-[0.08em] text-[#042648]/48">
-                {formatType(chunk.domain)} / {chunk.language || 'multi'}
+                {formatKnowledgeChunkCategory(chunk)} / {chunk.language || 'multi'}
               </div>
               <h3 className="mt-1 text-lg font-bold text-[#042648]">{chunk.title}</h3>
               <p className="mt-1 text-sm text-[#042648]/62">{chunk.section}</p>
@@ -1619,11 +1668,36 @@ function groupMemoriesByType(memories: UserMemory[]): [string, UserMemory[]][] {
 function groupKnowledgeByDomain(chunks: KnowledgeChunk[]): [string, KnowledgeChunk[]][] {
   const grouped = new Map<string, KnowledgeChunk[]>();
   chunks.forEach((chunk) => {
-    const rows = grouped.get(chunk.domain) || [];
+    const groupKey = getKnowledgeGroupKey(chunk);
+    const rows = grouped.get(groupKey) || [];
     rows.push(chunk);
-    grouped.set(chunk.domain, rows);
+    grouped.set(groupKey, rows);
   });
   return Array.from(grouped.entries());
+}
+
+function getKnowledgeGroupKey(chunk: KnowledgeChunk): string {
+  if (chunk.domain !== 'polarity') return chunk.domain;
+  return `polarity:${normalizePolarityLane(chunk.polarity_lane)}`;
+}
+
+function normalizePolarityLane(value?: string): string {
+  if (value === 'masculine_advice' || value === 'feminine_advice' || value === 'shared_principle') {
+    return value;
+  }
+  return 'shared_principle';
+}
+
+function formatKnowledgeGroup(value: string): string {
+  if (!value.startsWith('polarity:')) return formatType(value);
+  const lane = value.split(':')[1];
+  if (lane === 'masculine_advice') return 'Polarity / Masculine';
+  if (lane === 'feminine_advice') return 'Polarity / Feminine';
+  return 'Polarity / Mixed';
+}
+
+function formatKnowledgeChunkCategory(chunk: KnowledgeChunk): string {
+  return formatKnowledgeGroup(getKnowledgeGroupKey(chunk));
 }
 
 function buildConstellationNodes(memories: UserMemory[]) {

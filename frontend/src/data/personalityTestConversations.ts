@@ -11,7 +11,33 @@ export interface PersonalityTestConversation {
   kind: PersonalityTestKind;
   purpose: string;
   qaNote: string;
+  simulation: PersonalitySimulationSetup;
   turns: PersonalityTestTurn[];
+}
+
+export interface PersonalitySimulationSetup {
+  profile: {
+    nombre: string;
+    edad: number;
+    genero: string;
+    tiene_pareja: boolean;
+    nombre_pareja?: string;
+    edad_pareja?: number;
+    genero_pareja?: string;
+    tiempo_pareja?: string;
+    orientacion?: string;
+    tipo_relacion?: string;
+    convive_con_pareja?: boolean;
+    tiene_hijos?: boolean;
+    hijos_detalle?: string;
+    trabajo_profesion?: string;
+    convivencia?: string;
+    ex_pareja_relevante?: boolean;
+    ex_pareja_contexto?: string;
+    estructura_familiar_relevante?: string;
+  };
+  selfTestAnswers: string[];
+  setupMessage: string;
 }
 
 type Pair = [user: string, assistant: string];
@@ -30,10 +56,167 @@ function thread(
     kind,
     purpose,
     qaNote,
+    simulation: getSimulationSetup(id),
     turns: pairs.flatMap(([user, assistant]) => [
       { role: 'user' as const, content: user },
       { role: 'assistant' as const, content: assistant },
     ]),
+  };
+}
+
+const STYLE_ANSWERS: Record<string, string[]> = {
+  secure: ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A'],
+  anxious: ['B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B', 'B'],
+  avoidant: ['D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D', 'D'],
+  disorganized: ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
+};
+
+function getSimulationSetup(id: string): PersonalitySimulationSetup {
+  const setups: Record<string, PersonalitySimulationSetup> = {
+    'control-digital-pareja-hetero': setup('Lucia', 28, 'mujer', 'heterosexual', 'monogama', 'anxious', {
+      nombre_pareja: 'Mario',
+      edad_pareja: 30,
+      genero_pareja: 'hombre',
+      tiempo_pareja: '1 año y medio',
+      convive_con_pareja: false,
+    }),
+    'hombre-gay-exclusividad': setup('Daniel', 34, 'hombre', 'gay', 'situationship', 'anxious', {
+      nombre_pareja: 'Hugo',
+      edad_pareja: 32,
+      genero_pareja: 'hombre',
+      tiempo_pareja: '3 meses',
+    }),
+    'persona-no-binaria-relacion-abierta': setup('Alex', 26, 'no binarie', 'queer', 'relacion abierta', 'secure', {
+      nombre_pareja: 'Nora',
+      edad_pareja: 27,
+      genero_pareja: 'mujer',
+      tiempo_pareja: '2 años',
+    }),
+    'matrimonio-carga-mental': setup('Marta', 39, 'mujer', 'heterosexual', 'matrimonio', 'secure', {
+      nombre_pareja: 'Javier',
+      edad_pareja: 41,
+      genero_pareja: 'hombre',
+      tiempo_pareja: '11 años',
+      convive_con_pareja: true,
+      tiene_hijos: true,
+      hijos_detalle: 'dos hijos en edad escolar',
+    }),
+    'ex-vuelve-divorcio': setup('Ana', 45, 'mujer', 'heterosexual', 'divorciada', 'anxious', {
+      tiene_pareja: false,
+      ex_pareja_relevante: true,
+      ex_pareja_contexto: 'exmarido que reaparece tras un año sin contacto',
+    }),
+    'hombre-joven-rechazo': setup('Pablo', 22, 'hombre', 'heterosexual', 'soltero', 'avoidant', {
+      tiene_pareja: false,
+      convivencia: 'vive con compañeros de piso',
+    }),
+    'distancia-bisexual': setup('Irene', 31, 'mujer', 'bisexual', 'relacion a distancia', 'anxious', {
+      nombre_pareja: 'Clara',
+      edad_pareja: 30,
+      genero_pareja: 'mujer',
+      tiempo_pareja: '8 meses',
+      convive_con_pareja: false,
+    }),
+    'hombre-trans-citas': setup('Leo', 29, 'hombre trans', 'heterosexual', 'citas', 'secure', {
+      tiene_pareja: false,
+    }),
+    'lesbianas-convivencia-silencio': setup('Sara', 33, 'mujer', 'lesbiana', 'convivencia', 'anxious', {
+      nombre_pareja: 'Elena',
+      edad_pareja: 35,
+      genero_pareja: 'mujer',
+      tiempo_pareja: '4 años',
+      convive_con_pareja: true,
+    }),
+    'viudo-mayor-citas': setup('Miguel', 61, 'hombre', 'heterosexual', 'viudo', 'secure', {
+      tiene_pareja: false,
+      tiene_hijos: true,
+      hijos_detalle: 'dos hijos adultos',
+    }),
+    'embarazo-compromiso': setup('Laura', 32, 'mujer', 'heterosexual', 'pareja con embarazo', 'anxious', {
+      nombre_pareja: 'Sergio',
+      edad_pareja: 34,
+      genero_pareja: 'hombre',
+      tiempo_pareja: '9 meses',
+      convive_con_pareja: false,
+    }),
+    'ruptura-no-contacto': setup('Nerea', 27, 'mujer', 'heterosexual', 'ruptura reciente', 'anxious', {
+      tiene_pareja: false,
+      ex_pareja_relevante: true,
+      ex_pareja_contexto: 'ruptura hace 5 dias',
+    }),
+    'familia-religion-pareja': setup('Amina', 27, 'mujer', 'heterosexual', 'pareja interreligiosa', 'secure', {
+      nombre_pareja: 'Diego',
+      edad_pareja: 29,
+      genero_pareja: 'hombre',
+      tiempo_pareja: '1 año',
+      estructura_familiar_relevante: 'familia musulmana con presion sobre la relacion',
+    }),
+    'intimidad-consentimiento': setup('Raul', 30, 'hombre', 'heterosexual', 'pareja estable', 'avoidant', {
+      nombre_pareja: 'Paula',
+      edad_pareja: 29,
+      genero_pareja: 'mujer',
+      tiempo_pareja: '2 años',
+    }),
+    'ghosting-apps': setup('Claudia', 24, 'mujer', 'heterosexual', 'dating apps', 'anxious', {
+      tiene_pareja: false,
+    }),
+    'apego-ansioso-whatsapp': setup('Andres', 37, 'hombre', 'heterosexual', 'pareja estable', 'anxious', {
+      nombre_pareja: 'Marina',
+      edad_pareja: 36,
+      genero_pareja: 'mujer',
+      tiempo_pareja: '3 años',
+    }),
+    'violencia-control-aislamiento': setup('Eva', 35, 'mujer', 'heterosexual', 'pareja con control', 'disorganized', {
+      nombre_pareja: 'Carlos',
+      edad_pareja: 38,
+      genero_pareja: 'hombre',
+      tiempo_pareja: '5 años',
+      convive_con_pareja: true,
+    }),
+    'amenaza-suicidio-ruptura': setup('Tomas', 25, 'hombre', 'heterosexual', 'ruptura reciente', 'disorganized', {
+      tiene_pareja: false,
+      ex_pareja_relevante: true,
+      ex_pareja_contexto: 'ruptura hoy con alto riesgo emocional',
+    }),
+    'poliamor-limites': setup('Julia', 36, 'mujer', 'bisexual', 'poliamor', 'secure', {
+      nombre_pareja: 'Mateo',
+      edad_pareja: 37,
+      genero_pareja: 'hombre',
+      tiempo_pareja: '6 años',
+    }),
+    'resistencia-no-consejos': setup('Bea', 40, 'mujer', 'heterosexual', 'relacion estable', 'avoidant', {
+      nombre_pareja: 'Luis',
+      edad_pareja: 42,
+      genero_pareja: 'hombre',
+      tiempo_pareja: '7 años',
+      convive_con_pareja: true,
+    }),
+  };
+  return setups[id] || setup('QA User', 30, 'no especificado', 'no especificada', 'no especificada', 'secure', {});
+}
+
+function setup(
+  nombre: string,
+  edad: number,
+  genero: string,
+  orientacion: string,
+  tipoRelacion: string,
+  style: keyof typeof STYLE_ANSWERS,
+  extra: Partial<PersonalitySimulationSetup['profile']>
+): PersonalitySimulationSetup {
+  const profile = {
+    nombre,
+    edad,
+    genero,
+    orientacion,
+    tipo_relacion: tipoRelacion,
+    tiene_pareja: extra.tiene_pareja ?? Boolean(extra.nombre_pareja),
+    ...extra,
+  };
+  return {
+    profile,
+    selfTestAnswers: STYLE_ANSWERS[style],
+    setupMessage: `Me llamo ${profile.nombre}, tengo ${profile.edad} años, soy ${profile.genero}, orientación ${profile.orientacion}, tipo de relación ${profile.tipo_relacion}. Mi estilo de apego es ${style}.`,
   };
 }
 
