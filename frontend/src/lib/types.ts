@@ -135,6 +135,7 @@ export interface KnowledgeChunk {
   preview: string;
   domain: string;
   language: string;
+  polarity_lane: string;
   topics: string[];
   source_notes: string | null;
 }

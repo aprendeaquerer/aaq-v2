@@ -246,10 +246,13 @@ export async function getKnowledgeBrain(language?: string): Promise<KnowledgeBra
   } catch {
     const fallback = {
       ...knowledgeBrainFallback,
-      chunks: knowledgeBrainFallback.chunks.map((chunk) => ({
-        polarity_lane: '',
-        ...chunk,
-      })),
+      chunks: knowledgeBrainFallback.chunks.map((chunk) => {
+        const lane = (chunk as { polarity_lane?: unknown }).polarity_lane;
+        return {
+          ...chunk,
+          polarity_lane: typeof lane === 'string' ? lane : '',
+        };
+      }),
     } as KnowledgeBrain;
     if (!language) return fallback;
     const chunks = fallback.chunks.filter((chunk) => chunk.language === language || chunk.language === 'multi' || chunk.language === '');
