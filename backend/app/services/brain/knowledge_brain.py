@@ -70,12 +70,13 @@ def retrieve_knowledge(message: str, language: str = "es", limit: int = 6) -> Li
     routed_domains = route_domains(message)
     active_partner_context = _looks_like_active_partner_context(message)
     breakup_context = _looks_like_breakup_context(message)
+    polarity_lane_context = _polarity_lane_context(message)
     scored = []
 
     for chunk in chunks:
         if chunk.language not in (language, "multi", ""):
             continue
-        score = _score_chunk(chunk, query_terms, routed_domains)
+        score = _score_chunk(chunk, query_terms, routed_domains, polarity_lane_context)
         if breakup_context and _is_breakup_recovery_chunk(chunk):
             score += 5
         if active_partner_context:
@@ -100,6 +101,7 @@ def retrieve_knowledge(message: str, language: str = "es", limit: int = 6) -> Li
                 content=chunk.content,
                 domain=chunk.domain,
                 language=chunk.language,
+                polarity_lane=chunk.polarity_lane,
                 topics=chunk.topics,
                 source_notes=chunk.source_notes,
                 score=score,
@@ -176,6 +178,8 @@ def route_domains(message: str) -> List[str]:
             "energia masculina", "energia femenina", "nice guy", "complacencia",
             "holding frame", "sostener el marco", "tension emocional",
             "liderazgo masculino", "masculine leadership", "grounded",
+            "energía masculina", "energía femenina", "dark feminine", "light feminine",
+            "receptividad", "receptiva", "desapego", "detachment", "black cat", "white cat",
         ),
         "somatics": (
             "cuerpo", "body", "somatico", "somatic", "nervioso", "nervous", "vagal",
@@ -232,6 +236,9 @@ def _parse_article(path: Path) -> Dict:
     domain = metadata.get("domain") or _domain_from_path(path)
     article_id = metadata.get("id") or path.stem
     language = metadata.get("language", "es")
+    polarity_lane = metadata.get("polarity_lane", "")
+    if domain == "polarity" and not polarity_lane:
+        polarity_lane = "shared_principle"
     topics = metadata.get("topics", [])
     if isinstance(topics, str):
         topics = [topics]
@@ -245,6 +252,7 @@ def _parse_article(path: Path) -> Dict:
         "title": title,
         "domain": domain,
         "language": language,
+        "polarity_lane": polarity_lane,
         "topics": topics,
         "body": body,
         "source_notes": _extract_section(body, "Source Notes"),
@@ -312,6 +320,7 @@ def _article_to_chunks(article: Dict) -> List[KnowledgeChunk]:
                 content=chunk_content.strip(),
                 domain=article["domain"],
                 language=article["language"],
+                polarity_lane=article["polarity_lane"],
                 topics=article["topics"],
                 source_notes=article["source_notes"],
             )
@@ -345,14 +354,39 @@ def _section_content(sections: List[Tuple[str, str]], section_name: str) -> str:
     return ""
 
 
-def _score_chunk(chunk: KnowledgeChunk, query_terms: Iterable[str], routed_domains: List[str]) -> float:
+def _score_chunk(
+    chunk: KnowledgeChunk,
+    query_terms: Iterable[str],
+    routed_domains: List[str],
+    polarity_lane_context: str,
+) -> float:
     terms = set(query_terms)
     haystack = " ".join([chunk.title, chunk.section, chunk.content, " ".join(chunk.topics)]).lower()
     score = sum(1 for term in terms if term in haystack)
     if chunk.domain in routed_domains:
         score += 3
+    if polarity_lane_context and chunk.polarity_lane == polarity_lane_context:
+        score += 5
     score += len(terms.intersection(set(chunk.topics))) * 2
     return float(score)
+
+
+def _polarity_lane_context(message: str) -> str:
+    text = message.lower()
+    feminine_cues = (
+        "energia femenina", "energía femenina", "feminine energy", "feminine",
+        "femenina", "mujer", "mujeres", "dark feminine", "light feminine",
+        "black cat", "white cat", "receptiva", "receptividad",
+    )
+    masculine_cues = (
+        "energia masculina", "energía masculina", "masculine energy", "masculine",
+        "masculino", "hombre masculino", "liderazgo masculino",
+    )
+    if any(cue in text for cue in feminine_cues):
+        return "feminine_advice"
+    if any(cue in text for cue in masculine_cues):
+        return "masculine_advice"
+    return ""
 
 
 def _looks_like_active_partner_context(message: str) -> bool:

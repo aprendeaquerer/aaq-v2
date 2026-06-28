@@ -3,6 +3,7 @@ id: old-templates-emotional-leadership-masculine
 domain: polarity
 type: article
 language: es
+polarity_lane: masculine_advice
 topics:
   - masculine_leadership
   - emotional_intelligence

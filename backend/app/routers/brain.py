@@ -37,6 +37,7 @@ def _to_response(chunk: KnowledgeChunk) -> KnowledgeChunkResponse:
         preview=_preview(chunk.content),
         domain=chunk.domain,
         language=chunk.language,
+        polarity_lane=chunk.polarity_lane,
         topics=chunk.topics,
         source_notes=chunk.source_notes,
     )
@@ -47,4 +48,3 @@ def _preview(value: str, limit: int = 220) -> str:
     if len(text) <= limit:
         return text
     return f"{text[:limit].rstrip()}..."
-

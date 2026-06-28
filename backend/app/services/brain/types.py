@@ -11,6 +11,7 @@ class KnowledgeChunk:
     content: str
     domain: str
     language: str
+    polarity_lane: str = ""
     topics: List[str] = field(default_factory=list)
     source_notes: Optional[str] = None
     score: float = 0.0
@@ -22,4 +23,3 @@ class BrainContext:
     user_memories: List[Dict[str, str]] = field(default_factory=list)
     domains: List[str] = field(default_factory=list)
     intent: str = "general_support"
-

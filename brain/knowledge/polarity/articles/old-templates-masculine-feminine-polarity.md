@@ -3,6 +3,7 @@ id: old-templates-masculine-feminine-polarity
 domain: polarity
 type: article
 language: es
+polarity_lane: shared_principle
 topics:
   - masculine_feminine_polarity
   - attraction

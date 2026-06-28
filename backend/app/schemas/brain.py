@@ -12,6 +12,7 @@ class KnowledgeChunkResponse(BaseModel):
     preview: str
     domain: str
     language: str
+    polarity_lane: str = ""
     topics: List[str]
     source_notes: Optional[str] = None
 
@@ -20,4 +21,3 @@ class KnowledgeBrainResponse(BaseModel):
     chunks: List[KnowledgeChunkResponse]
     domains: Dict[str, int]
     articles: Dict[str, int]
-
