@@ -6,6 +6,7 @@ import * as api from '@/lib/api';
 import { API_URL } from '@/lib/constants';
 import { useLanguage } from '@/hooks/useLanguage';
 import { personalityTestConversations } from '@/data/personalityTestConversations';
+import { personalityQaLatestReport } from '@/data/personalityQaLatestReport';
 import type { BotDebugStep, ChatResponse, DebugSession, KnowledgeChunk, UserMemory, UserProfile } from '@/lib/types';
 
 type BrainMode = 'text' | 'constellation';
@@ -248,36 +249,40 @@ export default function DataBrainPanel({
         openHref="/brain?tab=tests"
         standalone={standalone}
       >
-        <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[330px_minmax(0,1fr)]">
-          <aside className="min-h-0 overflow-y-auto rounded border border-[#042648]/12 bg-white">
-            <div className="border-b border-[#042648]/10 px-3 py-3">
-              <h3 className="text-sm font-bold text-[#042648]">Conversation Threads</h3>
-              <p className="mt-1 text-xs text-[#042648]/60">
-                20 scenarios with 10 user prompts each.
-              </p>
-            </div>
-            <div className="space-y-1 p-2">
-              {personalityTestConversations.map((conversation) => (
-                <PersonalityThreadButton
-                  key={conversation.id}
-                  conversation={conversation}
-                  isSelected={conversation.id === selectedPersonalityTest?.id}
-                  onSelect={() => setSelectedPersonalityTestId(conversation.id)}
-                />
-              ))}
-            </div>
-          </aside>
+        <div className="flex min-h-0 flex-1 flex-col gap-4">
+          <LatestQaRunPanel />
 
-          <div className="min-h-0 overflow-y-auto pr-1">
-            {selectedPersonalityTest && (
-              <PersonalityThreadReader
-                conversation={selectedPersonalityTest}
-                actualRun={actualRuns[selectedPersonalityTest.id]}
-                isRunningAll={isRunningAllPersonalityTests}
-                onRun={() => void runPersonalityScenario(selectedPersonalityTest)}
-                onRunAll={() => void runAllPersonalityScenarios()}
-              />
-            )}
+          <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[330px_minmax(0,1fr)]">
+            <aside className="min-h-0 overflow-y-auto rounded border border-[#042648]/12 bg-white">
+              <div className="border-b border-[#042648]/10 px-3 py-3">
+                <h3 className="text-sm font-bold text-[#042648]">Conversation Threads</h3>
+                <p className="mt-1 text-xs text-[#042648]/60">
+                  20 scenarios with 10 user prompts each.
+                </p>
+              </div>
+              <div className="space-y-1 p-2">
+                {personalityTestConversations.map((conversation) => (
+                  <PersonalityThreadButton
+                    key={conversation.id}
+                    conversation={conversation}
+                    isSelected={conversation.id === selectedPersonalityTest?.id}
+                    onSelect={() => setSelectedPersonalityTestId(conversation.id)}
+                  />
+                ))}
+              </div>
+            </aside>
+
+            <div className="min-h-0 overflow-y-auto pr-1">
+              {selectedPersonalityTest && (
+                <PersonalityThreadReader
+                  conversation={selectedPersonalityTest}
+                  actualRun={actualRuns[selectedPersonalityTest.id]}
+                  isRunningAll={isRunningAllPersonalityTests}
+                  onRun={() => void runPersonalityScenario(selectedPersonalityTest)}
+                  onRunAll={() => void runAllPersonalityScenarios()}
+                />
+              )}
+            </div>
           </div>
         </div>
       </BrainShell>
@@ -620,6 +625,149 @@ function PersonalityThreadButton({
       <div className="mt-1 text-sm font-bold leading-snug">{conversation.title}</div>
       <div className="mt-1 text-xs opacity-65">{userPromptCount} user prompts</div>
     </button>
+  );
+}
+
+function LatestQaRunPanel() {
+  const report = personalityQaLatestReport;
+  const metrics = [
+    ['Conversations', report.aggregate.conversationCount],
+    ['Turns', report.aggregate.turnCount],
+    ['AI errors', report.aggregate.aiErrorTurnCount],
+    ['Knowledge turns', `${report.aggregate.knowledgeTurnCount}/${report.aggregate.turnCount}`],
+    ['Memory turns', `${report.aggregate.memoryRetrievedTurnCount}/${report.aggregate.turnCount}`],
+    ['Memory captures', report.aggregate.memoryCapturedTurnCount],
+    ['Avg chunks', report.aggregate.averageKnowledgeChunks],
+    ['Multi-question replies', report.aggregate.responsesWithMultipleQuestions],
+  ];
+
+  return (
+    <section className="rounded border border-[#042648]/12 bg-white">
+      <div className="border-b border-[#042648]/10 px-3 py-3">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+              Latest Full QA Run
+            </div>
+            <h3 className="mt-1 text-base font-bold text-[#042648]">{report.runId}</h3>
+            <p className="mt-1 text-xs text-[#042648]/58">
+              {report.source} / expected model {report.modelExpected}
+            </p>
+          </div>
+          <span className="rounded border border-[#A33A3A]/20 bg-[#FFF0F0] px-2 py-1 text-[11px] font-bold text-[#7A1F1F]">
+            Safety fixes required
+          </span>
+        </div>
+        <p className="mt-3 text-sm leading-6 text-[#042648]/72">{report.verdict}</p>
+      </div>
+
+      <div className="space-y-3 px-3 py-3">
+        <div className="grid gap-2 md:grid-cols-4">
+          {metrics.map(([label, value]) => (
+            <div key={label} className="rounded bg-[#F8FAF7] px-3 py-2">
+              <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+                {label}
+              </div>
+              <div className="mt-1 text-sm font-bold text-[#042648]">{value}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid gap-3 xl:grid-cols-2">
+          <QaFindingList title="Strengths" items={report.strengths} tone="good" />
+          <QaFindingList title="Recommendations" items={report.recommendations} tone="neutral" />
+        </div>
+
+        <div className="rounded border border-[#A33A3A]/18 bg-[#FFF8F8]">
+          <div className="border-b border-[#A33A3A]/15 px-3 py-2">
+            <h4 className="text-sm font-bold text-[#7A1F1F]">Critical Findings</h4>
+          </div>
+          <div className="grid gap-2 p-3 lg:grid-cols-2">
+            {report.risks.map((risk) => (
+              <div key={`${risk.conversationId}-${risk.severity}`} className="rounded bg-white px-3 py-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className={`rounded px-2 py-0.5 text-[10px] font-bold ${
+                    risk.severity === 'P0'
+                      ? 'bg-[#A33A3A] text-white'
+                      : risk.severity === 'P1'
+                        ? 'bg-[#C1821D] text-white'
+                        : 'bg-[#E6F0FF] text-[#173F76]'
+                  }`}
+                  >
+                    {risk.severity}
+                  </span>
+                  <span className="text-xs font-bold text-[#042648]">{risk.title}</span>
+                </div>
+                <p className="mt-2 text-xs leading-5 text-[#042648]/68">{risk.summary}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded border border-[#042648]/10 bg-[#FFFDF8]">
+          <div className="border-b border-[#042648]/10 px-3 py-2">
+            <h4 className="text-sm font-bold text-[#042648]">Conversation Metrics</h4>
+          </div>
+          <div className="max-h-72 overflow-auto">
+            <table className="w-full text-left text-xs">
+              <thead className="sticky top-0 bg-[#FFFDF8] text-[#042648]/48">
+                <tr>
+                  <th className="px-3 py-2 font-bold">Conversation</th>
+                  <th className="px-3 py-2 font-bold">Status</th>
+                  <th className="px-3 py-2 font-bold">Turns</th>
+                  <th className="px-3 py-2 font-bold">Avg K</th>
+                  <th className="px-3 py-2 font-bold">Captured</th>
+                  <th className="px-3 py-2 font-bold">Final Mem</th>
+                </tr>
+              </thead>
+              <tbody>
+                {report.conversationMetrics.map(([id, title, status, turns, avgK, captured, finalMem]) => (
+                  <tr key={id} className="border-t border-[#042648]/8">
+                    <td className="px-3 py-2 font-semibold text-[#042648]/75">{title}</td>
+                    <td className="px-3 py-2">
+                      <span className={`rounded px-2 py-0.5 font-bold ${
+                        status === 'P0'
+                          ? 'bg-[#A33A3A] text-white'
+                          : status === 'P1'
+                            ? 'bg-[#C1821D] text-white'
+                            : status === 'P2'
+                              ? 'bg-[#E6F0FF] text-[#173F76]'
+                              : 'bg-[#EAF7EF] text-[#165A38]'
+                      }`}
+                      >
+                        {status}
+                      </span>
+                    </td>
+                    <td className="px-3 py-2 text-[#042648]/62">{turns}</td>
+                    <td className="px-3 py-2 text-[#042648]/62">{avgK}</td>
+                    <td className="px-3 py-2 text-[#042648]/62">{captured}</td>
+                    <td className="px-3 py-2 text-[#042648]/62">{finalMem}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function QaFindingList({ title, items, tone }: { title: string; items: string[]; tone: 'good' | 'neutral' }) {
+  return (
+    <div className={`rounded border px-3 py-3 ${
+      tone === 'good' ? 'border-[#2F8F5B]/18 bg-[#EAF7EF]' : 'border-[#042648]/10 bg-[#F8FAF7]'
+    }`}
+    >
+      <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">{title}</div>
+      <ul className="mt-2 space-y-1.5">
+        {items.map((item) => (
+          <li key={item} className="text-xs leading-5 text-[#042648]/70">
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
