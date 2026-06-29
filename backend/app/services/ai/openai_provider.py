@@ -6,7 +6,7 @@ from app.services.ai.base import AIProvider
 
 
 class OpenAIProvider(AIProvider):
-    def __init__(self, api_key: str, model: str = "gpt-4-turbo"):
+    def __init__(self, api_key: str, model: str = "gpt-4o-mini"):
         self.client = AsyncOpenAI(api_key=api_key)
         self.model = model
 
