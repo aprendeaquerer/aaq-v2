@@ -8,6 +8,7 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
   - masculine_advice
   - reciprocity
   - dating
@@ -19,7 +20,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Reading Reciprocity Without Pushing
+# DATING: cómo saber si hay interés real observando la reciprocidad, sin empujar la interacción
 
 ## Core Thesis
 

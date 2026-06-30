@@ -4,6 +4,8 @@ domain: self_improvement
 type: article
 language: es
 topics:
+  - limites
+  - autoestima
   - boundaries
   - inner_peace
   - energy_management
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Tres Limites Para Proteger Tu Paz
+# LÍMITES: tres límites para proteger tu tiempo, tu atención y tu mundo emocional sin volverte frío
 
 ## Core Thesis
 

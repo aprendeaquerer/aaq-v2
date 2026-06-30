@@ -8,6 +8,8 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - autoestima
   - masculine_advice
   - rejection
   - overinvestment
@@ -19,7 +21,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Rejection Resilience
+# DATING: cómo encajar el rechazo sin hundir la autoestima ni sobreinvertir antes de tiempo
 
 ## Core Thesis
 

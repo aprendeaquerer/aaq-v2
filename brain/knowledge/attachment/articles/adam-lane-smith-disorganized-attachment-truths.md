@@ -4,6 +4,9 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
+  - relacion
+  - cuerpo
   - disorganized_attachment
   - self_abandonment
   - reality_testing
@@ -16,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Adam Lane Smith - Disorganized Attachment Truths
+# APEGO: por qué alguien desea y a la vez teme la cercanía, y sabotea cuando aparece la calma
 
 ## Core Thesis
 

@@ -4,6 +4,9 @@ domain: attachment
 type: article
 language: es
 topics:
+  - relacion
+  - comunicacion
+  - apego
   - attachment_injury
   - betrayal
   - trust_repair
@@ -16,7 +19,7 @@ safety: sensitive
 status: processed
 ---
 
-# Secure Love Ch 9 - Attachment Injuries And Repair
+# RELACIÓN: cómo reparar una traición de confianza grave y reconstruir la seguridad en la pareja
 
 ## Core Thesis
 

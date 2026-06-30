@@ -4,6 +4,9 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
+  - relacion
+  - dating
   - avoidant_attachment
   - deactivation
   - dopamine_cliff
@@ -16,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Adam Lane Smith - How Avoidant Attachment Falls In Love
+# APEGO: cómo la persona evitativa se enamora de la idea del amor y se aleja cuando llega la cercanía real
 
 ## Core Thesis
 

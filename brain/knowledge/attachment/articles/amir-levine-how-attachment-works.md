@@ -4,6 +4,7 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
   - attachment_science
   - secure_people
   - emotional_regulation
@@ -16,7 +17,7 @@ safety: normal
 status: processed
 ---
 
-# Amir Levine - How Attachment Works
+# APEGO: qué es el apego como sistema biológico y por qué las relaciones seguras bajan el estrés
 
 ## Core Thesis
 

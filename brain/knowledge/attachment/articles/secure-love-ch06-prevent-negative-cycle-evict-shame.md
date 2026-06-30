@@ -4,6 +4,9 @@ domain: attachment
 type: article
 language: es
 topics:
+  - relacion
+  - comunicacion
+  - autoestima
   - shame
   - emotional_safety
   - evict
@@ -16,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Secure Love Ch 6 - Prevent The Negative Cycle And Evict Shame
+# RELACIÓN: cómo prevenir las peleas creando seguridad y quitando la vergüenza de la conversación
 
 ## Core Thesis
 

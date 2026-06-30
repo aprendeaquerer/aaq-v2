@@ -8,6 +8,7 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
   - masculine_advice
   - presence
   - direction
@@ -19,7 +20,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Presence, Direction, And Strength
+# POLARIDAD: cuándo la fuerza masculina atrae (da claridad) y cuándo daña (controla)
 
 ## Core Thesis
 

@@ -8,6 +8,8 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - relacion
   - masculine_advice
   - leadership
   - direction
@@ -19,7 +21,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Leadership Without Control
+# POLARIDAD: cómo dar dirección y contención en la relación sin controlar ni imponerse
 
 ## Core Thesis
 

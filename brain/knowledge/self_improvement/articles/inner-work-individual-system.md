@@ -4,6 +4,7 @@ domain: self_improvement
 type: article
 language: es
 topics:
+  - crecimiento
   - inner_work
   - consciousness
   - ego_self
@@ -16,7 +17,7 @@ safety: normal
 status: processed
 ---
 
-# Inner Work - Sistema Individual
+# CRECIMIENTO: el modelo Inner Work que ve a la persona como un Self sano cubierto por capas de condicionamiento
 
 ## Core Thesis
 

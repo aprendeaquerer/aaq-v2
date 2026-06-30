@@ -4,6 +4,8 @@ domain: self_improvement
 type: article
 language: es
 topics:
+  - autoestima
+  - crecimiento
   - self_doubt
   - confidence
   - self_image
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Duda, Autoimagen Y Agencia
+# AUTOESTIMA: por qué la confianza no llega acumulando logros sino cambiando autoimagen y actuando
 
 ## Core Thesis
 

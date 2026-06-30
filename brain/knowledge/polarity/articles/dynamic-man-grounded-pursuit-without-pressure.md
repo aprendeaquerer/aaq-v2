@@ -8,6 +8,7 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
   - masculine_advice
   - dating
   - pursuit
@@ -19,7 +20,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Grounded Pursuit Without Pressure
+# DATING: cómo tomar la iniciativa con claridad, leer si hay reciprocidad y respetar el no
 
 ## Core Thesis
 

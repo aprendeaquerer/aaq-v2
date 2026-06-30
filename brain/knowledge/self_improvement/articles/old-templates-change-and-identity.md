@@ -4,6 +4,8 @@ domain: self_improvement
 type: article
 language: es
 topics:
+  - crecimiento
+  - autoestima
   - identity_change
   - reinvention
   - cognitive_reappraisal
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Cambio E Identidad
+# CRECIMIENTO: por qué un cambio grande remueve la identidad y cómo reinventarse sin negar el dolor
 
 ## Core Thesis
 

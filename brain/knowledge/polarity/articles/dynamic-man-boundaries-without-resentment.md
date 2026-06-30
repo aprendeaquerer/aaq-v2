@@ -8,6 +8,9 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - limites
+  - relacion
   - masculine_advice
   - boundaries
   - resentment
@@ -19,7 +22,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Boundaries Without Resentment
+# LÍMITES: cómo poner límites desde la verdad y no desde el miedo para no acumular resentimiento
 
 ## Core Thesis
 

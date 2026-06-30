@@ -4,6 +4,7 @@ domain: self_improvement
 type: article
 language: es
 topics:
+  - crecimiento
   - growth_workflow
   - behavior_change
   - identity_system
@@ -16,7 +17,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Workflow Growth Y Reprogramacion Personal
+# CRECIMIENTO: por qué el cambio dura cuando se rediseña todo el sistema de vida, no solo la fuerza de voluntad
 
 ## Core Thesis
 

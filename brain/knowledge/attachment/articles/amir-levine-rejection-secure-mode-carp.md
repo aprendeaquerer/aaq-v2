@@ -4,6 +4,8 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
+  - autoestima
   - rejection_sensitivity
   - secure_mode
   - carp
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Amir Levine - From Rejection To Secure Mode
+# APEGO: por qué el rechazo se vive como amenaza y cómo crear un entorno que devuelve la calma
 
 ## Core Thesis
 

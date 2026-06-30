@@ -5,6 +5,8 @@ type: article
 language: es
 polarity_lane: shared_principle
 topics:
+  - polaridad
+  - relacion
   - masculine_feminine_polarity
   - attraction
   - depolarization
@@ -17,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Polaridad Masculino-Femenina
+# POLARIDAD: por qué se apaga la atracción cuando alguien abandona su energía natural, y cómo recuperarla
 
 ## Core Thesis
 

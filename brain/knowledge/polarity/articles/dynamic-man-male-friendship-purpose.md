@@ -8,6 +8,8 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - crecimiento
   - masculine_advice
   - purpose
   - male_friendship
@@ -19,7 +21,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Purpose And Male Friendship
+# POLARIDAD: por qué tener propósito y amistades propias evita volcar toda la energía en la pareja
 
 ## Core Thesis
 

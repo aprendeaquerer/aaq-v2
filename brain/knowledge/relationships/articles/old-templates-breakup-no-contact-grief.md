@@ -4,6 +4,8 @@ domain: relationships
 type: article
 language: es
 topics:
+  - ruptura
+  - cuerpo
   - breakup_grief
   - no_contact
   - nervous_system
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Ruptura, No Contacto Y Duelo Del Vinculo
+# RUPTURA: qué pasa en el cuerpo tras una ruptura, por qué duele y cómo sostener el no contacto
 
 ## Core Thesis
 

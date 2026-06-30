@@ -360,12 +360,13 @@ export default function DataBrainPanel({
                     </span>
                   </button>
                   {!collapsedKnowledgeDomains.has(domain) && (
-                    <div className="grid gap-3 border-t border-[#042648]/10 bg-[#FFFDF8] p-3 md:grid-cols-2 xl:grid-cols-3">
-                      {rows.map((chunk) => (
-                        <KnowledgeCard
-                          key={chunk.id}
-                          chunk={chunk}
-                          onOpen={() => setSelectedKnowledgeChunk(chunk)}
+                    <div className="space-y-3 border-t border-[#042648]/10 bg-[#FFFDF8] p-3">
+                      {groupKnowledgeByDocument(rows).map(([title, docChunks]) => (
+                        <DocumentGroup
+                          key={`${domain}-${title}`}
+                          title={title}
+                          chunks={docChunks}
+                          onOpen={setSelectedKnowledgeChunk}
                         />
                       ))}
                     </div>
@@ -1467,35 +1468,52 @@ function LiveCandidateCard({ candidate, index }: { candidate: LiveCandidate; ind
   );
 }
 
-function KnowledgeCard({ chunk, onOpen }: { chunk: KnowledgeChunk; onOpen: () => void }) {
+function DocumentGroup({
+  title,
+  chunks,
+  onOpen,
+}: {
+  title: string;
+  chunks: KnowledgeChunk[];
+  onOpen: (chunk: KnowledgeChunk) => void;
+}) {
+  const language = chunks[0]?.language;
   return (
-    <button
-      type="button"
-      onClick={onOpen}
-      className="rounded border border-[#042648]/12 bg-white px-3 py-3 text-left transition hover:border-[#042648]/35 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-[#042648]/30"
-    >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="text-sm font-bold">{chunk.title}</div>
-          <div className="mt-1 text-xs text-[#042648]/55">{chunk.section}</div>
+    <article className="overflow-hidden rounded border border-[#042648]/12 bg-white">
+      <div className="flex items-start justify-between gap-3 border-b border-[#042648]/10 bg-[#FFFDF8] px-3 py-2.5">
+        <div className="min-w-0">
+          <h4 className="truncate text-sm font-bold text-[#042648]">{title}</h4>
+          <p className="mt-0.5 text-xs text-[#042648]/55">
+            {chunks.length} {chunks.length === 1 ? 'sección' : 'secciones'}
+          </p>
         </div>
-        <span className="rounded-full border border-[#042648]/15 bg-[#F8FAF7] px-2 py-0.5 text-[11px] font-semibold text-[#042648]/60">
-          {chunk.language || 'multi'}
+        <span className="shrink-0 rounded-full border border-[#042648]/15 bg-white px-2 py-0.5 text-[11px] font-semibold text-[#042648]/60">
+          {language || 'multi'}
         </span>
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-[#042648]/78">{chunk.preview}</p>
-      <div className="mt-3 flex flex-wrap gap-1">
-        {chunk.topics.slice(0, 5).map((topic) => (
-          <span
-            key={`${chunk.id}-${topic}`}
-            className="rounded bg-[#FFF6EA] px-2 py-0.5 text-[11px] font-semibold text-[#042648]/58"
-          >
-            {formatType(topic)}
-          </span>
+      <ul className="divide-y divide-[#042648]/8">
+        {chunks.map((chunk) => (
+          <li key={chunk.id}>
+            <button
+              type="button"
+              onClick={() => onOpen(chunk)}
+              title={chunk.preview}
+              className="flex w-full items-center justify-between gap-3 px-3 py-2 text-left transition hover:bg-[#F8FAF7] focus:bg-[#F8FAF7] focus:outline-none"
+            >
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm font-semibold text-[#042648]/85">
+                  {chunk.section || 'Sin sección'}
+                </span>
+                <span className="mt-0.5 block truncate text-xs text-[#042648]/55">
+                  {chunk.preview}
+                </span>
+              </span>
+              <span className="shrink-0 text-xs font-bold text-[#042648]/45">Abrir →</span>
+            </button>
+          </li>
         ))}
-      </div>
-      <div className="mt-3 text-xs font-bold text-[#042648]/55">Open full text</div>
-    </button>
+      </ul>
+    </article>
   );
 }
 
@@ -1820,6 +1838,16 @@ function groupKnowledgeByDomain(chunks: KnowledgeChunk[]): [string, KnowledgeChu
     const rows = grouped.get(groupKey) || [];
     rows.push(chunk);
     grouped.set(groupKey, rows);
+  });
+  return Array.from(grouped.entries());
+}
+
+function groupKnowledgeByDocument(chunks: KnowledgeChunk[]): [string, KnowledgeChunk[]][] {
+  const grouped = new Map<string, KnowledgeChunk[]>();
+  chunks.forEach((chunk) => {
+    const rows = grouped.get(chunk.title) || [];
+    rows.push(chunk);
+    grouped.set(chunk.title, rows);
   });
   return Array.from(grouped.entries());
 }

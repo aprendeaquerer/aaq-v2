@@ -4,6 +4,9 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
+  - dating
+  - relacion
   - anxious_attachment
   - unavailable_partners
   - reconditioning
@@ -16,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Apego Ansioso Y Personas No Disponibles
+# APEGO: por qué el apego ansioso se engancha a personas no disponibles y cómo cortar ese patrón
 
 ## Core Thesis
 

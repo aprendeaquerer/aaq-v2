@@ -8,6 +8,9 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - relacion
+  - dating
   - masculine_advice
   - sexual_values
   - relationship_history
@@ -19,7 +22,7 @@ safety: sensitive
 status: processed
 ---
 
-# Masculine Advice - Sexual Values And Relationship History
+# RELACIÓN: por qué el pasado sexual no mide el valor de alguien y qué sí importa para la compatibilidad
 
 ## Core Thesis
 

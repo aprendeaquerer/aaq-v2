@@ -8,6 +8,9 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - relacion
+  - comunicacion
   - masculine_advice
   - repair
   - conflict
@@ -19,7 +22,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Repair Without Ego
+# RELACIÓN: cómo reparar un conflicto reconociendo el impacto sin ganar la discusión ni huir
 
 ## Core Thesis
 

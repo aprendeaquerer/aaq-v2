@@ -4,6 +4,8 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
+  - relacion
   - bonding_system
   - falling_out_of_love
   - desenamoramiento
@@ -18,7 +20,7 @@ safety: normal
 status: processed
 ---
 
-# Adam Lane Smith - Falling Out Of Love As A Bonding System
+# APEGO: el desenamoramiento explicado como un vínculo que se apaga por falta de seguridad y contacto
 
 ## Core Thesis
 

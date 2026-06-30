@@ -8,6 +8,8 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - relacion
   - masculine_advice
   - desire
   - comfort
@@ -19,7 +21,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Comfort And Desire
+# POLARIDAD: cómo combinar seguridad y deseo para que la atracción no se apague en la pareja
 
 ## Core Thesis
 

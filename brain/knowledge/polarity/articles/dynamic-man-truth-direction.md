@@ -8,6 +8,8 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - comunicacion
   - masculine_advice
   - truth
   - direction
@@ -19,7 +21,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Truth And Direction
+# COMUNICACIÓN: por qué edulcorar la verdad debilita el vínculo y cómo ser honesto sin ser brusco
 
 ## Core Thesis
 

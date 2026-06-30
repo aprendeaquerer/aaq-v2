@@ -4,6 +4,9 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
+  - relacion
+  - comunicacion
   - eft
   - negative_cycle
   - attachment_needs
@@ -15,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Secure Love Ch 1 - The Problem Beneath The Problem
+# RELACIÓN: por qué las peleas de pareja no son por el tema visible sino por una necesidad de fondo
 
 ## Core Thesis
 
