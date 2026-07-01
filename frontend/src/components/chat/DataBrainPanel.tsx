@@ -51,6 +51,27 @@ interface ActualSimulationRun {
   error?: string;
 }
 
+// Live-conversation mode: an AI plays the user persona and talks to the real bot.
+const LIVE_MAX_TURNS = 8;
+
+interface LiveSimulationTurn {
+  persona: string; // the AI-generated user message
+  response: ChatResponse; // the real bot reply (+ debug)
+}
+
+interface LiveSimulationRun {
+  status: 'running' | 'complete' | 'error';
+  email: string;
+  userId?: string;
+  startedAt: Date;
+  completedAt?: Date;
+  opening?: string; // bot's opening line
+  profile?: UserProfile;
+  turns: LiveSimulationTurn[];
+  memories: UserMemory[];
+  error?: string;
+}
+
 const TYPE_COLORS = [
   { bg: '#F1DCF4', border: '#9B5AA6', text: '#5B2467' },
   { bg: '#EAF7EF', border: '#2F8F5B', text: '#165A38' },
@@ -83,6 +104,7 @@ export default function DataBrainPanel({
   );
   const [actualRuns, setActualRuns] = useState<Record<string, ActualSimulationRun>>({});
   const [isRunningAllPersonalityTests, setIsRunningAllPersonalityTests] = useState(false);
+  const [liveRuns, setLiveRuns] = useState<Record<string, LiveSimulationRun>>({});
 
   const loadMemories = useCallback(async () => {
     if (!isAuthenticated) {
@@ -216,6 +238,35 @@ export default function DataBrainPanel({
     }
   };
 
+  const runLivePersonalityScenario = async (conversation: (typeof personalityTestConversations)[number]) => {
+    const startedAt = new Date();
+    const email = `qa-live+${conversation.id.slice(0, 20)}-${startedAt.getTime()}@aprendeaquerer.com`;
+    setLiveRuns((current) => ({
+      ...current,
+      [conversation.id]: { status: 'running', email, startedAt, turns: [], memories: [] },
+    }));
+
+    try {
+      const result = await runLivePersonalitySimulation(conversation, email, (partial) => {
+        setLiveRuns((current) => ({ ...current, [conversation.id]: partial }));
+      });
+      setLiveRuns((current) => ({ ...current, [conversation.id]: result }));
+    } catch (error) {
+      setLiveRuns((current) => ({
+        ...current,
+        [conversation.id]: {
+          status: 'error',
+          email,
+          startedAt,
+          completedAt: new Date(),
+          turns: [],
+          memories: [],
+          error: error instanceof Error ? error.message : 'Live simulation failed',
+        },
+      }));
+    }
+  };
+
   useEffect(() => {
     setCollapsedKnowledgeDomains(new Set(knowledgeDomains));
   }, [knowledgeDomains]);
@@ -277,9 +328,11 @@ export default function DataBrainPanel({
                 <PersonalityThreadReader
                   conversation={selectedPersonalityTest}
                   actualRun={actualRuns[selectedPersonalityTest.id]}
+                  liveRun={liveRuns[selectedPersonalityTest.id]}
                   isRunningAll={isRunningAllPersonalityTests}
                   onRun={() => void runPersonalityScenario(selectedPersonalityTest)}
                   onRunAll={() => void runAllPersonalityScenarios()}
+                  onRunLive={() => void runLivePersonalityScenario(selectedPersonalityTest)}
                 />
               )}
             </div>
@@ -775,18 +828,23 @@ function QaFindingList({ title, items, tone }: { title: string; items: string[];
 function PersonalityThreadReader({
   conversation,
   actualRun,
+  liveRun,
   isRunningAll,
   onRun,
   onRunAll,
+  onRunLive,
 }: {
   conversation: (typeof personalityTestConversations)[number];
   actualRun?: ActualSimulationRun;
+  liveRun?: LiveSimulationRun;
   isRunningAll: boolean;
   onRun: () => void;
   onRunAll: () => void;
+  onRunLive: () => void;
 }) {
   const userPromptCount = conversation.turns.filter((turn) => turn.role === 'user').length;
   const userPrompts = conversation.turns.filter((turn) => turn.role === 'user');
+  const isBusy = actualRun?.status === 'running' || liveRun?.status === 'running' || isRunningAll;
 
   return (
     <article className="rounded border border-[#042648]/12 bg-white">
@@ -806,30 +864,55 @@ function PersonalityThreadReader({
         <div className="mt-3 flex flex-wrap gap-2">
           <button
             type="button"
+            onClick={onRunLive}
+            disabled={isBusy}
+            className="rounded bg-[#9B5AA6] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#9B5AA6]/90 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {liveRun?.status === 'running'
+              ? 'Generando conversación...'
+              : 'Generar conversación en vivo (IA como usuario)'}
+          </button>
+          <button
+            type="button"
             onClick={onRun}
-            disabled={actualRun?.status === 'running' || isRunningAll}
+            disabled={isBusy}
             className="rounded bg-[#042648] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#042648]/90 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {actualRun?.status === 'running' ? 'Running actual bot...' : 'Run actual bot'}
+            {actualRun?.status === 'running' ? 'Running scripted bot...' : 'Run scripted bot'}
           </button>
           <button
             type="button"
             onClick={onRunAll}
-            disabled={actualRun?.status === 'running' || isRunningAll}
+            disabled={isBusy}
             className="rounded border border-[#042648]/20 bg-white px-3 py-2 text-xs font-bold text-[#042648]/70 transition hover:bg-[#F8FAF7] disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {isRunningAll ? 'Running all...' : 'Run all 20'}
+            {isRunningAll ? 'Running all...' : 'Run all 20 (scripted)'}
           </button>
-          {actualRun && (
-            <span className="rounded border border-[#042648]/15 bg-[#F8FAF7] px-3 py-2 text-xs font-semibold text-[#042648]/60">
-              {actualRun.status === 'complete' ? 'Last run complete' : actualRun.status}
-            </span>
-          )}
         </div>
       </div>
 
       <div className="space-y-4 px-3 py-3">
         <SimulationSetupCard conversation={conversation} />
+
+        <section className="rounded border border-[#9B5AA6]/25 bg-[#FBF4FC]">
+          <div className="border-b border-[#9B5AA6]/20 px-3 py-2">
+            <h4 className="text-sm font-bold text-[#5B2467]">Conversación en vivo (IA como usuario)</h4>
+            <p className="mt-1 text-xs text-[#5B2467]/70">
+              Una IA interpreta este perfil y habla con el bot real turno a turno. Verás cómo responde
+              el bot y de dónde saca la información en cada mensaje.
+            </p>
+          </div>
+          <div className="p-3">
+            {liveRun ? (
+              <LiveSimulationRunPanel run={liveRun} />
+            ) : (
+              <div className="rounded border border-dashed border-[#9B5AA6]/35 bg-white px-4 py-6 text-sm text-[#5B2467]/70">
+                Pulsa &ldquo;Generar conversación en vivo&rdquo; para crear una conversación de ejemplo
+                nueva con este perfil e inspeccionar respuestas y fuentes.
+              </div>
+            )}
+          </div>
+        </section>
 
         <section className="rounded border border-[#042648]/10 bg-[#FFFDF8]">
           <div className="border-b border-[#042648]/10 px-3 py-2">
@@ -1041,6 +1124,108 @@ function ActualTurnCard({ turn, index }: { turn: ActualSimulationTurn; index: nu
   );
 }
 
+function LiveSimulationRunPanel({ run }: { run: LiveSimulationRun }) {
+  if (run.status === 'error') {
+    return (
+      <div className="rounded border border-[#A33A3A]/25 bg-[#FFF0F0] px-4 py-4 text-sm text-[#7A1F1F]">
+        {run.error || 'Live simulation failed'}
+      </div>
+    );
+  }
+
+  return (
+    <section className="rounded border border-[#9B5AA6]/20 bg-white">
+      <div className="border-b border-[#9B5AA6]/15 px-3 py-3">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h4 className="text-sm font-bold text-[#5B2467]">Conversación generada</h4>
+            <p className="mt-1 text-xs text-[#5B2467]/65">
+              Usuario {run.email} / {run.userId || 'unknown user id'}
+            </p>
+          </div>
+          <span className="rounded border border-[#9B5AA6]/30 bg-[#FBF4FC] px-2 py-1 text-[11px] font-bold text-[#5B2467]">
+            {run.status === 'running'
+              ? `Generando... ${run.turns.length}/${LIVE_MAX_TURNS}`
+              : `${run.turns.length} turnos`}
+          </span>
+        </div>
+      </div>
+
+      <div className="space-y-3 p-3">
+        {run.opening && (
+          <div className="rounded border border-[#2F8F5B]/18 bg-[#EAF7EF] px-3 py-2">
+            <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#165A38]/70">
+              Bot (apertura)
+            </div>
+            <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[#042648]/82">{run.opening}</p>
+          </div>
+        )}
+
+        {run.turns.map((turn, index) => (
+          <LiveTurnCard key={`${run.email}-live-${index}`} turn={turn} index={index} />
+        ))}
+
+        {run.status === 'running' && (
+          <div className="rounded border border-dashed border-[#9B5AA6]/30 bg-[#FBF4FC] px-3 py-3 text-xs text-[#5B2467]/70">
+            Generando el siguiente mensaje del usuario...
+          </div>
+        )}
+
+        {run.status === 'complete' && run.profile && <ActualProfileSummary profile={run.profile} />}
+        {run.status === 'complete' && <ActualMemorySummary memories={run.memories} />}
+      </div>
+    </section>
+  );
+}
+
+function LiveTurnCard({ turn, index }: { turn: LiveSimulationTurn; index: number }) {
+  const debug = turn.response.data.debug;
+  const knowledgeStep = getDebugStep(debug?.steps, 'knowledge_brain');
+  const memorySearchStep = getDebugStep(debug?.steps, 'memory_brain');
+  const memoryCaptureStep = getDebugStep(debug?.steps, 'memory_capture');
+  const profileCaptureStep = getDebugStep(debug?.steps, 'profile_capture');
+  const routerStep = getDebugStep(debug?.steps, 'brain_router');
+
+  return (
+    <article className="rounded border border-[#9B5AA6]/18 bg-[#FBF4FC]">
+      <div className="border-b border-[#9B5AA6]/15 px-3 py-2">
+        <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#5B2467]/70">
+          Usuario simulado (IA) · turno {index + 1}
+        </div>
+        <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[#5B2467]/90">{turn.persona}</p>
+      </div>
+
+      <div className="space-y-3 px-3 py-3">
+        <div className="rounded border border-[#2F8F5B]/18 bg-[#EAF7EF] px-3 py-2">
+          <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#165A38]/70">
+            Respuesta real del bot
+          </div>
+          <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[#042648]/82">
+            {String(turn.response.data.message || '')}
+          </p>
+        </div>
+
+        {debug && (
+          <div className="rounded border border-[#042648]/10 bg-white px-3 py-3">
+            <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+              De dónde saca la información
+            </div>
+            <p className="mt-1 text-xs leading-5 text-[#042648]/65">{debug.reasoning_summary}</p>
+
+            <div className="mt-3 grid gap-2 lg:grid-cols-2">
+              <DebugStepBlock title="Brain Router" step={routerStep} />
+              <DebugStepBlock title="Profile Capture" step={profileCaptureStep} />
+              <DebugKnowledgeBlock step={knowledgeStep} />
+              <DebugMemorySearchBlock step={memorySearchStep} />
+              <DebugMemoryCaptureBlock step={memoryCaptureStep} />
+            </div>
+          </div>
+        )}
+      </div>
+    </article>
+  );
+}
+
 function DebugStepBlock({ title, step }: { title: string; step?: BotDebugStep }) {
   return (
     <div className="rounded bg-[#F8FAF7] px-3 py-2">
@@ -1231,6 +1416,117 @@ async function runActualPersonalitySimulation(
     profile,
     selfTestResult,
     setupResponses,
+    turns,
+    memories: memoriesResponse.memories,
+  };
+}
+
+function buildLivePersona(conversation: (typeof personalityTestConversations)[number]) {
+  const p = conversation.simulation.profile;
+  const contexto = [p.ex_pareja_contexto, p.estructura_familiar_relevante, p.hijos_detalle]
+    .filter(Boolean)
+    .join('; ');
+  return {
+    nombre: p.nombre,
+    edad: p.edad,
+    genero: p.genero,
+    orientacion: p.orientacion,
+    tipo_relacion: p.tipo_relacion,
+    attachment_style: conversation.simulation.attachmentStyle,
+    escenario: conversation.title.replace(/^\d+\.\s*/, ''),
+    contexto: contexto || undefined,
+  };
+}
+
+async function runLivePersonalitySimulation(
+  conversation: (typeof personalityTestConversations)[number],
+  email: string,
+  onUpdate: (run: LiveSimulationRun) => void
+): Promise<LiveSimulationRun> {
+  const password = `QA-${Date.now()}-aaq`;
+  const startedAt = new Date();
+
+  await qaRequest('/auth/register', {
+    method: 'POST',
+    body: JSON.stringify({ email, password, preferred_language: 'es' }),
+  });
+
+  const login = (await qaRequest('/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  })) as { access_token: string; user_id: string };
+
+  const token = login.access_token;
+
+  await qaRequest('/profile', {
+    method: 'PUT',
+    token,
+    body: JSON.stringify(conversation.simulation.profile),
+  });
+
+  await qaRequest('/chat/session?language=es&debug=true', { method: 'GET', token });
+
+  // Enter conversation mode and capture the bot's opening line.
+  const opening = await sendQaMessage(token, 'A');
+  const openingMessage = String(opening.data.message || '');
+
+  const persona = buildLivePersona(conversation);
+  const history: { role: 'persona' | 'bot'; content: string }[] = [];
+  if (openingMessage) {
+    history.push({ role: 'bot', content: openingMessage });
+  }
+
+  const turns: LiveSimulationTurn[] = [];
+  const emitProgress = () =>
+    onUpdate({
+      status: 'running',
+      email,
+      userId: login.user_id,
+      startedAt,
+      opening: openingMessage,
+      turns: [...turns],
+      memories: [],
+    });
+  emitProgress();
+
+  for (let turnNumber = 1; turnNumber <= LIVE_MAX_TURNS; turnNumber += 1) {
+    const generated = (await qaRequest('/brain/simulate-user-turn', {
+      method: 'POST',
+      token,
+      body: JSON.stringify({
+        persona,
+        history,
+        language: 'es',
+        turn_number: turnNumber,
+        max_turns: LIVE_MAX_TURNS,
+      }),
+    })) as { message: string; should_end: boolean };
+
+    const personaMessage = (generated.message || '').trim();
+    if (!personaMessage) break;
+
+    const botResponse = await sendQaMessage(token, personaMessage);
+    turns.push({ persona: personaMessage, response: botResponse });
+    history.push({ role: 'persona', content: personaMessage });
+    history.push({ role: 'bot', content: String(botResponse.data.message || '') });
+    emitProgress();
+
+    if (generated.should_end) break;
+  }
+
+  const profile = (await qaRequest('/profile', { method: 'GET', token })) as UserProfile;
+  const memoriesResponse = (await qaRequest('/memory', { method: 'GET', token })) as {
+    memories: UserMemory[];
+  };
+
+  return {
+    status: 'complete',
+    email,
+    userId: login.user_id,
+    startedAt,
+    completedAt: new Date(),
+    opening: openingMessage,
+    profile,
     turns,
     memories: memoriesResponse.memories,
   };

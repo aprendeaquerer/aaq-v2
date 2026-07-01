@@ -38,6 +38,7 @@ export interface PersonalitySimulationSetup {
   };
   selfTestAnswers: string[];
   setupMessage: string;
+  attachmentStyle: string;
 }
 
 type Pair = [user: string, assistant: string];
@@ -217,6 +218,7 @@ function setup(
     profile,
     selfTestAnswers: STYLE_ANSWERS[style],
     setupMessage: `Me llamo ${profile.nombre}, tengo ${profile.edad} años, soy ${profile.genero}, orientación ${profile.orientacion}, tipo de relación ${profile.tipo_relacion}. Mi estilo de apego es ${style}.`,
+    attachmentStyle: style,
   };
 }
 

@@ -1,10 +1,22 @@
 from fastapi import APIRouter, Query
 
-from app.schemas.brain import KnowledgeBrainResponse, KnowledgeChunkResponse
+from app.schemas.brain import (
+    KnowledgeBrainResponse,
+    KnowledgeChunkResponse,
+    SimulateUserTurnRequest,
+    SimulateUserTurnResponse,
+)
 from app.services.brain.knowledge_brain import list_knowledge_chunks
 from app.services.brain.types import KnowledgeChunk
+from app.services.brain.user_simulator import generate_user_turn
 
 router = APIRouter(prefix="/brain", tags=["brain"])
+
+
+@router.post("/simulate-user-turn", response_model=SimulateUserTurnResponse)
+async def simulate_user_turn(request: SimulateUserTurnRequest) -> SimulateUserTurnResponse:
+    """Generate the next message from a simulated user persona (QA / tests tab)."""
+    return await generate_user_turn(request)
 
 
 @router.get("/knowledge", response_model=KnowledgeBrainResponse)
