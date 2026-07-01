@@ -4,6 +4,8 @@ domain: relationships
 type: article
 language: es
 topics:
+  - dating
+  - relacion
   - settling_for_potential
   - dating_standards
   - reality_check
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Stop Settling For Potential
+# DATING: por qué conformarse con el potencial de alguien es vincularse a una fantasía, no a la realidad
 
 ## Core Thesis
 

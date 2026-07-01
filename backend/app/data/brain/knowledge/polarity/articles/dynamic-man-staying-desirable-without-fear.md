@@ -8,6 +8,8 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - relacion
   - masculine_advice
   - attraction
   - vitality
@@ -19,7 +21,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Staying Desirable Without Fear
+# RELACIÓN: cómo seguir siendo deseable en la pareja cuidándote, sin provocar celos ni miedo
 
 ## Core Thesis
 

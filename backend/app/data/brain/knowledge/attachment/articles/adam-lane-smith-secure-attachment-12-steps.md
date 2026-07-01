@@ -4,6 +4,9 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
+  - relacion
+  - crecimiento
   - earned_secure_attachment
   - secure_attachment
   - coregulation
@@ -16,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Adam Lane Smith - Secure Attachment In 12 Steps
+# APEGO: cómo construir apego seguro paso a paso, dejando las defensas y las pruebas a la pareja
 
 ## Core Thesis
 

@@ -4,6 +4,8 @@ domain: relationships
 type: article
 language: es
 topics:
+  - relacion
+  - comunicacion
   - needs_communication
   - necesidades
   - pedirlo
@@ -19,7 +21,7 @@ safety: normal
 status: processed
 ---
 
-# I Do Not Want To Have To Ask
+# COMUNICACIÓN: por qué esperar que el otro adivine lo que necesitas genera resentimiento, y cómo pedirlo
 
 ## Core Thesis
 

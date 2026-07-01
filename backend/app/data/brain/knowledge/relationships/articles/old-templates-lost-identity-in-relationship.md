@@ -4,6 +4,8 @@ domain: relationships
 type: article
 language: es
 topics:
+  - relacion
+  - autoestima
   - identity_loss_relationship
   - perdi_mi_identidad
   - perder_identidad
@@ -19,7 +21,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Perdida De Identidad En La Relacion
+# RELACIÓN: por qué se pierde la identidad dentro de una relación y cómo recuperar autonomía
 
 ## Core Thesis
 

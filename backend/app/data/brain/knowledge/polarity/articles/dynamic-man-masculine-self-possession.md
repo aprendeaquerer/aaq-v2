@@ -8,6 +8,8 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - autoestima
   - masculine_advice
   - self_possession
   - frame
@@ -19,7 +21,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Self-Possession
+# POLARIDAD: cómo tener centro propio y no depender de la aprobación externa para sentirse válido
 
 ## Core Thesis
 

@@ -4,6 +4,7 @@ domain: relationships
 type: article
 language: es
 topics:
+  - dating
   - dating_clarity
   - attraction
   - mixed_signals
@@ -16,7 +17,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Claridad En Dating Y Senales Reales
+# DATING: cómo distinguir interés real de señales confusas mirando la consistencia y la reciprocidad
 
 ## Core Thesis
 

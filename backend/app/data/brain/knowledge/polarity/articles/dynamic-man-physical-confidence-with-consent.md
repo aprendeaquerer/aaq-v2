@@ -8,6 +8,8 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - dating
   - masculine_advice
   - physical_confidence
   - consent
@@ -19,7 +21,7 @@ safety: sensitive
 status: processed
 ---
 
-# Masculine Advice - Physical Confidence With Consent
+# DATING: cómo expresar deseo físico con presencia y consentimiento, leyendo la comodidad del otro
 
 ## Core Thesis
 

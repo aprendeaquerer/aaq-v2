@@ -4,6 +4,9 @@ domain: attachment
 type: article
 language: es
 topics:
+  - relacion
+  - apego
+  - comunicacion
   - negative_cycle
   - trigger_anatomy
   - anxious_attachment
@@ -16,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Secure Love Ch 4 - What Is Your Negative Cycle?
+# RELACIÓN: cómo identificar la discusión que se repite una y otra vez y el papel de cada uno
 
 ## Core Thesis
 

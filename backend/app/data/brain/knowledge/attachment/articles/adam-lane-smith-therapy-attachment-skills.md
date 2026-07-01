@@ -4,6 +4,9 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
+  - crecimiento
+  - comunicacion
   - attachment_repair
   - skills_training
   - nervous_system_regulation
@@ -16,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Adam Lane Smith - When Therapy Is Not Fixing Attachment
+# APEGO: por qué entender la infancia no basta y qué habilidades concretas cambian el apego
 
 ## Core Thesis
 

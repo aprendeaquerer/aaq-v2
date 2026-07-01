@@ -4,6 +4,8 @@ domain: attachment
 type: article
 language: es
 topics:
+  - relacion
+  - comunicacion
   - repair_after_conflict
   - rupture
   - apology
@@ -17,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Secure Love Ch 8 - How To Repair After Conflict
+# RELACIÓN: cómo reparar de verdad tras una discusión, más allá de pedir perdón
 
 ## Core Thesis
 

@@ -4,6 +4,8 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
+  - relacion
   - attachment_theory
   - anxious_attachment
   - avoidant_attachment
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Secure Love Ch 2 - Understanding Attachment Theory
+# APEGO: la teoría del apego aplicada a la pareja adulta y cómo aparece en el día a día
 
 ## Core Thesis
 

@@ -4,6 +4,8 @@ domain: relationships
 type: article
 language: es
 topics:
+  - relacion
+  - crecimiento
   - inner_work_relationships
   - conscious_relationship
   - inner_child
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Inner Work Of Relationships - Sistema Relacional
+# RELACIÓN: el modelo Inner Work que ve a la pareja como espejo de lo no resuelto y como refugio para repararlo
 
 ## Core Thesis
 

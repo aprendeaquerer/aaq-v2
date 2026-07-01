@@ -4,6 +4,7 @@ domain: relationships
 type: article
 language: es
 topics:
+  - ruptura
   - breakup_recovery
   - moving_on
   - closure
@@ -16,7 +17,7 @@ safety: normal
 status: processed
 ---
 
-# Jay Shetty - How To Move On From Your Ex
+# RUPTURA: cómo superar a un ex soltando la fantasía y reconstruyendo la propia identidad
 
 ## Core Thesis
 

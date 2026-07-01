@@ -4,6 +4,9 @@ domain: relationships
 type: article
 language: es
 topics:
+  - relacion
+  - apego
+  - crecimiento
   - inner_work_relationships
   - eight_wounds
   - inner_child
@@ -16,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Inner Work Of Relationships - Las Ocho Heridas
+# RELACIÓN: las ocho heridas relacionales del modelo Inner Work y cómo se activan en la pareja
 
 ## Core Thesis
 

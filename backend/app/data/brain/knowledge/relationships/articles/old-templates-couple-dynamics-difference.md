@@ -4,6 +4,8 @@ domain: relationships
 type: article
 language: es
 topics:
+  - relacion
+  - comunicacion
   - couple_dynamics
   - siempre_discutimos_de_lo_mismo
   - difference
@@ -19,7 +21,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Dinamicas De Pareja Y Diferencia
+# RELACIÓN: por qué muchas parejas chocan por diferencias no negociadas, no por mala comunicación
 
 ## Core Thesis
 

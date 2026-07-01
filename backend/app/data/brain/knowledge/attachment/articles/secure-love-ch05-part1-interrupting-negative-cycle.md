@@ -4,6 +4,9 @@ domain: attachment
 type: article
 language: es
 topics:
+  - relacion
+  - comunicacion
+  - cuerpo
   - interrupting_negative_cycle
   - pause
   - reframe
@@ -16,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Secure Love Ch 5 Part 1 - Interrupting Your Negative Cycle
+# RELACIÓN: cómo frenar una pelea en caliente reconociendo el patrón, parando y calmando el cuerpo
 
 ## Core Thesis
 

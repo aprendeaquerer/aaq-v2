@@ -4,6 +4,8 @@ domain: attachment
 type: article
 language: es
 topics:
+  - relacion
+  - comunicacion
   - reaching
   - responding
   - bids_for_connection
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Secure Love Ch 7 - Reaching And Responding
+# RELACIÓN: cómo pedir cercanía con claridad y cómo responder cuando la pareja la pide
 
 ## Core Thesis
 

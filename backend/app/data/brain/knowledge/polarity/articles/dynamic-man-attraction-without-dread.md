@@ -8,6 +8,8 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
+  - relacion
   - masculine_advice
   - attraction
   - long_term_relationships
@@ -19,7 +21,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Attraction Without Dread
+# POLARIDAD: cómo un hombre se vuelve más atractivo en la relación sin recurrir a celos ni al miedo a perderlo
 
 ## Core Thesis
 

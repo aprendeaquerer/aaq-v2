@@ -4,6 +4,8 @@ domain: self_improvement
 type: article
 language: es
 topics:
+  - crecimiento
+  - cuerpo
   - inner_work
   - triggers
   - emotional_regulation
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Inner Work - Proceso De Tres Pasos
+# CRECIMIENTO: el método de tres pasos para pasar de reaccionar a elegir (detonante, creencia, nueva narrativa)
 
 ## Core Thesis
 

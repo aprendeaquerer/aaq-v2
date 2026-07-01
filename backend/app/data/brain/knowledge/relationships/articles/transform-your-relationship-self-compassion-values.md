@@ -4,6 +4,8 @@ domain: relationships
 type: article
 language: es
 topics:
+  - relacion
+  - crecimiento
   - self_compassion
   - relationship_patterns
   - discomfort_capacity
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# How To Transform Your Relationship
+# RELACIÓN: cómo cambiar tu forma de relacionarte desde la autocompasión y los valores, no la vergüenza
 
 ## Core Thesis
 

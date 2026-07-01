@@ -4,6 +4,7 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
   - ainsworth
   - strange_situation
   - secure_base
@@ -16,7 +17,7 @@ safety: normal
 status: processed
 ---
 
-# Ainsworth - Strange Situation And Secure Base
+# APEGO: el experimento clásico de Ainsworth y la idea de la figura de cuidado como base segura
 
 ## Core Thesis
 

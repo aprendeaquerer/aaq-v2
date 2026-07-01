@@ -4,6 +4,7 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
   - attachment_styles
   - earned_secure_attachment
   - anxious_attachment
@@ -17,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Secure Love Ch 3 - What's Your Attachment Style?
+# APEGO: cómo reconocer tu estilo de apego sin convertirlo en una etiqueta fija
 
 ## Core Thesis
 

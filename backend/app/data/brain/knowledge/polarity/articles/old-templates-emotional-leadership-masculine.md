@@ -5,6 +5,8 @@ type: article
 language: es
 polarity_lane: masculine_advice
 topics:
+  - polaridad
+  - crecimiento
   - masculine_leadership
   - emotional_intelligence
   - embodied_presence
@@ -17,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Inteligencia Emocional Y Liderazgo Masculino
+# POLARIDAD: cómo sostener lo que se siente sin reprimirlo ni descargarlo en el otro
 
 ## Core Thesis
 

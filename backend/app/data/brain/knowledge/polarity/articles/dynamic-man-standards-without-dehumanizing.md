@@ -8,6 +8,7 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
   - masculine_advice
   - standards
   - discernment
@@ -19,7 +20,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Standards Without Dehumanizing
+# DATING: cómo tener estándares y elegir con criterio sin despreciar ni clasificar a las personas
 
 ## Core Thesis
 

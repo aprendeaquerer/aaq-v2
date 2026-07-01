@@ -4,6 +4,8 @@ domain: relationships
 type: article
 language: es
 topics:
+  - relacion
+  - ruptura
   - stay_or_go
   - me_quedo_o_me_voy
   - terminar_relacion
@@ -18,7 +20,7 @@ safety: normal
 status: processed
 ---
 
-# Old Templates - Me Quedo O Me Voy
+# RELACIÓN: cómo decidir si quedarte o terminar cuando hay dudas, separando miedo de incompatibilidad
 
 ## Core Thesis
 

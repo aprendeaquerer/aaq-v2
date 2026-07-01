@@ -4,6 +4,8 @@ domain: attachment
 type: article
 language: es
 topics:
+  - apego
+  - dating
   - anxious_attachment
   - fast_attachment
   - apego_rapido
@@ -20,7 +22,7 @@ safety: normal
 status: processed
 ---
 
-# Nathalie - How Not To Get Emotionally Invested Too Quickly
+# DATING: por qué nos enganchamos demasiado rápido al conocer a alguien y cómo ir a un ritmo sano
 
 ## Core Thesis
 

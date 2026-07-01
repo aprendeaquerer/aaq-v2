@@ -4,6 +4,8 @@ domain: attachment
 type: article
 language: es
 topics:
+  - relacion
+  - comunicacion
   - negative_cycle_qa
   - anxious_avoidant_cycle
   - healthy_assertion
@@ -16,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# Secure Love Ch 5 Part 2 - Interrupting Your Negative Cycle Q&A
+# RELACIÓN: dudas frecuentes al romper el ciclo de pelea cuando uno avanza más rápido que el otro
 
 ## Core Thesis
 

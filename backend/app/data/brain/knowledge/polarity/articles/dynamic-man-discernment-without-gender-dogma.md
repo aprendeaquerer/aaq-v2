@@ -8,6 +8,7 @@ audience:
   - men
   - masculine-led
 topics:
+  - polaridad
   - masculine_advice
   - discernment
   - gender_dogma
@@ -19,7 +20,7 @@ safety: normal
 status: processed
 ---
 
-# Masculine Advice - Discernment Without Gender Dogma
+# DATING: cómo elegir pareja mirando la conducta real y no teorías generales sobre el otro sexo
 
 ## Core Thesis
 
