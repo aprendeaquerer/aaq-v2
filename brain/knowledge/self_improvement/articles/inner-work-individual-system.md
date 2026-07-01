@@ -17,7 +17,7 @@ safety: normal
 status: processed
 ---
 
-# CRECIMIENTO: el modelo Inner Work que ve a la persona como un Self sano cubierto por capas de condicionamiento
+# CRECIMIENTO: el modelo Inner Work que ve a la persona como un Self sano cubierto por capas de condicionamiento — The Inner Work
 
 ## Core Thesis
 

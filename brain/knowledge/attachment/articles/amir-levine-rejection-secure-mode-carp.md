@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: por qué el rechazo se vive como amenaza y cómo crear un entorno que devuelve la calma
+# APEGO: por qué el rechazo se vive como amenaza y cómo crear un entorno que devuelve la calma — Amir Levine
 
 ## Core Thesis
 

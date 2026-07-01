@@ -17,7 +17,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: qué es el apego como sistema biológico y por qué las relaciones seguras bajan el estrés
+# APEGO: qué es el apego como sistema biológico y por qué las relaciones seguras bajan el estrés — Amir Levine
 
 ## Core Thesis
 

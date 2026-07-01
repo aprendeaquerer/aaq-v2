@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: cómo prevenir las peleas creando seguridad y quitando la vergüenza de la conversación
+# RELACIÓN: cómo prevenir las peleas creando seguridad y quitando la vergüenza de la conversación — Julie Menanno
 
 ## Core Thesis
 

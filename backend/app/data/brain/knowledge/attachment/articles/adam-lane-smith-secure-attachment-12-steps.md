@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: cómo construir apego seguro paso a paso, dejando las defensas y las pruebas a la pareja
+# APEGO: cómo construir apego seguro paso a paso, dejando las defensas y las pruebas a la pareja — Adam Lane Smith
 
 ## Core Thesis
 

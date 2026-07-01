@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: cómo reparar de verdad tras una discusión, más allá de pedir perdón
+# RELACIÓN: cómo reparar de verdad tras una discusión, más allá de pedir perdón — Julie Menanno
 
 ## Core Thesis
 

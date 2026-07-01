@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: dudas frecuentes al romper el ciclo de pelea cuando uno avanza más rápido que el otro
+# RELACIÓN: dudas frecuentes al romper el ciclo de pelea cuando uno avanza más rápido que el otro — Julie Menanno
 
 ## Core Thesis
 

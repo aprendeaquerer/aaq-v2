@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: por qué las peleas de pareja no son por el tema visible sino por una necesidad de fondo
+# RELACIÓN: por qué las peleas de pareja no son por el tema visible sino por una necesidad de fondo — Julie Menanno
 
 ## Core Thesis
 

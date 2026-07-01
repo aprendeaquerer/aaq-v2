@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: el modelo Inner Work que ve a la pareja como espejo de lo no resuelto y como refugio para repararlo
+# RELACIÓN: el modelo Inner Work que ve a la pareja como espejo de lo no resuelto y como refugio para repararlo — The Inner Work
 
 ## Core Thesis
 

@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: cómo reconocer tu estilo de apego sin convertirlo en una etiqueta fija
+# APEGO: cómo reconocer tu estilo de apego sin convertirlo en una etiqueta fija — Julie Menanno
 
 ## Core Thesis
 

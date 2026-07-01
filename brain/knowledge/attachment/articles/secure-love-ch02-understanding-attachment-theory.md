@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: la teoría del apego aplicada a la pareja adulta y cómo aparece en el día a día
+# APEGO: la teoría del apego aplicada a la pareja adulta y cómo aparece en el día a día — Julie Menanno
 
 ## Core Thesis
 

@@ -17,7 +17,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: el experimento clásico de Ainsworth y la idea de la figura de cuidado como base segura
+# APEGO: el experimento clásico de Ainsworth y la idea de la figura de cuidado como base segura — Mary Ainsworth
 
 ## Core Thesis
 

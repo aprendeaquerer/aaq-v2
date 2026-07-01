@@ -19,7 +19,7 @@ safety: sensitive
 status: processed
 ---
 
-# RELACIÓN: cómo reparar una traición de confianza grave y reconstruir la seguridad en la pareja
+# RELACIÓN: cómo reparar una traición de confianza grave y reconstruir la seguridad en la pareja — Julie Menanno
 
 ## Core Thesis
 

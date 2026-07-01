@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: cómo frenar una pelea en caliente reconociendo el patrón, parando y calmando el cuerpo
+# RELACIÓN: cómo frenar una pelea en caliente reconociendo el patrón, parando y calmando el cuerpo — Julie Menanno
 
 ## Core Thesis
 

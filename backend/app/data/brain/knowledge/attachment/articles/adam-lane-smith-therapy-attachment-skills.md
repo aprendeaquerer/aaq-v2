@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: por qué entender la infancia no basta y qué habilidades concretas cambian el apego
+# APEGO: por qué entender la infancia no basta y qué habilidades concretas cambian el apego — Adam Lane Smith
 
 ## Core Thesis
 

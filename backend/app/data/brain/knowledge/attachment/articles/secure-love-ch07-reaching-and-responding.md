@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: cómo pedir cercanía con claridad y cómo responder cuando la pareja la pide
+# RELACIÓN: cómo pedir cercanía con claridad y cómo responder cuando la pareja la pide — Julie Menanno
 
 ## Core Thesis
 

@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: cómo la persona evitativa se enamora de la idea del amor y se aleja cuando llega la cercanía real
+# APEGO: cómo la persona evitativa se enamora de la idea del amor y se aleja cuando llega la cercanía real — Adam Lane Smith
 
 ## Core Thesis
 

@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: cómo identificar la discusión que se repite una y otra vez y el papel de cada uno
+# RELACIÓN: cómo identificar la discusión que se repite una y otra vez y el papel de cada uno — Julie Menanno
 
 ## Core Thesis
 
