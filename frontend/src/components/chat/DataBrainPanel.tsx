@@ -72,6 +72,81 @@ interface LiveSimulationRun {
   error?: string;
 }
 
+interface PublishedQaRun {
+  runId: string;
+  completedAt: string;
+  aggregate: {
+    conversationCount: number;
+    failedConversationCount: number;
+    turnCount: number;
+    aiErrorTurnCount: number;
+    knowledgeTurnCount: number;
+    noKnowledgeTurnCount: number;
+    memoryRetrievedTurnCount: number;
+    memoryCapturedTurnCount: number;
+    averageKnowledgeChunks: number;
+  };
+  conversations: PublishedQaConversation[];
+}
+
+interface PublishedQaConversation {
+  id: string;
+  title: string;
+  kind: string;
+  purpose: string;
+  qaNote: string;
+  email: string;
+  profileSeed: Record<string, unknown>;
+  setupMessage: string;
+  turns: PublishedQaTurn[];
+  finalMemories: UserMemory[];
+  error: string | null;
+}
+
+interface PublishedQaTurn {
+  prompt: string;
+  type: string;
+  message: string;
+  reasoning_summary: string;
+  intent: string | null;
+  routed_domains: string[];
+  knowledge: {
+    count: number;
+    detail: string;
+    chunks: Array<{
+      id: string;
+      title: string;
+      section: string;
+      domain: string;
+      score: number;
+      preview: string;
+    }>;
+  };
+  memory_retrieval: {
+    count: number;
+    detail: string;
+    memories: Array<{
+      id: string;
+      type: string;
+      confidence: number;
+      status: string;
+      summary: string;
+    }>;
+  };
+  memory_capture: {
+    count: number;
+    detail: string;
+    candidates: Array<{
+      id: string;
+      type: string;
+      confidence: number;
+      status: string;
+      summary: string;
+    }>;
+  };
+  ai_error: string | null;
+}
+
 const TYPE_COLORS = [
   { bg: '#F1DCF4', border: '#9B5AA6', text: '#5B2467' },
   { bg: '#EAF7EF', border: '#2F8F5B', text: '#165A38' },
@@ -105,6 +180,8 @@ export default function DataBrainPanel({
   const [actualRuns, setActualRuns] = useState<Record<string, ActualSimulationRun>>({});
   const [isRunningAllPersonalityTests, setIsRunningAllPersonalityTests] = useState(false);
   const [liveRuns, setLiveRuns] = useState<Record<string, LiveSimulationRun>>({});
+  const [publishedQaRun, setPublishedQaRun] = useState<PublishedQaRun | null>(null);
+  const [publishedQaError, setPublishedQaError] = useState<string | null>(null);
 
   const loadMemories = useCallback(async () => {
     if (!isAuthenticated) {
@@ -167,6 +244,33 @@ export default function DataBrainPanel({
       void loadKnowledge();
     }
   }, [activeTab, loadKnowledge]);
+
+  useEffect(() => {
+    if (activeTab !== 'tests') return;
+
+    let isCancelled = false;
+    fetch('/qa/personality-latest.json')
+      .then((response) => {
+        if (!response.ok) throw new Error(`Published QA run failed to load (${response.status})`);
+        return response.json() as Promise<PublishedQaRun>;
+      })
+      .then((run) => {
+        if (!isCancelled) {
+          setPublishedQaRun(run);
+          setPublishedQaError(null);
+        }
+      })
+      .catch((loadError) => {
+        if (!isCancelled) {
+          setPublishedQaRun(null);
+          setPublishedQaError(loadError instanceof Error ? loadError.message : 'Published QA run failed to load');
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [activeTab]);
 
   useEffect(() => {
     if (!isAuthenticated || activeTab !== 'live') return;
@@ -301,7 +405,7 @@ export default function DataBrainPanel({
         standalone={standalone}
       >
         <div className="flex min-h-0 flex-1 flex-col gap-4">
-          <LatestQaRunPanel />
+          <LatestQaRunPanel publishedRun={publishedQaRun} loadError={publishedQaError} />
 
           <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[330px_minmax(0,1fr)]">
             <aside className="min-h-0 overflow-y-auto rounded border border-[#042648]/12 bg-white">
@@ -682,7 +786,13 @@ function PersonalityThreadButton({
   );
 }
 
-function LatestQaRunPanel() {
+function LatestQaRunPanel({
+  publishedRun,
+  loadError,
+}: {
+  publishedRun: PublishedQaRun | null;
+  loadError: string | null;
+}) {
   const report = personalityQaLatestReport;
   const metrics = [
     ['Conversations', report.aggregate.conversationCount],
@@ -802,8 +912,241 @@ function LatestQaRunPanel() {
             </table>
           </div>
         </div>
+
+        <PublishedQaRunViewer run={publishedRun} loadError={loadError} />
       </div>
     </section>
+  );
+}
+
+function PublishedQaRunViewer({
+  run,
+  loadError,
+}: {
+  run: PublishedQaRun | null;
+  loadError: string | null;
+}) {
+  return (
+    <div className="rounded border border-[#042648]/10 bg-white">
+      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#042648]/10 px-3 py-2">
+        <div>
+          <h4 className="text-sm font-bold text-[#042648]">Published Full Run</h4>
+          <p className="mt-1 text-xs text-[#042648]/60">
+            Full prompts, bot replies, brain retrieval, memory retrieval, memory capture, and final memories.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <a
+            href="/qa/personality-latest.json"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded border border-[#042648]/20 bg-white px-3 py-2 text-xs font-bold text-[#042648]/70 transition hover:bg-[#F8FAF7]"
+          >
+            Open raw JSON
+          </a>
+          <a
+            href="/qa/personality-qa-2026-06-29T20-05-59-498Z.json"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded border border-[#042648]/20 bg-white px-3 py-2 text-xs font-bold text-[#042648]/70 transition hover:bg-[#F8FAF7]"
+          >
+            Permanent JSON
+          </a>
+        </div>
+      </div>
+
+      {loadError && (
+        <div className="m-3 rounded border border-[#A33A3A]/25 bg-[#FFF0F0] px-3 py-2 text-sm text-[#7A1F1F]">
+          {loadError}
+        </div>
+      )}
+
+      {!run && !loadError && (
+        <div className="px-3 py-4 text-sm text-[#042648]/62">Loading published QA run...</div>
+      )}
+
+      {run && (
+        <div className="space-y-2 p-3">
+          <div className="grid gap-2 md:grid-cols-5">
+            <QaMiniMetric label="Run" value={run.runId} />
+            <QaMiniMetric label="Completed" value={new Date(run.completedAt).toLocaleString()} />
+            <QaMiniMetric label="Turns" value={run.aggregate.turnCount} />
+            <QaMiniMetric label="Knowledge" value={`${run.aggregate.knowledgeTurnCount}/${run.aggregate.turnCount}`} />
+            <QaMiniMetric label="AI Errors" value={run.aggregate.aiErrorTurnCount} />
+          </div>
+
+          <div className="space-y-2">
+            {run.conversations.map((conversation, index) => (
+              <PublishedConversationDetails
+                key={conversation.id}
+                conversation={conversation}
+                index={index}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function QaMiniMetric({ label, value }: { label: string; value: ReactNode }) {
+  return (
+    <div className="rounded bg-[#F8FAF7] px-3 py-2">
+      <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">{label}</div>
+      <div className="mt-1 break-words text-xs font-bold text-[#042648]">{value}</div>
+    </div>
+  );
+}
+
+function PublishedConversationDetails({
+  conversation,
+  index,
+}: {
+  conversation: PublishedQaConversation;
+  index: number;
+}) {
+  const knowledgeTurns = conversation.turns.filter((turn) => turn.knowledge.count > 0).length;
+  const memoryCaptureTurns = conversation.turns.filter((turn) => turn.memory_capture.count > 0).length;
+  const aiErrors = conversation.turns.filter((turn) => turn.ai_error).length;
+
+  return (
+    <details className="rounded border border-[#042648]/10 bg-[#FFFDF8]">
+      <summary className="cursor-pointer px-3 py-2 text-sm font-bold text-[#042648]">
+        {String(index + 1).padStart(2, '0')}. {conversation.title}
+        <span className="ml-2 text-xs font-semibold text-[#042648]/50">
+          {conversation.turns.length} turns / K {knowledgeTurns} / captures {memoryCaptureTurns} / errors {aiErrors}
+        </span>
+      </summary>
+      <div className="space-y-3 border-t border-[#042648]/10 p-3">
+        <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-4">
+          <QaMiniMetric label="Kind" value={formatType(conversation.kind)} />
+          <QaMiniMetric label="QA User" value={conversation.email} />
+          <QaMiniMetric label="Final Memories" value={conversation.finalMemories.length} />
+          <QaMiniMetric label="Error" value={conversation.error || 'none'} />
+        </div>
+
+        <div className="rounded bg-white px-3 py-2">
+          <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">Profile Seed</div>
+          <pre className="mt-2 max-h-36 overflow-auto whitespace-pre-wrap text-[11px] leading-4 text-[#042648]/68">
+            {JSON.stringify(conversation.profileSeed, null, 2)}
+          </pre>
+        </div>
+
+        {conversation.turns.map((turn, turnIndex) => (
+          <PublishedTurnDetails key={`${conversation.id}-${turnIndex}`} turn={turn} index={turnIndex} />
+        ))}
+
+        <div className="rounded bg-white px-3 py-2">
+          <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+            Final Stored Memories
+          </div>
+          <div className="mt-2 grid gap-2 md:grid-cols-2">
+            {conversation.finalMemories.map((memory) => (
+              <div key={memory.id} className="rounded bg-[#F8FAF7] px-2 py-2 text-xs text-[#042648]/70">
+                <div className="font-bold text-[#042648]">{formatType(memory.type)}</div>
+                <div className="mt-1 text-[11px] text-[#042648]/50">
+                  {memory.status} / {memory.sensitivity} / {Math.round(memory.confidence * 100)}%
+                </div>
+                <p className="mt-1 leading-5">{memory.curated_summary || memory.summary}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </details>
+  );
+}
+
+function PublishedTurnDetails({ turn, index }: { turn: PublishedQaTurn; index: number }) {
+  return (
+    <article className="rounded border border-[#042648]/10 bg-white">
+      <div className="border-b border-[#042648]/10 px-3 py-2">
+        <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+          Turn {index + 1}
+        </div>
+        <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[#042648]/80">{turn.prompt}</p>
+      </div>
+      <div className="space-y-3 p-3">
+        <div className="rounded border border-[#2F8F5B]/18 bg-[#EAF7EF] px-3 py-2">
+          <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#165A38]/70">
+            Actual Bot Response
+          </div>
+          <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[#042648]/82">{turn.message}</p>
+        </div>
+
+        <div className="grid gap-2 xl:grid-cols-3">
+          <QaMiniMetric label="Intent" value={turn.intent || 'none'} />
+          <QaMiniMetric label="Domains" value={turn.routed_domains.join(', ') || 'none'} />
+          <QaMiniMetric label="AI Error" value={turn.ai_error || 'none'} />
+        </div>
+
+        <QaTurnCollection
+          title="Knowledge Chosen From Brain"
+          detail={turn.knowledge.detail}
+          empty="No knowledge chunks retrieved."
+          items={turn.knowledge.chunks.map((chunk) => ({
+            id: chunk.id,
+            title: chunk.title,
+            meta: `${chunk.domain} / ${chunk.section} / score ${chunk.score}`,
+            body: chunk.preview,
+          }))}
+        />
+
+        <QaTurnCollection
+          title="User Memories Retrieved"
+          detail={turn.memory_retrieval.detail}
+          empty="No memories retrieved."
+          items={turn.memory_retrieval.memories.map((memory) => ({
+            id: memory.id,
+            title: formatType(memory.type),
+            meta: `${memory.status} / ${Math.round(memory.confidence * 100)}%`,
+            body: memory.summary,
+          }))}
+        />
+
+        <QaTurnCollection
+          title="Memory Capture Written By Backend"
+          detail={turn.memory_capture.detail}
+          empty="No memory candidates captured."
+          items={turn.memory_capture.candidates.map((candidate) => ({
+            id: candidate.id,
+            title: formatType(candidate.type),
+            meta: `${candidate.status} / ${Math.round(candidate.confidence * 100)}%`,
+            body: candidate.summary,
+          }))}
+        />
+      </div>
+    </article>
+  );
+}
+
+function QaTurnCollection({
+  title,
+  detail,
+  empty,
+  items,
+}: {
+  title: string;
+  detail: string;
+  empty: string;
+  items: Array<{ id: string; title: string; meta: string; body: string }>;
+}) {
+  return (
+    <div className="rounded bg-[#F8FAF7] px-3 py-2">
+      <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">{title}</div>
+      {detail && <p className="mt-1 text-xs leading-5 text-[#042648]/60">{detail}</p>}
+      <div className="mt-2 grid gap-2 md:grid-cols-2">
+        {items.map((item, index) => (
+          <div key={`${item.id}-${index}`} className="rounded bg-white px-2 py-2 text-xs text-[#042648]/70">
+            <div className="font-bold text-[#042648]">{item.title}</div>
+            <div className="mt-1 text-[11px] text-[#042648]/50">{item.meta}</div>
+            <p className="mt-1 leading-5">{item.body}</p>
+          </div>
+        ))}
+        {items.length === 0 && <p className="text-xs text-[#042648]/55">{empty}</p>}
+      </div>
+    </div>
   );
 }
 
