@@ -282,5 +282,15 @@ export function useChat(language: string = 'es') {
     clearStoredDebugSessions();
   }, []);
 
-  return { messages, isLoading, lastResponse, debugSessions, initializeSession, sendMessage, clearMessages };
+  const resetSession = useCallback(async () => {
+    const guestId = getGuestId();
+    await api.resetSession(guestId);
+    setMessages([]);
+    setLastResponse(null);
+    setDebugSessions([]);
+    clearStoredDebugSessions();
+    await initializeSession();
+  }, [getGuestId, initializeSession]);
+
+  return { messages, isLoading, lastResponse, debugSessions, initializeSession, sendMessage, clearMessages, resetSession };
 }

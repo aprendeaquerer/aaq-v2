@@ -200,6 +200,20 @@ export async function sendMessage(
   throw await responseError(res, 'Failed to send message');
 }
 
+export async function resetSession(guestId?: string): Promise<void> {
+  const params = new URLSearchParams();
+  if (guestId) params.set('guest_id', guestId);
+  const url = `${API_URL}/chat/reset?${params.toString()}`;
+
+  const res = await fetchWithAuth(url, { method: 'POST' });
+  if (res.ok) return;
+
+  const fallbackRes = await fetchWithoutAuth(url, { method: 'POST' });
+  if (fallbackRes.ok) return;
+
+  throw await responseError(res, 'Failed to reset session');
+}
+
 // --- Profile ---
 
 export async function getProfile(): Promise<UserProfile> {

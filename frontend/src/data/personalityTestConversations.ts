@@ -192,6 +192,35 @@ function getSimulationSetup(id: string): PersonalitySimulationSetup {
       tiempo_pareja: '7 años',
       convive_con_pareja: true,
     }),
+    'qa-duda-citas-marcos': setup('Marcos', 26, 'hombre', 'heterosexual', 'citas', 'secure', {
+      tiene_pareja: false,
+    }),
+    'qa-desahogo-ruptura-rocio': setup('Rocío', 30, 'mujer', 'heterosexual', 'ruptura reciente', 'anxious', {
+      tiene_pareja: false,
+      ex_pareja_relevante: true,
+      ex_pareja_contexto: 'ruptura hace una semana tras dos años juntos',
+    }),
+    'qa-problema-convivencia-nadia': setup('Nadia', 34, 'mujer', 'bisexual', 'convivencia', 'anxious', {
+      nombre_pareja: 'Vera',
+      edad_pareja: 33,
+      genero_pareja: 'mujer',
+      tiempo_pareja: '3 años',
+      convive_con_pareja: true,
+    }),
+    'qa-resistencia-evitativo-gorka': setup('Gorka', 38, 'hombre', 'heterosexual', 'pareja estable', 'avoidant', {
+      nombre_pareja: 'Ainhoa',
+      edad_pareja: 36,
+      genero_pareja: 'mujer',
+      tiempo_pareja: '4 años',
+      convive_con_pareja: true,
+    }),
+    'qa-seguridad-comunicacion-elena': setup('Elena', 30, 'mujer', 'lesbiana', 'pareja estable', 'secure', {
+      nombre_pareja: 'Lucía',
+      edad_pareja: 31,
+      genero_pareja: 'mujer',
+      tiempo_pareja: '2 años',
+      convive_con_pareja: false,
+    }),
   };
   return setups[id] || setup('QA User', 30, 'no especificado', 'no especificada', 'no especificada', 'secure', {});
 }
@@ -1200,6 +1229,127 @@ export const personalityTestConversations: PersonalityTestConversation[] = [
       [
         'Sí. Por hoy ya está.',
         '**Por hoy ya está. No hay que abrir más ni cerrar nada ahora. Solo parar.**',
+      ],
+    ]
+  ),
+  thread(
+    'qa-duda-citas-marcos',
+    '21. Duda concreta: cuándo definir la relación',
+    'duda',
+    'Comprobar que una duda simple recibe respuesta clara y directa, sin convertirla en un plan largo.',
+    'Debe responder corto y al grano, usar knowledge si aplica y hacer como mucho una pregunta.',
+    [
+      [
+        'Oye una duda rápida: llevo como 5 citas con una chica y no sé si es pronto para hablar de qué somos. Cuándo se supone que toca?',
+        'No hay un número exacto de citas. Se habla cuando quieres saber a qué atenerte y dejar de suponer, y cinco citas ya es un punto razonable para plantearlo.\n\nDefinir no obliga a un compromiso enorme: es preguntar qué busca cada uno. Si te ronda la duda, ya te importa.\n\nQué es lo que más te frena para sacar el tema?',
+      ],
+      [
+        'Que me diga que solo quiere algo casual y yo ya me he ilusionado.',
+        'Eso es información útil, no un fracaso. Si ella busca algo casual y tú no, saberlo pronto te evita meses metido en algo que no encaja.\n\nEl riesgo de no preguntar es seguir a ciegas y hacerte más ilusión sin datos.\n\nPrefieres saberlo aunque incomode, o seguir un tiempo sin definir?',
+      ],
+      [
+        'Prefiero saberlo. Vale, se lo pregunto.',
+        'Bien. Una forma sencilla: dile que lo estás pasando bien y que te gustaría saber qué busca ella, sin exigir una etiqueta cerrada. Directo y sin rodeos.\n\nSi quieres, luego me cuentas cómo fue.',
+      ],
+    ]
+  ),
+  thread(
+    'qa-desahogo-ruptura-rocio',
+    '22. Desahogo: ruptura reciente',
+    'desahogo',
+    'Comprobar que ante un desahogo hace rapport y devuelve en negrita, sin saltar a soluciones.',
+    'No debe resolver ni dar plan. Devuelve lo que dice en negrita y como mucho una pregunta para que siga.',
+    [
+      [
+        'No sé, llevo toda la semana fatal. Lo dejé con mi novio hace nada y estoy hecha polvo.',
+        '**Una semana entera arrastrando el bajón, y encima con una ruptura muy reciente.** Tiene sentido que estés floja.\n\nQué es lo que más te pesa estos días?',
+      ],
+      [
+        'Que le echo de menos aunque sé que no estábamos bien. Es contradictorio.',
+        '**Le echas de menos y a la vez sabes que la relación no funcionaba. Las dos cosas conviven, y por eso se hace raro.**\n\nEcharle de menos no borra los motivos por los que lo dejaste.',
+      ],
+      [
+        'Exacto. Y la gente me dice que ya se me pasará y me da rabia.',
+        '**Te dicen "ya se te pasará" y en vez de aliviarte te da rabia, porque ahora mismo lo que hay es esto.**\n\nNo hace falta que se te pase hoy.',
+      ],
+      [
+        'Gracias, necesitaba soltarlo.',
+        '**Necesitabas soltarlo y ya está. No hay que ordenarlo ni resolverlo ahora.** Si mañana quieres seguir, seguimos.',
+      ],
+    ]
+  ),
+  thread(
+    'qa-problema-convivencia-nadia',
+    '23. Problema: reparto desigual en casa',
+    'problema',
+    'Comprobar el loop completo: escucha, explicación con patrón, opciones y plan co-construido.',
+    'El patrón lo da el bot, no lo pregunta. Una pregunta por respuesta. No diagnostica a la pareja.',
+    [
+      [
+        'Vivo con mi pareja Vera y siempre acabo yo con todo lo de la casa. Se lo digo y no cambia.',
+        'Que lleves tú la casa y que hablarlo no cambie nada es un problema de reparto, pero también de qué pasa cuando lo planteas.\n\nAntes de darte opciones necesito el detalle. Cuando se lo dices, en qué momento y de qué forma se lo dices?',
+      ],
+      [
+        'Normalmente cuando ya estoy quemada y salta la bronca. Ella dice que exagero.',
+        'Ahí veo parte del patrón: lo sacas cuando ya estás al límite, sale en tono de bronca, y ella se defiende con "exageras". El mensaje se pierde en la discusión y el reparto sigue igual.\n\nEso no quita que tengas razón; el momento juega en contra.\n\nHabéis hablado alguna vez del reparto en frío, sin bronca de por medio?',
+      ],
+      [
+        'No, la verdad. Siempre sale en caliente.',
+        'Lo que veo es un ciclo: acumulas, estallas, ella se defiende, no se decide nada, y vuelves a acumular. El punto débil está en que la conversación solo ocurre en caliente.\n\nTe planteo dos vías. Una: una conversación pactada en frío para repartir tareas concretas por escrito. Otra: un reparto fijo semanal que revisáis a los quince días. Las dos sacan el tema de la discusión.\n\nCuál de las dos te encaja más para empezar?',
+      ],
+      [
+        'La primera, hablarlo en frío con una lista.',
+        'Bien. Un plan sencillo: elige un momento tranquilo, dile que quieres repartir tareas sin que sea un reproche, y llevad juntas una lista de lo que hay que hacer para asignarlo. Después me cuentas cómo fue y lo ajustamos.',
+      ],
+    ]
+  ),
+  thread(
+    'qa-resistencia-evitativo-gorka',
+    '24. Resistencia: responde corto y no colabora',
+    'resistencia',
+    'Comprobar que ante mucha resistencia no insiste y pasa al siguiente paso.',
+    'No debe presionar ni repetir la misma pregunta. Si hay resistencia, avanza o deja la puerta abierta sin insistir.',
+    [
+      [
+        'Mi mujer dice que no hablo de lo que siento. No sé para qué te cuento esto la verdad.',
+        'Lo cuentas y a la vez dudas de para qué. Está bien, no hace falta que te abras de golpe.\n\nSolo para situarme: esto lo dice ella de vez en cuando o se ha vuelto un tema repetido?',
+      ],
+      [
+        'Repetido supongo. No sé.',
+        'Vale. Si es repetido, es algo que a ella le importa, aunque a ti te cueste ponerle palabras.\n\nNo voy a insistir en que cuentes más de lo que quieras. Te lanzo solo una cosa concreta: cuando ella saca el tema, qué es lo primero que haces?',
+      ],
+      [
+        'Nada. Cambio de tema o me voy a otra habitación.',
+        'Eso ya me dice bastante. Cuando la conversación se pone personal, te retiras: cambias de tema o te vas. Es una forma de bajar la incomodidad rápido.\n\nDesde fuera, ella puede leer esa retirada como desinterés, aunque para ti sea otra cosa.\n\nSi te parece, lo dejamos aquí por hoy y otro día miramos qué podrías hacer distinto en ese momento. Te encaja?',
+      ],
+      [
+        'Bueno, vale.',
+        'Perfecto. Cuando quieras seguir, retomamos justo por ahí: qué hacer cuando notas que te vas a retirar.',
+      ],
+    ]
+  ),
+  thread(
+    'qa-seguridad-comunicacion-elena',
+    '25. Seguridad: usuaria que se comunica bien',
+    'seguridad',
+    'Comprobar que con una usuaria segura no sobrediagnostica ni inventa un problema donde no lo hay.',
+    'No debe patologizar ni forzar un conflicto. Responde a lo que trae y no crea drama.',
+    [
+      [
+        'Con mi pareja Lucía va bien, pero quiero preparar una conversación sobre planes de futuro y hacerlo bien. Alguna idea?',
+        'Que quieras prepararlo con la relación en buen momento es buena señal: es más fácil hablar de futuro sin una discusión de por medio.\n\nPara afinar la idea: qué parte del futuro quieres tratar, convivencia, hijos, ciudad, trabajo?',
+      ],
+      [
+        'Sobre todo si nos planteamos vivir juntas el año que viene.',
+        'Bien, es un tema concreto y eso ayuda. Para una conversación así funciona ir con lo tuyo claro y con curiosidad por lo suyo: qué te apetece a ti, y qué necesita ella para estar cómoda.\n\nTienes ya una idea de lo que tú quieres, o vas más a explorarlo juntas?',
+      ],
+      [
+        'Tengo claro que quiero, pero no quiero presionarla.',
+        'Entonces el equilibrio está en decir lo que quieres sin convertirlo en un ultimátum. Puedes ser clara con tu deseo y a la vez dejar sitio a su ritmo.\n\nUna forma: cuéntale que a ti te gustaría vivir juntas el año que viene, y pregúntale cómo lo ve ella, sin pedir una respuesta cerrada ese día.\n\nQuieres que preparemos cómo abrir esa conversación?',
+      ],
+      [
+        'Sí, me vendría bien.',
+        'Vale. Piensa en un momento tranquilo, sin prisas. Abres con lo positivo de cómo estáis, dices que te gustaría vivir juntas y le preguntas qué le hace ilusión y qué le preocupa. Cuando lo tengas, lo repasamos y lo ajustamos.',
       ],
     ]
   ),

@@ -31,3 +31,13 @@ async def send_message(
 ):
     from app.services.chat_service import handle_message
     return await handle_message(db, user, request)
+
+
+@router.post("/reset", response_model=ChatResponse)
+async def reset_session(
+    guest_id: Optional[str] = Query(None),
+    user: Optional[User] = Depends(get_optional_user),
+    db: AsyncSession = Depends(get_db),
+):
+    from app.services.chat_service import handle_reset
+    return await handle_reset(db, user, guest_id=guest_id)

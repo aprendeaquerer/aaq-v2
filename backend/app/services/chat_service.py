@@ -3,12 +3,13 @@
 import json
 from typing import Dict, List, Optional
 
-from sqlalchemy import select, func
+from sqlalchemy import select, func, delete
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.conversation import Conversation
 from app.models.test_state import TestState
 from app.models.user import User, UserProfile
+from app.models.user_memory import UserMemory
 from app.schemas.message import ChatRequest, ChatResponse
 from app.services.ai.factory import get_ai_provider
 from app.services.ai.prompts import get_eldric_prompt
@@ -26,6 +27,33 @@ GUEST_MESSAGE_LIMIT = 15
 
 # Track guest message counts (in-memory, resets on restart)
 _guest_counts: Dict[str, int] = {}
+
+
+async def handle_reset(
+    db: AsyncSession,
+    user: Optional[User],
+    guest_id: Optional[str] = None,
+) -> ChatResponse:
+    """Wipe a user's memory, conversation history and chat state.
+
+    Works for both logged-in users (by user_id) and guests (by guest_id) so the
+    demo can be reset to a clean slate for testing. Profile rows are only removed
+    for real users; guests have none.
+    """
+    user_id = user.user_id if user else guest_id
+    if not user_id:
+        return ChatResponse(type="reset", data={"success": False, "reason": "no_user"})
+
+    await db.execute(delete(UserMemory).where(UserMemory.user_id == user_id))
+    await db.execute(delete(Conversation).where(Conversation.user_id == user_id))
+    await db.execute(delete(TestState).where(TestState.user_id == user_id))
+    if user:
+        await db.execute(delete(UserProfile).where(UserProfile.user_id == user_id))
+    await db.commit()
+
+    _guest_counts.pop(user_id, None)
+
+    return ChatResponse(type="reset", data={"success": True})
 
 
 async def handle_session(

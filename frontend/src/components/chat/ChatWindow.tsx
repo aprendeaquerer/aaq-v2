@@ -20,8 +20,9 @@ type ChatTab = 'chat' | BrainTab;
 export default function ChatWindow() {
   const { language } = useLanguage();
   const { isAuthenticated } = useAuth();
-  const { messages, isLoading, debugSessions, initializeSession, sendMessage } = useChat(language);
+  const { messages, isLoading, debugSessions, initializeSession, sendMessage, resetSession } = useChat(language);
   const [activeTab, setActiveTab] = useState<ChatTab>('chat');
+  const [isResetting, setIsResetting] = useState(false);
   const memoryRefreshKey = messages.length + debugSessions.length;
   const scrollRef = useRef<HTMLDivElement>(null);
   const sessionInitialized = useRef(false);
@@ -61,6 +62,22 @@ export default function ChatWindow() {
     sendMessage(optionId, isAuthenticated);
   };
 
+  const handleReset = async () => {
+    if (isResetting) return;
+    const confirmed = window.confirm(
+      '¿Reiniciar la memoria del bot? Se borra la conversación, la memoria y el estado. Esto no se puede deshacer.'
+    );
+    if (!confirmed) return;
+    setIsResetting(true);
+    try {
+      await resetSession();
+    } catch {
+      window.alert('No se pudo reiniciar. Inténtalo de nuevo.');
+    } finally {
+      setIsResetting(false);
+    }
+  };
+
   return (
     <div className="flex h-[calc(100vh-4rem)] min-h-0 flex-col bg-[#FFF6EA]">
       <div className="border-b border-[#042648]/15 bg-white px-4 py-2">
@@ -87,6 +104,14 @@ export default function ChatWindow() {
               Open in new window
             </a>
           )}
+          <button
+            type="button"
+            onClick={handleReset}
+            disabled={isResetting}
+            className="ml-auto rounded border border-red-300 bg-white px-3 py-2 text-sm font-semibold text-red-600 transition hover:bg-red-50 disabled:opacity-50"
+          >
+            {isResetting ? 'Reiniciando…' : 'Reiniciar memoria'}
+          </button>
         </div>
       </div>
 
