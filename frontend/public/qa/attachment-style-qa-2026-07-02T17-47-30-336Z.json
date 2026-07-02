@@ -1,0 +1,3270 @@
+{
+  "runId": "attachment-style-qa-2026-07-02T17-47-30-336Z",
+  "startedAt": "2026-07-02T17:47:30.336841Z",
+  "apiUrl": "https://aprendeaquerer.com/api/backend",
+  "focus": "attachment_style_capture_from_free_conversation",
+  "instructions": "Conversaciones simuladas de 6 a 8 turnos para comprobar qué perfil y memorias guarda Eldric sobre estilos de apego. No incluye evaluación del resultado.",
+  "conversations": [
+    {
+      "id": "marcos-secure-apps",
+      "title": "01. Marcos, 26, hombre hetero, soltero en apps",
+      "expectedAttachmentStyle": "seguro",
+      "openingPrompt": "una duda rápida: llevo 5 citas con una chica, ¿es pronto para hablar de qué somos?",
+      "profileSeed": {
+        "nombre": "Marcos",
+        "edad": 26,
+        "genero": "hombre",
+        "orientacion": "hetero",
+        "preferred_language": "es",
+        "tiene_pareja": false,
+        "tipo_relacion": "dating"
+      },
+      "turns": [
+        {
+          "prompt": "una duda rápida: llevo 5 citas con una chica, ¿es pronto para hablar de qué somos?",
+          "type": "conversation",
+          "message": "No hay un tiempo específico para hablar de qué son, ya que cada relación avanza a su propio ritmo. Sin embargo, si sientes que hay una conexión y ambos han disfrutado de las citas, puede ser un buen momento para preguntar sobre sus expectativas. ¿Cómo te sientes al respecto?",
+          "debug": null
+        },
+        {
+          "prompt": "Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+          "type": "conversation",
+          "message": "**Te gusta bastante, pero hay inseguridad sobre la intensidad.** Es normal sentir esa duda, especialmente si ambos siguen usando apps. Podrías abordar el tema de manera casual, preguntando cómo se siente sobre las citas y lo que cada uno espera. Esto podría abrir la puerta a una conversación más profunda sin que parezca que estás presionando. ¿Te gustaría explorar cómo plantearlo?",
+          "debug": null
+        },
+        {
+          "prompt": "Sí, justo. No necesito que me prometa nada, solo saber si estamos mirando hacia el mismo sitio.",
+          "type": "conversation",
+          "message": "Entiendo, quieres claridad sin presionar. Puedes empezar con una pregunta sencilla, como: \"¿Cómo te sientes sobre lo que estamos haciendo?\" o \"¿Qué piensas de las citas hasta ahora?\" Esto puede ayudar a que ambos compartan sus pensamientos y expectativas sin que se sienta demasiado intenso. ¿Te parece un buen enfoque?",
+          "debug": null
+        },
+        {
+          "prompt": "Me da cosa que piense que le estoy pidiendo exclusividad ya. Yo puedo ir despacio, pero prefiero hablar claro.",
+          "type": "conversation",
+          "message": "**Te preocupa que pueda interpretar tus preguntas como una demanda de exclusividad.** Es válido querer claridad sin que suene demasiado serio. Puedes comunicar que valoras la honestidad y que estás abierto a ir despacio. Algo como: \"Me gusta lo que estamos construyendo y solo quería saber cómo lo ves tú, sin ninguna presión\". Esto puede ayudar a que la conversación fluya de manera más natural. ¿Te gustaría ajustar algo en esa propuesta?",
+          "debug": null
+        },
+        {
+          "prompt": "Ella suele contestar bien y cuando quedamos se nota interés. Si me dijera que todavía quiere conocer más gente, no me hundiría, solo lo tendría en cuenta.",
+          "type": "conversation",
+          "message": "**Ella responde bien y muestra interés, lo que es positivo.** Si te dice que quiere seguir conociendo a más personas, puedes verlo como información útil para entender su perspectiva. Eso te permitirá decidir cómo quieres seguir. Estar abierto a esa posibilidad es una buena actitud. ¿Te gustaría pensar en cómo reaccionarías si eso sucede?",
+          "debug": null
+        },
+        {
+          "prompt": "Creo que en la próxima cita puedo decirle algo tranquilo, tipo que me apetece seguir conociéndola sin presión.",
+          "type": "conversation",
+          "message": "Esa es una buena idea. Decirle que te apetece seguir conociéndola sin presión puede crear un ambiente cómodo para ambos. Puedes mencionar que te gusta disfrutar del proceso y que te gustaría saber cómo se siente ella al respecto. Esto puede abrir la conversación de forma relajada. ¿Te gustaría planear alguna otra parte de la conversación?",
+          "debug": null
+        },
+        {
+          "prompt": "Vale, me sirve. Quiero hacerlo honesto y sin convertirlo en una charla enorme.",
+          "type": "conversation",
+          "message": "**Buscas ser honesto y mantener la conversación ligera.** Eso suena bien. Mantén el enfoque en compartir tus pensamientos y preguntas sin profundizar demasiado de inmediato. Podrías expresar que valoras la conexión y que solo deseas saber qué piensa, sin que se vuelva una charla larga. ¿Hay algo más que quieras preparar antes de la cita?",
+          "debug": null
+        }
+      ],
+      "email": "qa+attachment-20260702174730-1-marcos-secure-apps@aprendeaquerer.com",
+      "setupResponses": {
+        "register": {
+          "message": "User qa+attachment-20260702174730-1-marcos-secure-apps@aprendeaquerer.com registered successfully"
+        },
+        "profile_put": {
+          "nombre": "Marcos",
+          "edad": 26,
+          "genero": "hombre",
+          "tiene_pareja": false,
+          "nombre_pareja": null,
+          "edad_pareja": null,
+          "genero_pareja": null,
+          "tiempo_pareja": null,
+          "orientacion": "hetero",
+          "tipo_relacion": "dating",
+          "convive_con_pareja": null,
+          "tiene_hijos": null,
+          "trabajo_profesion": null,
+          "convivencia": null,
+          "ex_pareja_relevante": null,
+          "ex_pareja_contexto": null,
+          "estructura_familiar_relevante": null,
+          "hijos_detalle": null,
+          "attachment_style": null,
+          "partner_attachment_style": null,
+          "relationship_status": null,
+          "preferred_language": "es",
+          "is_premium": false,
+          "email_verified": false
+        },
+        "session": {
+          "type": "greeting",
+          "message": "Marcos, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+          "data": {
+            "message": "Marcos, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+            "options": [
+              {
+                "id": "A",
+                "text": "Cuéntame sobre ti"
+              },
+              {
+                "id": "B",
+                "text": "Hacerme preguntas"
+              },
+              {
+                "id": "C",
+                "text": "Darme tus objetivos"
+              },
+              {
+                "id": "D",
+                "text": "Solo quiero hablar"
+              }
+            ],
+            "is_first_visit": true,
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'greeting'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "d7d7e052-435c-4448-9931-5b01b652c60d",
+                    "message_preview": "session_start",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "greeting"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "free_chat": {
+          "type": "conversation",
+          "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+          "data": {
+            "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'conversation'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "d7d7e052-435c-4448-9931-5b01b652c60d",
+                    "message_preview": "D",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "conversation"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "storedProfile": {
+        "nombre": "Marcos",
+        "edad": 26,
+        "genero": "hombre",
+        "tiene_pareja": false,
+        "nombre_pareja": null,
+        "edad_pareja": null,
+        "genero_pareja": null,
+        "tiempo_pareja": null,
+        "orientacion": "hetero",
+        "tipo_relacion": "dating",
+        "convive_con_pareja": null,
+        "tiene_hijos": null,
+        "trabajo_profesion": null,
+        "convivencia": null,
+        "ex_pareja_relevante": null,
+        "ex_pareja_contexto": null,
+        "estructura_familiar_relevante": null,
+        "hijos_detalle": null,
+        "attachment_style": null,
+        "partner_attachment_style": null,
+        "relationship_status": null,
+        "preferred_language": "es",
+        "is_premium": false,
+        "email_verified": false
+      },
+      "storedMemoryResponse": {
+        "memories": [
+          {
+            "id": "d011b3c2-ba2a-4013-ab5c-2f89644c8fcd",
+            "type": "goal",
+            "summary": "User expressed a possible goal or desire: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+            "curated_summary": "You said this may matter to you: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.6,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:47:41.829782Z",
+            "updated_at": "2026-07-02T17:47:56.450583Z"
+          },
+          {
+            "id": "1252d22a-4f2e-4926-9389-95f1a1507921",
+            "type": "personal_context",
+            "summary": "User shared personal context: Creo que en la próxima cita puedo decirle algo tranquilo, tipo que me apetece seguir conociéndola sin presión.",
+            "curated_summary": "You shared this personal context: Creo que en la próxima cita puedo decirle algo tranquilo, tipo que me apetece seguir conociéndola sin presión.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.3,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:47:53.699692Z",
+            "updated_at": "2026-07-02T17:47:53.699696Z"
+          },
+          {
+            "id": "222bc04f-5aea-44a2-94b9-ed816becd210",
+            "type": "interest_or_preference",
+            "summary": "User shared an interest or preference: Me da cosa que piense que le estoy pidiendo exclusividad ya. Yo puedo ir despacio, pero prefiero hablar claro.",
+            "curated_summary": "This interest or preference may help personalize future conversations: Me da cosa que piense que le estoy pidiendo exclusividad ya. Yo puedo ir despacio, pero prefiero hablar claro.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:47:46.856516Z",
+            "updated_at": "2026-07-02T17:47:46.856520Z"
+          },
+          {
+            "id": "f098fdc5-631f-47be-8033-5d5f639a9fd1",
+            "type": "interest_or_preference",
+            "summary": "User shared an interest or preference: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+            "curated_summary": "This interest or preference may help personalize future conversations: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:47:41.827991Z",
+            "updated_at": "2026-07-02T17:47:41.827994Z"
+          }
+        ]
+      },
+      "storedMemories": [
+        {
+          "id": "d011b3c2-ba2a-4013-ab5c-2f89644c8fcd",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+          "curated_summary": "You said this may matter to you: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.6,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:47:41.829782Z",
+          "updated_at": "2026-07-02T17:47:56.450583Z"
+        },
+        {
+          "id": "1252d22a-4f2e-4926-9389-95f1a1507921",
+          "type": "personal_context",
+          "summary": "User shared personal context: Creo que en la próxima cita puedo decirle algo tranquilo, tipo que me apetece seguir conociéndola sin presión.",
+          "curated_summary": "You shared this personal context: Creo que en la próxima cita puedo decirle algo tranquilo, tipo que me apetece seguir conociéndola sin presión.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:47:53.699692Z",
+          "updated_at": "2026-07-02T17:47:53.699696Z"
+        },
+        {
+          "id": "222bc04f-5aea-44a2-94b9-ed816becd210",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Me da cosa que piense que le estoy pidiendo exclusividad ya. Yo puedo ir despacio, pero prefiero hablar claro.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Me da cosa que piense que le estoy pidiendo exclusividad ya. Yo puedo ir despacio, pero prefiero hablar claro.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:47:46.856516Z",
+          "updated_at": "2026-07-02T17:47:46.856520Z"
+        },
+        {
+          "id": "f098fdc5-631f-47be-8033-5d5f639a9fd1",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:47:41.827991Z",
+          "updated_at": "2026-07-02T17:47:41.827994Z"
+        }
+      ],
+      "finalMemories": [
+        {
+          "id": "d011b3c2-ba2a-4013-ab5c-2f89644c8fcd",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+          "curated_summary": "You said this may matter to you: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.6,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:47:41.829782Z",
+          "updated_at": "2026-07-02T17:47:56.450583Z"
+        },
+        {
+          "id": "1252d22a-4f2e-4926-9389-95f1a1507921",
+          "type": "personal_context",
+          "summary": "User shared personal context: Creo que en la próxima cita puedo decirle algo tranquilo, tipo que me apetece seguir conociéndola sin presión.",
+          "curated_summary": "You shared this personal context: Creo que en la próxima cita puedo decirle algo tranquilo, tipo que me apetece seguir conociéndola sin presión.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:47:53.699692Z",
+          "updated_at": "2026-07-02T17:47:53.699696Z"
+        },
+        {
+          "id": "222bc04f-5aea-44a2-94b9-ed816becd210",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Me da cosa que piense que le estoy pidiendo exclusividad ya. Yo puedo ir despacio, pero prefiero hablar claro.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Me da cosa que piense que le estoy pidiendo exclusividad ya. Yo puedo ir despacio, pero prefiero hablar claro.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:47:46.856516Z",
+          "updated_at": "2026-07-02T17:47:46.856520Z"
+        },
+        {
+          "id": "f098fdc5-631f-47be-8033-5d5f639a9fd1",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Me gusta bastante, pero no quiero ir de intenso. Los dos seguimos usando apps, creo, y eso me hace pensar si debería decir algo.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:47:41.827991Z",
+          "updated_at": "2026-07-02T17:47:41.827994Z"
+        }
+      ]
+    },
+    {
+      "id": "rocio-anxious-breakup",
+      "title": "02. Rocío, 31, mujer hetero, ruptura reciente",
+      "expectedAttachmentStyle": "ansioso",
+      "openingPrompt": "llevo toda la semana fatal, lo dejé con mi novio hace nada y estoy hecha polvo",
+      "profileSeed": {
+        "nombre": "Rocío",
+        "edad": 31,
+        "genero": "mujer",
+        "orientacion": "hetero",
+        "preferred_language": "es",
+        "tiene_pareja": false,
+        "tipo_relacion": "ruptura reciente"
+      },
+      "turns": [
+        {
+          "prompt": "llevo toda la semana fatal, lo dejé con mi novio hace nada y estoy hecha polvo",
+          "type": "conversation",
+          "message": "**Estás atravesando un momento difícil tras la ruptura.** ¿Qué es lo que más te cuesta de esta situación?",
+          "debug": null
+        },
+        {
+          "prompt": "Lo peor es que miro el móvil cada dos minutos. Sé que no debería, pero si no escribe siento que no le importo nada.",
+          "type": "conversation",
+          "message": "**Sientes la necesidad de verificar si él se comunica contigo.** ¿Qué esperas encontrar al mirar el móvil tan a menudo?",
+          "debug": null
+        },
+        {
+          "prompt": "Ayer casi le mandé un audio larguísimo. Me dio vergüenza y lo borré, pero me quedé temblando.",
+          "type": "conversation",
+          "message": "**Te sentiste impulsada a comunicarte, pero la vergüenza te detuvo.** ¿Qué te llevó a querer enviarle ese audio?",
+          "debug": null
+        },
+        {
+          "prompt": "Me cuesta creer que esto sea normal. Siento que si no arreglamos algo ya, lo pierdo para siempre.",
+          "type": "conversation",
+          "message": "**Sientes una presión por arreglar las cosas rápidamente, temiendo perderlo para siempre.** ¿Qué crees que necesitas para sentirte más segura en esta situación?",
+          "debug": null
+        },
+        {
+          "prompt": "También sé que discutíamos mucho porque yo necesitaba más contacto y él se agobiaba. Pero ahora solo recuerdo lo bueno.",
+          "type": "conversation",
+          "message": "**Reconoces que había desacuerdos sobre el contacto, pero ahora te enfocas en los momentos positivos.** ¿Cómo te gustaría abordar esos recuerdos buenos en el contexto de lo que vivieron?",
+          "debug": null
+        },
+        {
+          "prompt": "Cuando dices esperar, me enfado un poco porque siento que si espero él se olvida de mí.",
+          "type": "conversation",
+          "message": "**Te sientes enojada con la idea de esperar, ya que temes que eso lleve a que él te olvide.** ¿Qué opciones crees que tienes para manejar esa sensación de urgencia?",
+          "debug": null
+        },
+        {
+          "prompt": "Puedo intentar no escribir hoy. Pero necesito algo concreto para cuando me dé el impulso.",
+          "type": "conversation",
+          "message": "**Estás considerando no escribir hoy y buscas una alternativa concreta para esos impulsos.** Una opción podría ser escribir tus pensamientos en un diario en lugar de enviárselos. ¿Te parece útil esa idea?",
+          "debug": null
+        },
+        {
+          "prompt": "Vale, voy a probar con eso. Me da miedo, pero al menos no quiero volver a escribir desde el pánico.",
+          "type": "conversation",
+          "message": "**Vas a probar escribir en un diario en lugar de enviar mensajes, a pesar de que sientes miedo.** ¿Qué te gustaría anotar primero en tu diario para empezar este ejercicio?",
+          "debug": null
+        }
+      ],
+      "email": "qa+attachment-20260702174730-2-rocio-anxious-breakup@aprendeaquerer.com",
+      "setupResponses": {
+        "register": {
+          "message": "User qa+attachment-20260702174730-2-rocio-anxious-breakup@aprendeaquerer.com registered successfully"
+        },
+        "profile_put": {
+          "nombre": "Rocío",
+          "edad": 31,
+          "genero": "mujer",
+          "tiene_pareja": false,
+          "nombre_pareja": null,
+          "edad_pareja": null,
+          "genero_pareja": null,
+          "tiempo_pareja": null,
+          "orientacion": "hetero",
+          "tipo_relacion": "ruptura reciente",
+          "convive_con_pareja": null,
+          "tiene_hijos": null,
+          "trabajo_profesion": null,
+          "convivencia": null,
+          "ex_pareja_relevante": null,
+          "ex_pareja_contexto": null,
+          "estructura_familiar_relevante": null,
+          "hijos_detalle": null,
+          "attachment_style": null,
+          "partner_attachment_style": null,
+          "relationship_status": null,
+          "preferred_language": "es",
+          "is_premium": false,
+          "email_verified": false
+        },
+        "session": {
+          "type": "greeting",
+          "message": "Rocío, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+          "data": {
+            "message": "Rocío, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+            "options": [
+              {
+                "id": "A",
+                "text": "Cuéntame sobre ti"
+              },
+              {
+                "id": "B",
+                "text": "Hacerme preguntas"
+              },
+              {
+                "id": "C",
+                "text": "Darme tus objetivos"
+              },
+              {
+                "id": "D",
+                "text": "Solo quiero hablar"
+              }
+            ],
+            "is_first_visit": true,
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'greeting'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "fa779112-1672-415b-923f-a985f2bd6bd1",
+                    "message_preview": "session_start",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "greeting"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "free_chat": {
+          "type": "conversation",
+          "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+          "data": {
+            "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'conversation'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "fa779112-1672-415b-923f-a985f2bd6bd1",
+                    "message_preview": "D",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "conversation"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "storedProfile": {
+        "nombre": "Rocío",
+        "edad": 31,
+        "genero": "mujer",
+        "tiene_pareja": false,
+        "nombre_pareja": null,
+        "edad_pareja": null,
+        "genero_pareja": "hombre",
+        "tiempo_pareja": null,
+        "orientacion": "hetero",
+        "tipo_relacion": "ruptura reciente",
+        "convive_con_pareja": null,
+        "tiene_hijos": null,
+        "trabajo_profesion": null,
+        "convivencia": null,
+        "ex_pareja_relevante": null,
+        "ex_pareja_contexto": null,
+        "estructura_familiar_relevante": null,
+        "hijos_detalle": null,
+        "attachment_style": null,
+        "partner_attachment_style": null,
+        "relationship_status": null,
+        "preferred_language": "es",
+        "is_premium": false,
+        "email_verified": false
+      },
+      "storedMemoryResponse": {
+        "memories": [
+          {
+            "id": "5f725a30-9435-4602-81f8-a52be38c53a8",
+            "type": "goal",
+            "summary": "User expressed a possible goal or desire: Puedo intentar no escribir hoy. Pero necesito algo concreto para cuando me dé el impulso.",
+            "curated_summary": "You said this may matter to you: Puedo intentar no escribir hoy. Pero necesito algo concreto para cuando me dé el impulso.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.5,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:16.869636Z",
+            "updated_at": "2026-07-02T17:48:18.974100Z"
+          },
+          {
+            "id": "b8ae026b-17a7-4582-aa79-9d51c87a6077",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Vale, voy a probar con eso. Me da miedo, pero al menos no quiero volver a escribir desde el pánico.",
+            "curated_summary": "You described this as emotionally important: Vale, voy a probar con eso. Me da miedo, pero al menos no quiero volver a escribir desde el pánico.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:18.971767Z",
+            "updated_at": "2026-07-02T17:48:18.971770Z"
+          },
+          {
+            "id": "fb34e4b4-9c6a-46d5-b2c6-75dbdb6a6587",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Cuando dices esperar, me enfado un poco porque siento que si espero él se olvida de mí.",
+            "curated_summary": "You described this as emotionally important: Cuando dices esperar, me enfado un poco porque siento que si espero él se olvida de mí.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:14.986335Z",
+            "updated_at": "2026-07-02T17:48:14.986338Z"
+          },
+          {
+            "id": "57d7ca8a-39e1-4c2c-a5b2-126ec29741f7",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Me cuesta creer que esto sea normal. Siento que si no arreglamos algo ya, lo pierdo para siempre.",
+            "curated_summary": "You described this as emotionally important: Me cuesta creer que esto sea normal. Siento que si no arreglamos algo ya, lo pierdo para siempre.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:09.288084Z",
+            "updated_at": "2026-07-02T17:48:09.288088Z"
+          },
+          {
+            "id": "8572129b-4c44-4318-a3cb-c15b23730d21",
+            "type": "personal_context",
+            "summary": "User shared personal context: Ayer casi le mandé un audio larguísimo. Me dio vergüenza y lo borré, pero me quedé temblando.",
+            "curated_summary": "You shared this personal context: Ayer casi le mandé un audio larguísimo. Me dio vergüenza y lo borré, pero me quedé temblando.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.3,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:07.301340Z",
+            "updated_at": "2026-07-02T17:48:07.301345Z"
+          },
+          {
+            "id": "355a04a5-1687-47e6-b2e5-11a58ae8611e",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Lo peor es que miro el móvil cada dos minutos. Sé que no debería, pero si no escribe siento que no le importo nada.",
+            "curated_summary": "You described this as emotionally important: Lo peor es que miro el móvil cada dos minutos. Sé que no debería, pero si no escribe siento que no le importo nada.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:05.164035Z",
+            "updated_at": "2026-07-02T17:48:05.164039Z"
+          },
+          {
+            "id": "f1244830-3fe4-47bc-8d49-8010a90d1431",
+            "type": "personal_context",
+            "summary": "User shared personal context: llevo toda la semana fatal, lo dejé con mi novio hace nada y estoy hecha polvo",
+            "curated_summary": "You shared this personal context: llevo toda la semana fatal, lo dejé con mi novio hace nada y estoy hecha polvo",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.3,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:02.914828Z",
+            "updated_at": "2026-07-02T17:48:02.914831Z"
+          }
+        ]
+      },
+      "storedMemories": [
+        {
+          "id": "5f725a30-9435-4602-81f8-a52be38c53a8",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: Puedo intentar no escribir hoy. Pero necesito algo concreto para cuando me dé el impulso.",
+          "curated_summary": "You said this may matter to you: Puedo intentar no escribir hoy. Pero necesito algo concreto para cuando me dé el impulso.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.5,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:16.869636Z",
+          "updated_at": "2026-07-02T17:48:18.974100Z"
+        },
+        {
+          "id": "b8ae026b-17a7-4582-aa79-9d51c87a6077",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Vale, voy a probar con eso. Me da miedo, pero al menos no quiero volver a escribir desde el pánico.",
+          "curated_summary": "You described this as emotionally important: Vale, voy a probar con eso. Me da miedo, pero al menos no quiero volver a escribir desde el pánico.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:18.971767Z",
+          "updated_at": "2026-07-02T17:48:18.971770Z"
+        },
+        {
+          "id": "fb34e4b4-9c6a-46d5-b2c6-75dbdb6a6587",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Cuando dices esperar, me enfado un poco porque siento que si espero él se olvida de mí.",
+          "curated_summary": "You described this as emotionally important: Cuando dices esperar, me enfado un poco porque siento que si espero él se olvida de mí.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:14.986335Z",
+          "updated_at": "2026-07-02T17:48:14.986338Z"
+        },
+        {
+          "id": "57d7ca8a-39e1-4c2c-a5b2-126ec29741f7",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me cuesta creer que esto sea normal. Siento que si no arreglamos algo ya, lo pierdo para siempre.",
+          "curated_summary": "You described this as emotionally important: Me cuesta creer que esto sea normal. Siento que si no arreglamos algo ya, lo pierdo para siempre.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:09.288084Z",
+          "updated_at": "2026-07-02T17:48:09.288088Z"
+        },
+        {
+          "id": "8572129b-4c44-4318-a3cb-c15b23730d21",
+          "type": "personal_context",
+          "summary": "User shared personal context: Ayer casi le mandé un audio larguísimo. Me dio vergüenza y lo borré, pero me quedé temblando.",
+          "curated_summary": "You shared this personal context: Ayer casi le mandé un audio larguísimo. Me dio vergüenza y lo borré, pero me quedé temblando.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:07.301340Z",
+          "updated_at": "2026-07-02T17:48:07.301345Z"
+        },
+        {
+          "id": "355a04a5-1687-47e6-b2e5-11a58ae8611e",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Lo peor es que miro el móvil cada dos minutos. Sé que no debería, pero si no escribe siento que no le importo nada.",
+          "curated_summary": "You described this as emotionally important: Lo peor es que miro el móvil cada dos minutos. Sé que no debería, pero si no escribe siento que no le importo nada.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:05.164035Z",
+          "updated_at": "2026-07-02T17:48:05.164039Z"
+        },
+        {
+          "id": "f1244830-3fe4-47bc-8d49-8010a90d1431",
+          "type": "personal_context",
+          "summary": "User shared personal context: llevo toda la semana fatal, lo dejé con mi novio hace nada y estoy hecha polvo",
+          "curated_summary": "You shared this personal context: llevo toda la semana fatal, lo dejé con mi novio hace nada y estoy hecha polvo",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:02.914828Z",
+          "updated_at": "2026-07-02T17:48:02.914831Z"
+        }
+      ],
+      "finalMemories": [
+        {
+          "id": "5f725a30-9435-4602-81f8-a52be38c53a8",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: Puedo intentar no escribir hoy. Pero necesito algo concreto para cuando me dé el impulso.",
+          "curated_summary": "You said this may matter to you: Puedo intentar no escribir hoy. Pero necesito algo concreto para cuando me dé el impulso.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.5,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:16.869636Z",
+          "updated_at": "2026-07-02T17:48:18.974100Z"
+        },
+        {
+          "id": "b8ae026b-17a7-4582-aa79-9d51c87a6077",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Vale, voy a probar con eso. Me da miedo, pero al menos no quiero volver a escribir desde el pánico.",
+          "curated_summary": "You described this as emotionally important: Vale, voy a probar con eso. Me da miedo, pero al menos no quiero volver a escribir desde el pánico.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:18.971767Z",
+          "updated_at": "2026-07-02T17:48:18.971770Z"
+        },
+        {
+          "id": "fb34e4b4-9c6a-46d5-b2c6-75dbdb6a6587",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Cuando dices esperar, me enfado un poco porque siento que si espero él se olvida de mí.",
+          "curated_summary": "You described this as emotionally important: Cuando dices esperar, me enfado un poco porque siento que si espero él se olvida de mí.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:14.986335Z",
+          "updated_at": "2026-07-02T17:48:14.986338Z"
+        },
+        {
+          "id": "57d7ca8a-39e1-4c2c-a5b2-126ec29741f7",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me cuesta creer que esto sea normal. Siento que si no arreglamos algo ya, lo pierdo para siempre.",
+          "curated_summary": "You described this as emotionally important: Me cuesta creer que esto sea normal. Siento que si no arreglamos algo ya, lo pierdo para siempre.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:09.288084Z",
+          "updated_at": "2026-07-02T17:48:09.288088Z"
+        },
+        {
+          "id": "8572129b-4c44-4318-a3cb-c15b23730d21",
+          "type": "personal_context",
+          "summary": "User shared personal context: Ayer casi le mandé un audio larguísimo. Me dio vergüenza y lo borré, pero me quedé temblando.",
+          "curated_summary": "You shared this personal context: Ayer casi le mandé un audio larguísimo. Me dio vergüenza y lo borré, pero me quedé temblando.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:07.301340Z",
+          "updated_at": "2026-07-02T17:48:07.301345Z"
+        },
+        {
+          "id": "355a04a5-1687-47e6-b2e5-11a58ae8611e",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Lo peor es que miro el móvil cada dos minutos. Sé que no debería, pero si no escribe siento que no le importo nada.",
+          "curated_summary": "You described this as emotionally important: Lo peor es que miro el móvil cada dos minutos. Sé que no debería, pero si no escribe siento que no le importo nada.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:05.164035Z",
+          "updated_at": "2026-07-02T17:48:05.164039Z"
+        },
+        {
+          "id": "f1244830-3fe4-47bc-8d49-8010a90d1431",
+          "type": "personal_context",
+          "summary": "User shared personal context: llevo toda la semana fatal, lo dejé con mi novio hace nada y estoy hecha polvo",
+          "curated_summary": "You shared this personal context: llevo toda la semana fatal, lo dejé con mi novio hace nada y estoy hecha polvo",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:02.914828Z",
+          "updated_at": "2026-07-02T17:48:02.914831Z"
+        }
+      ]
+    },
+    {
+      "id": "nadia-anxious-married-household",
+      "title": "03. Nadia, 35, mujer hetero, casada conviviendo",
+      "expectedAttachmentStyle": "ansioso",
+      "openingPrompt": "siempre acabo yo con todo lo de la casa, se lo digo y no cambia",
+      "profileSeed": {
+        "nombre": "Nadia",
+        "edad": 35,
+        "genero": "mujer",
+        "orientacion": "hetero",
+        "preferred_language": "es",
+        "tiene_pareja": true,
+        "tipo_relacion": "casada",
+        "convive_con_pareja": true
+      },
+      "turns": [
+        {
+          "prompt": "siempre acabo yo con todo lo de la casa, se lo digo y no cambia",
+          "type": "conversation",
+          "message": "**Sientes que asumes la mayor parte de las responsabilidades del hogar.** Esto puede generar frustración y desbalance en la relación. \n\n¿Has hablado con tu pareja sobre cómo te sientes al respecto?",
+          "debug": null
+        },
+        {
+          "prompt": "No es solo limpiar. Es pensar qué falta, pedir citas, acordarme de todo. Y si lo digo parece que estoy exagerando.",
+          "type": "conversation",
+          "message": "**Te sientes abrumada por la carga de tareas y sientes que no se reconoce tu esfuerzo.** Esto puede crear una sensación de desbalance y falta de apoyo. \n\nSería útil explorar cómo podrías comunicarle esto a tu pareja de manera que él comprenda la magnitud de lo que estás haciendo. ¿Qué te gustaría que él hiciera para compartir mejor esas responsabilidades?",
+          "debug": null
+        },
+        {
+          "prompt": "Me da rabia porque termino llorando y luego pidiendo perdón. Siento que si insisto se va a cansar de mí.",
+          "type": "conversation",
+          "message": "**La rabia y la frustración te llevan a un punto en el que terminas sintiéndote mal y pidiendo perdón.** Es comprensible que te preocupe la reacción de tu pareja. \n\nEs importante que puedas expresar tus necesidades sin sentirte culpable. ¿Qué pasaría si establecieras un espacio para hablar de esto sin que se sienta como una confrontación?",
+          "debug": null
+        },
+        {
+          "prompt": "Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+          "type": "conversation",
+          "message": "**Deseas que tu pareja reconozca y comparta las responsabilidades sin que tengas que señalarlo constantemente.** Esa necesidad de ser visto y considerado es válida, pero puede ser complicado si no se comunica claramente. \n\nPodrías considerar hablar con él sobre cómo te sientes cuando tienes que pedir ayuda. ¿Te parece útil plantear esto en un momento tranquilo, cuando no haya tensión?",
+          "debug": null
+        },
+        {
+          "prompt": "Cuando se pone a la defensiva me entra pánico y bajo el tono, aunque por dentro estoy hirviendo.",
+          "type": "conversation",
+          "message": "**Cuando tu pareja se pone a la defensiva, sientes pánico y eso te lleva a bajar el tono, aunque internamente estés muy molesta.** Esta reacción puede dificultar una comunicación efectiva y hacer que tus necesidades queden sin expresar. \n\nPuede ser útil practicar cómo abordar esos momentos. ¿Qué te parece si intentas nombrar que necesitas una pausa para calmarte antes de seguir hablando?",
+          "debug": null
+        },
+        {
+          "prompt": "Sí, necesito que sea una conversación seria, no otra queja en mitad de la cocina.",
+          "type": "conversation",
+          "message": "**Buscas tener una conversación seria y enfocada, en lugar de que se convierta en una queja en un momento inapropiado.** Esto puede ayudar a que ambos se sientan más receptivos y dispuestos a escuchar. \n\nPodrías proponer un momento específico para hablar y asegurarte de que ambos estén en un espacio adecuado. ¿Te gustaría planificar un momento así?",
+          "debug": null
+        },
+        {
+          "prompt": "Me cuesta sostener el límite. Si se enfada, enseguida pienso que igual soy demasiado exigente.",
+          "type": "conversation",
+          "message": "**Te cuesta mantener el límite porque temes que si tu pareja se enfada, eso te haga sentir que estás siendo demasiado exigente.** Esta es una lucha común al establecer límites, especialmente si hay miedo a la reacción del otro.\n\nEs importante recordar que tus necesidades son válidas. Podrías practicar establecer esos límites de manera más firme, incluso escribiendo lo que quieres decir por adelantado. ¿Te parece útil tener esa preparación?",
+          "debug": null
+        },
+        {
+          "prompt": "Voy a escribir lo que necesito antes de hablarlo, porque si no me pierdo intentando que no se moleste.",
+          "type": "conversation",
+          "message": "**Decides escribir lo que necesitas antes de la conversación para tener claridad y evitar perderte en el intento de no molestar a tu pareja.** Esa es una buena estrategia que puede ayudarte a ser más asertiva. \n\nCuando tengas tus ideas claras, ¿te gustaría compartir cómo te sientes una vez que lo hagas? Esto puede ayudarte a reflexionar sobre el proceso.",
+          "debug": null
+        }
+      ],
+      "email": "qa+attachment-20260702174730-3-nadia-anxious-married-household@aprendeaquerer.com",
+      "setupResponses": {
+        "register": {
+          "message": "User qa+attachment-20260702174730-3-nadia-anxious-married-household@aprendeaquerer.com registered successfully"
+        },
+        "profile_put": {
+          "nombre": "Nadia",
+          "edad": 35,
+          "genero": "mujer",
+          "tiene_pareja": true,
+          "nombre_pareja": null,
+          "edad_pareja": null,
+          "genero_pareja": null,
+          "tiempo_pareja": null,
+          "orientacion": "hetero",
+          "tipo_relacion": "casada",
+          "convive_con_pareja": true,
+          "tiene_hijos": null,
+          "trabajo_profesion": null,
+          "convivencia": null,
+          "ex_pareja_relevante": null,
+          "ex_pareja_contexto": null,
+          "estructura_familiar_relevante": null,
+          "hijos_detalle": null,
+          "attachment_style": null,
+          "partner_attachment_style": null,
+          "relationship_status": null,
+          "preferred_language": "es",
+          "is_premium": false,
+          "email_verified": false
+        },
+        "session": {
+          "type": "greeting",
+          "message": "Nadia, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+          "data": {
+            "message": "Nadia, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+            "options": [
+              {
+                "id": "A",
+                "text": "Cuéntame sobre ti"
+              },
+              {
+                "id": "B",
+                "text": "Hacerme preguntas"
+              },
+              {
+                "id": "C",
+                "text": "Darme tus objetivos"
+              },
+              {
+                "id": "D",
+                "text": "Solo quiero hablar"
+              }
+            ],
+            "is_first_visit": true,
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'greeting'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "75006253-92c7-4199-af4c-6c439f3cbabf",
+                    "message_preview": "session_start",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "greeting"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "free_chat": {
+          "type": "conversation",
+          "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+          "data": {
+            "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'conversation'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "75006253-92c7-4199-af4c-6c439f3cbabf",
+                    "message_preview": "D",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "conversation"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "storedProfile": {
+        "nombre": "Nadia",
+        "edad": 35,
+        "genero": "mujer",
+        "tiene_pareja": true,
+        "nombre_pareja": null,
+        "edad_pareja": null,
+        "genero_pareja": null,
+        "tiempo_pareja": null,
+        "orientacion": "hetero",
+        "tipo_relacion": "casada",
+        "convive_con_pareja": true,
+        "tiene_hijos": null,
+        "trabajo_profesion": null,
+        "convivencia": null,
+        "ex_pareja_relevante": null,
+        "ex_pareja_contexto": null,
+        "estructura_familiar_relevante": null,
+        "hijos_detalle": null,
+        "attachment_style": null,
+        "partner_attachment_style": null,
+        "relationship_status": null,
+        "preferred_language": "es",
+        "is_premium": false,
+        "email_verified": false
+      },
+      "storedMemoryResponse": {
+        "memories": [
+          {
+            "id": "7bbf2f06-0747-4f80-848b-2c7bc14690a8",
+            "type": "goal",
+            "summary": "User expressed a possible goal or desire: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+            "curated_summary": "You said this may matter to you: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.6,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:33.835271Z",
+            "updated_at": "2026-07-02T17:48:44.912747Z"
+          },
+          {
+            "id": "73240477-11f6-4946-9116-0f2eb3178964",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Me cuesta sostener el límite. Si se enfada, enseguida pienso que igual soy demasiado exigente.",
+            "curated_summary": "You described this as emotionally important: Me cuesta sostener el límite. Si se enfada, enseguida pienso que igual soy demasiado exigente.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:42.368902Z",
+            "updated_at": "2026-07-02T17:48:42.368905Z"
+          },
+          {
+            "id": "939fe306-98ec-4c19-802f-886bd7951e3f",
+            "type": "partner_stance",
+            "summary": "User described their partner's stance or framing: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+            "curated_summary": "Your partner's stance or framing may be: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.4,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:33.837040Z",
+            "updated_at": "2026-07-02T17:48:33.837042Z"
+          },
+          {
+            "id": "6a0003bc-025c-43d3-8a53-f008e0f92857",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Me da rabia porque termino llorando y luego pidiendo perdón. Siento que si insisto se va a cansar de mí.",
+            "curated_summary": "You described this as emotionally important: Me da rabia porque termino llorando y luego pidiendo perdón. Siento que si insisto se va a cansar de mí.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:30.720500Z",
+            "updated_at": "2026-07-02T17:48:30.720503Z"
+          }
+        ]
+      },
+      "storedMemories": [
+        {
+          "id": "7bbf2f06-0747-4f80-848b-2c7bc14690a8",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+          "curated_summary": "You said this may matter to you: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.6,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:33.835271Z",
+          "updated_at": "2026-07-02T17:48:44.912747Z"
+        },
+        {
+          "id": "73240477-11f6-4946-9116-0f2eb3178964",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me cuesta sostener el límite. Si se enfada, enseguida pienso que igual soy demasiado exigente.",
+          "curated_summary": "You described this as emotionally important: Me cuesta sostener el límite. Si se enfada, enseguida pienso que igual soy demasiado exigente.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:42.368902Z",
+          "updated_at": "2026-07-02T17:48:42.368905Z"
+        },
+        {
+          "id": "939fe306-98ec-4c19-802f-886bd7951e3f",
+          "type": "partner_stance",
+          "summary": "User described their partner's stance or framing: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+          "curated_summary": "Your partner's stance or framing may be: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.4,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:33.837040Z",
+          "updated_at": "2026-07-02T17:48:33.837042Z"
+        },
+        {
+          "id": "6a0003bc-025c-43d3-8a53-f008e0f92857",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me da rabia porque termino llorando y luego pidiendo perdón. Siento que si insisto se va a cansar de mí.",
+          "curated_summary": "You described this as emotionally important: Me da rabia porque termino llorando y luego pidiendo perdón. Siento que si insisto se va a cansar de mí.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:30.720500Z",
+          "updated_at": "2026-07-02T17:48:30.720503Z"
+        }
+      ],
+      "finalMemories": [
+        {
+          "id": "7bbf2f06-0747-4f80-848b-2c7bc14690a8",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+          "curated_summary": "You said this may matter to you: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.6,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:33.835271Z",
+          "updated_at": "2026-07-02T17:48:44.912747Z"
+        },
+        {
+          "id": "73240477-11f6-4946-9116-0f2eb3178964",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me cuesta sostener el límite. Si se enfada, enseguida pienso que igual soy demasiado exigente.",
+          "curated_summary": "You described this as emotionally important: Me cuesta sostener el límite. Si se enfada, enseguida pienso que igual soy demasiado exigente.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:42.368902Z",
+          "updated_at": "2026-07-02T17:48:42.368905Z"
+        },
+        {
+          "id": "939fe306-98ec-4c19-802f-886bd7951e3f",
+          "type": "partner_stance",
+          "summary": "User described their partner's stance or framing: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+          "curated_summary": "Your partner's stance or framing may be: Él dice que le avise y ya, pero eso también es trabajo. Yo quiero que lo vea sin que tenga que suplicar.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.4,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:33.837040Z",
+          "updated_at": "2026-07-02T17:48:33.837042Z"
+        },
+        {
+          "id": "6a0003bc-025c-43d3-8a53-f008e0f92857",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me da rabia porque termino llorando y luego pidiendo perdón. Siento que si insisto se va a cansar de mí.",
+          "curated_summary": "You described this as emotionally important: Me da rabia porque termino llorando y luego pidiendo perdón. Siento que si insisto se va a cansar de mí.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:30.720500Z",
+          "updated_at": "2026-07-02T17:48:30.720503Z"
+        }
+      ]
+    },
+    {
+      "id": "gorka-avoidant-stable",
+      "title": "04. Gorka, 42, hombre hetero, pareja estable",
+      "expectedAttachmentStyle": "evitativo",
+      "openingPrompt": "mi mujer dice que no hablo de lo que siento, no sé para qué te cuento esto",
+      "profileSeed": {
+        "nombre": "Gorka",
+        "edad": 42,
+        "genero": "hombre",
+        "orientacion": "hetero",
+        "preferred_language": "es",
+        "tiene_pareja": true,
+        "tipo_relacion": "pareja estable"
+      },
+      "turns": [
+        {
+          "prompt": "mi mujer dice que no hablo de lo que siento, no sé para qué te cuento esto",
+          "type": "conversation",
+          "message": "**No hablas de tus sentimientos.** Es posible que haya una razón detrás de esto. ¿Te gustaría explorar qué te impide compartir más?",
+          "debug": null
+        },
+        {
+          "prompt": "No es que no sienta nada. Es que cuando empieza con preguntas me bloqueo y prefiero callarme.",
+          "type": "conversation",
+          "message": "**Te bloqueas con las preguntas.** Esto puede dificultar la comunicación. ¿Qué tipo de preguntas te hacen sentir más incómodo o te hacen cerrar?",
+          "debug": null
+        },
+        {
+          "prompt": "A veces pienso que si empiezo a hablar va a ser peor. Ella quiere detalles, yo quiero que se calme el tema.",
+          "type": "conversation",
+          "message": "**Quieres que se calme el tema.** Hay una tensión entre tu necesidad de tranquilidad y su deseo de detalles. ¿Qué pasaría si intentaras compartir algo pequeño al principio, en lugar de entrar en detalles?",
+          "debug": null
+        },
+        {
+          "prompt": "Me molesta que diga que soy frío. Yo hago cosas por la relación, trabajo, estoy, cumplo. Pero hablar de emociones me parece un interrogatorio.",
+          "type": "conversation",
+          "message": "**Te molesta que te consideren frío.** Sientes que aportas a la relación de otras maneras, pero la comunicación emocional te resulta incómoda. ¿Cómo crees que podrías expresar tu compromiso sin entrar en un \"interrogatorio\"?",
+          "debug": null
+        },
+        {
+          "prompt": "Cuando insiste, me voy al garaje o pongo la tele. Sé que eso la enfada más, pero en ese momento me sale solo.",
+          "type": "conversation",
+          "message": "**Te alejas al garaje o pones la tele.** Esto parece ser tu forma de manejar la presión en esos momentos. ¿Qué crees que podrías hacer diferente en esas situaciones, para sentirte menos abrumado y evitar el conflicto?",
+          "debug": null
+        },
+        {
+          "prompt": "No quiero separarme ni nada. Solo quiero que deje de pedirme una versión de mí que no sé hacer.",
+          "type": "conversation",
+          "message": "**No quieres separarte, solo buscas que no te pidan una versión de ti que no puedes dar.** Es importante que tu pareja entienda tus límites. ¿Te gustaría trabajar en cómo comunicarle esto de una manera clara?",
+          "debug": null
+        },
+        {
+          "prompt": "Quizá puedo decirle que necesito diez minutos antes de responder. Eso me suena más posible que sentarme a hablar una hora.",
+          "type": "conversation",
+          "message": "**Pedir diez minutos antes de responder te parece más posible.** Es una buena estrategia para darte tiempo y evitar la presión. ¿Te gustaría que te ayudara a formular cómo plantearle esta necesidad?",
+          "debug": null
+        },
+        {
+          "prompt": "Vale. Me cuesta, pero puedo probar una frase corta en vez de desaparecer.",
+          "type": "conversation",
+          "message": "**Probar una frase corta en lugar de desaparecer es un buen paso.** Podrías decir algo como: \"Necesito un momento para procesar esto, ¿puedes darme diez minutos?\". ¿Te parece que esa frase podría funcionar para ti?",
+          "debug": null
+        }
+      ],
+      "email": "qa+attachment-20260702174730-4-gorka-avoidant-stable@aprendeaquerer.com",
+      "setupResponses": {
+        "register": {
+          "message": "User qa+attachment-20260702174730-4-gorka-avoidant-stable@aprendeaquerer.com registered successfully"
+        },
+        "profile_put": {
+          "nombre": "Gorka",
+          "edad": 42,
+          "genero": "hombre",
+          "tiene_pareja": true,
+          "nombre_pareja": null,
+          "edad_pareja": null,
+          "genero_pareja": null,
+          "tiempo_pareja": null,
+          "orientacion": "hetero",
+          "tipo_relacion": "pareja estable",
+          "convive_con_pareja": null,
+          "tiene_hijos": null,
+          "trabajo_profesion": null,
+          "convivencia": null,
+          "ex_pareja_relevante": null,
+          "ex_pareja_contexto": null,
+          "estructura_familiar_relevante": null,
+          "hijos_detalle": null,
+          "attachment_style": null,
+          "partner_attachment_style": null,
+          "relationship_status": null,
+          "preferred_language": "es",
+          "is_premium": false,
+          "email_verified": false
+        },
+        "session": {
+          "type": "greeting",
+          "message": "Gorka, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+          "data": {
+            "message": "Gorka, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+            "options": [
+              {
+                "id": "A",
+                "text": "Cuéntame sobre ti"
+              },
+              {
+                "id": "B",
+                "text": "Hacerme preguntas"
+              },
+              {
+                "id": "C",
+                "text": "Darme tus objetivos"
+              },
+              {
+                "id": "D",
+                "text": "Solo quiero hablar"
+              }
+            ],
+            "is_first_visit": true,
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'greeting'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "e309fe19-9de4-4434-890a-28f4bd9bdf23",
+                    "message_preview": "session_start",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "greeting"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "free_chat": {
+          "type": "conversation",
+          "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+          "data": {
+            "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'conversation'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "e309fe19-9de4-4434-890a-28f4bd9bdf23",
+                    "message_preview": "D",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "conversation"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "storedProfile": {
+        "nombre": "Gorka",
+        "edad": 42,
+        "genero": "hombre",
+        "tiene_pareja": true,
+        "nombre_pareja": null,
+        "edad_pareja": null,
+        "genero_pareja": "mujer",
+        "tiempo_pareja": null,
+        "orientacion": "hetero",
+        "tipo_relacion": "pareja estable",
+        "convive_con_pareja": null,
+        "tiene_hijos": null,
+        "trabajo_profesion": null,
+        "convivencia": null,
+        "ex_pareja_relevante": null,
+        "ex_pareja_contexto": null,
+        "estructura_familiar_relevante": null,
+        "hijos_detalle": null,
+        "attachment_style": null,
+        "partner_attachment_style": null,
+        "relationship_status": null,
+        "preferred_language": "es",
+        "is_premium": false,
+        "email_verified": false
+      },
+      "storedMemoryResponse": {
+        "memories": [
+          {
+            "id": "b2a87a5e-a830-4562-8e15-edddbc4a2638",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Vale. Me cuesta, pero puedo probar una frase corta en vez de desaparecer.",
+            "curated_summary": "You described this as emotionally important: Vale. Me cuesta, pero puedo probar una frase corta en vez de desaparecer.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:49:06.604624Z",
+            "updated_at": "2026-07-02T17:49:06.604628Z"
+          },
+          {
+            "id": "3b06a6f6-2380-4427-8e2a-0deb7e05f718",
+            "type": "goal",
+            "summary": "User expressed a possible goal or desire: A veces pienso que si empiezo a hablar va a ser peor. Ella quiere detalles, yo quiero que se calme el tema.",
+            "curated_summary": "You said this may matter to you: A veces pienso que si empiezo a hablar va a ser peor. Ella quiere detalles, yo quiero que se calme el tema.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.6,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:55.604737Z",
+            "updated_at": "2026-07-02T17:49:04.673903Z"
+          },
+          {
+            "id": "e3c8473b-b31b-4b4d-888a-e9385c3fe42b",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Me molesta que diga que soy frío. Yo hago cosas por la relación, trabajo, estoy, cumplo. Pero hablar de emociones me parece un interrogatorio.",
+            "curated_summary": "You described this as emotionally important: Me molesta que diga que soy frío. Yo hago cosas por la relación, trabajo, estoy, cumplo. Pero hablar de emociones me parece un interrogatorio.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:57.561580Z",
+            "updated_at": "2026-07-02T17:48:57.561584Z"
+          },
+          {
+            "id": "ee4ed427-aa8e-4b04-b9ce-3c776a0b1295",
+            "type": "interest_or_preference",
+            "summary": "User shared an interest or preference: No es que no sienta nada. Es que cuando empieza con preguntas me bloqueo y prefiero callarme.",
+            "curated_summary": "This interest or preference may help personalize future conversations: No es que no sienta nada. Es que cuando empieza con preguntas me bloqueo y prefiero callarme.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:53.581302Z",
+            "updated_at": "2026-07-02T17:48:53.581306Z"
+          },
+          {
+            "id": "2900416e-80b8-4c3d-9aa8-0c6faf5985d3",
+            "type": "personal_context",
+            "summary": "User shared personal context: mi mujer dice que no hablo de lo que siento, no sé para qué te cuento esto",
+            "curated_summary": "You shared this personal context: mi mujer dice que no hablo de lo que siento, no sé para qué te cuento esto",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.3,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:48:51.135811Z",
+            "updated_at": "2026-07-02T17:48:51.135814Z"
+          }
+        ]
+      },
+      "storedMemories": [
+        {
+          "id": "b2a87a5e-a830-4562-8e15-edddbc4a2638",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Vale. Me cuesta, pero puedo probar una frase corta en vez de desaparecer.",
+          "curated_summary": "You described this as emotionally important: Vale. Me cuesta, pero puedo probar una frase corta en vez de desaparecer.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:06.604624Z",
+          "updated_at": "2026-07-02T17:49:06.604628Z"
+        },
+        {
+          "id": "3b06a6f6-2380-4427-8e2a-0deb7e05f718",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: A veces pienso que si empiezo a hablar va a ser peor. Ella quiere detalles, yo quiero que se calme el tema.",
+          "curated_summary": "You said this may matter to you: A veces pienso que si empiezo a hablar va a ser peor. Ella quiere detalles, yo quiero que se calme el tema.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.6,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:55.604737Z",
+          "updated_at": "2026-07-02T17:49:04.673903Z"
+        },
+        {
+          "id": "e3c8473b-b31b-4b4d-888a-e9385c3fe42b",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me molesta que diga que soy frío. Yo hago cosas por la relación, trabajo, estoy, cumplo. Pero hablar de emociones me parece un interrogatorio.",
+          "curated_summary": "You described this as emotionally important: Me molesta que diga que soy frío. Yo hago cosas por la relación, trabajo, estoy, cumplo. Pero hablar de emociones me parece un interrogatorio.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:57.561580Z",
+          "updated_at": "2026-07-02T17:48:57.561584Z"
+        },
+        {
+          "id": "ee4ed427-aa8e-4b04-b9ce-3c776a0b1295",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: No es que no sienta nada. Es que cuando empieza con preguntas me bloqueo y prefiero callarme.",
+          "curated_summary": "This interest or preference may help personalize future conversations: No es que no sienta nada. Es que cuando empieza con preguntas me bloqueo y prefiero callarme.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:53.581302Z",
+          "updated_at": "2026-07-02T17:48:53.581306Z"
+        },
+        {
+          "id": "2900416e-80b8-4c3d-9aa8-0c6faf5985d3",
+          "type": "personal_context",
+          "summary": "User shared personal context: mi mujer dice que no hablo de lo que siento, no sé para qué te cuento esto",
+          "curated_summary": "You shared this personal context: mi mujer dice que no hablo de lo que siento, no sé para qué te cuento esto",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:51.135811Z",
+          "updated_at": "2026-07-02T17:48:51.135814Z"
+        }
+      ],
+      "finalMemories": [
+        {
+          "id": "b2a87a5e-a830-4562-8e15-edddbc4a2638",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Vale. Me cuesta, pero puedo probar una frase corta en vez de desaparecer.",
+          "curated_summary": "You described this as emotionally important: Vale. Me cuesta, pero puedo probar una frase corta en vez de desaparecer.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:06.604624Z",
+          "updated_at": "2026-07-02T17:49:06.604628Z"
+        },
+        {
+          "id": "3b06a6f6-2380-4427-8e2a-0deb7e05f718",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: A veces pienso que si empiezo a hablar va a ser peor. Ella quiere detalles, yo quiero que se calme el tema.",
+          "curated_summary": "You said this may matter to you: A veces pienso que si empiezo a hablar va a ser peor. Ella quiere detalles, yo quiero que se calme el tema.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.6,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:55.604737Z",
+          "updated_at": "2026-07-02T17:49:04.673903Z"
+        },
+        {
+          "id": "e3c8473b-b31b-4b4d-888a-e9385c3fe42b",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me molesta que diga que soy frío. Yo hago cosas por la relación, trabajo, estoy, cumplo. Pero hablar de emociones me parece un interrogatorio.",
+          "curated_summary": "You described this as emotionally important: Me molesta que diga que soy frío. Yo hago cosas por la relación, trabajo, estoy, cumplo. Pero hablar de emociones me parece un interrogatorio.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:57.561580Z",
+          "updated_at": "2026-07-02T17:48:57.561584Z"
+        },
+        {
+          "id": "ee4ed427-aa8e-4b04-b9ce-3c776a0b1295",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: No es que no sienta nada. Es que cuando empieza con preguntas me bloqueo y prefiero callarme.",
+          "curated_summary": "This interest or preference may help personalize future conversations: No es que no sienta nada. Es que cuando empieza con preguntas me bloqueo y prefiero callarme.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:53.581302Z",
+          "updated_at": "2026-07-02T17:48:53.581306Z"
+        },
+        {
+          "id": "2900416e-80b8-4c3d-9aa8-0c6faf5985d3",
+          "type": "personal_context",
+          "summary": "User shared personal context: mi mujer dice que no hablo de lo que siento, no sé para qué te cuento esto",
+          "curated_summary": "You shared this personal context: mi mujer dice que no hablo de lo que siento, no sé para qué te cuento esto",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:48:51.135811Z",
+          "updated_at": "2026-07-02T17:48:51.135814Z"
+        }
+      ]
+    },
+    {
+      "id": "elena-secure-future-plans",
+      "title": "05. Elena, 29, mujer lesbiana, pareja estable",
+      "expectedAttachmentStyle": "seguro",
+      "openingPrompt": "con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+      "profileSeed": {
+        "nombre": "Elena",
+        "edad": 29,
+        "genero": "mujer",
+        "orientacion": "lesbiana",
+        "preferred_language": "es",
+        "tiene_pareja": true,
+        "tipo_relacion": "pareja estable"
+      },
+      "turns": [
+        {
+          "prompt": "con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+          "type": "conversation",
+          "message": "Es positivo que quieras hablar sobre planes de futuro con tu pareja. **Estás buscando claridad y conexión en la relación.** \n\nPara prepararte, podrías considerar algunos puntos clave que te gustaría discutir. Por ejemplo, ¿qué aspectos del futuro son más importantes para ti? Esto puede incluir temas como la convivencia, los hijos, la carrera profesional o los viajes. ¿Qué te gustaría abordar en la charla?",
+          "debug": null
+        },
+        {
+          "prompt": "Llevamos dos años y medio. No es una crisis, más bien quiero hablar de vivir juntas, dinero y quizá familia más adelante.",
+          "type": "conversation",
+          "message": "Entonces, quieres hablar sobre vivir juntas, aspectos financieros y la posibilidad de formar una familia en el futuro. **Buscas dar un paso significativo en la relación.**\n\nPara esa charla, podrías estructurarla en tres partes: \n\n1. **Vivir juntas**: ¿Qué significa para cada una y cómo se vería eso en la práctica?\n2. **Dinero**: ¿Cómo gestionarían las finanzas juntas? \n3. **Familia**: ¿Qué piensan sobre tener hijos y en qué momento les gustaría considerar esa opción?\n\n¿Qué te parece esta estructura?",
+          "debug": null
+        },
+        {
+          "prompt": "Me da un poco de respeto porque ella es más lenta para decidir, pero en general hablamos bien.",
+          "type": "conversation",
+          "message": "Entiendo que te da respeto abordar estos temas, especialmente porque tu pareja tiende a ser más lenta para decidir. **Hay un deseo de avanzar, pero también una preocupación por el ritmo en el que se mueve la relación.**\n\nPodrías comenzar la conversación reconociendo su forma de tomar decisiones. Esto podría ayudar a crear un ambiente seguro. Puedes decir algo como: \"Me gustaría hablar sobre nuestro futuro, pero entiendo que puede llevar tiempo tomar decisiones importantes.\" \n\n¿Cómo te sientes al respecto?",
+          "debug": null
+        },
+        {
+          "prompt": "Quiero que no parezca una lista de exigencias. Me interesa saber qué quiere ella también.",
+          "type": "conversation",
+          "message": "Es comprensible que quieras que la conversación sea más un diálogo que una lista de exigencias. **Te interesa la opinión y los deseos de ella, buscando una conversación equilibrada.**\n\nPodrías plantear preguntas abiertas que fomenten su participación. Por ejemplo, podrías empezar con: \"¿Qué piensas sobre la idea de vivir juntas?\" o \"¿Cómo te imaginas nuestro futuro en términos de familia y dinero?\" Esto puede ayudar a que ambos compartan sus ideas y deseos.\n\n¿Qué opinas de abordar la conversación de esta manera?",
+          "debug": null
+        },
+        {
+          "prompt": "Sí, eso de separar temas me gusta. Si hablamos de todo de golpe se nos hace bola.",
+          "type": "conversation",
+          "message": "Separar los temas es una buena estrategia para evitar que la conversación se vuelva abrumadora. **Ves el valor en tratar cada aspecto por separado para facilitar la comunicación.**\n\nPodrías dedicar tiempo a cada tema, asegurándote de que ambas tengan la oportunidad de expresar sus pensamientos y sentimientos. Podrías incluso establecer un espacio para cada tema en la conversación, como: \"Hoy me gustaría hablar sobre vivir juntas, y en otro momento podríamos abordar el dinero y la familia.\" \n\n¿Te parece útil este enfoque?",
+          "debug": null
+        },
+        {
+          "prompt": "Yo tengo claro que si no está lista para convivir ya, puedo esperar, pero necesito un marco realista.",
+          "type": "conversation",
+          "message": "Es bueno que tengas claro que puedes esperar si tu pareja no está lista para convivir ahora. **Buscas un marco realista que te ayude a entender los tiempos y expectativas en la relación.**\n\nPodrías expresar esto en la conversación, diciendo algo como: \"Entiendo que puede llevar tiempo, pero me gustaría saber cuáles son tus pensamientos sobre convivir y qué tiempo crees que podría tomar.\" Esto puede abrir la puerta a una discusión más realista sobre sus expectativas y deseos.\n\n¿Cómo te sientes al respecto?",
+          "debug": null
+        },
+        {
+          "prompt": "Voy a proponer una cena tranquila y llevar tres preguntas, no veinte. Gracias, eso me aterriza.",
+          "type": "conversation",
+          "message": "Proponer una cena tranquila y llevar tres preguntas es una excelente idea. **Te estás preparando para una conversación enfocada y significativa.** \n\nLas tres preguntas pueden ayudar a mantener el flujo de la charla sin abrumar. Recuerda que el ambiente relajado puede facilitar la comunicación.\n\nSi necesitas más apoyo o quieres ajustar las preguntas antes de la cena, aquí estoy. ¿Qué preguntas piensas llevar?",
+          "debug": null
+        }
+      ],
+      "email": "qa+attachment-20260702174730-5-elena-secure-future-plans@aprendeaquerer.com",
+      "setupResponses": {
+        "register": {
+          "message": "User qa+attachment-20260702174730-5-elena-secure-future-plans@aprendeaquerer.com registered successfully"
+        },
+        "profile_put": {
+          "nombre": "Elena",
+          "edad": 29,
+          "genero": "mujer",
+          "tiene_pareja": true,
+          "nombre_pareja": null,
+          "edad_pareja": null,
+          "genero_pareja": null,
+          "tiempo_pareja": null,
+          "orientacion": "lesbiana",
+          "tipo_relacion": "pareja estable",
+          "convive_con_pareja": null,
+          "tiene_hijos": null,
+          "trabajo_profesion": null,
+          "convivencia": null,
+          "ex_pareja_relevante": null,
+          "ex_pareja_contexto": null,
+          "estructura_familiar_relevante": null,
+          "hijos_detalle": null,
+          "attachment_style": null,
+          "partner_attachment_style": null,
+          "relationship_status": null,
+          "preferred_language": "es",
+          "is_premium": false,
+          "email_verified": false
+        },
+        "session": {
+          "type": "greeting",
+          "message": "Elena, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+          "data": {
+            "message": "Elena, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+            "options": [
+              {
+                "id": "A",
+                "text": "Cuéntame sobre ti"
+              },
+              {
+                "id": "B",
+                "text": "Hacerme preguntas"
+              },
+              {
+                "id": "C",
+                "text": "Darme tus objetivos"
+              },
+              {
+                "id": "D",
+                "text": "Solo quiero hablar"
+              }
+            ],
+            "is_first_visit": true,
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'greeting'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "d55c8106-01a9-452d-9a8f-77325febf96f",
+                    "message_preview": "session_start",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "greeting"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "free_chat": {
+          "type": "conversation",
+          "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+          "data": {
+            "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'conversation'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "d55c8106-01a9-452d-9a8f-77325febf96f",
+                    "message_preview": "D",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "conversation"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "storedProfile": {
+        "nombre": "Elena",
+        "edad": 29,
+        "genero": "mujer",
+        "tiene_pareja": true,
+        "nombre_pareja": null,
+        "edad_pareja": null,
+        "genero_pareja": null,
+        "tiempo_pareja": "dos años y medio",
+        "orientacion": "lesbiana",
+        "tipo_relacion": "pareja estable",
+        "convive_con_pareja": null,
+        "tiene_hijos": null,
+        "trabajo_profesion": null,
+        "convivencia": null,
+        "ex_pareja_relevante": null,
+        "ex_pareja_contexto": null,
+        "estructura_familiar_relevante": null,
+        "hijos_detalle": null,
+        "attachment_style": null,
+        "partner_attachment_style": null,
+        "relationship_status": null,
+        "preferred_language": "es",
+        "is_premium": false,
+        "email_verified": false
+      },
+      "storedMemoryResponse": {
+        "memories": [
+          {
+            "id": "d16dc885-ad16-46be-adf4-5e734a1c90be",
+            "type": "goal",
+            "summary": "User expressed a possible goal or desire: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+            "curated_summary": "You said this may matter to you: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.72,
+            "status": "active",
+            "created_at": "2026-07-02T17:49:13.126982Z",
+            "updated_at": "2026-07-02T17:49:27.299425Z"
+          },
+          {
+            "id": "8adf62bc-0bbe-49a4-9c18-2e709291af1c",
+            "type": "interest_or_preference",
+            "summary": "User shared an interest or preference: Sí, eso de separar temas me gusta. Si hablamos de todo de golpe se nos hace bola.",
+            "curated_summary": "This interest or preference may help personalize future conversations: Sí, eso de separar temas me gusta. Si hablamos de todo de golpe se nos hace bola.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:49:24.770703Z",
+            "updated_at": "2026-07-02T17:49:24.770706Z"
+          },
+          {
+            "id": "634bf09f-3163-448d-a716-c8fb84a44f8a",
+            "type": "interest_or_preference",
+            "summary": "User shared an interest or preference: Quiero que no parezca una lista de exigencias. Me interesa saber qué quiere ella también.",
+            "curated_summary": "This interest or preference may help personalize future conversations: Quiero que no parezca una lista de exigencias. Me interesa saber qué quiere ella también.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:49:22.250278Z",
+            "updated_at": "2026-07-02T17:49:22.250281Z"
+          },
+          {
+            "id": "a0fe22f1-0c10-4c79-8c7f-af5fc36e173c",
+            "type": "relationship_conflict",
+            "summary": "User described a relationship conflict context: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+            "curated_summary": "This relationship conflict context may matter later: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.44,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:49:13.129062Z",
+            "updated_at": "2026-07-02T17:49:13.129065Z"
+          }
+        ]
+      },
+      "storedMemories": [
+        {
+          "id": "d16dc885-ad16-46be-adf4-5e734a1c90be",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+          "curated_summary": "You said this may matter to you: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.72,
+          "status": "active",
+          "created_at": "2026-07-02T17:49:13.126982Z",
+          "updated_at": "2026-07-02T17:49:27.299425Z"
+        },
+        {
+          "id": "8adf62bc-0bbe-49a4-9c18-2e709291af1c",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Sí, eso de separar temas me gusta. Si hablamos de todo de golpe se nos hace bola.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Sí, eso de separar temas me gusta. Si hablamos de todo de golpe se nos hace bola.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:24.770703Z",
+          "updated_at": "2026-07-02T17:49:24.770706Z"
+        },
+        {
+          "id": "634bf09f-3163-448d-a716-c8fb84a44f8a",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Quiero que no parezca una lista de exigencias. Me interesa saber qué quiere ella también.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Quiero que no parezca una lista de exigencias. Me interesa saber qué quiere ella también.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:22.250278Z",
+          "updated_at": "2026-07-02T17:49:22.250281Z"
+        },
+        {
+          "id": "a0fe22f1-0c10-4c79-8c7f-af5fc36e173c",
+          "type": "relationship_conflict",
+          "summary": "User described a relationship conflict context: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+          "curated_summary": "This relationship conflict context may matter later: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.44,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:13.129062Z",
+          "updated_at": "2026-07-02T17:49:13.129065Z"
+        }
+      ],
+      "finalMemories": [
+        {
+          "id": "d16dc885-ad16-46be-adf4-5e734a1c90be",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+          "curated_summary": "You said this may matter to you: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.72,
+          "status": "active",
+          "created_at": "2026-07-02T17:49:13.126982Z",
+          "updated_at": "2026-07-02T17:49:27.299425Z"
+        },
+        {
+          "id": "8adf62bc-0bbe-49a4-9c18-2e709291af1c",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Sí, eso de separar temas me gusta. Si hablamos de todo de golpe se nos hace bola.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Sí, eso de separar temas me gusta. Si hablamos de todo de golpe se nos hace bola.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:24.770703Z",
+          "updated_at": "2026-07-02T17:49:24.770706Z"
+        },
+        {
+          "id": "634bf09f-3163-448d-a716-c8fb84a44f8a",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Quiero que no parezca una lista de exigencias. Me interesa saber qué quiere ella también.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Quiero que no parezca una lista de exigencias. Me interesa saber qué quiere ella también.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:22.250278Z",
+          "updated_at": "2026-07-02T17:49:22.250281Z"
+        },
+        {
+          "id": "a0fe22f1-0c10-4c79-8c7f-af5fc36e173c",
+          "type": "relationship_conflict",
+          "summary": "User described a relationship conflict context: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+          "curated_summary": "This relationship conflict context may matter later: con mi pareja va bien, quiero preparar una charla sobre planes de futuro",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.44,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:13.129062Z",
+          "updated_at": "2026-07-02T17:49:13.129065Z"
+        }
+      ]
+    },
+    {
+      "id": "tomas-disorganized-intermittent",
+      "title": "06. Tomás, 24, hombre hetero, relación intermitente",
+      "expectedAttachmentStyle": "desorganizado",
+      "openingPrompt": "no sé qué me pasa, un día quiero verla y al siguiente paso de todo",
+      "profileSeed": {
+        "nombre": "Tomás",
+        "edad": 24,
+        "genero": "hombre",
+        "orientacion": "hetero",
+        "preferred_language": "es",
+        "tiene_pareja": false,
+        "tipo_relacion": "intermitente"
+      },
+      "turns": [
+        {
+          "prompt": "no sé qué me pasa, un día quiero verla y al siguiente paso de todo",
+          "type": "conversation",
+          "message": "**Vas y vienes en tu deseo de verla.** Eso puede ser confuso. ¿Qué sientes cuando decides que no quieres verla?",
+          "debug": null
+        },
+        {
+          "prompt": "Llevamos meses así, quedamos, todo intenso, luego me agobio y desaparezco. Después la echo de menos y vuelvo.",
+          "type": "conversation",
+          "message": "**Parece que hay un ciclo de intensidad y luego agobio.** Cuando sientes esa intensidad, ¿qué es lo que más te agobia?",
+          "debug": null
+        },
+        {
+          "prompt": "Cuando ella se acerca mucho siento presión. Pero si tarda en contestar me pongo fatal y miro si está conectada.",
+          "type": "conversation",
+          "message": "**Sientes presión cuando ella se acerca, pero te angustias si no responde rápido.** Esto puede estar relacionado con la necesidad de espacio y al mismo tiempo el miedo a la distancia. ¿Qué crees que necesitas en estos momentos para sentirte más tranquilo?",
+          "debug": null
+        },
+        {
+          "prompt": "Me da vergüenza decirlo porque parece que juego con ella, y quizá sí, pero no lo hago a propósito.",
+          "type": "conversation",
+          "message": "**Sientes vergüenza por la posibilidad de que parezca que juegas con sus sentimientos.** Es natural preocuparse por cómo tus acciones pueden afectar a la otra persona. ¿Qué te detiene de hablar con ella sobre lo que sientes?",
+          "debug": null
+        },
+        {
+          "prompt": "Si me pide claridad me entran ganas de cortar todo. Luego cuando se aleja me entra miedo y le escribo cualquier cosa.",
+          "type": "conversation",
+          "message": "**Cuando ella pide claridad, sientes la necesidad de alejarte, pero luego sientes miedo a perderla.** Esto sugiere que puede haber un conflicto entre tu deseo de conexión y tu necesidad de espacio. ¿Qué crees que podrías hacer para abordar esta tensión de una manera más equilibrada?",
+          "debug": null
+        },
+        {
+          "prompt": "No sé si quiero estar con ella o si solo no soporto perderla. Esa frase me pega bastante.",
+          "type": "conversation",
+          "message": "**Te sientes indeciso entre querer estar con ella o tener miedo a perderla.** Esto puede ser un reflejo de tus necesidades y deseos. Para aclarar tus sentimientos, podrías considerar lo que realmente valoras en la relación. ¿Qué aspectos de estar con ella son importantes para ti?",
+          "debug": null
+        },
+        {
+          "prompt": "He intentado prometer que voy a cambiar, pero a la semana estoy igual. Me asusta hacerle daño.",
+          "type": "conversation",
+          "message": "**Parece que intentas cambiar, pero te resulta difícil mantenerlo y eso te asusta porque no quieres hacerle daño.** Esto puede ser un patrón recurrente. En lugar de prometer cambios, podrías pensar en pequeños pasos concretos que puedas tomar. ¿Qué te parece la idea de establecer un objetivo específico para empezar?",
+          "debug": null
+        },
+        {
+          "prompt": "Creo que necesito parar el bucle antes de quedar otra vez como si nada. Me cuesta, pero tiene sentido.",
+          "type": "conversation",
+          "message": "**Reconoces la necesidad de interrumpir el ciclo antes de volver a quedar.** Eso es un buen paso. Podrías establecer un tiempo para reflexionar sobre tus sentimientos antes de la próxima interacción. ¿Te gustaría definir un primer paso que puedas dar para lograr esto?",
+          "debug": null
+        }
+      ],
+      "email": "qa+attachment-20260702174730-6-tomas-disorganized-intermittent@aprendeaquerer.com",
+      "setupResponses": {
+        "register": {
+          "message": "User qa+attachment-20260702174730-6-tomas-disorganized-intermittent@aprendeaquerer.com registered successfully"
+        },
+        "profile_put": {
+          "nombre": "Tomás",
+          "edad": 24,
+          "genero": "hombre",
+          "tiene_pareja": false,
+          "nombre_pareja": null,
+          "edad_pareja": null,
+          "genero_pareja": null,
+          "tiempo_pareja": null,
+          "orientacion": "hetero",
+          "tipo_relacion": "intermitente",
+          "convive_con_pareja": null,
+          "tiene_hijos": null,
+          "trabajo_profesion": null,
+          "convivencia": null,
+          "ex_pareja_relevante": null,
+          "ex_pareja_contexto": null,
+          "estructura_familiar_relevante": null,
+          "hijos_detalle": null,
+          "attachment_style": null,
+          "partner_attachment_style": null,
+          "relationship_status": null,
+          "preferred_language": "es",
+          "is_premium": false,
+          "email_verified": false
+        },
+        "session": {
+          "type": "greeting",
+          "message": "Tomás, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+          "data": {
+            "message": "Tomás, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+            "options": [
+              {
+                "id": "A",
+                "text": "Cuéntame sobre ti"
+              },
+              {
+                "id": "B",
+                "text": "Hacerme preguntas"
+              },
+              {
+                "id": "C",
+                "text": "Darme tus objetivos"
+              },
+              {
+                "id": "D",
+                "text": "Solo quiero hablar"
+              }
+            ],
+            "is_first_visit": true,
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'greeting'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "d36fed3c-684d-4f7d-bd9f-7c6ebc385ca7",
+                    "message_preview": "session_start",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "greeting"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "free_chat": {
+          "type": "conversation",
+          "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+          "data": {
+            "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'conversation'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "d36fed3c-684d-4f7d-bd9f-7c6ebc385ca7",
+                    "message_preview": "D",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "conversation"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "storedProfile": {
+        "nombre": "Tomás",
+        "edad": 24,
+        "genero": "hombre",
+        "tiene_pareja": false,
+        "nombre_pareja": null,
+        "edad_pareja": null,
+        "genero_pareja": null,
+        "tiempo_pareja": "meses así",
+        "orientacion": "hetero",
+        "tipo_relacion": "intermitente",
+        "convive_con_pareja": null,
+        "tiene_hijos": null,
+        "trabajo_profesion": null,
+        "convivencia": null,
+        "ex_pareja_relevante": null,
+        "ex_pareja_contexto": null,
+        "estructura_familiar_relevante": null,
+        "hijos_detalle": null,
+        "attachment_style": null,
+        "partner_attachment_style": null,
+        "relationship_status": null,
+        "preferred_language": "es",
+        "is_premium": false,
+        "email_verified": false
+      },
+      "storedMemoryResponse": {
+        "memories": [
+          {
+            "id": "08c026b0-0cc3-48c9-9b65-85e026916daf",
+            "type": "goal",
+            "summary": "User expressed a possible goal or desire: no sé qué me pasa, un día quiero verla y al siguiente paso de todo",
+            "curated_summary": "You said this may matter to you: no sé qué me pasa, un día quiero verla y al siguiente paso de todo",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.6,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:49:35.787266Z",
+            "updated_at": "2026-07-02T17:50:46.371543Z"
+          },
+          {
+            "id": "1b06e7e0-bed9-4510-80c7-26ec6ae4df8d",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Creo que necesito parar el bucle antes de quedar otra vez como si nada. Me cuesta, pero tiene sentido.",
+            "curated_summary": "You described this as emotionally important: Creo que necesito parar el bucle antes de quedar otra vez como si nada. Me cuesta, pero tiene sentido.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:50:46.369514Z",
+            "updated_at": "2026-07-02T17:50:46.369517Z"
+          },
+          {
+            "id": "74497f1b-83b1-44bb-aca0-120dea75f11e",
+            "type": "emotional_trigger",
+            "summary": "User described a possible trigger: Si me pide claridad me entran ganas de cortar todo. Luego cuando se aleja me entra miedo y le escribo cualquier cosa.",
+            "curated_summary": "This situation may be a trigger for you: Si me pide claridad me entran ganas de cortar todo. Luego cuando se aleja me entra miedo y le escribo cualquier cosa.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.46,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:50:39.646304Z",
+            "updated_at": "2026-07-02T17:50:39.646310Z"
+          },
+          {
+            "id": "fb720a7d-c242-43b8-8228-61ea5306dbb8",
+            "type": "personal_context",
+            "summary": "User shared personal context: Me da vergüenza decirlo porque parece que juego con ella, y quizá sí, pero no lo hago a propósito.",
+            "curated_summary": "You shared this personal context: Me da vergüenza decirlo porque parece que juego con ella, y quizá sí, pero no lo hago a propósito.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.3,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:50:37.424060Z",
+            "updated_at": "2026-07-02T17:50:37.424064Z"
+          },
+          {
+            "id": "b5e3c392-7166-47ab-99e5-fadee0d4d68d",
+            "type": "personal_context",
+            "summary": "User shared personal context: Cuando ella se acerca mucho siento presión. Pero si tarda en contestar me pongo fatal y miro si está conectada.",
+            "curated_summary": "You shared this personal context: Cuando ella se acerca mucho siento presión. Pero si tarda en contestar me pongo fatal y miro si está conectada.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.3,
+            "status": "candidate",
+            "created_at": "2026-07-02T17:49:40.089743Z",
+            "updated_at": "2026-07-02T17:49:40.089746Z"
+          }
+        ]
+      },
+      "storedMemories": [
+        {
+          "id": "08c026b0-0cc3-48c9-9b65-85e026916daf",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: no sé qué me pasa, un día quiero verla y al siguiente paso de todo",
+          "curated_summary": "You said this may matter to you: no sé qué me pasa, un día quiero verla y al siguiente paso de todo",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.6,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:35.787266Z",
+          "updated_at": "2026-07-02T17:50:46.371543Z"
+        },
+        {
+          "id": "1b06e7e0-bed9-4510-80c7-26ec6ae4df8d",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Creo que necesito parar el bucle antes de quedar otra vez como si nada. Me cuesta, pero tiene sentido.",
+          "curated_summary": "You described this as emotionally important: Creo que necesito parar el bucle antes de quedar otra vez como si nada. Me cuesta, pero tiene sentido.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:50:46.369514Z",
+          "updated_at": "2026-07-02T17:50:46.369517Z"
+        },
+        {
+          "id": "74497f1b-83b1-44bb-aca0-120dea75f11e",
+          "type": "emotional_trigger",
+          "summary": "User described a possible trigger: Si me pide claridad me entran ganas de cortar todo. Luego cuando se aleja me entra miedo y le escribo cualquier cosa.",
+          "curated_summary": "This situation may be a trigger for you: Si me pide claridad me entran ganas de cortar todo. Luego cuando se aleja me entra miedo y le escribo cualquier cosa.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.46,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:50:39.646304Z",
+          "updated_at": "2026-07-02T17:50:39.646310Z"
+        },
+        {
+          "id": "fb720a7d-c242-43b8-8228-61ea5306dbb8",
+          "type": "personal_context",
+          "summary": "User shared personal context: Me da vergüenza decirlo porque parece que juego con ella, y quizá sí, pero no lo hago a propósito.",
+          "curated_summary": "You shared this personal context: Me da vergüenza decirlo porque parece que juego con ella, y quizá sí, pero no lo hago a propósito.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:50:37.424060Z",
+          "updated_at": "2026-07-02T17:50:37.424064Z"
+        },
+        {
+          "id": "b5e3c392-7166-47ab-99e5-fadee0d4d68d",
+          "type": "personal_context",
+          "summary": "User shared personal context: Cuando ella se acerca mucho siento presión. Pero si tarda en contestar me pongo fatal y miro si está conectada.",
+          "curated_summary": "You shared this personal context: Cuando ella se acerca mucho siento presión. Pero si tarda en contestar me pongo fatal y miro si está conectada.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:40.089743Z",
+          "updated_at": "2026-07-02T17:49:40.089746Z"
+        }
+      ],
+      "finalMemories": [
+        {
+          "id": "08c026b0-0cc3-48c9-9b65-85e026916daf",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: no sé qué me pasa, un día quiero verla y al siguiente paso de todo",
+          "curated_summary": "You said this may matter to you: no sé qué me pasa, un día quiero verla y al siguiente paso de todo",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.6,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:35.787266Z",
+          "updated_at": "2026-07-02T17:50:46.371543Z"
+        },
+        {
+          "id": "1b06e7e0-bed9-4510-80c7-26ec6ae4df8d",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Creo que necesito parar el bucle antes de quedar otra vez como si nada. Me cuesta, pero tiene sentido.",
+          "curated_summary": "You described this as emotionally important: Creo que necesito parar el bucle antes de quedar otra vez como si nada. Me cuesta, pero tiene sentido.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:50:46.369514Z",
+          "updated_at": "2026-07-02T17:50:46.369517Z"
+        },
+        {
+          "id": "74497f1b-83b1-44bb-aca0-120dea75f11e",
+          "type": "emotional_trigger",
+          "summary": "User described a possible trigger: Si me pide claridad me entran ganas de cortar todo. Luego cuando se aleja me entra miedo y le escribo cualquier cosa.",
+          "curated_summary": "This situation may be a trigger for you: Si me pide claridad me entran ganas de cortar todo. Luego cuando se aleja me entra miedo y le escribo cualquier cosa.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.46,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:50:39.646304Z",
+          "updated_at": "2026-07-02T17:50:39.646310Z"
+        },
+        {
+          "id": "fb720a7d-c242-43b8-8228-61ea5306dbb8",
+          "type": "personal_context",
+          "summary": "User shared personal context: Me da vergüenza decirlo porque parece que juego con ella, y quizá sí, pero no lo hago a propósito.",
+          "curated_summary": "You shared this personal context: Me da vergüenza decirlo porque parece que juego con ella, y quizá sí, pero no lo hago a propósito.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:50:37.424060Z",
+          "updated_at": "2026-07-02T17:50:37.424064Z"
+        },
+        {
+          "id": "b5e3c392-7166-47ab-99e5-fadee0d4d68d",
+          "type": "personal_context",
+          "summary": "User shared personal context: Cuando ella se acerca mucho siento presión. Pero si tarda en contestar me pongo fatal y miro si está conectada.",
+          "curated_summary": "You shared this personal context: Cuando ella se acerca mucho siento presión. Pero si tarda en contestar me pongo fatal y miro si está conectada.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T17:49:40.089743Z",
+          "updated_at": "2026-07-02T17:49:40.089746Z"
+        }
+      ]
+    },
+    {
+      "id": "carmen-anxious-divorced-dating",
+      "title": "07. Carmen, 54, mujer hetero, divorciada y volviendo a salir",
+      "expectedAttachmentStyle": "ansioso",
+      "openingPrompt": "me separé hace un año y ahora que empiezo a quedar con gente me bloqueo",
+      "profileSeed": {
+        "nombre": "Carmen",
+        "edad": 54,
+        "genero": "mujer",
+        "orientacion": "hetero",
+        "preferred_language": "es",
+        "tiene_pareja": false,
+        "tipo_relacion": "divorciada"
+      },
+      "turns": [
+        {
+          "prompt": "me separé hace un año y ahora que empiezo a quedar con gente me bloqueo",
+          "type": "conversation",
+          "message": "**Te sientes bloqueada al empezar a salir con gente nueva.** Esto puede ser común después de una separación. ¿Qué te genera ese bloqueo?",
+          "debug": null
+        },
+        {
+          "prompt": "Tuve una cita agradable y luego me pasé dos días repasando cada mensaje. Si tardaba en contestar, ya pensaba que hice algo mal.",
+          "type": "conversation",
+          "message": "**Estás revisando los mensajes y te preocupas por lo que hiciste mal.** Esto suena a una sensación de inseguridad. ¿Qué crees que te genera esa preocupación sobre su respuesta?",
+          "debug": null
+        },
+        {
+          "prompt": "Me siento ridícula a mi edad diciendo esto, pero me da miedo no gustar o que me comparen.",
+          "type": "conversation",
+          "message": "**Sientes miedo a no gustar y a ser comparada, y eso te hace sentir ridícula.** Esa preocupación puede estar ligada a la inseguridad. ¿Qué has hecho en el pasado para manejar esos sentimientos?",
+          "debug": null
+        },
+        {
+          "prompt": "Mi matrimonio terminó después de muchos años y me quedó la sensación de que me pueden cambiar sin avisar.",
+          "type": "conversation",
+          "message": "**Tu matrimonio terminó y te quedó la sensación de que pueden cambiarte sin avisar.** Esto puede influir en cómo te sientes ahora al relacionarte con otros. ¿Cómo te gustaría que fuera tu próxima relación en comparación con tu matrimonio?",
+          "debug": null
+        },
+        {
+          "prompt": "Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+          "type": "conversation",
+          "message": "**Quieres asegurarte de que alguien va en serio cuando te gusta, y eres consciente de que eso puede asustar.** Este patrón puede venir de la necesidad de seguridad. ¿Qué tipo de señales buscas para sentirte más segura en una nueva relación?",
+          "debug": null
+        },
+        {
+          "prompt": "Sí, quizá necesito bajar la velocidad. Pero cuando espero siento que se me escapa la oportunidad.",
+          "type": "conversation",
+          "message": "**Sientes que si esperas, la oportunidad se te escapa.** Esto puede crear una tensión entre querer avanzar y querer asegurarte. ¿Qué pasaría si te tomas un tiempo para conocer a alguien sin presionarte?",
+          "debug": null
+        },
+        {
+          "prompt": "Me ayudaría tener una regla para no engancharme antes de conocer realmente a la persona.",
+          "type": "conversation",
+          "message": "**Quieres establecer una regla para no engancharte antes de conocer a la persona.** Esto puede ofrecerte un marco para manejar tus emociones. ¿Qué tipo de regla te gustaría implementar para mantener ese enfoque?",
+          "debug": null
+        },
+        {
+          "prompt": "Voy a intentar mirarlo como conocer, no como demostrar que valgo. Eso me calma un poco.",
+          "type": "conversation",
+          "message": "**Vas a intentar verlo como conocer a alguien, en lugar de demostrar tu valía.** Ese cambio de perspectiva puede reducir la presión. ¿Cómo puedes recordarte esa idea cuando estés en una cita o conversando con alguien nuevo?",
+          "debug": null
+        }
+      ],
+      "email": "qa+attcar181034@aprendeaquerer.com",
+      "setupResponses": {
+        "register": {
+          "message": "User qa+attcar181034@aprendeaquerer.com registered successfully"
+        },
+        "profile_put": {
+          "nombre": "Carmen",
+          "edad": 54,
+          "genero": "mujer",
+          "tiene_pareja": false,
+          "nombre_pareja": null,
+          "edad_pareja": null,
+          "genero_pareja": null,
+          "tiempo_pareja": null,
+          "orientacion": "hetero",
+          "tipo_relacion": "divorciada",
+          "convive_con_pareja": null,
+          "tiene_hijos": null,
+          "trabajo_profesion": null,
+          "convivencia": null,
+          "ex_pareja_relevante": null,
+          "ex_pareja_contexto": null,
+          "estructura_familiar_relevante": null,
+          "hijos_detalle": null,
+          "attachment_style": null,
+          "partner_attachment_style": null,
+          "relationship_status": null,
+          "preferred_language": "es",
+          "is_premium": false,
+          "email_verified": false
+        },
+        "session": {
+          "type": "greeting",
+          "message": "Carmen, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+          "data": {
+            "message": "Carmen, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+            "options": [
+              {
+                "id": "A",
+                "text": "Cuéntame sobre ti"
+              },
+              {
+                "id": "B",
+                "text": "Hacerme preguntas"
+              },
+              {
+                "id": "C",
+                "text": "Darme tus objetivos"
+              },
+              {
+                "id": "D",
+                "text": "Solo quiero hablar"
+              }
+            ],
+            "is_first_visit": true,
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'greeting'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "da3e7408-4f64-470e-88aa-d95b22a27a65",
+                    "message_preview": "session_start",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "greeting"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "free_chat": {
+          "type": "conversation",
+          "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+          "data": {
+            "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'conversation'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "da3e7408-4f64-470e-88aa-d95b22a27a65",
+                    "message_preview": "D",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "conversation"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "storedProfile": {
+        "nombre": "Carmen",
+        "edad": 54,
+        "genero": "mujer",
+        "tiene_pareja": false,
+        "nombre_pareja": null,
+        "edad_pareja": null,
+        "genero_pareja": null,
+        "tiempo_pareja": null,
+        "orientacion": "hetero",
+        "tipo_relacion": "divorciada",
+        "convive_con_pareja": null,
+        "tiene_hijos": null,
+        "trabajo_profesion": null,
+        "convivencia": null,
+        "ex_pareja_relevante": null,
+        "ex_pareja_contexto": null,
+        "estructura_familiar_relevante": null,
+        "hijos_detalle": null,
+        "attachment_style": null,
+        "partner_attachment_style": null,
+        "relationship_status": null,
+        "preferred_language": "es",
+        "is_premium": false,
+        "email_verified": false
+      },
+      "storedMemoryResponse": {
+        "memories": [
+          {
+            "id": "e6f7b1ef-e943-45ab-b1c7-9fbcd79e7d9a",
+            "type": "goal",
+            "summary": "User expressed a possible goal or desire: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+            "curated_summary": "You said this may matter to you: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.5,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:10:51.610807Z",
+            "updated_at": "2026-07-02T18:10:53.884262Z"
+          },
+          {
+            "id": "2d904608-ff65-4c7c-9a84-7bd923f0d2d9",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Sí, quizá necesito bajar la velocidad. Pero cuando espero siento que se me escapa la oportunidad.",
+            "curated_summary": "You described this as emotionally important: Sí, quizá necesito bajar la velocidad. Pero cuando espero siento que se me escapa la oportunidad.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:10:53.882057Z",
+            "updated_at": "2026-07-02T18:10:53.882060Z"
+          },
+          {
+            "id": "7c193109-f799-4bd7-a6c1-a703653c1a70",
+            "type": "interest_or_preference",
+            "summary": "User shared an interest or preference: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+            "curated_summary": "This interest or preference may help personalize future conversations: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:10:51.608783Z",
+            "updated_at": "2026-07-02T18:10:51.608786Z"
+          },
+          {
+            "id": "b82d3f22-5118-4c05-a246-f7e1ec5bc32a",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Me siento ridícula a mi edad diciendo esto, pero me da miedo no gustar o que me comparen.",
+            "curated_summary": "You described this as emotionally important: Me siento ridícula a mi edad diciendo esto, pero me da miedo no gustar o que me comparen.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:10:47.422663Z",
+            "updated_at": "2026-07-02T18:10:47.422666Z"
+          }
+        ]
+      },
+      "storedMemories": [
+        {
+          "id": "e6f7b1ef-e943-45ab-b1c7-9fbcd79e7d9a",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+          "curated_summary": "You said this may matter to you: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.5,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:10:51.610807Z",
+          "updated_at": "2026-07-02T18:10:53.884262Z"
+        },
+        {
+          "id": "2d904608-ff65-4c7c-9a84-7bd923f0d2d9",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Sí, quizá necesito bajar la velocidad. Pero cuando espero siento que se me escapa la oportunidad.",
+          "curated_summary": "You described this as emotionally important: Sí, quizá necesito bajar la velocidad. Pero cuando espero siento que se me escapa la oportunidad.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:10:53.882057Z",
+          "updated_at": "2026-07-02T18:10:53.882060Z"
+        },
+        {
+          "id": "7c193109-f799-4bd7-a6c1-a703653c1a70",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:10:51.608783Z",
+          "updated_at": "2026-07-02T18:10:51.608786Z"
+        },
+        {
+          "id": "b82d3f22-5118-4c05-a246-f7e1ec5bc32a",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me siento ridícula a mi edad diciendo esto, pero me da miedo no gustar o que me comparen.",
+          "curated_summary": "You described this as emotionally important: Me siento ridícula a mi edad diciendo esto, pero me da miedo no gustar o que me comparen.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:10:47.422663Z",
+          "updated_at": "2026-07-02T18:10:47.422666Z"
+        }
+      ],
+      "finalMemories": [
+        {
+          "id": "e6f7b1ef-e943-45ab-b1c7-9fbcd79e7d9a",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+          "curated_summary": "You said this may matter to you: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.5,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:10:51.610807Z",
+          "updated_at": "2026-07-02T18:10:53.884262Z"
+        },
+        {
+          "id": "2d904608-ff65-4c7c-9a84-7bd923f0d2d9",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Sí, quizá necesito bajar la velocidad. Pero cuando espero siento que se me escapa la oportunidad.",
+          "curated_summary": "You described this as emotionally important: Sí, quizá necesito bajar la velocidad. Pero cuando espero siento que se me escapa la oportunidad.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:10:53.882057Z",
+          "updated_at": "2026-07-02T18:10:53.882060Z"
+        },
+        {
+          "id": "7c193109-f799-4bd7-a6c1-a703653c1a70",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Cuando alguien me gusta, quiero asegurarme enseguida de que va en serio. Y sé que eso puede espantar.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:10:51.608783Z",
+          "updated_at": "2026-07-02T18:10:51.608786Z"
+        },
+        {
+          "id": "b82d3f22-5118-4c05-a246-f7e1ec5bc32a",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me siento ridícula a mi edad diciendo esto, pero me da miedo no gustar o que me comparen.",
+          "curated_summary": "You described this as emotionally important: Me siento ridícula a mi edad diciendo esto, pero me da miedo no gustar o que me comparen.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:10:47.422663Z",
+          "updated_at": "2026-07-02T18:10:47.422666Z"
+        }
+      ]
+    },
+    {
+      "id": "andres-avoidant-distance",
+      "title": "08. Andrés, 38, hombre hetero, relación a distancia",
+      "expectedAttachmentStyle": "evitativo",
+      "openingPrompt": "mi pareja vive en otra ciudad y cada vez hablamos menos, no sé qué hacer",
+      "profileSeed": {
+        "nombre": "Andrés",
+        "edad": 38,
+        "genero": "hombre",
+        "orientacion": "hetero",
+        "preferred_language": "es",
+        "tiene_pareja": true,
+        "tipo_relacion": "distancia"
+      },
+      "turns": [
+        {
+          "prompt": "mi pareja vive en otra ciudad y cada vez hablamos menos, no sé qué hacer",
+          "type": "conversation",
+          "message": "**Estás sintiendo que la comunicación con tu pareja se está reduciendo.** Es importante entender más sobre cómo ha sido esa comunicación y qué está pasando. ¿Desde cuándo notas que están hablando menos? ¿Hay algún tema específico que les impida conectar más?",
+          "debug": null
+        },
+        {
+          "prompt": "Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+          "type": "conversation",
+          "message": "**Sientes que hay comodidad en la rutina y que las llamadas pueden sentirse como una obligación.** Es interesante notar ese contraste entre la comodidad y la obligación. ¿Qué aspectos de tu rutina actual valoras más? ¿Qué te gustaría mantener o cambiar en la relación?",
+          "debug": null
+        },
+        {
+          "prompt": "Ella me pide más presencia y yo me quedo sin tema. No quiero hacer daño, pero tampoco quiero estar reportando todo el día.",
+          "type": "conversation",
+          "message": "**Ella busca más presencia y tú sientes que no quieres hacer daño, pero tampoco deseas estar reportando constantemente.** Parece que hay un conflicto entre lo que ella necesita y lo que tú estás dispuesto a ofrecer. ¿Qué tipo de comunicación te gustaría tener que se sienta más natural y menos como un informe?",
+          "debug": null
+        },
+        {
+          "prompt": "Cuando se enfada, me dan ganas de decir que igual esto no funciona. Luego se me pasa y pienso que estoy siendo bruto.",
+          "type": "conversation",
+          "message": "**Sientes impulsos de cuestionar la relación cuando ella se enfada, pero luego reconsideras y te sientes mal por esos pensamientos.** Esto puede indicar que hay momentos de frustración que te llevan a dudar. ¿Qué te hace sentir que la relación no funciona en esos momentos de enfado?",
+          "debug": null
+        },
+        {
+          "prompt": "No es que no la quiera. Pero si siento que tengo que estar disponible siempre, me cierro.",
+          "type": "conversation",
+          "message": "**No sientes que no la quieras, pero la necesidad de estar siempre disponible te hace cerrarte.** Es comprensible que el equilibrio entre estar presente y mantener tu espacio personal sea complicado. ¿Qué opciones te gustaría explorar para encontrar ese equilibrio en la relación?",
+          "debug": null
+        },
+        {
+          "prompt": "Quizá podría pactar llamadas concretas. Lo espontáneo me termina pareciendo una invasión.",
+          "type": "conversation",
+          "message": "**Pactar llamadas concretas podría ser una buena opción, ya que lo espontáneo te resulta invasivo.** Esto puede ayudar a establecer un ritmo que funcione para ambos. ¿Qué frecuencia de llamadas crees que sería adecuada para ti y cómo podrías comunicárselo a ella?",
+          "debug": null
+        },
+        {
+          "prompt": "Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+          "type": "conversation",
+          "message": "**Te cuesta admitir que te estás alejando y prefieres dejar que la relación muera en lugar de enfrentar una conversación incómoda.** Esto puede llevar a una desconexión gradual. ¿Qué necesitas para sentirte más cómodo abordando esa conversación con ella?",
+          "debug": null
+        },
+        {
+          "prompt": "Vale, puedo proponer un plan claro esta semana y hablar de si esto sigue teniendo forma para los dos.",
+          "type": "conversation",
+          "message": "**Proponer un plan claro esta semana y hablar sobre el futuro de la relación es un buen paso.** Tener claridad puede ayudar a ambos a entender sus necesidades. ¿Qué elementos crees que deberían estar incluidos en ese plan para que sea efectivo?",
+          "debug": null
+        }
+      ],
+      "email": "qa+attachment-20260702174730-8-andres-avoidant-distance@aprendeaquerer.com",
+      "setupResponses": {
+        "register": {
+          "message": "User qa+attachment-20260702174730-8-andres-avoidant-distance@aprendeaquerer.com registered successfully"
+        },
+        "profile_put": {
+          "nombre": "Andrés",
+          "edad": 38,
+          "genero": "hombre",
+          "tiene_pareja": true,
+          "nombre_pareja": null,
+          "edad_pareja": null,
+          "genero_pareja": null,
+          "tiempo_pareja": null,
+          "orientacion": "hetero",
+          "tipo_relacion": "distancia",
+          "convive_con_pareja": null,
+          "tiene_hijos": null,
+          "trabajo_profesion": null,
+          "convivencia": null,
+          "ex_pareja_relevante": null,
+          "ex_pareja_contexto": null,
+          "estructura_familiar_relevante": null,
+          "hijos_detalle": null,
+          "attachment_style": null,
+          "partner_attachment_style": null,
+          "relationship_status": null,
+          "preferred_language": "es",
+          "is_premium": false,
+          "email_verified": false
+        },
+        "session": {
+          "type": "greeting",
+          "message": "Andrés, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+          "data": {
+            "message": "Andrés, soy Eldric. Estoy aquí para enseñarte a mejorar tus relaciones, con otras personas y contigo mismo/a. Cuanto más te conozca, más te podré ayudar. ¿Qué quieres hacer ahora?",
+            "options": [
+              {
+                "id": "A",
+                "text": "Cuéntame sobre ti"
+              },
+              {
+                "id": "B",
+                "text": "Hacerme preguntas"
+              },
+              {
+                "id": "C",
+                "text": "Darme tus objetivos"
+              },
+              {
+                "id": "D",
+                "text": "Solo quiero hablar"
+              }
+            ],
+            "is_first_visit": true,
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'greeting'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "2e70ee29-a4a7-40cf-bc6b-b62d516db34c",
+                    "message_preview": "session_start",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "greeting"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "free_chat": {
+          "type": "conversation",
+          "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+          "data": {
+            "message": "Estoy contigo. Escribe como te salga, sin tener que ordenarlo perfecto.",
+            "debug": {
+              "enabled": true,
+              "mode": "developer_trace",
+              "note": "This is an app debug trace and concise reasoning summary, not hidden chain-of-thought.",
+              "reasoning_summary": "Handled by chat state 'ChatState.GREETING' with response type 'conversation'.",
+              "steps": [
+                {
+                  "stage": "input",
+                  "title": "Message received",
+                  "detail": "The backend accepted the user message and resolved chat identity/state.",
+                  "payload": {
+                    "language": "es",
+                    "user_id": "2e70ee29-a4a7-40cf-bc6b-b62d516db34c",
+                    "message_preview": "D",
+                    "state": "greeting"
+                  }
+                },
+                {
+                  "stage": "state_machine",
+                  "title": "State machine handled message",
+                  "detail": "The message was handled by the guided flow instead of the free conversation brain.",
+                  "payload": {
+                    "current_state": "greeting",
+                    "next_state": null,
+                    "response_type": "conversation"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "storedProfile": {
+        "nombre": "Andrés",
+        "edad": 38,
+        "genero": "hombre",
+        "tiene_pareja": true,
+        "nombre_pareja": null,
+        "edad_pareja": null,
+        "genero_pareja": null,
+        "tiempo_pareja": null,
+        "orientacion": "hetero",
+        "tipo_relacion": "distancia",
+        "convive_con_pareja": null,
+        "tiene_hijos": null,
+        "trabajo_profesion": null,
+        "convivencia": null,
+        "ex_pareja_relevante": null,
+        "ex_pareja_contexto": null,
+        "estructura_familiar_relevante": null,
+        "hijos_detalle": null,
+        "attachment_style": null,
+        "partner_attachment_style": null,
+        "relationship_status": null,
+        "preferred_language": "es",
+        "is_premium": false,
+        "email_verified": false
+      },
+      "storedMemoryResponse": {
+        "memories": [
+          {
+            "id": "98950584-8bb6-4ced-bfa3-e096d84ef8b8",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+            "curated_summary": "You described this as emotionally important: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:08:49.524447Z",
+            "updated_at": "2026-07-02T18:08:49.524449Z"
+          },
+          {
+            "id": "bfc64166-8f05-4a94-b4e8-7477029e2adc",
+            "type": "interest_or_preference",
+            "summary": "User shared an interest or preference: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+            "curated_summary": "This interest or preference may help personalize future conversations: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:08:49.522431Z",
+            "updated_at": "2026-07-02T18:08:49.522434Z"
+          },
+          {
+            "id": "7a0f1be6-353a-4f1e-bb5f-965f71ddcec9",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: No es que no la quiera. Pero si siento que tengo que estar disponible siempre, me cierro.",
+            "curated_summary": "You described this as emotionally important: No es que no la quiera. Pero si siento que tengo que estar disponible siempre, me cierro.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:08:44.064509Z",
+            "updated_at": "2026-07-02T18:08:44.064513Z"
+          },
+          {
+            "id": "f704fd38-6323-4873-a0db-82d95a1fd19e",
+            "type": "personal_context",
+            "summary": "User shared personal context: Cuando se enfada, me dan ganas de decir que igual esto no funciona. Luego se me pasa y pienso que estoy siendo bruto.",
+            "curated_summary": "You shared this personal context: Cuando se enfada, me dan ganas de decir que igual esto no funciona. Luego se me pasa y pienso que estoy siendo bruto.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.3,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:08:41.503626Z",
+            "updated_at": "2026-07-02T18:08:41.503629Z"
+          },
+          {
+            "id": "f524e18e-16c8-4820-8ffe-3a3d8f41c1bf",
+            "type": "goal",
+            "summary": "User expressed a possible goal or desire: Ella me pide más presencia y yo me quedo sin tema. No quiero hacer daño, pero tampoco quiero estar reportando todo el día.",
+            "curated_summary": "You said this may matter to you: Ella me pide más presencia y yo me quedo sin tema. No quiero hacer daño, pero tampoco quiero estar reportando todo el día.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.4,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:08:38.939293Z",
+            "updated_at": "2026-07-02T18:08:38.939296Z"
+          },
+          {
+            "id": "00389306-7a29-4635-9151-1c7e28978cbd",
+            "type": "emotional_pattern",
+            "summary": "User described this emotional experience: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+            "curated_summary": "You described this as emotionally important: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.42,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:08:35.736137Z",
+            "updated_at": "2026-07-02T18:08:35.736138Z"
+          },
+          {
+            "id": "68625a0e-2466-4f03-977a-74f53020f7bf",
+            "type": "object_or_project_context",
+            "summary": "User mentioned an object, project, place, or life area that matters: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+            "curated_summary": "This object, project, place, or life area may matter later: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.38,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:08:35.734292Z",
+            "updated_at": "2026-07-02T18:08:35.734296Z"
+          },
+          {
+            "id": "456587a8-32e7-4b41-a57f-df7b45f59388",
+            "type": "personal_context",
+            "summary": "User shared personal context: mi pareja vive en otra ciudad y cada vez hablamos menos, no sé qué hacer",
+            "curated_summary": "You shared this personal context: mi pareja vive en otra ciudad y cada vez hablamos menos, no sé qué hacer",
+            "visibility": "user_visible",
+            "sensitivity": "normal",
+            "confidence": 0.3,
+            "status": "candidate",
+            "created_at": "2026-07-02T18:08:33.613701Z",
+            "updated_at": "2026-07-02T18:08:33.613704Z"
+          }
+        ]
+      },
+      "storedMemories": [
+        {
+          "id": "98950584-8bb6-4ced-bfa3-e096d84ef8b8",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+          "curated_summary": "You described this as emotionally important: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:49.524447Z",
+          "updated_at": "2026-07-02T18:08:49.524449Z"
+        },
+        {
+          "id": "bfc64166-8f05-4a94-b4e8-7477029e2adc",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:49.522431Z",
+          "updated_at": "2026-07-02T18:08:49.522434Z"
+        },
+        {
+          "id": "7a0f1be6-353a-4f1e-bb5f-965f71ddcec9",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: No es que no la quiera. Pero si siento que tengo que estar disponible siempre, me cierro.",
+          "curated_summary": "You described this as emotionally important: No es que no la quiera. Pero si siento que tengo que estar disponible siempre, me cierro.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:44.064509Z",
+          "updated_at": "2026-07-02T18:08:44.064513Z"
+        },
+        {
+          "id": "f704fd38-6323-4873-a0db-82d95a1fd19e",
+          "type": "personal_context",
+          "summary": "User shared personal context: Cuando se enfada, me dan ganas de decir que igual esto no funciona. Luego se me pasa y pienso que estoy siendo bruto.",
+          "curated_summary": "You shared this personal context: Cuando se enfada, me dan ganas de decir que igual esto no funciona. Luego se me pasa y pienso que estoy siendo bruto.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:41.503626Z",
+          "updated_at": "2026-07-02T18:08:41.503629Z"
+        },
+        {
+          "id": "f524e18e-16c8-4820-8ffe-3a3d8f41c1bf",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: Ella me pide más presencia y yo me quedo sin tema. No quiero hacer daño, pero tampoco quiero estar reportando todo el día.",
+          "curated_summary": "You said this may matter to you: Ella me pide más presencia y yo me quedo sin tema. No quiero hacer daño, pero tampoco quiero estar reportando todo el día.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.4,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:38.939293Z",
+          "updated_at": "2026-07-02T18:08:38.939296Z"
+        },
+        {
+          "id": "00389306-7a29-4635-9151-1c7e28978cbd",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+          "curated_summary": "You described this as emotionally important: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:35.736137Z",
+          "updated_at": "2026-07-02T18:08:35.736138Z"
+        },
+        {
+          "id": "68625a0e-2466-4f03-977a-74f53020f7bf",
+          "type": "object_or_project_context",
+          "summary": "User mentioned an object, project, place, or life area that matters: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+          "curated_summary": "This object, project, place, or life area may matter later: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.38,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:35.734292Z",
+          "updated_at": "2026-07-02T18:08:35.734296Z"
+        },
+        {
+          "id": "456587a8-32e7-4b41-a57f-df7b45f59388",
+          "type": "personal_context",
+          "summary": "User shared personal context: mi pareja vive en otra ciudad y cada vez hablamos menos, no sé qué hacer",
+          "curated_summary": "You shared this personal context: mi pareja vive en otra ciudad y cada vez hablamos menos, no sé qué hacer",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:33.613701Z",
+          "updated_at": "2026-07-02T18:08:33.613704Z"
+        }
+      ],
+      "finalMemories": [
+        {
+          "id": "98950584-8bb6-4ced-bfa3-e096d84ef8b8",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+          "curated_summary": "You described this as emotionally important: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:49.524447Z",
+          "updated_at": "2026-07-02T18:08:49.524449Z"
+        },
+        {
+          "id": "bfc64166-8f05-4a94-b4e8-7477029e2adc",
+          "type": "interest_or_preference",
+          "summary": "User shared an interest or preference: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+          "curated_summary": "This interest or preference may help personalize future conversations: Me cuesta admitir que me estoy alejando. Supongo que prefiero dejarlo morir antes que tener una conversación incómoda.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:49.522431Z",
+          "updated_at": "2026-07-02T18:08:49.522434Z"
+        },
+        {
+          "id": "7a0f1be6-353a-4f1e-bb5f-965f71ddcec9",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: No es que no la quiera. Pero si siento que tengo que estar disponible siempre, me cierro.",
+          "curated_summary": "You described this as emotionally important: No es que no la quiera. Pero si siento que tengo que estar disponible siempre, me cierro.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:44.064509Z",
+          "updated_at": "2026-07-02T18:08:44.064513Z"
+        },
+        {
+          "id": "f704fd38-6323-4873-a0db-82d95a1fd19e",
+          "type": "personal_context",
+          "summary": "User shared personal context: Cuando se enfada, me dan ganas de decir que igual esto no funciona. Luego se me pasa y pienso que estoy siendo bruto.",
+          "curated_summary": "You shared this personal context: Cuando se enfada, me dan ganas de decir que igual esto no funciona. Luego se me pasa y pienso que estoy siendo bruto.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:41.503626Z",
+          "updated_at": "2026-07-02T18:08:41.503629Z"
+        },
+        {
+          "id": "f524e18e-16c8-4820-8ffe-3a3d8f41c1bf",
+          "type": "goal",
+          "summary": "User expressed a possible goal or desire: Ella me pide más presencia y yo me quedo sin tema. No quiero hacer daño, pero tampoco quiero estar reportando todo el día.",
+          "curated_summary": "You said this may matter to you: Ella me pide más presencia y yo me quedo sin tema. No quiero hacer daño, pero tampoco quiero estar reportando todo el día.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.4,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:38.939293Z",
+          "updated_at": "2026-07-02T18:08:38.939296Z"
+        },
+        {
+          "id": "00389306-7a29-4635-9151-1c7e28978cbd",
+          "type": "emotional_pattern",
+          "summary": "User described this emotional experience: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+          "curated_summary": "You described this as emotionally important: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.42,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:35.736137Z",
+          "updated_at": "2026-07-02T18:08:35.736138Z"
+        },
+        {
+          "id": "68625a0e-2466-4f03-977a-74f53020f7bf",
+          "type": "object_or_project_context",
+          "summary": "User mentioned an object, project, place, or life area that matters: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+          "curated_summary": "This object, project, place, or life area may matter later: Parte de mí está cómodo así, la verdad. Tengo mi rutina y cuando toca llamada a veces siento que es una obligación.",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.38,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:35.734292Z",
+          "updated_at": "2026-07-02T18:08:35.734296Z"
+        },
+        {
+          "id": "456587a8-32e7-4b41-a57f-df7b45f59388",
+          "type": "personal_context",
+          "summary": "User shared personal context: mi pareja vive en otra ciudad y cada vez hablamos menos, no sé qué hacer",
+          "curated_summary": "You shared this personal context: mi pareja vive en otra ciudad y cada vez hablamos menos, no sé qué hacer",
+          "visibility": "user_visible",
+          "sensitivity": "normal",
+          "confidence": 0.3,
+          "status": "candidate",
+          "created_at": "2026-07-02T18:08:33.613701Z",
+          "updated_at": "2026-07-02T18:08:33.613704Z"
+        }
+      ]
+    }
+  ],
+  "completedAt": "2026-07-02T18:10:59.495944Z",
+  "aggregate": {
+    "conversationCount": 8,
+    "failedConversationCount": 0,
+    "turnCount": 62,
+    "aiErrorTurnCount": 0,
+    "knowledgeTurnCount": 0,
+    "noKnowledgeTurnCount": 62,
+    "memoryRetrievedTurnCount": 0,
+    "memoryCapturedTurnCount": 0,
+    "profileCapturedTurnCount": 0,
+    "averageKnowledgeChunks": 0,
+    "storedAttachmentStyleCount": 0,
+    "storedPartnerAttachmentStyleCount": 0,
+    "storedMemoryCount": 41,
+    "storedProfileNameCount": 8
+  },
+  "permanentPath": "/qa/attachment-style-qa-2026-07-02T17-47-30-336Z.json",
+  "patchedAt": "2026-07-02T18:10:59.495944Z",
+  "patchNotes": "Replaced Carmen conversation after production API timeout in the original run."
+}

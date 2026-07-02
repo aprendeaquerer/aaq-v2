@@ -10,6 +10,7 @@ import { personalityQaLatestReport } from '@/data/personalityQaLatestReport';
 import type { BotDebugStep, ChatResponse, DebugSession, KnowledgeChunk, UserMemory, UserProfile } from '@/lib/types';
 
 type BrainMode = 'text' | 'constellation';
+type TestsView = 'attachment' | 'personality';
 export type BrainTab = 'data' | 'knowledge' | 'live' | 'tests';
 
 interface Props {
@@ -74,17 +75,29 @@ interface LiveSimulationRun {
 
 interface PublishedQaRun {
   runId: string;
+  startedAt?: string;
   completedAt: string;
+  apiUrl?: string;
+  focus?: string;
+  instructions?: string;
+  permanentPath?: string;
+  patchedAt?: string;
+  patchNotes?: string;
   aggregate: {
     conversationCount: number;
     failedConversationCount: number;
     turnCount: number;
-    aiErrorTurnCount: number;
-    knowledgeTurnCount: number;
-    noKnowledgeTurnCount: number;
-    memoryRetrievedTurnCount: number;
-    memoryCapturedTurnCount: number;
-    averageKnowledgeChunks: number;
+    aiErrorTurnCount?: number;
+    knowledgeTurnCount?: number;
+    noKnowledgeTurnCount?: number;
+    memoryRetrievedTurnCount?: number;
+    memoryCapturedTurnCount?: number;
+    profileCapturedTurnCount?: number;
+    averageKnowledgeChunks?: number;
+    storedAttachmentStyleCount?: number;
+    storedPartnerAttachmentStyleCount?: number;
+    storedMemoryCount?: number;
+    storedProfileNameCount?: number;
   };
   conversations: PublishedQaConversation[];
 }
@@ -92,25 +105,32 @@ interface PublishedQaRun {
 interface PublishedQaConversation {
   id: string;
   title: string;
-  kind: string;
-  purpose: string;
-  qaNote: string;
+  kind?: string;
+  purpose?: string;
+  qaNote?: string;
   email: string;
+  expectedAttachmentStyle?: string;
+  openingPrompt?: string;
   profileSeed: Record<string, unknown>;
-  setupMessage: string;
+  setupMessage?: string;
+  setupResponses?: unknown;
   turns: PublishedQaTurn[];
-  finalMemories: UserMemory[];
-  error: string | null;
+  finalMemories?: UserMemory[];
+  storedMemories?: UserMemory[];
+  storedProfile?: UserProfile;
+  storedMemoryResponse?: unknown;
+  error?: string | null;
 }
 
 interface PublishedQaTurn {
   prompt: string;
-  type: string;
-  message: string;
-  reasoning_summary: string;
-  intent: string | null;
-  routed_domains: string[];
-  knowledge: {
+  type?: string;
+  message?: string;
+  debug?: unknown;
+  reasoning_summary?: string | null;
+  intent?: string | null;
+  routed_domains?: string[] | null;
+  knowledge?: {
     count: number;
     detail: string;
     chunks: Array<{
@@ -122,7 +142,7 @@ interface PublishedQaTurn {
       preview: string;
     }>;
   };
-  memory_retrieval: {
+  memory_retrieval?: {
     count: number;
     detail: string;
     memories: Array<{
@@ -133,7 +153,7 @@ interface PublishedQaTurn {
       summary: string;
     }>;
   };
-  memory_capture: {
+  memory_capture?: {
     count: number;
     detail: string;
     candidates: Array<{
@@ -144,7 +164,7 @@ interface PublishedQaTurn {
       summary: string;
     }>;
   };
-  ai_error: string | null;
+  ai_error?: string | null;
 }
 
 const TYPE_COLORS = [
@@ -177,11 +197,14 @@ export default function DataBrainPanel({
   const [selectedPersonalityTestId, setSelectedPersonalityTestId] = useState(
     personalityTestConversations[0]?.id || ''
   );
+  const [testsView, setTestsView] = useState<TestsView>('attachment');
   const [actualRuns, setActualRuns] = useState<Record<string, ActualSimulationRun>>({});
   const [isRunningAllPersonalityTests, setIsRunningAllPersonalityTests] = useState(false);
   const [liveRuns, setLiveRuns] = useState<Record<string, LiveSimulationRun>>({});
   const [publishedQaRun, setPublishedQaRun] = useState<PublishedQaRun | null>(null);
   const [publishedQaError, setPublishedQaError] = useState<string | null>(null);
+  const [publishedAttachmentQaRun, setPublishedAttachmentQaRun] = useState<PublishedQaRun | null>(null);
+  const [publishedAttachmentQaError, setPublishedAttachmentQaError] = useState<string | null>(null);
 
   const loadMemories = useCallback(async () => {
     if (!isAuthenticated) {
@@ -249,6 +272,7 @@ export default function DataBrainPanel({
     if (activeTab !== 'tests') return;
 
     let isCancelled = false;
+
     fetch('/qa/personality-latest.json')
       .then((response) => {
         if (!response.ok) throw new Error(`Published QA run failed to load (${response.status})`);
@@ -264,6 +288,26 @@ export default function DataBrainPanel({
         if (!isCancelled) {
           setPublishedQaRun(null);
           setPublishedQaError(loadError instanceof Error ? loadError.message : 'Published QA run failed to load');
+        }
+      });
+
+    fetch('/qa/attachment-style-latest.json')
+      .then((response) => {
+        if (!response.ok) throw new Error(`Attachment QA run failed to load (${response.status})`);
+        return response.json() as Promise<PublishedQaRun>;
+      })
+      .then((run) => {
+        if (!isCancelled) {
+          setPublishedAttachmentQaRun(run);
+          setPublishedAttachmentQaError(null);
+        }
+      })
+      .catch((loadError) => {
+        if (!isCancelled) {
+          setPublishedAttachmentQaRun(null);
+          setPublishedAttachmentQaError(
+            loadError instanceof Error ? loadError.message : 'Attachment QA run failed to load'
+          );
         }
       });
 
@@ -398,49 +442,66 @@ export default function DataBrainPanel({
   if (activeTab === 'tests') {
     return (
       <BrainShell
-        title="Personality Tests"
-        subtitle="Threaded QA conversations for the current relationship coach personality."
-        countLabel={`${personalityTestConversations.length} threads`}
+        title="Bot Tests"
+        subtitle="Published QA runs and threaded test conversations for Eldric."
+        countLabel={
+          testsView === 'attachment'
+            ? `${publishedAttachmentQaRun?.aggregate.conversationCount ?? 8} attachment cases`
+            : `${personalityTestConversations.length} personality threads`
+        }
         openHref="/brain?tab=tests"
         standalone={standalone}
       >
         <div className="flex min-h-0 flex-1 flex-col gap-4">
-          <LatestQaRunPanel publishedRun={publishedQaRun} loadError={publishedQaError} />
+          <TestsViewToggle view={testsView} onChange={setTestsView} />
 
-          <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[330px_minmax(0,1fr)]">
-            <aside className="min-h-0 overflow-y-auto rounded border border-[#042648]/12 bg-white">
-              <div className="border-b border-[#042648]/10 px-3 py-3">
-                <h3 className="text-sm font-bold text-[#042648]">Conversation Threads</h3>
-                <p className="mt-1 text-xs text-[#042648]/60">
-                  20 scenarios with 10 user prompts each.
-                </p>
-              </div>
-              <div className="space-y-1 p-2">
-                {personalityTestConversations.map((conversation) => (
-                  <PersonalityThreadButton
-                    key={conversation.id}
-                    conversation={conversation}
-                    isSelected={conversation.id === selectedPersonalityTest?.id}
-                    onSelect={() => setSelectedPersonalityTestId(conversation.id)}
-                  />
-                ))}
-              </div>
-            </aside>
+          {testsView === 'attachment' && (
+            <AttachmentStyleQaPanel
+              publishedRun={publishedAttachmentQaRun}
+              loadError={publishedAttachmentQaError}
+            />
+          )}
 
-            <div className="min-h-0 overflow-y-auto pr-1">
-              {selectedPersonalityTest && (
-                <PersonalityThreadReader
-                  conversation={selectedPersonalityTest}
-                  actualRun={actualRuns[selectedPersonalityTest.id]}
-                  liveRun={liveRuns[selectedPersonalityTest.id]}
-                  isRunningAll={isRunningAllPersonalityTests}
-                  onRun={() => void runPersonalityScenario(selectedPersonalityTest)}
-                  onRunAll={() => void runAllPersonalityScenarios()}
-                  onRunLive={() => void runLivePersonalityScenario(selectedPersonalityTest)}
-                />
-              )}
-            </div>
-          </div>
+          {testsView === 'personality' && (
+            <>
+              <LatestQaRunPanel publishedRun={publishedQaRun} loadError={publishedQaError} />
+
+              <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[330px_minmax(0,1fr)]">
+                <aside className="min-h-0 overflow-y-auto rounded border border-[#042648]/12 bg-white">
+                  <div className="border-b border-[#042648]/10 px-3 py-3">
+                    <h3 className="text-sm font-bold text-[#042648]">Conversation Threads</h3>
+                    <p className="mt-1 text-xs text-[#042648]/60">
+                      20 scenarios with 10 user prompts each.
+                    </p>
+                  </div>
+                  <div className="space-y-1 p-2">
+                    {personalityTestConversations.map((conversation) => (
+                      <PersonalityThreadButton
+                        key={conversation.id}
+                        conversation={conversation}
+                        isSelected={conversation.id === selectedPersonalityTest?.id}
+                        onSelect={() => setSelectedPersonalityTestId(conversation.id)}
+                      />
+                    ))}
+                  </div>
+                </aside>
+
+                <div className="min-h-0 overflow-y-auto pr-1">
+                  {selectedPersonalityTest && (
+                    <PersonalityThreadReader
+                      conversation={selectedPersonalityTest}
+                      actualRun={actualRuns[selectedPersonalityTest.id]}
+                      liveRun={liveRuns[selectedPersonalityTest.id]}
+                      isRunningAll={isRunningAllPersonalityTests}
+                      onRun={() => void runPersonalityScenario(selectedPersonalityTest)}
+                      onRunAll={() => void runAllPersonalityScenarios()}
+                      onRunLive={() => void runLivePersonalityScenario(selectedPersonalityTest)}
+                    />
+                  )}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </BrainShell>
     );
@@ -756,6 +817,31 @@ function BrainModeToggle({ mode, onChange }: { mode: BrainMode; onChange: (mode:
   );
 }
 
+function TestsViewToggle({ view, onChange }: { view: TestsView; onChange: (view: TestsView) => void }) {
+  return (
+    <div className="flex w-fit rounded border border-[#042648]/15 bg-white p-1">
+      <button
+        type="button"
+        onClick={() => onChange('attachment')}
+        className={`px-3 py-1.5 text-xs font-semibold transition ${
+          view === 'attachment' ? 'bg-[#042648] text-white' : 'text-[#042648]/70 hover:bg-[#F8FAF7]'
+        }`}
+      >
+        Attachment Styles
+      </button>
+      <button
+        type="button"
+        onClick={() => onChange('personality')}
+        className={`px-3 py-1.5 text-xs font-semibold transition ${
+          view === 'personality' ? 'bg-[#042648] text-white' : 'text-[#042648]/70 hover:bg-[#F8FAF7]'
+        }`}
+      >
+        Personality QA
+      </button>
+    </div>
+  );
+}
+
 function PersonalityThreadButton({
   conversation,
   isSelected,
@@ -783,6 +869,72 @@ function PersonalityThreadButton({
       <div className="mt-1 text-sm font-bold leading-snug">{conversation.title}</div>
       <div className="mt-1 text-xs opacity-65">{userPromptCount} user prompts</div>
     </button>
+  );
+}
+
+function AttachmentStyleQaPanel({
+  publishedRun,
+  loadError,
+}: {
+  publishedRun: PublishedQaRun | null;
+  loadError: string | null;
+}) {
+  const aggregate = publishedRun?.aggregate;
+  const metrics = [
+    ['Conversations', aggregate?.conversationCount ?? '-'],
+    ['Turns', aggregate?.turnCount ?? '-'],
+    ['Failures', aggregate?.failedConversationCount ?? '-'],
+    ['Saved styles', aggregate?.storedAttachmentStyleCount ?? '-'],
+    ['Saved memories', aggregate?.storedMemoryCount ?? '-'],
+    ['Profiles named', aggregate?.storedProfileNameCount ?? '-'],
+  ];
+
+  return (
+    <section className="rounded border border-[#042648]/12 bg-white">
+      <div className="border-b border-[#042648]/10 px-3 py-3">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+              Attachment Style Capture
+            </div>
+            <h3 className="mt-1 text-base font-bold text-[#042648]">
+              {publishedRun?.runId || 'Loading attachment QA run'}
+            </h3>
+            <p className="mt-1 text-xs text-[#042648]/58">
+              {publishedRun?.apiUrl || 'Production API'} / free conversation transcripts, stored profile, and stored memory
+            </p>
+          </div>
+          <span className="rounded border border-[#042648]/15 bg-[#F8FAF7] px-2 py-1 text-[11px] font-bold text-[#042648]/65">
+            Separate QA tab
+          </span>
+        </div>
+        {publishedRun?.instructions && (
+          <p className="mt-3 text-sm leading-6 text-[#042648]/72">{publishedRun.instructions}</p>
+        )}
+      </div>
+
+      <div className="space-y-3 px-3 py-3">
+        <div className="grid gap-2 md:grid-cols-3 xl:grid-cols-6">
+          {metrics.map(([label, value]) => (
+            <div key={label} className="rounded bg-[#F8FAF7] px-3 py-2">
+              <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+                {label}
+              </div>
+              <div className="mt-1 text-sm font-bold text-[#042648]">{value}</div>
+            </div>
+          ))}
+        </div>
+
+        <PublishedQaRunViewer
+          run={publishedRun}
+          loadError={loadError}
+          title="Attachment Style Full Run"
+          description="Complete simulated conversations plus the profile and memory the production bot saved for each QA user."
+          latestHref="/qa/attachment-style-latest.json"
+          permanentHref={publishedRun?.permanentPath || '/qa/attachment-style-latest.json'}
+        />
+      </div>
+    </section>
   );
 }
 
@@ -922,22 +1074,28 @@ function LatestQaRunPanel({
 function PublishedQaRunViewer({
   run,
   loadError,
+  title = 'Published Full Run',
+  description = 'Full prompts, bot replies, brain retrieval, memory retrieval, memory capture, and final memories.',
+  latestHref = '/qa/personality-latest.json',
+  permanentHref = '/qa/personality-qa-2026-06-29T20-05-59-498Z.json',
 }: {
   run: PublishedQaRun | null;
   loadError: string | null;
+  title?: string;
+  description?: string;
+  latestHref?: string;
+  permanentHref?: string;
 }) {
   return (
     <div className="rounded border border-[#042648]/10 bg-white">
       <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#042648]/10 px-3 py-2">
         <div>
-          <h4 className="text-sm font-bold text-[#042648]">Published Full Run</h4>
-          <p className="mt-1 text-xs text-[#042648]/60">
-            Full prompts, bot replies, brain retrieval, memory retrieval, memory capture, and final memories.
-          </p>
+          <h4 className="text-sm font-bold text-[#042648]">{title}</h4>
+          <p className="mt-1 text-xs text-[#042648]/60">{description}</p>
         </div>
         <div className="flex flex-wrap gap-2">
           <a
-            href="/qa/personality-latest.json"
+            href={latestHref}
             target="_blank"
             rel="noreferrer"
             className="rounded border border-[#042648]/20 bg-white px-3 py-2 text-xs font-bold text-[#042648]/70 transition hover:bg-[#F8FAF7]"
@@ -945,7 +1103,7 @@ function PublishedQaRunViewer({
             Open raw JSON
           </a>
           <a
-            href="/qa/personality-qa-2026-06-29T20-05-59-498Z.json"
+            href={permanentHref}
             target="_blank"
             rel="noreferrer"
             className="rounded border border-[#042648]/20 bg-white px-3 py-2 text-xs font-bold text-[#042648]/70 transition hover:bg-[#F8FAF7]"
@@ -971,8 +1129,8 @@ function PublishedQaRunViewer({
             <QaMiniMetric label="Run" value={run.runId} />
             <QaMiniMetric label="Completed" value={new Date(run.completedAt).toLocaleString()} />
             <QaMiniMetric label="Turns" value={run.aggregate.turnCount} />
-            <QaMiniMetric label="Knowledge" value={`${run.aggregate.knowledgeTurnCount}/${run.aggregate.turnCount}`} />
-            <QaMiniMetric label="AI Errors" value={run.aggregate.aiErrorTurnCount} />
+            <QaMiniMetric label="Knowledge" value={`${run.aggregate.knowledgeTurnCount ?? 0}/${run.aggregate.turnCount}`} />
+            <QaMiniMetric label="AI Errors" value={run.aggregate.aiErrorTurnCount ?? 0} />
           </div>
 
           <div className="space-y-2">
@@ -999,6 +1157,28 @@ function QaMiniMetric({ label, value }: { label: string; value: ReactNode }) {
   );
 }
 
+function getPublishedMemories(conversation: PublishedQaConversation): UserMemory[] {
+  return conversation.finalMemories || conversation.storedMemories || [];
+}
+
+function getPublishedProfileValue(conversation: PublishedQaConversation, key: keyof UserProfile): string {
+  const value = conversation.storedProfile?.[key];
+  if (value === null || value === undefined || value === '') return 'none';
+  return String(value);
+}
+
+function getPublishedKnowledge(turn: PublishedQaTurn): NonNullable<PublishedQaTurn['knowledge']> {
+  return turn.knowledge || { count: 0, detail: '', chunks: [] };
+}
+
+function getPublishedMemoryRetrieval(turn: PublishedQaTurn): NonNullable<PublishedQaTurn['memory_retrieval']> {
+  return turn.memory_retrieval || { count: 0, detail: '', memories: [] };
+}
+
+function getPublishedMemoryCapture(turn: PublishedQaTurn): NonNullable<PublishedQaTurn['memory_capture']> {
+  return turn.memory_capture || { count: 0, detail: '', candidates: [] };
+}
+
 function PublishedConversationDetails({
   conversation,
   index,
@@ -1006,8 +1186,9 @@ function PublishedConversationDetails({
   conversation: PublishedQaConversation;
   index: number;
 }) {
-  const knowledgeTurns = conversation.turns.filter((turn) => turn.knowledge.count > 0).length;
-  const memoryCaptureTurns = conversation.turns.filter((turn) => turn.memory_capture.count > 0).length;
+  const finalMemories = getPublishedMemories(conversation);
+  const knowledgeTurns = conversation.turns.filter((turn) => getPublishedKnowledge(turn).count > 0).length;
+  const memoryCaptureTurns = conversation.turns.filter((turn) => getPublishedMemoryCapture(turn).count > 0).length;
   const aiErrors = conversation.turns.filter((turn) => turn.ai_error).length;
 
   return (
@@ -1020,9 +1201,11 @@ function PublishedConversationDetails({
       </summary>
       <div className="space-y-3 border-t border-[#042648]/10 p-3">
         <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-4">
-          <QaMiniMetric label="Kind" value={formatType(conversation.kind)} />
+          <QaMiniMetric label="Kind" value={conversation.kind ? formatType(conversation.kind) : 'attachment style'} />
           <QaMiniMetric label="QA User" value={conversation.email} />
-          <QaMiniMetric label="Final Memories" value={conversation.finalMemories.length} />
+          <QaMiniMetric label="Saved Style" value={getPublishedProfileValue(conversation, 'attachment_style')} />
+          <QaMiniMetric label="Expected Style" value={conversation.expectedAttachmentStyle || 'n/a'} />
+          <QaMiniMetric label="Final Memories" value={finalMemories.length} />
           <QaMiniMetric label="Error" value={conversation.error || 'none'} />
         </div>
 
@@ -1033,6 +1216,17 @@ function PublishedConversationDetails({
           </pre>
         </div>
 
+        {conversation.storedProfile && (
+          <div className="rounded bg-white px-3 py-2">
+            <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+              Final Stored Profile
+            </div>
+            <pre className="mt-2 max-h-52 overflow-auto whitespace-pre-wrap text-[11px] leading-4 text-[#042648]/68">
+              {JSON.stringify(conversation.storedProfile, null, 2)}
+            </pre>
+          </div>
+        )}
+
         {conversation.turns.map((turn, turnIndex) => (
           <PublishedTurnDetails key={`${conversation.id}-${turnIndex}`} turn={turn} index={turnIndex} />
         ))}
@@ -1042,7 +1236,7 @@ function PublishedConversationDetails({
             Final Stored Memories
           </div>
           <div className="mt-2 grid gap-2 md:grid-cols-2">
-            {conversation.finalMemories.map((memory) => (
+            {finalMemories.map((memory) => (
               <div key={memory.id} className="rounded bg-[#F8FAF7] px-2 py-2 text-xs text-[#042648]/70">
                 <div className="font-bold text-[#042648]">{formatType(memory.type)}</div>
                 <div className="mt-1 text-[11px] text-[#042648]/50">
@@ -1051,6 +1245,9 @@ function PublishedConversationDetails({
                 <p className="mt-1 leading-5">{memory.curated_summary || memory.summary}</p>
               </div>
             ))}
+            {finalMemories.length === 0 && (
+              <p className="text-xs text-[#042648]/55">No visible memories stored.</p>
+            )}
           </div>
         </div>
       </div>
@@ -1059,6 +1256,12 @@ function PublishedConversationDetails({
 }
 
 function PublishedTurnDetails({ turn, index }: { turn: PublishedQaTurn; index: number }) {
+  const knowledge = getPublishedKnowledge(turn);
+  const memoryRetrieval = getPublishedMemoryRetrieval(turn);
+  const memoryCapture = getPublishedMemoryCapture(turn);
+  const routedDomains = Array.isArray(turn.routed_domains) ? turn.routed_domains : [];
+  const aiError = turn.ai_error || null;
+
   return (
     <article className="rounded border border-[#042648]/10 bg-white">
       <div className="border-b border-[#042648]/10 px-3 py-2">
@@ -1072,20 +1275,20 @@ function PublishedTurnDetails({ turn, index }: { turn: PublishedQaTurn; index: n
           <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#165A38]/70">
             Actual Bot Response
           </div>
-          <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[#042648]/82">{turn.message}</p>
+          <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[#042648]/82">{turn.message || ''}</p>
         </div>
 
         <div className="grid gap-2 xl:grid-cols-3">
           <QaMiniMetric label="Intent" value={turn.intent || 'none'} />
-          <QaMiniMetric label="Domains" value={turn.routed_domains.join(', ') || 'none'} />
-          <QaMiniMetric label="AI Error" value={turn.ai_error || 'none'} />
+          <QaMiniMetric label="Domains" value={routedDomains.join(', ') || 'none'} />
+          <QaMiniMetric label="AI Error" value={aiError || 'none'} />
         </div>
 
         <QaTurnCollection
           title="Knowledge Chosen From Brain"
-          detail={turn.knowledge.detail}
+          detail={knowledge.detail}
           empty="No knowledge chunks retrieved."
-          items={turn.knowledge.chunks.map((chunk) => ({
+          items={knowledge.chunks.map((chunk) => ({
             id: chunk.id,
             title: chunk.title,
             meta: `${chunk.domain} / ${chunk.section} / score ${chunk.score}`,
@@ -1095,9 +1298,9 @@ function PublishedTurnDetails({ turn, index }: { turn: PublishedQaTurn; index: n
 
         <QaTurnCollection
           title="User Memories Retrieved"
-          detail={turn.memory_retrieval.detail}
+          detail={memoryRetrieval.detail}
           empty="No memories retrieved."
-          items={turn.memory_retrieval.memories.map((memory) => ({
+          items={memoryRetrieval.memories.map((memory) => ({
             id: memory.id,
             title: formatType(memory.type),
             meta: `${memory.status} / ${Math.round(memory.confidence * 100)}%`,
@@ -1107,9 +1310,9 @@ function PublishedTurnDetails({ turn, index }: { turn: PublishedQaTurn; index: n
 
         <QaTurnCollection
           title="Memory Capture Written By Backend"
-          detail={turn.memory_capture.detail}
+          detail={memoryCapture.detail}
           empty="No memory candidates captured."
-          items={turn.memory_capture.candidates.map((candidate) => ({
+          items={memoryCapture.candidates.map((candidate) => ({
             id: candidate.id,
             title: formatType(candidate.type),
             meta: `${candidate.status} / ${Math.round(candidate.confidence * 100)}%`,
