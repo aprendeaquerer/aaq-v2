@@ -19,7 +19,7 @@ safety: sensitive
 status: processed
 ---
 
-# RELACIÓN: cómo reparar una traición de confianza grave y reconstruir la seguridad en la pareja — Julie Menanno
+# RELACIÓN: cómo reparar una traición de confianza grave y reconstruir la seguridad en la pareja
 
 ## Core Thesis
 
@@ -107,4 +107,3 @@ Cuando surge emoción, pausar explicación y permitir que se exprese sin ataque.
 - Source: Julie Menanno, Secure Love Book Club, Chapter 9, "Attachment Injuries and Repair"
 - Video source noted in document: `https://www.youtube.com/watch?v=1ySGJFjy4rw`
 - Processed as a curated internal brain article, not a verbatim transcript.
-

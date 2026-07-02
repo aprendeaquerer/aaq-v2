@@ -20,7 +20,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: el desenamoramiento explicado como un vínculo que se apaga por falta de seguridad y contacto — Adam Lane Smith
+# APEGO: el desenamoramiento explicado como un vínculo que se apaga por falta de seguridad y contacto
 
 ## Core Thesis
 

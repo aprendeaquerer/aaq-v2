@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: cómo identificar la discusión que se repite una y otra vez y el papel de cada uno — Julie Menanno
+# RELACIÓN: cómo identificar la discusión que se repite una y otra vez y el papel de cada uno
 
 ## Core Thesis
 
@@ -101,4 +101,3 @@ Abrir con vulnerabilidad y permiso: "Quiero hablar de algo que podría activar n
 - Source: Julie Menanno, Secure Love Book Club, Chapter 4, "What Is Your Negative Cycle?"
 - Video source noted in document: `https://www.youtube.com/watch?v=w70hvo1esqU`
 - Processed as a curated internal brain article, not a verbatim transcript.
-

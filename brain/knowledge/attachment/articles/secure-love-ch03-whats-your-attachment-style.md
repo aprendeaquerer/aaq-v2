@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: cómo reconocer tu estilo de apego sin convertirlo en una etiqueta fija — Julie Menanno
+# APEGO: cómo reconocer tu estilo de apego sin convertirlo en una etiqueta fija
 
 ## Core Thesis
 
@@ -100,4 +100,3 @@ Considerar una pausa o separación temporal cuando la relación impide regulaci�
 - Source: Julie Menanno, Secure Love Book Club, Chapter 3, "What's Your Attachment Style?"
 - Video source noted in document: `https://www.youtube.com/watch?v=xl4PyZaNH4A`
 - Processed as a curated internal brain article, not a verbatim transcript.
-

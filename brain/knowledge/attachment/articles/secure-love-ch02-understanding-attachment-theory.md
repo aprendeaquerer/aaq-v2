@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: la teoría del apego aplicada a la pareja adulta y cómo aparece en el día a día — Julie Menanno
+# APEGO: la teoría del apego aplicada a la pareja adulta y cómo aparece en el día a día
 
 ## Core Thesis
 
@@ -91,4 +91,3 @@ Una expectativa tiende a ser saludable cuando puede expresarse como necesidad pr
 - Source: Julie Menanno, Secure Love Book Club, Chapter 2, "Understanding Attachment Theory"
 - Video source noted in document: `https://www.youtube.com/watch?v=PgWsOCPF9YM`
 - Processed as a curated internal brain article, not a verbatim transcript.
-

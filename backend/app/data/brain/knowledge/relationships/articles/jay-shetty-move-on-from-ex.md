@@ -17,7 +17,7 @@ safety: normal
 status: processed
 ---
 
-# RUPTURA: cómo superar a un ex soltando la fantasía y reconstruyendo la propia identidad — Jay Shetty
+# RUPTURA: cómo superar a un ex soltando la fantasía y reconstruyendo la propia identidad
 
 ## Core Thesis
 

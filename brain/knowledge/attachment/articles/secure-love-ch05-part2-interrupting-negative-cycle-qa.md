@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: dudas frecuentes al romper el ciclo de pelea cuando uno avanza más rápido que el otro — Julie Menanno
+# RELACIÓN: dudas frecuentes al romper el ciclo de pelea cuando uno avanza más rápido que el otro
 
 ## Core Thesis
 
@@ -102,4 +102,3 @@ Identificar una micro-experiencia segura y repetirla: escuchar sin defenderse, v
 - Source: Julie Menanno, Secure Love Book Club, Chapter 5 Part 2, "Interrupting Your Negative Cycle Q&A"
 - Video source noted in document: `https://www.youtube.com/watch?v=w51GDNbZ-C8`
 - Processed as a curated internal brain article, not a verbatim transcript.
-

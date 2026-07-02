@@ -184,6 +184,10 @@ def route_domains(message: str) -> List[str]:
         "somatics": (
             "cuerpo", "body", "somatico", "somatic", "nervioso", "nervous", "vagal",
             "meditar", "meditation", "respirar", "breath", "ansiedad", "anxiety",
+            "meditacion", "meditación", "visualizacion", "visualización", "gratitud",
+            "gratitude", "abundancia", "abundance", "confianza", "surrender",
+            "soltar", "breathwork", "trauma somatico", "trauma somático",
+            "sistema nervioso", "reset nervioso", "tension", "tensión",
         ),
         "self_improvement": (
             "conciencia", "consciousness", "mejorar", "improve", "crecimiento", "growth",

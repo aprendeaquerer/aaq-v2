@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# CRECIMIENTO: el método de tres pasos para pasar de reaccionar a elegir (detonante, creencia, nueva narrativa) — The Inner Work
+# CRECIMIENTO: el método de tres pasos para pasar de reaccionar a elegir (detonante, creencia, nueva narrativa)
 
 ## Core Thesis
 

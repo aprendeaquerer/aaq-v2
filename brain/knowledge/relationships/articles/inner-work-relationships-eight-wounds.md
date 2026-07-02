@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: las ocho heridas relacionales del modelo Inner Work y cómo se activan en la pareja — The Inner Work
+# RELACIÓN: las ocho heridas relacionales del modelo Inner Work y cómo se activan en la pareja
 
 ## Core Thesis
 

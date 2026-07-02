@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# APEGO: por qué alguien desea y a la vez teme la cercanía, y sabotea cuando aparece la calma — Adam Lane Smith
+# APEGO: por qué alguien desea y a la vez teme la cercanía, y sabotea cuando aparece la calma
 
 ## Core Thesis
 

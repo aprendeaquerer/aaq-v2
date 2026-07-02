@@ -22,7 +22,7 @@ safety: normal
 status: processed
 ---
 
-# DATING: por qué nos enganchamos demasiado rápido al conocer a alguien y cómo ir a un ritmo sano — Nathalie
+# DATING: por qué nos enganchamos demasiado rápido al conocer a alguien y cómo ir a un ritmo sano
 
 ## Core Thesis
 

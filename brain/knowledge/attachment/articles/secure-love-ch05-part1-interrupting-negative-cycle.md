@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: cómo frenar una pelea en caliente reconociendo el patrón, parando y calmando el cuerpo — Julie Menanno
+# RELACIÓN: cómo frenar una pelea en caliente reconociendo el patrón, parando y calmando el cuerpo
 
 ## Core Thesis
 
@@ -107,4 +107,3 @@ Una persona habla desde su mundo interno. La otra refleja, valida lo que pueda v
 - Source: Julie Menanno, Secure Love Book Club, Chapter 5 Part 1, "Interrupting Your Negative Cycle"
 - Video source noted in document: `https://www.youtube.com/watch?v=jAYVCKsPM8k`
 - Processed as a curated internal brain article, not a verbatim transcript.
-

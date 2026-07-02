@@ -18,7 +18,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: cómo pedir cercanía con claridad y cómo responder cuando la pareja la pide — Julie Menanno
+# RELACIÓN: cómo pedir cercanía con claridad y cómo responder cuando la pareja la pide
 
 ## Core Thesis
 
@@ -104,4 +104,3 @@ Nombrar: "Creo que intentaste acercarte y yo lo recibí como crítica. Quiero vo
 - Source: Julie Menanno, Secure Love Book Club, Chapter 7, "Reaching and Responding"
 - Video source noted in document: `https://www.youtube.com/watch?v=R65ar7MbF7Q`
 - Processed as a curated internal brain article, not a verbatim transcript.
-

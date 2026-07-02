@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: cómo prevenir las peleas creando seguridad y quitando la vergüenza de la conversación — Julie Menanno
+# RELACIÓN: cómo prevenir las peleas creando seguridad y quitando la vergüenza de la conversación
 
 ## Core Thesis
 
@@ -103,4 +103,3 @@ Explorar impacto en: el yo, la pareja, y el vínculo. Esto ayuda a salir de culp
 - Source: Julie Menanno, Secure Love Book Club, Chapter 6, "How to Prevent the Negative Cycle & Evict Shame"
 - Video source noted in document: `https://www.youtube.com/watch?v=5yohqVN9xqc`
 - Processed as a curated internal brain article, not a verbatim transcript.
-

@@ -19,7 +19,7 @@ safety: normal
 status: processed
 ---
 
-# RELACIÓN: cómo reparar de verdad tras una discusión, más allá de pedir perdón — Julie Menanno
+# RELACIÓN: cómo reparar de verdad tras una discusión, más allá de pedir perdón
 
 ## Core Thesis
 
@@ -102,4 +102,3 @@ Preguntar: "Esto necesita una conversación con mi pareja, o necesito primero pr
 - Source: Julie Menanno, Secure Love Book Club, Chapter 8, "How to Repair After Conflict"
 - Video source noted in document: `https://www.youtube.com/watch?v=MIyk1Jg1fUo`
 - Processed as a curated internal brain article, not a verbatim transcript.
-
