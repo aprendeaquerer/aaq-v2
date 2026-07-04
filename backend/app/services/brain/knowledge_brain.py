@@ -41,6 +41,41 @@ ACTIVE_CONFLICT_ARTICLE_IDS = {
     "old-templates-stay-or-go-decision",
     "old-templates-lost-identity-in-relationship",
 }
+ATTACHMENT_STYLE_ARTICLE_IDS = {
+    "anxious": {
+        "old-templates-anxious-unavailable-reconditioning",
+        "nathalie-emotionally-invested-too-quickly",
+        "amir-levine-rejection-secure-mode-carp",
+        "secure-love-ch03-whats-your-attachment-style",
+        "secure-love-ch05-part1-interrupting-negative-cycle",
+        "secure-love-ch05-part2-interrupting-negative-cycle-qa",
+    },
+    "avoidant": {
+        "adam-lane-smith-avoidant-falling-in-love-20-steps",
+        "adam-lane-smith-falling-out-of-love-bonding-system",
+        "secure-love-ch03-whats-your-attachment-style",
+        "secure-love-ch05-part2-interrupting-negative-cycle-qa",
+        "secure-love-ch07-reaching-and-responding",
+    },
+    "disorganized": {
+        "adam-lane-smith-disorganized-attachment-truths",
+        "secure-love-ch03-whats-your-attachment-style",
+        "secure-love-ch02-understanding-attachment-theory",
+        "adam-lane-smith-therapy-attachment-skills",
+    },
+    "secure": {
+        "adam-lane-smith-secure-attachment-12-steps",
+        "amir-levine-how-attachment-works",
+        "ainsworth-strange-situation-secure-base",
+        "secure-love-ch03-whats-your-attachment-style",
+    },
+}
+DATING_ARTICLE_IDS = {
+    "old-templates-dating-clarity-signals",
+    "nathalie-emotionally-invested-too-quickly",
+    "old-templates-anxious-unavailable-reconditioning",
+    "stop-settling-for-potential",
+}
 BREAKUP_CUES = (
     "mi ex", "my ex", "ex pareja", "expareja", "ruptura amorosa", "breakup",
     "move on", "superar a", "superar mi ex", "soltar a mi ex", "volver con mi ex",
@@ -70,13 +105,21 @@ def retrieve_knowledge(message: str, language: str = "es", limit: int = 6) -> Li
     routed_domains = route_domains(message)
     active_partner_context = _looks_like_active_partner_context(message)
     breakup_context = _looks_like_breakup_context(message)
+    dating_context = _looks_like_dating_context(message)
     polarity_lane_context = _polarity_lane_context(message)
+    attachment_style_context = _attachment_style_context(message)
     scored = []
 
     for chunk in chunks:
         if chunk.language not in (language, "multi", ""):
             continue
-        score = _score_chunk(chunk, query_terms, routed_domains, polarity_lane_context)
+        score = _score_chunk(
+            chunk,
+            query_terms,
+            routed_domains,
+            polarity_lane_context,
+            attachment_style_context,
+        )
         if breakup_context and _is_breakup_recovery_chunk(chunk):
             score += 5
         if active_partner_context:
@@ -86,12 +129,22 @@ def retrieve_knowledge(message: str, language: str = "es", limit: int = 6) -> Li
                 score -= 8
             if _is_early_investment_chunk(chunk) and not _looks_like_early_investment_context(message):
                 score -= 6
+        if attachment_style_context and _is_attachment_style_chunk(chunk, attachment_style_context):
+            score += 7
+        elif attachment_style_context and _is_other_attachment_style_chunk(chunk, attachment_style_context):
+            score -= 5
+        if dating_context and _is_dating_chunk(chunk):
+            score += 6
         if score > 0:
             scored.append((score, chunk))
 
     scored.sort(key=lambda item: item[0], reverse=True)
     results = []
-    for score, chunk in scored[:limit]:
+    article_counts: Dict[str, int] = {}
+    for score, chunk in scored:
+        article_count = article_counts.get(chunk.article_id, 0)
+        if article_count >= 2:
+            continue
         results.append(
             KnowledgeChunk(
                 id=chunk.id,
@@ -107,6 +160,9 @@ def retrieve_knowledge(message: str, language: str = "es", limit: int = 6) -> Li
                 score=score,
             )
         )
+        article_counts[chunk.article_id] = article_count + 1
+        if len(results) >= limit:
+            break
     return results
 
 
@@ -207,6 +263,8 @@ def route_domains(message: str) -> List[str]:
     for domain, words in keyword_map.items():
         if any(word in text for word in words):
             domains.append(domain)
+    if _attachment_style_context(message) and "attachment" not in domains:
+        domains.append("attachment")
     return domains or ["relationships"]
 
 
@@ -363,16 +421,81 @@ def _score_chunk(
     query_terms: Iterable[str],
     routed_domains: List[str],
     polarity_lane_context: str,
+    attachment_style_context: str,
 ) -> float:
     terms = set(query_terms)
     haystack = " ".join([chunk.title, chunk.section, chunk.content, " ".join(chunk.topics)]).lower()
-    score = sum(1 for term in terms if term in haystack)
-    if chunk.domain in routed_domains:
+    term_score = sum(1 for term in terms if term in haystack)
+    topic_score = len(terms.intersection(set(chunk.topics))) * 2
+    score = term_score + topic_score
+    has_specific_match = score > 0 or bool(polarity_lane_context) or bool(attachment_style_context)
+    if chunk.domain in routed_domains and has_specific_match:
         score += 3
     if polarity_lane_context and chunk.polarity_lane == polarity_lane_context:
         score += 5
-    score += len(terms.intersection(set(chunk.topics))) * 2
+    if attachment_style_context and chunk.domain == "attachment":
+        score += 2
     return float(score)
+
+
+def _attachment_style_context(message: str) -> str:
+    text = message.lower()
+    disorganized_cues = (
+        "un dia quiero", "un día quiero", "al siguiente paso", "desaparezco y vuelvo",
+        "me acerco y luego", "me alejo y luego", "no se si quiero estar",
+        "no sé si quiero estar", "quiero verla y al siguiente", "quiero verlo y al siguiente",
+    )
+    anxious_cues = (
+        "miro el movil", "miro el móvil", "si no escribe", "si no contesta",
+        "si tarda en contestar", "no le importo", "lo pierdo", "la pierdo",
+        "me olvida", "miedo no gustar", "se va a cansar de mi", "se va a cansar de mí",
+        "necesitaba mas contacto", "necesitaba más contacto", "necesito mas contacto",
+        "necesito más contacto", "asegurarme enseguida", "se me escapa",
+        "pánico", "panico", "temblando", "hice algo mal",
+    )
+    avoidant_cues = (
+        "prefiero callarme", "me bloqueo", "me cierro", "me voy al garaje",
+        "pongo la tele", "desaparecer", "desaparezco", "me agobio", "me agobia",
+        "siento presión", "siento presion", "interrogatorio", "reportando todo el dia",
+        "reportando todo el día", "disponible siempre", "dejarlo morir",
+        "conversación incómoda", "conversacion incomoda", "obligación", "obligacion",
+        "quiero que se calme el tema", "me dan ganas de cortar todo",
+    )
+    secure_cues = (
+        "puedo aceptar", "no me hundiria", "no me hundiría", "sin presión", "sin presion",
+        "hablar claro", "quiero hacerlo honesto", "no es una crisis", "hablamos bien",
+        "puedo esperar", "marco realista", "no necesito que me prometa nada",
+    )
+
+    anxious_score = _phrase_score(text, anxious_cues)
+    avoidant_score = _phrase_score(text, avoidant_cues)
+    if _phrase_score(text, disorganized_cues) >= 1 or (anxious_score >= 1 and avoidant_score >= 1):
+        return "disorganized"
+    if anxious_score >= 1:
+        return "anxious"
+    if avoidant_score >= 1:
+        return "avoidant"
+    if _phrase_score(text, secure_cues) >= 1:
+        return "secure"
+    return ""
+
+
+def _phrase_score(text: str, phrases: Tuple[str, ...]) -> int:
+    return sum(1 for phrase in phrases if phrase in text)
+
+
+def _is_attachment_style_chunk(chunk: KnowledgeChunk, style: str) -> bool:
+    topics = set(chunk.topics)
+    if f"{style}_attachment" in topics:
+        return True
+    return chunk.article_id in ATTACHMENT_STYLE_ARTICLE_IDS.get(style, set())
+
+
+def _is_other_attachment_style_chunk(chunk: KnowledgeChunk, style: str) -> bool:
+    return any(
+        other_style != style and _is_attachment_style_chunk(chunk, other_style)
+        for other_style in ATTACHMENT_STYLE_ARTICLE_IDS
+    )
 
 
 def _polarity_lane_context(message: str) -> str:
@@ -421,6 +544,23 @@ def _is_active_conflict_chunk(chunk: KnowledgeChunk) -> bool:
 def _looks_like_early_investment_context(message: str) -> bool:
     text = message.lower()
     return any(cue in text for cue in EARLY_INVESTMENT_CUES)
+
+
+def _looks_like_dating_context(message: str) -> bool:
+    text = message.lower()
+    cues = (
+        "cita", "citas", "dating", "apps", "qué somos", "que somos",
+        "exclusividad", "conociéndola", "conociendola", "conociéndolo",
+        "conociendolo", "seguir conociendo", "señales confusas",
+        "senales confusas", "interes real", "interés real",
+    )
+    return any(cue in text for cue in cues)
+
+
+def _is_dating_chunk(chunk: KnowledgeChunk) -> bool:
+    if chunk.domain not in {"relationships", "attachment"}:
+        return False
+    return chunk.article_id in DATING_ARTICLE_IDS or "dating" in set(chunk.topics)
 
 
 def _terms(text: str) -> List[str]:

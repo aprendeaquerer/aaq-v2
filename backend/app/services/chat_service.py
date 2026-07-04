@@ -371,8 +371,10 @@ async def _handle_conversation(
     history = await _load_history(db, user_id, limit=50)
     history_characters = sum(len(msg["content"]) for msg in history)
 
-    # Retrieve file-backed knowledge brain and database-backed user memory brain
-    brain_context = await build_brain_context(db, user_id, message, language)
+    # Retrieve file-backed knowledge brain and database-backed user memory brain.
+    # Use recent user context so short follow-ups still retrieve the right articles.
+    brain_query = _build_retrieval_query(history, message)
+    brain_context = await build_brain_context(db, user_id, brain_query, language)
 
     # Build system prompt
     base_prompt = get_eldric_prompt(language)
@@ -601,6 +603,18 @@ async def _load_history(db: AsyncSession, user_id: str, limit: int = 50) -> List
             break
         trimmed.insert(0, msg)
     return trimmed
+
+
+def _build_retrieval_query(history: List[Dict[str, str]], message: str) -> str:
+    user_messages = [
+        msg["content"].strip()
+        for msg in history
+        if msg.get("role") == "user" and msg.get("content", "").strip()
+    ]
+    recent = user_messages[-4:]
+    if not recent or recent[-1] != message.strip():
+        recent.append(message.strip())
+    return "\n".join(recent)[-1800:]
 
 
 async def _get_profile(db: AsyncSession, user_id: str) -> Optional[UserProfile]:

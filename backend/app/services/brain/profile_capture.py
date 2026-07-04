@@ -28,6 +28,9 @@ PROFILE_FIELDS = {
     "ex_pareja_contexto",
     "estructura_familiar_relevante",
     "hijos_detalle",
+    "attachment_style",
+    "partner_attachment_style",
+    "relationship_status",
 }
 
 
@@ -178,6 +181,21 @@ def _extract_profile_updates(message: str) -> Dict[str, object]:
     family_structure = _detect_family_structure(text)
     if family_structure:
         updates["estructura_familiar_relevante"] = family_structure
+
+    user_attachment = _detect_user_attachment_style(lower) or _infer_user_attachment_style(lower)
+    if user_attachment:
+        updates["attachment_style"] = user_attachment
+
+    partner_attachment = _detect_partner_attachment_style(lower)
+    if partner_attachment:
+        updates["partner_attachment_style"] = partner_attachment
+
+    relationship_status = _detect_relationship_status(
+        updates.get("attachment_style"),
+        updates.get("partner_attachment_style"),
+    )
+    if relationship_status:
+        updates["relationship_status"] = relationship_status
 
     return {field: value for field, value in updates.items() if field in PROFILE_FIELDS}
 
@@ -387,6 +405,60 @@ def _clean_work_fact(value: str) -> str:
         flags=re.IGNORECASE,
     )[0]
     return _clean_short_fact(cleaned, max_words=10)
+
+
+def _infer_user_attachment_style(lower: str) -> Optional[str]:
+    direct_disorganized = (
+        "un dia quiero", "un día quiero", "al siguiente paso", "me acerco y luego",
+        "me alejo y luego", "desaparezco y vuelvo", "quiero verla y al siguiente",
+        "quiero verlo y al siguiente", "no se si quiero estar", "no sé si quiero estar",
+    )
+    anxious_cues = (
+        "miro el movil", "miro el móvil", "cada dos minutos", "si no escribe",
+        "si no contesta", "si tarda en contestar", "no le importo", "lo pierdo para siempre",
+        "la pierdo para siempre", "me olvida", "miedo no gustar", "miedo de no gustar",
+        "se va a cansar de mi", "se va a cansar de mí", "necesitaba mas contacto",
+        "necesitaba más contacto", "necesito mas contacto", "necesito más contacto",
+        "asegurarme enseguida", "se me escapa", "me quedé temblando", "me quede temblando",
+        "pánico", "panico", "suplicar", "hice algo mal", "si se enfada",
+        "demasiado exigente", "se moleste", "bajo el tono", "pidiendo perdón",
+        "pidiendo perdon", "repasando cada mensaje", "tardaba en contestar",
+        "quiero asegurarme", "va en serio", "engancharme antes",
+    )
+    avoidant_cues = (
+        "prefiero callarme", "me bloqueo", "me cierro", "me voy al garaje",
+        "pongo la tele", "desaparecer", "desaparezco", "me agobio", "me agobia",
+        "siento presión", "siento presion", "interrogatorio", "reportando todo el dia",
+        "reportando todo el día", "disponible siempre", "dejarlo morir",
+        "conversación incómoda", "conversacion incomoda", "obligación", "obligacion",
+        "quiero que se calme el tema", "me dan ganas de cortar todo",
+    )
+    secure_cues = (
+        "puedo aceptar", "no me hundiria", "no me hundiría", "sin presión", "sin presion",
+        "hablar claro", "hablarlo claro", "quiero hablar claro", "quiero hacerlo honesto",
+        "no es una crisis", "hablamos bien", "me interesa saber qué quiere",
+        "me interesa saber que quiere", "puedo esperar", "marco realista",
+        "sin convertirlo en una charla enorme", "no necesito que me prometa nada",
+    )
+
+    anxious_score = _cue_score(lower, anxious_cues)
+    avoidant_score = _cue_score(lower, avoidant_cues)
+    secure_score = _cue_score(lower, secure_cues)
+    disorganized_score = _cue_score(lower, direct_disorganized)
+
+    if disorganized_score >= 1 or (anxious_score >= 1 and avoidant_score >= 1):
+        return "disorganized"
+    if anxious_score >= 2:
+        return "anxious"
+    if avoidant_score >= 2:
+        return "avoidant"
+    if secure_score >= 2:
+        return "secure"
+    return None
+
+
+def _cue_score(lower: str, cues: tuple[str, ...]) -> int:
+    return sum(1 for cue in cues if cue in lower)
 
 
 def _detect_user_attachment_style(lower: str) -> Optional[str]:

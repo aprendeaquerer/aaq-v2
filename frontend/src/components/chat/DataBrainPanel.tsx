@@ -10,7 +10,7 @@ import { personalityQaLatestReport } from '@/data/personalityQaLatestReport';
 import type { BotDebugStep, ChatResponse, DebugSession, KnowledgeChunk, UserMemory, UserProfile } from '@/lib/types';
 
 type BrainMode = 'text' | 'constellation';
-type TestsView = 'attachment' | 'personality';
+type TestsView = 'attachment_dashboard' | 'attachment_details' | 'personality';
 export type BrainTab = 'data' | 'knowledge' | 'live' | 'tests';
 
 interface Props {
@@ -197,7 +197,7 @@ export default function DataBrainPanel({
   const [selectedPersonalityTestId, setSelectedPersonalityTestId] = useState(
     personalityTestConversations[0]?.id || ''
   );
-  const [testsView, setTestsView] = useState<TestsView>('attachment');
+  const [testsView, setTestsView] = useState<TestsView>('attachment_dashboard');
   const [actualRuns, setActualRuns] = useState<Record<string, ActualSimulationRun>>({});
   const [isRunningAllPersonalityTests, setIsRunningAllPersonalityTests] = useState(false);
   const [liveRuns, setLiveRuns] = useState<Record<string, LiveSimulationRun>>({});
@@ -445,7 +445,7 @@ export default function DataBrainPanel({
         title="Bot Tests"
         subtitle="Published QA runs and threaded test conversations for Eldric."
         countLabel={
-          testsView === 'attachment'
+          testsView === 'attachment_dashboard' || testsView === 'attachment_details'
             ? `${publishedAttachmentQaRun?.aggregate.conversationCount ?? 8} attachment cases`
             : `${personalityTestConversations.length} personality threads`
         }
@@ -455,7 +455,15 @@ export default function DataBrainPanel({
         <div className="flex min-h-0 flex-1 flex-col gap-4">
           <TestsViewToggle view={testsView} onChange={setTestsView} />
 
-          {testsView === 'attachment' && (
+          {testsView === 'attachment_dashboard' && (
+            <AttachmentStyleQaDashboard
+              publishedRun={publishedAttachmentQaRun}
+              loadError={publishedAttachmentQaError}
+              onOpenDetails={() => setTestsView('attachment_details')}
+            />
+          )}
+
+          {testsView === 'attachment_details' && (
             <AttachmentStyleQaPanel
               publishedRun={publishedAttachmentQaRun}
               loadError={publishedAttachmentQaError}
@@ -822,12 +830,21 @@ function TestsViewToggle({ view, onChange }: { view: TestsView; onChange: (view:
     <div className="flex w-fit rounded border border-[#042648]/15 bg-white p-1">
       <button
         type="button"
-        onClick={() => onChange('attachment')}
+        onClick={() => onChange('attachment_dashboard')}
         className={`px-3 py-1.5 text-xs font-semibold transition ${
-          view === 'attachment' ? 'bg-[#042648] text-white' : 'text-[#042648]/70 hover:bg-[#F8FAF7]'
+          view === 'attachment_dashboard' ? 'bg-[#042648] text-white' : 'text-[#042648]/70 hover:bg-[#F8FAF7]'
         }`}
       >
-        Attachment Styles
+        Attachment Graphs
+      </button>
+      <button
+        type="button"
+        onClick={() => onChange('attachment_details')}
+        className={`px-3 py-1.5 text-xs font-semibold transition ${
+          view === 'attachment_details' ? 'bg-[#042648] text-white' : 'text-[#042648]/70 hover:bg-[#F8FAF7]'
+        }`}
+      >
+        Attachment Details
       </button>
       <button
         type="button"
@@ -869,6 +886,179 @@ function PersonalityThreadButton({
       <div className="mt-1 text-sm font-bold leading-snug">{conversation.title}</div>
       <div className="mt-1 text-xs opacity-65">{userPromptCount} user prompts</div>
     </button>
+  );
+}
+
+function AttachmentStyleQaDashboard({
+  publishedRun,
+  loadError,
+  onOpenDetails,
+}: {
+  publishedRun: PublishedQaRun | null;
+  loadError: string | null;
+  onOpenDetails: () => void;
+}) {
+  if (loadError) {
+    return (
+      <div className="rounded border border-[#A33A3A]/25 bg-[#FFF0F0] px-3 py-2 text-sm text-[#7A1F1F]">
+        {loadError}
+      </div>
+    );
+  }
+
+  if (!publishedRun) {
+    return (
+      <div className="rounded border border-[#042648]/12 bg-white px-4 py-6 text-sm text-[#042648]/62">
+        Loading attachment QA dashboard...
+      </div>
+    );
+  }
+
+  const summary = buildAttachmentQaSummary(publishedRun);
+
+  return (
+    <section className="min-h-0 overflow-y-auto rounded border border-[#042648]/12 bg-white">
+      <div className="border-b border-[#042648]/10 px-3 py-3">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+              Attachment QA Dashboard
+            </div>
+            <h3 className="mt-1 text-base font-bold text-[#042648]">{publishedRun.runId}</h3>
+            <p className="mt-1 text-xs text-[#042648]/58">
+              Completed {new Date(publishedRun.completedAt).toLocaleString()} / {publishedRun.apiUrl || 'Production API'}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={onOpenDetails}
+              className="rounded border border-[#042648]/20 bg-white px-3 py-2 text-xs font-bold text-[#042648]/70 transition hover:bg-[#F8FAF7]"
+            >
+              Full Details
+            </button>
+            <a
+              href="/qa/attachment-style-latest.json"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded border border-[#042648]/20 bg-white px-3 py-2 text-xs font-bold text-[#042648]/70 transition hover:bg-[#F8FAF7]"
+            >
+              Raw JSON
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4 p-3">
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+          <GraphMetric
+            label="Knowledge coverage"
+            value={`${summary.knowledgeTurns}/${summary.turns}`}
+            tone={summary.knowledgeTurns === summary.turns ? 'good' : 'warn'}
+            detail={`${summary.averageKnowledgeChunks.toFixed(1)} chunks average`}
+            percent={percentage(summary.knowledgeTurns, summary.turns)}
+          />
+          <GraphMetric
+            label="Attachment styles saved"
+            value={`${summary.storedStyles}/${summary.conversations}`}
+            tone={summary.storedStyles === summary.conversations ? 'good' : 'bad'}
+            detail="profile attachment_style"
+            percent={percentage(summary.storedStyles, summary.conversations)}
+          />
+          <GraphMetric
+            label="Memory capture"
+            value={`${summary.memoryCaptureTurns}/${summary.turns}`}
+            tone="neutral"
+            detail={`${summary.storedMemories} final memories`}
+            percent={percentage(summary.memoryCaptureTurns, summary.turns)}
+          />
+          <GraphMetric
+            label="Run health"
+            value={`${summary.failures} failures`}
+            tone={summary.failures === 0 ? 'good' : 'bad'}
+            detail={`${summary.aiErrors} AI errors`}
+            percent={summary.failures === 0 ? 100 : 0}
+          />
+        </div>
+
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_minmax(360px,0.8fr)]">
+          <section className="rounded border border-[#042648]/10 bg-[#FFFDF8]">
+            <div className="border-b border-[#042648]/10 px-3 py-2">
+              <h4 className="text-sm font-bold text-[#042648]">Per-Person Capture</h4>
+            </div>
+            <div className="grid gap-3 p-3 md:grid-cols-2">
+              {summary.people.map((person) => (
+                <div key={person.id} className="rounded border border-[#042648]/10 bg-white px-3 py-3">
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <div className="text-sm font-bold text-[#042648]">{person.name}</div>
+                      <div className="mt-1 text-xs text-[#042648]/55">{person.turns} turns</div>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      <StylePill label={`Expected ${person.expectedStyle || 'n/a'}`} />
+                      <StylePill label={`Saved ${person.savedStyle || 'none'}`} tone={person.savedStyle ? 'good' : 'bad'} />
+                    </div>
+                  </div>
+
+                  <div className="mt-3 space-y-2">
+                    <ProgressRow label="Knowledge" value={person.knowledgeTurns} total={person.turns} />
+                    <ProgressRow label="Mem capture" value={person.memoryCaptureTurns} total={person.turns} />
+                    <ProgressRow label="Mem retrieval" value={person.memoryRetrievalTurns} total={person.turns} />
+                  </div>
+
+                  <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
+                    <div className="rounded bg-[#F8FAF7] px-2 py-2">
+                      <div className="font-bold text-[#042648]/48">Top Domain</div>
+                      <div className="mt-1 font-semibold text-[#042648]">{formatKnowledgeGroup(person.topDomain)}</div>
+                    </div>
+                    <div className="rounded bg-[#F8FAF7] px-2 py-2">
+                      <div className="font-bold text-[#042648]/48">Avg Chunks</div>
+                      <div className="mt-1 font-semibold text-[#042648]">{person.averageChunks.toFixed(1)}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <div className="space-y-4">
+            <section className="rounded border border-[#042648]/10 bg-[#FFFDF8]">
+              <div className="border-b border-[#042648]/10 px-3 py-2">
+                <h4 className="text-sm font-bold text-[#042648]">Knowledge Domains Used</h4>
+              </div>
+              <div className="space-y-2 p-3">
+                {summary.domainCounts.map((row, index) => (
+                  <HorizontalBar
+                    key={row.label}
+                    label={formatKnowledgeGroup(row.label)}
+                    value={row.count}
+                    max={summary.maxDomainCount}
+                    color={getTypeColor(index).border}
+                  />
+                ))}
+              </div>
+            </section>
+
+            <section className="rounded border border-[#042648]/10 bg-[#FFFDF8]">
+              <div className="border-b border-[#042648]/10 px-3 py-2">
+                <h4 className="text-sm font-bold text-[#042648]">Most Reused Articles</h4>
+              </div>
+              <div className="space-y-2 p-3">
+                {summary.topArticles.map((row, index) => (
+                  <HorizontalBar
+                    key={row.label}
+                    label={row.label}
+                    value={row.count}
+                    max={summary.maxArticleCount}
+                    color={getTypeColor(index + 1).border}
+                  />
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -1154,6 +1344,163 @@ function QaMiniMetric({ label, value }: { label: string; value: ReactNode }) {
       <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">{label}</div>
       <div className="mt-1 break-words text-xs font-bold text-[#042648]">{value}</div>
     </div>
+  );
+}
+
+function buildAttachmentQaSummary(run: PublishedQaRun) {
+  const people = run.conversations.map((conversation) => {
+    const finalMemories = getPublishedMemories(conversation);
+    const knowledgeTurns = conversation.turns.filter((turn) => getPublishedKnowledge(turn).count > 0).length;
+    const memoryCaptureTurns = conversation.turns.filter((turn) => getPublishedMemoryCapture(turn).count > 0).length;
+    const memoryRetrievalTurns = conversation.turns.filter((turn) => getPublishedMemoryRetrieval(turn).count > 0).length;
+    const totalChunks = conversation.turns.reduce((sum, turn) => sum + getPublishedKnowledge(turn).count, 0);
+    const domainCounts = countStrings(
+      conversation.turns.flatMap((turn) => getPublishedKnowledge(turn).chunks.map((chunk) => chunk.domain))
+    );
+
+    return {
+      id: conversation.id,
+      name: conversation.storedProfile?.nombre || conversation.title.replace(/^\d+\.\s*/, '').split(',')[0],
+      expectedStyle: conversation.expectedAttachmentStyle || '',
+      savedStyle: conversation.storedProfile?.attachment_style || '',
+      turns: conversation.turns.length,
+      knowledgeTurns,
+      memoryCaptureTurns,
+      memoryRetrievalTurns,
+      memories: finalMemories.length,
+      topDomain: domainCounts[0]?.label || 'none',
+      averageChunks: conversation.turns.length ? totalChunks / conversation.turns.length : 0,
+    };
+  });
+
+  const turns = run.conversations.reduce((sum, conversation) => sum + conversation.turns.length, 0);
+  const knowledgeTurns = run.conversations.reduce(
+    (sum, conversation) => sum + conversation.turns.filter((turn) => getPublishedKnowledge(turn).count > 0).length,
+    0
+  );
+  const memoryCaptureTurns = run.conversations.reduce(
+    (sum, conversation) => sum + conversation.turns.filter((turn) => getPublishedMemoryCapture(turn).count > 0).length,
+    0
+  );
+  const allChunks = run.conversations.flatMap((conversation) =>
+    conversation.turns.flatMap((turn) => getPublishedKnowledge(turn).chunks)
+  );
+  const domainCounts = countStrings(allChunks.map((chunk) => chunk.domain));
+  const topArticles = countStrings(allChunks.map((chunk) => chunk.title)).slice(0, 8);
+
+  return {
+    conversations: run.conversations.length,
+    turns,
+    failures: run.aggregate.failedConversationCount,
+    aiErrors: run.aggregate.aiErrorTurnCount ?? 0,
+    storedStyles: run.aggregate.storedAttachmentStyleCount ?? 0,
+    storedMemories: run.aggregate.storedMemoryCount ?? 0,
+    knowledgeTurns,
+    memoryCaptureTurns,
+    averageKnowledgeChunks: run.aggregate.averageKnowledgeChunks ?? 0,
+    people,
+    domainCounts,
+    topArticles,
+    maxDomainCount: Math.max(...domainCounts.map((row) => row.count), 1),
+    maxArticleCount: Math.max(...topArticles.map((row) => row.count), 1),
+  };
+}
+
+function countStrings(values: string[]): Array<{ label: string; count: number }> {
+  const counts = new Map<string, number>();
+  values.filter(Boolean).forEach((value) => counts.set(value, (counts.get(value) || 0) + 1));
+  return Array.from(counts.entries())
+    .map(([label, count]) => ({ label, count }))
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+}
+
+function percentage(value: number, total: number): number {
+  if (!total) return 0;
+  return Math.max(0, Math.min(100, Math.round((value / total) * 100)));
+}
+
+function GraphMetric({
+  label,
+  value,
+  detail,
+  percent,
+  tone,
+}: {
+  label: string;
+  value: ReactNode;
+  detail: string;
+  percent: number;
+  tone: 'good' | 'warn' | 'bad' | 'neutral';
+}) {
+  const colors = {
+    good: '#2F8F5B',
+    warn: '#C1821D',
+    bad: '#A33A3A',
+    neutral: '#4674B8',
+  };
+  return (
+    <div className="rounded border border-[#042648]/10 bg-[#F8FAF7] px-3 py-3">
+      <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">{label}</div>
+      <div className="mt-2 text-xl font-bold text-[#042648]">{value}</div>
+      <div className="mt-1 text-xs text-[#042648]/60">{detail}</div>
+      <div className="mt-3 h-2 overflow-hidden rounded bg-white">
+        <div className="h-full rounded" style={{ width: `${percent}%`, backgroundColor: colors[tone] }} />
+      </div>
+    </div>
+  );
+}
+
+function ProgressRow({ label, value, total }: { label: string; value: number; total: number }) {
+  const percent = percentage(value, total);
+  return (
+    <div>
+      <div className="mb-1 flex items-center justify-between gap-2 text-[11px] font-semibold text-[#042648]/62">
+        <span>{label}</span>
+        <span>{value}/{total}</span>
+      </div>
+      <div className="h-2 overflow-hidden rounded bg-[#EEF1EA]">
+        <div className="h-full rounded bg-[#2F8F5B]" style={{ width: `${percent}%` }} />
+      </div>
+    </div>
+  );
+}
+
+function HorizontalBar({
+  label,
+  value,
+  max,
+  color,
+}: {
+  label: string;
+  value: number;
+  max: number;
+  color: string;
+}) {
+  const width = max ? Math.max(5, Math.round((value / max) * 100)) : 0;
+  return (
+    <div>
+      <div className="mb-1 flex items-center justify-between gap-3 text-xs">
+        <span className="line-clamp-2 font-semibold leading-5 text-[#042648]/74">{label}</span>
+        <span className="shrink-0 font-bold text-[#042648]">{value}</span>
+      </div>
+      <div className="h-2 overflow-hidden rounded bg-white">
+        <div className="h-full rounded" style={{ width: `${width}%`, backgroundColor: color }} />
+      </div>
+    </div>
+  );
+}
+
+function StylePill({ label, tone = 'neutral' }: { label: string; tone?: 'good' | 'bad' | 'neutral' }) {
+  const classes =
+    tone === 'good'
+      ? 'border-[#2F8F5B]/25 bg-[#EAF7EF] text-[#165A38]'
+      : tone === 'bad'
+        ? 'border-[#A33A3A]/25 bg-[#FFF0F0] text-[#7A1F1F]'
+        : 'border-[#042648]/15 bg-[#F8FAF7] text-[#042648]/62';
+  return (
+    <span className={`rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.06em] ${classes}`}>
+      {label}
+    </span>
   );
 }
 
