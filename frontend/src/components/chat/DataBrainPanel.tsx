@@ -10,7 +10,7 @@ import { personalityQaLatestReport } from '@/data/personalityQaLatestReport';
 import type { BotDebugStep, ChatResponse, DebugSession, KnowledgeChunk, UserMemory, UserProfile } from '@/lib/types';
 
 type BrainMode = 'text' | 'constellation';
-type TestsView = 'attachment_dashboard' | 'attachment_details' | 'personality';
+type TestsView = 'attachment_users' | 'attachment_dashboard' | 'attachment_details' | 'personality';
 export type BrainTab = 'data' | 'knowledge' | 'live' | 'tests';
 
 interface Props {
@@ -164,6 +164,10 @@ interface PublishedQaTurn {
       summary: string;
     }>;
   };
+  profile_capture?: {
+    updates?: Record<string, unknown>;
+    error?: string | null;
+  };
   ai_error?: string | null;
 }
 
@@ -197,7 +201,7 @@ export default function DataBrainPanel({
   const [selectedPersonalityTestId, setSelectedPersonalityTestId] = useState(
     personalityTestConversations[0]?.id || ''
   );
-  const [testsView, setTestsView] = useState<TestsView>('attachment_dashboard');
+  const [testsView, setTestsView] = useState<TestsView>('attachment_users');
   const [actualRuns, setActualRuns] = useState<Record<string, ActualSimulationRun>>({});
   const [isRunningAllPersonalityTests, setIsRunningAllPersonalityTests] = useState(false);
   const [liveRuns, setLiveRuns] = useState<Record<string, LiveSimulationRun>>({});
@@ -205,6 +209,7 @@ export default function DataBrainPanel({
   const [publishedQaError, setPublishedQaError] = useState<string | null>(null);
   const [publishedAttachmentQaRun, setPublishedAttachmentQaRun] = useState<PublishedQaRun | null>(null);
   const [publishedAttachmentQaError, setPublishedAttachmentQaError] = useState<string | null>(null);
+  const [selectedAttachmentQaUserId, setSelectedAttachmentQaUserId] = useState('');
 
   const loadMemories = useCallback(async () => {
     if (!isAuthenticated) {
@@ -300,6 +305,7 @@ export default function DataBrainPanel({
         if (!isCancelled) {
           setPublishedAttachmentQaRun(run);
           setPublishedAttachmentQaError(null);
+          setSelectedAttachmentQaUserId((current) => current || run.conversations[0]?.id || '');
         }
       })
       .catch((loadError) => {
@@ -445,7 +451,7 @@ export default function DataBrainPanel({
         title="Bot Tests"
         subtitle="Published QA runs and threaded test conversations for Eldric."
         countLabel={
-          testsView === 'attachment_dashboard' || testsView === 'attachment_details'
+          testsView === 'attachment_users' || testsView === 'attachment_dashboard' || testsView === 'attachment_details'
             ? `${publishedAttachmentQaRun?.aggregate.conversationCount ?? 8} attachment cases`
             : `${personalityTestConversations.length} personality threads`
         }
@@ -454,6 +460,15 @@ export default function DataBrainPanel({
       >
         <div className="flex min-h-0 flex-1 flex-col gap-4">
           <TestsViewToggle view={testsView} onChange={setTestsView} />
+
+          {testsView === 'attachment_users' && (
+            <AttachmentQaUsersPanel
+              publishedRun={publishedAttachmentQaRun}
+              loadError={publishedAttachmentQaError}
+              selectedUserId={selectedAttachmentQaUserId}
+              onSelectUser={setSelectedAttachmentQaUserId}
+            />
+          )}
 
           {testsView === 'attachment_dashboard' && (
             <AttachmentStyleQaDashboard
@@ -827,7 +842,16 @@ function BrainModeToggle({ mode, onChange }: { mode: BrainMode; onChange: (mode:
 
 function TestsViewToggle({ view, onChange }: { view: TestsView; onChange: (view: TestsView) => void }) {
   return (
-    <div className="flex w-fit rounded border border-[#042648]/15 bg-white p-1">
+    <div className="flex w-fit flex-wrap rounded border border-[#042648]/15 bg-white p-1">
+      <button
+        type="button"
+        onClick={() => onChange('attachment_users')}
+        className={`px-3 py-1.5 text-xs font-semibold transition ${
+          view === 'attachment_users' ? 'bg-[#042648] text-white' : 'text-[#042648]/70 hover:bg-[#F8FAF7]'
+        }`}
+      >
+        Attachment Users
+      </button>
       <button
         type="button"
         onClick={() => onChange('attachment_dashboard')}
@@ -886,6 +910,393 @@ function PersonalityThreadButton({
       <div className="mt-1 text-sm font-bold leading-snug">{conversation.title}</div>
       <div className="mt-1 text-xs opacity-65">{userPromptCount} user prompts</div>
     </button>
+  );
+}
+
+function AttachmentQaUsersPanel({
+  publishedRun,
+  loadError,
+  selectedUserId,
+  onSelectUser,
+}: {
+  publishedRun: PublishedQaRun | null;
+  loadError: string | null;
+  selectedUserId: string;
+  onSelectUser: (id: string) => void;
+}) {
+  if (loadError) {
+    return (
+      <div className="rounded border border-[#A33A3A]/25 bg-[#FFF0F0] px-3 py-2 text-sm text-[#7A1F1F]">
+        {loadError}
+      </div>
+    );
+  }
+
+  if (!publishedRun) {
+    return (
+      <div className="rounded border border-[#042648]/12 bg-white px-4 py-6 text-sm text-[#042648]/62">
+        Loading attachment users...
+      </div>
+    );
+  }
+
+  const selectedConversation =
+    publishedRun.conversations.find((conversation) => conversation.id === selectedUserId) ||
+    publishedRun.conversations[0];
+
+  return (
+    <section className="min-h-0 overflow-y-auto rounded border border-[#042648]/12 bg-white">
+      <div className="border-b border-[#042648]/10 px-3 py-3">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+              Attachment Users
+            </div>
+            <h3 className="mt-1 text-base font-bold text-[#042648]">{publishedRun.runId}</h3>
+            <p className="mt-1 text-xs leading-5 text-[#042648]/58">
+              Per-user Data Brain snapshot plus the live profile, memory, and knowledge fill on every test turn.
+            </p>
+          </div>
+          <a
+            href="/qa/attachment-style-latest.json"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded border border-[#042648]/20 bg-white px-3 py-2 text-xs font-bold text-[#042648]/70 transition hover:bg-[#F8FAF7]"
+          >
+            Raw JSON
+          </a>
+        </div>
+      </div>
+
+      <div className="space-y-4 p-3">
+        <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-4" role="tablist" aria-label="Attachment QA users">
+          {publishedRun.conversations.map((conversation) => (
+            <AttachmentQaUserTab
+              key={conversation.id}
+              conversation={conversation}
+              isSelected={conversation.id === selectedConversation?.id}
+              onSelect={() => onSelectUser(conversation.id)}
+            />
+          ))}
+        </div>
+
+        {selectedConversation && <AttachmentQaUserDetail conversation={selectedConversation} />}
+      </div>
+    </section>
+  );
+}
+
+function AttachmentQaUserTab({
+  conversation,
+  isSelected,
+  onSelect,
+}: {
+  conversation: PublishedQaConversation;
+  isSelected: boolean;
+  onSelect: () => void;
+}) {
+  const name = getAttachmentQaDisplayName(conversation);
+  const finalMemories = getPublishedMemories(conversation);
+  const savedStyle = getPublishedProfileValue(conversation, 'attachment_style');
+  const expectedStyle = conversation.expectedAttachmentStyle || 'n/a';
+  const knowledgeTurns = conversation.turns.filter((turn) => getPublishedKnowledge(turn).count > 0).length;
+
+  return (
+    <button
+      type="button"
+      role="tab"
+      aria-selected={isSelected}
+      onClick={onSelect}
+      className={`rounded border px-3 py-3 text-left transition ${
+        isSelected
+          ? 'border-[#042648] bg-[#042648] text-white'
+          : 'border-[#042648]/10 bg-[#FFFDF8] text-[#042648] hover:border-[#042648]/25 hover:bg-[#F8FAF7]'
+      }`}
+    >
+      <div className="text-[10px] font-bold uppercase tracking-[0.08em] opacity-60">{expectedStyle}</div>
+      <div className="mt-1 text-sm font-bold leading-snug">{name}</div>
+      <div className="mt-2 flex flex-wrap gap-1 text-[11px] font-semibold opacity-70">
+        <span>{conversation.turns.length} turns</span>
+        <span>/</span>
+        <span>K {knowledgeTurns}</span>
+        <span>/</span>
+        <span>M {finalMemories.length}</span>
+      </div>
+      <div className="mt-2 text-[11px] font-bold opacity-80">Saved: {savedStyle}</div>
+    </button>
+  );
+}
+
+function AttachmentQaUserDetail({ conversation }: { conversation: PublishedQaConversation }) {
+  const finalMemories = getPublishedMemories(conversation);
+  const knowledgeTurns = conversation.turns.filter((turn) => getPublishedKnowledge(turn).count > 0).length;
+  const memoryCaptureTurns = conversation.turns.filter((turn) => getPublishedMemoryCapture(turn).count > 0).length;
+  const memoryRetrievalTurns = conversation.turns.filter((turn) => getPublishedMemoryRetrieval(turn).count > 0).length;
+  const profileUpdateTurns = conversation.turns.filter((turn) => getProfileUpdateEntries(turn).length > 0).length;
+  const profileUpdateCount = conversation.turns.reduce((sum, turn) => sum + getProfileUpdateEntries(turn).length, 0);
+  const savedStyle = getPublishedProfileValue(conversation, 'attachment_style');
+  const expectedStyle = conversation.expectedAttachmentStyle || 'n/a';
+  const styleMatches = savedStyle !== 'none' && expectedStyle !== 'n/a' && savedStyle === expectedStyle;
+
+  return (
+    <article className="rounded border border-[#042648]/10 bg-[#FFFDF8]">
+      <div className="border-b border-[#042648]/10 px-3 py-3">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h4 className="text-base font-bold text-[#042648]">{getAttachmentQaDisplayName(conversation)}</h4>
+            <p className="mt-1 text-xs leading-5 text-[#042648]/58">
+              {conversation.email} / {conversation.openingPrompt || conversation.title}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-1">
+            <StylePill label={`Expected ${expectedStyle}`} />
+            <StylePill label={`Saved ${savedStyle}`} tone={styleMatches ? 'good' : savedStyle === 'none' ? 'bad' : 'neutral'} />
+          </div>
+        </div>
+
+        <div className="mt-3 grid gap-2 md:grid-cols-3 xl:grid-cols-6">
+          <QaMiniMetric label="Turns" value={conversation.turns.length} />
+          <QaMiniMetric label="Knowledge Turns" value={`${knowledgeTurns}/${conversation.turns.length}`} />
+          <QaMiniMetric label="Profile Updates" value={`${profileUpdateCount} in ${profileUpdateTurns} turns`} />
+          <QaMiniMetric label="Memory Captures" value={`${memoryCaptureTurns}/${conversation.turns.length}`} />
+          <QaMiniMetric label="Memory Retrievals" value={`${memoryRetrievalTurns}/${conversation.turns.length}`} />
+          <QaMiniMetric label="Final Memories" value={finalMemories.length} />
+        </div>
+      </div>
+
+      <div className="grid gap-4 p-3 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
+        <AttachmentDataBrainSnapshot conversation={conversation} />
+        <AttachmentLiveFillTimeline conversation={conversation} />
+      </div>
+    </article>
+  );
+}
+
+function AttachmentDataBrainSnapshot({ conversation }: { conversation: PublishedQaConversation }) {
+  const finalMemories = getPublishedMemories(conversation);
+
+  return (
+    <div className="space-y-4">
+      <section className="rounded border border-[#042648]/10 bg-white">
+        <div className="border-b border-[#042648]/10 px-3 py-2">
+          <h5 className="text-sm font-bold text-[#042648]">Data Brain Profile</h5>
+          <p className="mt-1 text-xs text-[#042648]/58">Final stable profile saved after this test conversation.</p>
+        </div>
+        <ProfileFieldGrid profile={conversation.storedProfile || null} />
+      </section>
+
+      <section className="rounded border border-[#042648]/10 bg-white">
+        <div className="border-b border-[#042648]/10 px-3 py-2">
+          <h5 className="text-sm font-bold text-[#042648]">Data Brain Memories</h5>
+          <p className="mt-1 text-xs text-[#042648]/58">Final user memories visible after the run completed.</p>
+        </div>
+        <FinalMemoryGrid memories={finalMemories} />
+      </section>
+    </div>
+  );
+}
+
+function ProfileFieldGrid({ profile }: { profile: UserProfile | null }) {
+  const rows = profile ? buildProfileRows(profile) : [];
+
+  return (
+    <div className="grid gap-2 p-3 md:grid-cols-2">
+      {rows.map(([label, value]) => (
+        <div key={label} className="rounded bg-[#F8FAF7] px-3 py-2">
+          <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">{label}</div>
+          <div className="mt-1 break-words text-xs font-bold text-[#042648]/82">{value}</div>
+        </div>
+      ))}
+      {rows.length === 0 && (
+        <p className="text-sm text-[#042648]/60">No stable profile fields were saved for this user.</p>
+      )}
+    </div>
+  );
+}
+
+function FinalMemoryGrid({ memories }: { memories: UserMemory[] }) {
+  return (
+    <div className="grid gap-2 p-3 md:grid-cols-2">
+      {memories.map((memory) => (
+        <div key={memory.id} className="rounded bg-[#F8FAF7] px-3 py-2 text-xs text-[#042648]/70">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="font-bold text-[#042648]">{formatType(memory.type)}</div>
+            <span className="rounded bg-white px-2 py-0.5 text-[10px] font-bold text-[#042648]/55">
+              {Math.round(memory.confidence * 100)}%
+            </span>
+          </div>
+          <div className="mt-1 text-[11px] font-semibold text-[#042648]/50">
+            {memory.status} / {memory.sensitivity}
+          </div>
+          <p className="mt-1 leading-5">{memory.curated_summary || memory.summary}</p>
+        </div>
+      ))}
+      {memories.length === 0 && (
+        <p className="text-sm text-[#042648]/60">No final memories were stored for this user.</p>
+      )}
+    </div>
+  );
+}
+
+function AttachmentLiveFillTimeline({ conversation }: { conversation: PublishedQaConversation }) {
+  const knowledgeChunks = conversation.turns.reduce((sum, turn) => sum + getPublishedKnowledge(turn).count, 0);
+  const capturedMemories = conversation.turns.reduce((sum, turn) => sum + getPublishedMemoryCapture(turn).count, 0);
+  const retrievedMemories = conversation.turns.reduce((sum, turn) => sum + getPublishedMemoryRetrieval(turn).count, 0);
+  const profileUpdates = conversation.turns.reduce((sum, turn) => sum + getProfileUpdateEntries(turn).length, 0);
+
+  return (
+    <section className="rounded border border-[#042648]/10 bg-white">
+      <div className="border-b border-[#042648]/10 px-3 py-2">
+        <h5 className="text-sm font-bold text-[#042648]">Live Fill Timeline</h5>
+        <p className="mt-1 text-xs text-[#042648]/58">
+          Turn-by-turn capture into profile/memory and retrieval from memory/knowledge.
+        </p>
+        <div className="mt-2 grid gap-2 sm:grid-cols-4">
+          <QaMiniMetric label="Profile" value={profileUpdates} />
+          <QaMiniMetric label="Captured M" value={capturedMemories} />
+          <QaMiniMetric label="Retrieved M" value={retrievedMemories} />
+          <QaMiniMetric label="Chunks" value={knowledgeChunks} />
+        </div>
+      </div>
+      <div className="space-y-3 p-3">
+        {conversation.turns.map((turn, index) => (
+          <LiveFillTurn key={`${conversation.id}-live-${index}`} turn={turn} index={index} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function LiveFillTurn({ turn, index }: { turn: PublishedQaTurn; index: number }) {
+  const knowledge = getPublishedKnowledge(turn);
+  const memoryRetrieval = getPublishedMemoryRetrieval(turn);
+  const memoryCapture = getPublishedMemoryCapture(turn);
+  const profileCapture = getPublishedProfileCapture(turn);
+  const profileUpdates = getProfileUpdateEntries(turn);
+  const routedDomains = Array.isArray(turn.routed_domains) ? turn.routed_domains : [];
+
+  return (
+    <article className="rounded border border-[#042648]/10 bg-[#FFFDF8]">
+      <div className="border-b border-[#042648]/10 px-3 py-2">
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">
+              Turn {index + 1}
+            </div>
+            <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-[#042648]/82">{turn.prompt}</p>
+          </div>
+          <div className="flex flex-wrap justify-end gap-1">
+            <LiveFillPill label={`P ${profileUpdates.length}`} tone={profileUpdates.length > 0 ? 'good' : 'neutral'} />
+            <LiveFillPill label={`M+ ${memoryCapture.count}`} tone={memoryCapture.count > 0 ? 'good' : 'neutral'} />
+            <LiveFillPill label={`M ${memoryRetrieval.count}`} tone={memoryRetrieval.count > 0 ? 'good' : 'neutral'} />
+            <LiveFillPill label={`K ${knowledge.count}`} tone={knowledge.count > 0 ? 'good' : 'bad'} />
+          </div>
+        </div>
+        <div className="mt-2 flex flex-wrap gap-1 text-[11px] font-semibold text-[#042648]/52">
+          <span>Intent: {turn.intent || 'none'}</span>
+          <span>/</span>
+          <span>Domains: {routedDomains.join(', ') || 'none'}</span>
+        </div>
+      </div>
+
+      <div className="space-y-3 p-3">
+        <ProfileUpdateList updates={profileUpdates} error={profileCapture.error || null} />
+
+        <LiveFillCollection
+          title="Memory Capture"
+          empty="No memory candidates were written on this turn."
+          items={memoryCapture.candidates.map((candidate) => ({
+            id: candidate.id,
+            title: formatType(candidate.type),
+            meta: `${candidate.status} / ${Math.round(candidate.confidence * 100)}%`,
+            body: candidate.summary,
+          }))}
+        />
+
+        <LiveFillCollection
+          title="Memory Retrieval"
+          empty="No prior memories were retrieved on this turn."
+          items={memoryRetrieval.memories.map((memory) => ({
+            id: memory.id,
+            title: formatType(memory.type),
+            meta: `${memory.status} / ${Math.round(memory.confidence * 100)}%`,
+            body: memory.summary,
+          }))}
+        />
+
+        <LiveFillCollection
+          title="Knowledge Chunks"
+          empty="No knowledge chunks were used on this turn."
+          items={knowledge.chunks.map((chunk) => ({
+            id: chunk.id,
+            title: chunk.title,
+            meta: `${formatKnowledgeGroup(chunk.domain)} / ${chunk.section} / score ${chunk.score}`,
+            body: chunk.preview,
+          }))}
+        />
+      </div>
+    </article>
+  );
+}
+
+function LiveFillPill({ label, tone }: { label: string; tone: 'good' | 'bad' | 'neutral' }) {
+  const classes =
+    tone === 'good'
+      ? 'bg-[#EAF7EF] text-[#165A38]'
+      : tone === 'bad'
+        ? 'bg-[#FFF0F0] text-[#7A1F1F]'
+        : 'bg-white text-[#042648]/55';
+  return <span className={`rounded px-2 py-1 text-[10px] font-bold ${classes}`}>{label}</span>;
+}
+
+function ProfileUpdateList({ updates, error }: { updates: Array<[string, unknown]>; error: string | null }) {
+  return (
+    <div className="rounded bg-[#F8FAF7] px-3 py-2">
+      <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">Profile Capture</div>
+      {error && <p className="mt-1 text-xs leading-5 text-[#7A1F1F]">{error}</p>}
+      <div className="mt-2 grid gap-2 md:grid-cols-2">
+        {updates.map(([key, value]) => (
+          <div key={key} className="rounded bg-white px-2 py-2 text-xs">
+            <div className="font-bold text-[#042648]">{formatType(key)}</div>
+            <div className="mt-1 break-words leading-5 text-[#042648]/70">{formatPublishedValue(value)}</div>
+          </div>
+        ))}
+        {updates.length === 0 && !error && (
+          <p className="text-xs text-[#042648]/55">No stable profile field changed on this turn.</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function LiveFillCollection({
+  title,
+  empty,
+  items,
+}: {
+  title: string;
+  empty: string;
+  items: Array<{ id: string; title: string; meta: string; body: string }>;
+}) {
+  return (
+    <div className="rounded bg-[#F8FAF7] px-3 py-2">
+      <div className="flex items-center justify-between gap-2">
+        <div className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#042648]/45">{title}</div>
+        <span className="rounded bg-white px-2 py-0.5 text-[10px] font-bold text-[#042648]/50">
+          {items.length}
+        </span>
+      </div>
+      <div className="mt-2 grid gap-2">
+        {items.map((item, itemIndex) => (
+          <div key={`${item.id}-${itemIndex}`} className="rounded bg-white px-2 py-2 text-xs text-[#042648]/70">
+            <div className="font-bold text-[#042648]">{item.title}</div>
+            <div className="mt-1 text-[11px] font-semibold text-[#042648]/50">{item.meta}</div>
+            <p className="mt-1 leading-5">{item.body}</p>
+          </div>
+        ))}
+        {items.length === 0 && <p className="text-xs text-[#042648]/55">{empty}</p>}
+      </div>
+    </div>
   );
 }
 
@@ -1508,6 +1919,10 @@ function getPublishedMemories(conversation: PublishedQaConversation): UserMemory
   return conversation.finalMemories || conversation.storedMemories || [];
 }
 
+function getAttachmentQaDisplayName(conversation: PublishedQaConversation): string {
+  return conversation.storedProfile?.nombre || conversation.title.replace(/^\d+\.\s*/, '').split(',')[0];
+}
+
 function getPublishedProfileValue(conversation: PublishedQaConversation, key: keyof UserProfile): string {
   const value = conversation.storedProfile?.[key];
   if (value === null || value === undefined || value === '') return 'none';
@@ -1524,6 +1939,27 @@ function getPublishedMemoryRetrieval(turn: PublishedQaTurn): NonNullable<Publish
 
 function getPublishedMemoryCapture(turn: PublishedQaTurn): NonNullable<PublishedQaTurn['memory_capture']> {
   return turn.memory_capture || { count: 0, detail: '', candidates: [] };
+}
+
+function getPublishedProfileCapture(turn: PublishedQaTurn): NonNullable<PublishedQaTurn['profile_capture']> {
+  return turn.profile_capture || { updates: {}, error: null };
+}
+
+function getProfileUpdateEntries(turn: PublishedQaTurn): Array<[string, unknown]> {
+  const updates = getPublishedProfileCapture(turn).updates || {};
+  return Object.entries(updates).filter(([, value]) => value !== undefined);
+}
+
+function formatPublishedValue(value: unknown): string {
+  if (value === null || value === undefined || value === '') return 'empty';
+  if (typeof value === 'boolean') return value ? 'true' : 'false';
+  if (typeof value === 'number') return String(value);
+  if (typeof value === 'string') return value;
+  try {
+    return JSON.stringify(value);
+  } catch {
+    return String(value);
+  }
 }
 
 function PublishedConversationDetails({
@@ -2516,6 +2952,9 @@ function buildProfileRows(profile: UserProfile): [string, string][] {
   addRow(rows, 'Ex context', profile.ex_pareja_contexto);
   addRow(rows, 'Family structure', profile.estructura_familiar_relevante);
   addRow(rows, 'Orientation', profile.orientacion);
+  addRow(rows, 'Attachment style', profile.attachment_style);
+  addRow(rows, 'Partner attachment style', profile.partner_attachment_style);
+  addRow(rows, 'Relationship status', profile.relationship_status);
   addRow(rows, 'Language', profile.preferred_language);
   addRow(rows, 'Premium', formatBoolean(profile.is_premium));
   addRow(rows, 'Email verified', formatBoolean(profile.email_verified));
