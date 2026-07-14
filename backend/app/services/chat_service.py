@@ -10,6 +10,7 @@ from app.models.conversation import Conversation
 from app.models.test_state import TestState
 from app.models.user import User, UserProfile
 from app.models.user_memory import UserMemory
+from app.models.coaching_plan import CoachingPlan
 from app.schemas.message import ChatRequest, ChatResponse
 from app.services.ai.factory import get_ai_provider
 from app.services.ai.prompts import get_eldric_prompt
@@ -18,6 +19,7 @@ from app.services.brain.debug_trace import build_conversation_debug, build_state
 from app.services.brain.memory_capture import capture_candidate_memories
 from app.services.brain.profile_capture import capture_profile_fields
 from app.services.brain.prompt_composer import compose_brain_prompt
+from app.services.brain.coaching_planner import compose_session_prompt, update_coaching_plan
 from app.services import state_machine as sm
 from app.services import test_service
 from app.data.test_questions import get_style_description, get_relationship_description
@@ -46,6 +48,7 @@ async def handle_reset(
 
     await db.execute(delete(UserMemory).where(UserMemory.user_id == user_id))
     await db.execute(delete(Conversation).where(Conversation.user_id == user_id))
+    await db.execute(delete(CoachingPlan).where(CoachingPlan.user_id == user_id))
     await db.execute(delete(TestState).where(TestState.user_id == user_id))
     if user:
         await db.execute(delete(UserProfile).where(UserProfile.user_id == user_id))
@@ -376,61 +379,44 @@ async def _handle_conversation(
     brain_query = _build_retrieval_query(history, message)
     brain_context = await build_brain_context(db, user_id, brain_query, language)
 
+    profile_context = _build_profile_context(profile)
+    ai = get_ai_provider()
+    coaching_plan = None
+    planner_error = None
+    try:
+        coaching_plan = await update_coaching_plan(
+            db=db,
+            user_id=user_id,
+            message=message,
+            history=history,
+            profile_context=profile_context,
+            brain_context=brain_context,
+            ai=ai,
+        )
+    except Exception as exc:
+        await db.rollback()
+        planner_error = f"{type(exc).__name__}: {str(exc)[:300]}"
+
+    knowledge_query = _active_knowledge_query(coaching_plan)
+    if knowledge_query:
+        brain_context = await build_brain_context(
+            db,
+            user_id,
+            f"{brain_query}\n{knowledge_query}",
+            language,
+        )
+
     # Build system prompt
     base_prompt = get_eldric_prompt(language)
 
     # Add user context to prompt
-    if profile:
-        context_parts = []
-        if profile.nombre:
-            context_parts.append(f"El usuario se llama {profile.nombre}.")
-        if profile.edad:
-            context_parts.append(f"Edad del usuario: {profile.edad}.")
-        if profile.genero:
-            context_parts.append(f"Genero del usuario: {profile.genero}.")
-        if profile.attachment_style:
-            context_parts.append(f"Su estilo de apego es: {profile.attachment_style}.")
-        if profile.tiene_pareja is not None:
-            context_parts.append(f"Tiene pareja: {'si' if profile.tiene_pareja else 'no'}.")
-        if profile.nombre_pareja:
-            context_parts.append(f"Su pareja se llama {profile.nombre_pareja}.")
-        if profile.edad_pareja:
-            context_parts.append(f"Edad de su pareja: {profile.edad_pareja}.")
-        if profile.genero_pareja:
-            context_parts.append(f"Genero de su pareja: {profile.genero_pareja}.")
-        if profile.tiempo_pareja:
-            context_parts.append(f"Tiempo de relacion: {profile.tiempo_pareja}.")
-        if profile.orientacion:
-            context_parts.append(f"Orientacion del usuario: {profile.orientacion}.")
-        if profile.tipo_relacion:
-            context_parts.append(f"Tipo de relacion: {profile.tipo_relacion}.")
-        if profile.convive_con_pareja is not None:
-            context_parts.append(f"Convive con su pareja: {'si' if profile.convive_con_pareja else 'no'}.")
-        if profile.tiene_hijos is not None:
-            context_parts.append(f"Tiene hijos: {'si' if profile.tiene_hijos else 'no'}.")
-        if profile.hijos_detalle:
-            context_parts.append(f"Detalle de hijos/familia nuclear: {profile.hijos_detalle}.")
-        if profile.trabajo_profesion:
-            context_parts.append(f"Trabajo/profesion declarada: {profile.trabajo_profesion}.")
-        if profile.convivencia:
-            context_parts.append(f"Convivencia declarada: {profile.convivencia}.")
-        if profile.ex_pareja_relevante is not None:
-            context_parts.append(f"Ex pareja relevante: {'si' if profile.ex_pareja_relevante else 'no'}.")
-        if profile.ex_pareja_contexto:
-            context_parts.append(f"Contexto factual de ex pareja: {profile.ex_pareja_contexto}.")
-        if profile.estructura_familiar_relevante:
-            context_parts.append(f"Estructura familiar relevante declarada: {profile.estructura_familiar_relevante}.")
-        if profile.partner_attachment_style:
-            context_parts.append(f"El estilo de apego de su pareja es: {profile.partner_attachment_style}.")
-        if profile.relationship_status and profile.relationship_status != "unknown":
-            context_parts.append(f"Dinamica de relacion: {profile.relationship_status}.")
-        if context_parts:
-            base_prompt += "\n\nCONTEXTO DEL USUARIO:\n" + "\n".join(context_parts)
+    if profile_context:
+        base_prompt += "\n\nCONTEXTO DEL USUARIO:\n" + "\n".join(profile_context)
 
     system_prompt = compose_brain_prompt(base_prompt, brain_context)
+    system_prompt = compose_session_prompt(system_prompt, coaching_plan)
 
     # Call AI
-    ai = get_ai_provider()
     ai_error = None
     try:
         response_text = await ai.chat(
@@ -468,6 +454,20 @@ async def _handle_conversation(
             response_text=response_text,
             ai_error=ai_error,
         )
+        trace["steps"].append({
+            "stage": "coaching_planner",
+            "title": "Private coaching roadmap updated",
+            "detail": (
+                "The active objective and next coaching move were recalculated from context and retrieved knowledge."
+                if not planner_error
+                else "The planner failed, so Eldric continued with the base coaching rules and retrieved knowledge."
+            ),
+            "payload": {
+                "updated": coaching_plan is not None,
+                "drift": coaching_plan.get("drift") if coaching_plan else None,
+                "error": planner_error,
+            },
+        })
         trace["steps"].append({
             "stage": "profile_capture",
             "title": "Structured profile fields captured",
@@ -620,6 +620,55 @@ def _build_retrieval_query(history: List[Dict[str, str]], message: str) -> str:
 async def _get_profile(db: AsyncSession, user_id: str) -> Optional[UserProfile]:
     result = await db.execute(select(UserProfile).where(UserProfile.user_id == user_id))
     return result.scalar_one_or_none()
+
+
+def _build_profile_context(profile: Optional[UserProfile]) -> List[str]:
+    if not profile:
+        return []
+    fields = [
+        (profile.nombre, "El usuario se llama {}."),
+        (profile.edad, "Edad del usuario: {}."),
+        (profile.genero, "Genero del usuario: {}."),
+        (profile.attachment_style, "Su estilo de apego es: {}."),
+        (profile.nombre_pareja, "Su pareja se llama {}."),
+        (profile.edad_pareja, "Edad de su pareja: {}."),
+        (profile.genero_pareja, "Genero de su pareja: {}."),
+        (profile.tiempo_pareja, "Tiempo de relacion: {}."),
+        (profile.orientacion, "Orientacion del usuario: {}."),
+        (profile.tipo_relacion, "Tipo de relacion: {}."),
+        (profile.hijos_detalle, "Detalle de hijos/familia nuclear: {}."),
+        (profile.trabajo_profesion, "Trabajo/profesion declarada: {}."),
+        (profile.convivencia, "Convivencia declarada: {}."),
+        (profile.ex_pareja_contexto, "Contexto factual de ex pareja: {}."),
+        (profile.estructura_familiar_relevante, "Estructura familiar relevante declarada: {}."),
+        (profile.partner_attachment_style, "El estilo de apego de su pareja es: {}."),
+    ]
+    context = [template.format(value) for value, template in fields if value is not None and value != ""]
+    boolean_fields = [
+        (profile.tiene_pareja, "Tiene pareja"),
+        (profile.convive_con_pareja, "Convive con su pareja"),
+        (profile.tiene_hijos, "Tiene hijos"),
+        (profile.ex_pareja_relevante, "Ex pareja relevante"),
+    ]
+    context.extend(
+        f"{label}: {'si' if value else 'no'}."
+        for value, label in boolean_fields
+        if value is not None
+    )
+    if profile.relationship_status and profile.relationship_status != "unknown":
+        context.append(f"Dinamica de relacion: {profile.relationship_status}.")
+    return context
+
+
+def _active_knowledge_query(plan: Optional[Dict[str, object]]) -> str:
+    if not plan:
+        return ""
+    for objective in plan.get("objetivos", []):
+        if not isinstance(objective, dict) or objective.get("estado") != "activo":
+            continue
+        query = objective.get("knowledge_query")
+        return query.strip() if isinstance(query, str) else ""
+    return ""
 
 
 def _attach_state_debug(

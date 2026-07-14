@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-07-06T08:42:49",
+  "source_root": "/Users/pedro/Desktop/Archivo",
+  "source_file_count": 49,
+  "type_counts": {
+    "docx": 22,
+    "pdf": 27
+  },
+  "total_extracted_words": 486743,
+  "outputs": {
+    "extracted_text_root": "/Users/pedro/AAQ/output/original_sources/extracted_text",
+    "traceability_csv": "/Users/pedro/AAQ/output/traceability/original_source_manual_traceability.csv"
+  }
+}

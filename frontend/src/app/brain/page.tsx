@@ -20,7 +20,7 @@ export default async function BrainPage({ searchParams }: BrainPageProps) {
 
 function parseBrainTab(value: string | string[] | undefined): BrainTab {
   const tab = Array.isArray(value) ? value[0] : value;
-  if (tab === 'data' || tab === 'knowledge' || tab === 'live' || tab === 'tests') {
+  if (tab === 'data' || tab === 'knowledge' || tab === 'live' || tab === 'new-tests') {
     return tab;
   }
   return 'knowledge';

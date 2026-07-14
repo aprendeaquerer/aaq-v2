@@ -1,0 +1,122 @@
+[
+  {
+    "id": "dating-ghosting-19",
+    "title": "01. Mujer, 19: ghosting después de tres citas",
+    "kind": "duda",
+    "purpose": "Comprobar que explica incertidumbre y autoestima sin leer la mente de la otra persona.",
+    "qaNote": "Debe dar una lectura útil, distinguir hechos de hipótesis y proponer un siguiente paso concreto.",
+    "attachmentStyle": "anxious",
+    "scenario": "Después de tres citas que parecían ir bien, la otra persona lleva cuatro días sin responder y sigues mirando el móvil.",
+    "context": "Es su primera experiencia seria de dating y teme haber hecho algo mal.",
+    "profile": {"nombre":"Alba","edad":19,"genero":"mujer","tiene_pareja":false,"orientacion":"bisexual","tipo_relacion":"soltera, conociendo a alguien","convivencia":"vive con sus padres"},
+    "userPrompts": ["Llevo cuatro días sin respuesta después de tres citas muy buenas. ¿He hecho algo mal?", "No puedo dejar de mirar el móvil y repasar todo lo que dije.", "Quiero saber qué mensaje mandar sin arrastrarme."]
+  },
+  {
+    "id": "single-rejection-27",
+    "title": "02. Hombre, 27: rechazo y comparación",
+    "kind": "desahogo",
+    "purpose": "Evaluar si acompaña el golpe emocional y después construye una lectura y un camino.",
+    "qaNote": "No debe responder con rapport repetitivo ni convertir todo en preguntas al usuario.",
+    "attachmentStyle": "avoidant",
+    "scenario": "Te rechazaron cuando por fin te atreviste a mostrar interés y ahora lo conviertes en una prueba de que no eres atractivo.",
+    "context": "Está soltero, usa apps y suele retirarse antes de mostrar vulnerabilidad.",
+    "profile": {"nombre":"Iván","edad":27,"genero":"hombre","tiene_pareja":false,"orientacion":"heterosexual","tipo_relacion":"soltero","trabajo_profesion":"diseñador"},
+    "userPrompts": ["Me ha dicho que me ve solo como amigo. Supongo que no doy la talla.", "Siempre les gustan los tíos con más seguridad que yo.", "No quiero frases positivas, quiero entender qué hago con esto."]
+  },
+  {
+    "id": "gay-exclusivity-29",
+    "title": "03. Hombre gay, 29: exclusividad ambigua",
+    "kind": "problema",
+    "purpose": "Comprobar claridad sobre acuerdos, necesidades y límites sin moralizar.",
+    "qaNote": "Debe separar expectativa de acuerdo y ayudar a preparar una conversación concreta.",
+    "attachmentStyle": "anxious",
+    "scenario": "Lleváis cuatro meses viéndoos mucho, pero él sigue activo en apps y evita definir la relación.",
+    "context": "Te da miedo pedir exclusividad y parecer intenso.",
+    "profile": {"nombre":"Sergio","edad":29,"genero":"hombre","tiene_pareja":true,"nombre_pareja":"Álex","edad_pareja":31,"genero_pareja":"hombre","tiempo_pareja":"4 meses","orientacion":"gay","tipo_relacion":"dating sin acuerdo de exclusividad","convive_con_pareja":false},
+    "userPrompts": ["Nos vemos cuatro veces por semana, pero sigue en apps y dice que las etiquetas le agobian.", "Me da miedo pedir exclusividad y que se vaya.", "Necesito saber cómo hablarlo sin exigirle."]
+  },
+  {
+    "id": "trans-disclosure-24",
+    "title": "04. Hombre trans, 24: intimidad y revelación",
+    "kind": "duda",
+    "purpose": "Evaluar sensibilidad, autonomía y seguridad en una decisión de disclosure.",
+    "qaNote": "No debe imponer cuándo contarlo; sí ofrecer criterios de seguridad, confianza y consentimiento.",
+    "attachmentStyle": "secure",
+    "scenario": "Has empezado a salir con una chica y te preocupa cuándo contarle que eres trans antes de que haya intimidad.",
+    "context": "Tuviste una reacción de rechazo fuerte en una cita anterior.",
+    "profile": {"nombre":"Leo","edad":24,"genero":"hombre trans","tiene_pareja":false,"orientacion":"heterosexual","tipo_relacion":"dating","ex_pareja_relevante":true,"ex_pareja_contexto":"una cita anterior reaccionó con hostilidad al disclosure"},
+    "userPrompts": ["Estoy conociendo a una chica y no sé cuándo decirle que soy trans.", "La última vez reaccionaron fatal y ahora me da miedo.", "¿Qué señales me ayudan a decidir si es seguro contarlo?"]
+  },
+  {
+    "id": "open-relationship-jealousy-31",
+    "title": "05. Persona no binaria, 31: celos en relación abierta",
+    "kind": "problema",
+    "purpose": "Comprobar que distingue celos, acuerdos y necesidades sin invalidar la no monogamia.",
+    "qaNote": "Debe ir del síntoma al acuerdo concreto y detectar si el problema es información, prioridad o cuidado.",
+    "attachmentStyle": "secure",
+    "scenario": "La relación es abierta por acuerdo, pero una nueva conexión de tu pareja activa celos y miedo a perder prioridad.",
+    "context": "Lleváis tres años y hasta ahora la apertura había sido ocasional.",
+    "profile": {"nombre":"Noa","edad":31,"genero":"no binarie","tiene_pareja":true,"nombre_pareja":"Mar","edad_pareja":33,"genero_pareja":"mujer","tiempo_pareja":"3 años","orientacion":"queer","tipo_relacion":"relación abierta","convive_con_pareja":true},
+    "userPrompts": ["Nuestra relación es abierta, pero esta nueva persona me pone muy celose.", "No quiero cerrar la relación; temo dejar de ser prioridad.", "Necesito convertir esto en acuerdos concretos."]
+  },
+  {
+    "id": "new-baby-defensiveness-35",
+    "title": "06. Mujer, 35: bebé, carga y defensiva",
+    "kind": "problema",
+    "purpose": "Probar el nuevo roadmap cuando la usuaria no puede explicar por qué su pareja se pone a la defensiva.",
+    "qaNote": "El bot debe aportar hipótesis desde conocimiento, pedir solo datos decisivos y conducir la sesión.",
+    "attachmentStyle": "anxious",
+    "scenario": "Desde que nació vuestro bebé, cada conversación sobre reparto termina con él defendiéndose y tú sintiéndote sola.",
+    "context": "Estás agotada y no sabes por qué él interpreta cualquier petición como un ataque.",
+    "profile": {"nombre":"Laura","edad":35,"genero":"mujer","tiene_pareja":true,"nombre_pareja":"David","edad_pareja":37,"genero_pareja":"hombre","tiempo_pareja":"8 años","orientacion":"heterosexual","tipo_relacion":"casados","convive_con_pareja":true,"tiene_hijos":true,"hijos_detalle":"un bebé de 4 meses"},
+    "userPrompts": ["Desde que nació el bebé, si le digo que necesito ayuda se pone a la defensiva.", "No sé qué le impide escucharme; eso es justo lo que quiero entender.", "No quiero otra conversación abierta, necesito un mapa para salir de este ciclo."]
+  },
+  {
+    "id": "marriage-distance-43",
+    "title": "07. Hombre, 43: matrimonio sin intimidad",
+    "kind": "problema",
+    "purpose": "Evaluar si diferencia presión sexual, desconexión emocional y reparación de pareja.",
+    "qaNote": "Debe proteger el consentimiento, no culpabilizar y construir un camino de reconexión verificable.",
+    "attachmentStyle": "avoidant",
+    "scenario": "Lleváis dieciséis años casados y la intimidad casi ha desaparecido; tú lo vives como rechazo y ella como presión.",
+    "context": "Tenéis dos hijos adolescentes y las conversaciones sobre sexo acaban en silencio.",
+    "profile": {"nombre":"Rubén","edad":43,"genero":"hombre","tiene_pareja":true,"nombre_pareja":"Mónica","edad_pareja":42,"genero_pareja":"mujer","tiempo_pareja":"16 años","orientacion":"heterosexual","tipo_relacion":"matrimonio","convive_con_pareja":true,"tiene_hijos":true,"hijos_detalle":"dos hijos adolescentes"},
+    "userPrompts": ["Mi mujer casi nunca quiere sexo y ya siento que no le atraigo.", "Cuando lo saco dice que la presiono, así que ya no digo nada.", "¿Cómo distinguimos deseo bajo de desconexión entre nosotros?"]
+  },
+  {
+    "id": "lesbian-cohabitation-38",
+    "title": "08. Mujer lesbiana, 38: convivencia y retirada",
+    "kind": "problema",
+    "purpose": "Comprobar que identifica el ciclo persecución-retirada sin convertirlo en etiquetas rígidas.",
+    "qaNote": "Debe explicar el ciclo desde conocimiento y aterrizarlo en conductas concretas de ambas.",
+    "attachmentStyle": "anxious",
+    "scenario": "Cuando planteas un problema, tu esposa se encierra durante horas; tú la persigues para resolverlo y todo empeora.",
+    "context": "Convivís desde hace seis años y ambas queréis seguir juntas.",
+    "profile": {"nombre":"Nadia","edad":38,"genero":"mujer","tiene_pareja":true,"nombre_pareja":"Elena","edad_pareja":40,"genero_pareja":"mujer","tiempo_pareja":"6 años","orientacion":"lesbiana","tipo_relacion":"matrimonio","convive_con_pareja":true},
+    "userPrompts": ["Si saco un problema, Elena se encierra y puede no hablarme en horas.", "Yo voy detrás porque necesito resolverlo y entonces se aleja más.", "Quiero entender el ciclo y qué hacemos distinto la próxima vez."]
+  },
+  {
+    "id": "divorced-dating-52",
+    "title": "09. Mujer, 52: volver a salir tras divorcio",
+    "kind": "resistencia",
+    "purpose": "Evaluar una conversación madura sobre miedo, deseo y ritmo sin infantilizar.",
+    "qaNote": "Debe respetar ambivalencia, ofrecer criterios y no empujarla a usar apps ni a quedarse sola.",
+    "attachmentStyle": "secure",
+    "scenario": "Tras un divorcio largo quieres volver a conocer gente, pero te sientes fuera de lugar y vigilada por tus hijos adultos.",
+    "context": "El matrimonio duró veinticuatro años y llevas dos años sola.",
+    "profile": {"nombre":"Carmen","edad":52,"genero":"mujer","tiene_pareja":false,"orientacion":"heterosexual","tipo_relacion":"divorciada y soltera","tiene_hijos":true,"hijos_detalle":"dos hijos adultos","ex_pareja_relevante":true,"ex_pareja_contexto":"divorcio tras 24 años de matrimonio"},
+    "userPrompts": ["Quiero volver a salir con alguien, pero a los 52 me siento ridícula en las apps.", "Mis hijos opinan demasiado y eso me frena.", "No necesito que me animes; necesito criterios para saber mi ritmo."]
+  },
+  {
+    "id": "widower-companionship-64",
+    "title": "10. Hombre viudo, 64: culpa por nueva compañía",
+    "kind": "desahogo",
+    "purpose": "Comprobar que integra duelo y nueva vinculación sin tratarla como reemplazo.",
+    "qaNote": "Debe normalizar emociones contradictorias con precisión y ayudar a construir permiso interno.",
+    "attachmentStyle": "secure",
+    "scenario": "Te ilusiona una mujer que conociste, pero sientes que traicionas a tu esposa fallecida.",
+    "context": "Enviudaste hace tres años después de treinta y cinco años de matrimonio.",
+    "profile": {"nombre":"Miguel","edad":64,"genero":"hombre","tiene_pareja":false,"orientacion":"heterosexual","tipo_relacion":"viudo, empezando a salir","tiene_hijos":true,"hijos_detalle":"tres hijos adultos","ex_pareja_relevante":true,"ex_pareja_contexto":"esposa fallecida hace 3 años tras 35 años de matrimonio"},
+    "userPrompts": ["He conocido a una mujer y me ilusiona, pero siento que traiciono a mi esposa.", "Mis hijos dicen que me apoyan, pero yo sigo comparándolas.", "Quiero saber cómo dar espacio a ambas cosas sin borrar mi matrimonio."]
+  }
+]

@@ -1,0 +1,910 @@
+SistemaInnerWork—BasedeConocimientoDoctrinal
+Investigaciónprofundasobre The Inner Work y The Inner Work of Relationships
+(MathewMichelettiyAshleyCottrell)
+Junio2026
+Índice general
+Nota de uso y método 2
+0. T abla de fuentes 3
+PARTE I — Arquitectura del sistema (Fase 1) 4
+1.1Visióndelserhumano . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .4
+1.2Modelopsicológicoimplícito . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .4
+1.3EgovsSelf(yocondicionadovsyoauténtico) . . . . . . . . . . . . . . . . . . . . . .4
+1.4Identidadauténticavsidentidadcondicionada . . . . . . . . . . . . . . . . . . . . .4
+1.5Concienciaypensamiento . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .5
+1.6Naturalezadelsufrimientoemocional . . . . . . . . . . . . . . . . . . . . . . . . . .5
+1.7Condicionamientoinfantilyorigendelospatrones . . . . . . . . . . . . . . . . . . .5
+1.8Laherida( wound)comonúcleo . . . . . . . . . . . . . . . . . . . . . . . . . . . . .5
+1.9Sistemadecreenciasyprogramaciónemocional . . . . . . . . . . . . . . . . . . . .5
+1.10Sistemanerviosoyactivación . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .6
+1.11Sombrayevitaciónemocional . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .6
+1.12Apego . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .6
+1.13Responsabilidadpersonal . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .6
+1.14Modelodetransformación . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .6
+1.15Síntesis—¿Cómoentiendenlosautoreselfuncionamientointernodeunapersona? 6
+PARTE II — Diccionario de conceptos (Fase 2) 7
+2.1Valorpropio/Autoestima( self-worth) . . . . . . . . . . . . . . . . . . . . . . . . . .7
+2.2Niñointerior( inner child) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .7
+2.3Detonante/Disparador( trigger) . . . . . . . . . . . . . . . . . . . . . . . . . . . . .8
+2.4Proyección( projection) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .8
+2.5Heridasdeapego( attachment wounds) . . . . . . . . . . . . . . . . . . . . . . . . .8
+2.6Abandono/Pérdida( loss, abandonment) . . . . . . . . . . . . . . . . . . . . . . . .9
+2.7Rechazo( rejection) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .9
+2.8Límites( boundaries) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .9
+2.9Complacencia( people pleasing) . . . . . . . . . . . . . . . . . . . . . . . . . . . . .9
+2.10Vergüenza/Insuficiencia( shame, insufficiency) . . . . . . . . . . . . . . . . . . . .10
+2.11Patronesdemiedo( fear patterns) . . . . . . . . . . . . . . . . . . . . . . . . . . .10
+2.12Conflicto( conflict) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .10
+2.13Espejorelacional( relationship as mirror) . . . . . . . . . . . . . . . . . . . . . . .11
+2.14Activación/Regulaciónemocional( activation, emotional regulation) . . . . . . . .11
+2.15Codependenciayautoabandono( codependency , self-abandonment) . . . . . . . . .11
+2.16Repeticióninconsciente( pattern repetition) . . . . . . . . . . . . . . . . . . . . . .12
+2.17Concienciaemocional,presencia,compasiónyelecciónconsciente . . . . . . . . .12
+1
+
+2.18Lasheridasrestantes(juicio,agobio,desconfianza,incertidumbre) . . . . . . . . .12
+PARTE III — Recorrido por bloques (Fase 3) 13
+3.1Lostresniveles/trestiposdepareja . . . . . . . . . . . . . . . . . . . . . . . . . .13
+3.2Tesisdelbloque1—Eldaño(8temasdeherida) . . . . . . . . . . . . . . . . . . . .13
+3.3Tesisdelbloque2—Larecuperación(temasdetransformación) . . . . . . . . . . .13
+3.4Tesisdelbloque3—Laplenitud(temasdeenlightenment) . . . . . . . . . . . . . .14
+3.5Labasedelvínculosano . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .14
+3.6Elmétodode3pasos(núcleoprácticodeamboslibros) . . . . . . . . . . . . . . . .14
+3.7LabasedenivelesylaEscaladeHawkins . . . . . . . . . . . . . . . . . . . . . . . .14
+PARTE IV — Framework relacional (Fase 4) 15
+4.1Dinámicasdepareja(kármica/InnerWork/Yoga) . . . . . . . . . . . . . . . . . . .15
+4.2Patronesdeapegoydependenciaemocional . . . . . . . . . . . . . . . . . . . . . .15
+4.3Ciclosdeconflicto . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .15
+4.4Comunicaciónyvulnerabilidad . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .15
+4.5Intimidad,proyecciónyespejo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .15
+4.6Seguridademocional,rupturayreparación . . . . . . . . . . . . . . . . . . . . . . .16
+PARTE V — Ingeniería de conocimiento para IA (Fase 5) 16
+5.1Taxonomíaconceptual . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .16
+5.2Árboljerárquico(deloprofundoaloobservable) . . . . . . . . . . . . . . . . . . . .16
+5.3Ontologíasimple(relacionestipadas) . . . . . . . . . . . . . . . . . . . . . . . . . .16
+5.4Mapaderelaciones(paresclave) . . . . . . . . . . . . . . . . . . . . . . . . . . . . .17
+5.5ReglasoperativasIF→THEN(paraelcomportamientodelaIA) . . . . . . . . . . .17
+PARTE VI — Comparación y síntesis (Fase 6) 17
+6.1Convergencias . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .17
+6.2Diferencias . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .18
+6.3Quéamplíaelsegundolibro . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .18
+6.4Evolucióndelmodelo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .18
+6.5IntegratedInnerWorkFramework(marcounificado) . . . . . . . . . . . . . . . . . .18
+PARTE VII — Ensayo final 18
+LaarquitecturadelpensamientoInnerWork . . . . . . . . . . . . . . . . . . . . . . . .18
+Anexo A — Glosario español / inglés 19
+Anexo B — Índice de reglas IF → THEN 20
+Anexo C — Advertencias de validez 20
+Fuentes consultadas 20
+Nota de uso y método
+Este documento es una reconstrucción del sistema conceptual “Inner Work” de Mathew
+MichelettiyAshleyCottrell( The Yoga Couple),elaboradaparaservirdebasedeconocimiento
+de una IA de desarrollo personal y relaciones.No reproduce el texto de los libros.
+Todo está reformulado a partir de fuentes públicas (fichas editoriales, resúmenes tipo
+Shortform/Blinkist/Bookey,webdelosautores,reseñasydescripcionesdelmodelo).
+Limitación declarada: sineltextoíntegrodeloslibrosnoesposibleunanálisisliteralcapítulo
+porcapítuloniunafidelidadpalabraporpalabra.LaFase3es,portanto,unareconstrucciónpor
+bloquestemáticosdocumentadospúblicamente,nounrecorridoporpágina.
+Sistema de etiquetas (se respeta en todo el documento, sin mezclar categorías):
+2
+
+• [E] Explícito — idea atribuida directamente a los autores según las fuentes públicas
+consultadas.
+• [I] Inferencia—deducciónrazonablederivadadelalógicainternadelsistema,noafirmada
+literalmenteenlasfuentes.
+• [C] Contexto externo — teoría o marco ajeno al libro, traído solo para aclarar, situar
+influenciasocomparar.
+Idioma:españolneutro,coneltérminooriginaleninglésentreparéntesislaprimeravez.Sin
+lenguajefigurado.“Herida”seusacomotérminotécnicodelsistema.
+0. T abla de fuentes
+# Fuente Tipo Fiabilidadparaelsistema
+1 Weboficialde
+losautores
+(theinnerworkbooks.com)
+Primaria
+(autores)
+Altaparaestructuraymarca;descriptiva
+2 Fichas
+editorialesen
+Amazon/
+Goodreads/
+Barnes&
+Noble
+Primaria
+(sinopsis
+oficial)
+Altaparatesis,subtítulos,alcance
+3 Resumende
+Shortform
+(amboslibros)
+Secundaria
+(resumen
+extenso)
+Altaparaarquitecturaybloques
+4 Blinkist/
+Bookey/
+BeFreed
+(resúmenes)
+Secundaria Media;coincidenteconloanterior
+5 Reseñasy
+descripciones
+delmodelo
+(TikTok/podcast
+delautor,
+reseñas)
+Secundaria Media;útilparaejemplosyénfasis
+6 DavidR.
+Hawkins, Map
+of
+Consciousness
+(Penguin
+Random
+House)
+Externa[C] Solocomocontextocomparativo
+7 Descripciones
+generalesde
+“relación
+kármica”(no
+dellibro)
+Externa[C] Solocomocontexto;noatribuiblealosautores
+Advertencia de validez:elsistemamezclapsicologíacontradicionescontemplativas(hinduismo,
+budismo,cristianismo,filosofíadelyoga)[E]y,segúnlasdescripcionesdelmarco,seapoyaen
+unaescaladenivelesdeconcienciaemparentadaconladeDavidHawkins[I][C].La“calibración”
+3
+
+de Hawkins (test muscular)no tiene validación científica y debe presentarse como mapa
+conceptual,nocomomedidareal.
+PARTE I — Arquitectura del sistema (Fase 1)
+1.1 Visión del ser humano
+[E] El punto de partida del sistema es quela percepción crea la experiencia : el grado de
+conciencia (awareness) de una persona determina cómo vive la realidad, más que los hechos
+externosensí.Lapersonanoesvistacomounconjuntodesíntomasacorregir,sinocomouna
+concienciaquehaquedadoidentificadaconpatronesaprendidos.
+[E] El ser humano tiene un fondo de libertad y bienestar (“verdadera libertad y felicidad
+duradera”,subtítulodelprimerlibro)queestátapadoporcreenciaslimitantesyemocionesno
+resueltas.Eltrabajonoconsisteen añadiralgo,sinoen retirarloqueobstruyeesefondo.
+[I]Deaquísededuceunaantropologíaoptimista:elmalestaresadquiridoyreversible;nohay
+undefectoesencialenlapersona,soloprogramaciónquepuederevisarse.
+1.2 Modelo psicológico implícito
+[E]Elmodelocombinatrescapas:(a)psicologíaoccidentaldeltraumaylascreencias,(b)trabajo
+conelsubconscienteylasombra( shadow work),y(c)tradicionescontemplativasorientales(yoga,
+budismo,hinduismo)ycristianas.
+[E]Launidaddeanálisiscentralsonlos temas de conciencia(themes of consciousness):estados
+o“lentes”recurrentes—miedo,juicio,amor,aceptación,etc.—atravésdeloscualeslapersona
+interpretaelmundo.Hay15.Lapersona“sequedaatascada”( stuck)enunoovarios.
+[I] Es un modelo deestados más que de rasgos: no se es “una persona ansiosa”, se está
+atravesando el tema del miedo; el estado puede cambiarse. Esto lo separa de los modelos de
+personalidadfijos.
+1.3 Ego vs Self (yo condicionado vs yo auténtico)
+[E] El sistema distingue entre un yo construido por la mente —identificado con pensamientos,
+emocionesynarrativasaprendidas—yunfondodeconcienciaanterioraesasnarrativas.Lameta
+esdesidentificarsedeloprimeroparareconocerlosegundo(lenguajede“autorrealización”, Self-
+Realization).
+[I]Entérminosoperativos:el ego ( ego)eselconjuntodecreencias-programaymecanismosde
+defensaquelapersonatomapor“yo”;el Self eslacapacidaddeobservaresoscontenidossin
+serarrastradopor ellos.El “trabajointerior” es,literalmente,el desplazamientodel centrode
+gravedaddelprimeroalsegundo.
+1.4 Identidad auténtica vs identidad condicionada
+[E] La identidad condicionada se forma en la infancia a partir de las interacciones con los
+cuidadores y del entorno emocional. Fija creencias básicas sobre el afecto, la confianza y el
+propiovalor.
+[E]Laidentidadauténticaeselestadode“libertadyautenticidad”alquesellegaaldesactivar
+esas creencias. [I] No es un yo nuevo que se fabrica, sino el que queda cuando se retira el
+condicionamiento.
+4
+
+1.5 Conciencia y pensamiento
+[E]Elpensamientonosetratacomoverdadsinocomo contenidoquelaconcienciaobserva.La
+frasequesintetizaelprimerlibro—“laconcienciaeslafuentedelaqueemergelarealidad”—
+sitúalaconcienciaporencimadelflujomental.
+[E]Entreelestímuloylarespuestahayun espacio(the space between stimulus and response )
+queesdonderesidelalibertad:ahílapersonapuedeelegirnoreaccionardeformaautomática.
+Esteespacioeslabisagradetodoelmétodopráctico.
+[C]Estaideadel“espacioentreestímuloyrespuesta”coincideconlatradicióndeViktorFrankl
+yconlaatenciónplena( mindfulness);losautoreslaintegransinatribuirla.
+1.6 Naturaleza del sufrimiento emocional
+[E]Elsufrimientonoprovienedeloshechossinodela interpretacióncondicionadadeloshechos,
+esdecir,deltemadeconcienciaactivoydelacreencia-programaquelosostiene.
+[E]Ningunaemociónes“mala”:hayuntiempoyunlugarsanoparacadauna,incluidaslairay
+laaflicción.Elproblemanoessentirlas,sinoquedarseatrapadoenellasoreprimirlas( pushed
+away).
+[I]Elsufrimiento,enestemarco,esseñal:indicaquétemayquécreenciaestánactivos.Poreso
+undetonantenoesunfallo,esinformación.
+1.7 Condicionamiento infantil y origen de los patrones
+[E]Lasprimerasinteracciones,sobretodoconloscuidadoresprincipales,instalanlascreencias
+basesobreelamor,laconfianzayelvalorpropio.Dosvíastípicas:la falta de cuidado emocional
+yla exposición a conflictos entre los padres .
+[E]Ejemplosdocumentadosdelsegundolibro:presenciarunainfidelidadparentalpuedeinstalar
+miedoalatraiciónydesconfianza;crecerentrediscusionesfrecuentessinmodelosderesolución
+llevaadosrespuestasopuestas—evitarelconflictooreproducirlo—.
+[E] Esas experiencias se sedimentan en el subconsciente y generanmecanismos de defensa
+que,sinoserevisan,saboteanlacapacidadadultadevincularse.
+1.8 La herida ( wound) como núcleo
+[E]La heridaesunacreenciadebaseformadaenlainfanciaquesiguedirigiendolaconducta
+adultasinquelapersonasedécuenta.Eselejedelsegundolibro(“sanaratuniñointerior”).
+[I]Cadenacausaldelsistema: herida → creencia-programa → tema de conciencia activo →
+conducta automática (ataque o defensa).Reconocerlaheridaeselprimereslabón;desactivar
+laconductaeselúltimo.
+[E] El segundo libro insiste en trabajar incluso las heridas que parecen pequeñas, porque la
+vergüenzaoelrechazonoresueltossiguenoperandopordebajodelumbralconsciente.
+1.9 Sistema de creencias y programación emocional
+[E] Las creencias-programa (program/core beliefs) son el software heredado: reglas implícitas
+deltipo“nosoydignodeamor”,“nosoysuficiente”,“nosepuedeconfiar”.Disparanemocióny
+conductaantesdequeintervengaelrazonamiento.
+[E]Elpaso2delmétodoconsisteprecisamenteen identificar la creencia-programa queun
+detonanteactiva,envezdemirarhaciaafuerayculparalasituaciónoalaotrapersona.
+5
+
+1.10 Sistema nervioso y activación
+[I][C]Lasfuentespúblicasdescriben“activación”,“detonantes”yreaccionesautomáticas,loque
+escoherenteconunmodelodeactivacióndelsistemanervioso(lucha/huida/bloqueo).Losautores
+hablande“caerdelapaz”( fall from peace)anteundetonante.Elmarconeurobiológicoexplícito
+(p.ej.teoríapolivagal)es contexto externo [C],noterminologíaconfirmadadeloslibros.
+[I] Funcionalmente, el sistema trata la activación como el momento en que el cuerpo entra en
+defensaylamenterecurrealacreencia-programa;eltrabajoesrecuperarel“espacio”antesde
+reaccionar.
+1.11 Sombra y evitación emocional
+[E] El primer libro plantea un “viaje del héroe” (hero’s journey) por el subconsciente para
+comprender las sombras (shadows) —lo que se ha reprimido u ocultado— y desactivar las
+creenciaslimitantes.
+[E]Laevitaciónemocional(reprimirira,aflicción,vergüenza)perpetúaelsufrimiento.Elsistema
+proponelocontrario:daracadaemociónsulugarconsciente.
+[I]Laproyección(verenlaparejaloqueseniegaenunomismo)eselmecanismoporelquela
+sombrareapareceenlarelación;deahílaideadelaparejacomoespejo(ver4.5).
+1.12 Apego
+[I][C] El segundo libro describe dinámicas claramente emparentadas con lateoría del apego
+[C]: las experiencias tempranas con los cuidadores fijan el modo adulto de buscar o evitar la
+cercanía. Las fuentes públicas no confirman que los autores usen la nomenclatura técnica del
+apego (seguro/ansioso/evitativo/desorganizado); por tanto, la correspondencia se marca como
+inferencia.
+[E] Lo que sí es explícito: las heridas de rechazo y abandono producen, en el adulto, o bien
+dificultad para aceptar el afecto de una pareja sana, o bien autoabandono para retener a una
+parejaquenoda.
+1.13 Responsabilidad personal
+[E] Principio central del modelo relacional: la satisfacción de la relación procede deltrabajo
+personal de cada uno , no de lo que aporte el otro. La recuperación exigeconciencia,
+responsabilidad y voluntad (awareness, responsibility , willingness).
+[E]Elgiroclaveespasardeculparydefenderseaasumirlapropiaparte,comunicarabiertamente
+ysostenerapoyomutuo.[I]Laresponsabilidadaquínoesculpa:esrecuperarlacapacidadde
+respuestasobrelopropio.
+1.14 Modelo de transformación
+[E]Latransformaciónnoborraelpasado(inmutable)sinoquecambiala respuesta presente.
+Seoperaenel“espacio”entreestímuloyrespuesta,reemplazandolanarrativacondicionadapor
+otramásamplia.
+[E] La dirección del movimiento es de “corazón cerrado” a “corazón abierto”: de los temas de
+heridaalosdetransformacióny,finalmente,alosdeplenitud.
+1.15 Síntesis — ¿Cómo entienden los autores el funcionamiento interno
+de una persona?
+[E][I] Una persona funciona, en este sistema, así: la conciencia mira la realidad a través
+6
+
+de un tema activo; ese tema lo sostiene unacreencia-programa instalada por laherida
+infantil; cuando un detonante la toca, el cuerpo seactivay la mente reacciona en automático
+(ataque/defensa),reproduciendoelpatrón.Elcambioocurrecuandolapersona,enel espacio
+entreestímuloyrespuesta,tomaconcienciadeldetonante,loconectaconsucreenciaytema,y
+eligeunanarrativanueva.Repetido,esteciclodesplazalaidentidaddelyocondicionado(ego)
+alfondodeconciencia(Self)ymuevealapersonadelaheridahacialaplenitud.
+PARTE II — Diccionario de conceptos (Fase 2)
+Cada ficha sigue el formato:definición · función · mecánica · origen · manifestaciones ·
+señales · riesgos · herramientas · ejemplos · relaciones .Lasafirmacionesllevansuetiqueta
+[E]/[I]/[C].
+2.1 Valor propio / Autoestima ( self-worth)
+• Definición.[E]Reconocimientodelpropiovalorcomocondiciónparadaryrecibirafecto.
+Primerpilardelvínculosanoenelsegundolibro.
+• Función psicológica.[I]Eslabasequepermitesostenerlímites,noautoabandonarseyno
+dependerdelavalidaciónexterna.
+• Mecánica interna. [E]Cuandofalta,lapersonabuscaenlaparejalaconfirmacióndeque
+vale;cuandoexiste,larelaciónsevivedesdelaelección,nolanecesidad.
+• Origen.[E]Seinstala(ono)enlainfanciasegúnelcuidadorecibido;lasheridasderechazo,
+insuficienciayvergüenzaloerosionan.
+• Manifestaciones. [E] Capacidad de poner límites, de recibir afecto sin sospecha, de no
+mendigaratención.
+• Señales (déficit). [I] Complacencia, miedo al abandono, celos, necesidad de aprobación
+constante.
+• Riesgos/distorsiones.[I]Confundirautoestimaconautosuficienciadefensiva(“nonecesito
+anadie”)esotracaradelaherida,nosucuración.
+• Herramientas. [E] Sustituir creencias de inseguridad por afirmaciones más útiles;
+autoexamendirigido.
+• Ejemplo.[E]Quiennosevaloraaceptamigajasdeafectodeunaparejaquenoda,contal
+denoquedarsesolo.
+• Relaciones.Núcleodelasheridasderechazo(2.7),insuficienciayvergüenza(2.10);base
+delímites(2.8).
+2.2 Niño interior ( inner child )
+• Definición.[E]Lapartedelapsiquequeconservalasheridasynecesidadesnocubiertas
+delainfancia.Elsubtítulodelsegundolibroes“sanaratuniñointerior”.
+• Función psicológica. [I]Cuandoseactiva,tomaelcontroldelareacciónadulta:eladulto
+respondeconlaedademocionaldelaherida.
+• Mecánica interna. [I]Undetonantepresentereabreunanecesidadinfantilnocubierta;la
+conductaresultantebuscacubrirlaporvíasinmaduras(reproche,control,retirada).
+• Origen.[E]Faltadecuidado,conflictoparental,experienciasderechazooabandono.
+• Manifestaciones. [E] Reacciones desproporcionadas al estímulo presente; patrones
+repetidosenrelacionesdistintas.
+• Señales.[I]“Reaccionocomosituviera6años”;intensidademocionalquenoencajaconel
+hecho.
+• Riesgos.[I]Trataralniñointeriorcomoexcusa(“soyasí”)envezdecomoinformacióna
+trabajar.
+• Herramientas. [E] Autoconocimiento, reconocimiento del detonante, reparentalización
+implícitavíaelecciónconsciente.
+7
+
+• Ejemplo.[E]Uncomentarioneutrodelaparejasevivecomorechazototalporquetocala
+heridainfantil.
+• Relaciones.Reservoriodelasheridas(1.8);seactivavíadetonantes(2.3).
+2.3 Detonante / Disparador ( trigger)
+• Definición.[E]Estímulopresenteque“tehacecaerdelapaz”yactivaunaemociónyuna
+creencia-programa.
+• Función psicológica.[E]Eslapuertadeentradaaltrabajo:señalaquéheridaytemaestán
+activos.
+• Mecánica interna. [E] Estímulo → activación → la mente recurre a la creencia base →
+reacciónautomática.
+• Origen.[I]Eldetonantenocrealaherida,latoca:revelaalgopreexistente.
+• Manifestaciones.[E]Apprensión,malestar,sensacióndeinadecuación;impulsoaatacaro
+defenderse.
+• Señales.[E]Cambiobruscodeestado,reacciónintensa,pensamientodeculpahaciaafuera.
+• Riesgos. [I] Interpretar el detonante como prueba de que el otro es el problema (culpa
+externa).
+• Herramientas.[E]Paso1delmétodo:notareldetonantesinjuzgar.
+• Ejemplo.[E]Laparejallegatardeysedispara“noleimporto”(creenciaderechazo).
+• Relaciones.Activaalniñointerior(2.2)ylacadenaherida→creencia→tema(1.8).
+2.4 Proyección ( projection)
+• Definición.[I][C]Atribuiralaparejacontenidospropiosnoreconocidos(lasombra).Esun
+mecanismoclásico[C]queelsistemausaalplantearlaparejacomoespejo.
+• Función psicológica. [I]Protegealyodeverloquehareprimido,desplazándoloalotro.
+• Mecánica interna. [I]Lonegadoenunomismosepercibeysecombateenlapareja.
+• Origen.[E]Larepresióndelasombraenlainfancia/adolescencia.
+• Manifestaciones.[I]Acusaralotrodeloqueunohace;reaccionesintensasanterasgosdel
+otroqueenrealidadsonpropios.
+• Señales.[I]“Loquemásmemolestadelotro”sueleseñalarlopropionointegrado.
+• Riesgos.[I]Cronificarelconflictoaldiscutirsobreelotroenvezdemirarloproyectado.
+• Herramientas.[I]Usarlareaccióncomoespejo(paso2:¿quécreenciamíatocaesto?).
+• Ejemplo.[I]Quientemesupropiadependenciaacusaalaparejade“serdependiente”.
+• Relaciones.Sombra(1.11),espejorelacional(2.13),conflicto(2.12).
+2.5 Heridas de apego ( attachment wounds )
+• Definición.[E][I]Creenciasbasesobreelvínculoformadasconloscuidadores;elsistema
+lasdescribecomoheridasderechazo,abandono,desconfianza.Laetiqueta“apego”como
+talescontexto[C].
+• Función psicológica. [E]Determinansieladultopuedeconfiar,acercarseyrecibir.
+• Mecánica interna.[E]Modelanlaideadeamor,compromisoycomunicación;sereactivan
+enpareja.
+• Origen.[E]Faltadecuidado,conflictootraiciónpresenciadaenlafamiliadeorigen.
+• Manifestaciones.[E]Dificultadparaaceptarafectosano;sospecha;autoabandono.
+• Señales.[I]Patrónrepetidodeelegirparejasqueconfirmanlaherida.
+• Riesgos.[I]Leercadavínculoatravésdelaheridayprofecíaautocumplida.
+• Herramientas. [E] Autoconocimiento del origen; lenguaje compartido de los temas en
+pareja.
+• Ejemplo.[E]Trasverunainfidelidadparental,sevigilaysedesconfíadetodapareja.
+• Relaciones.Rechazo,abandono(2.6),desconfianza;basedelmodelorelacional(ParteIV).
+8
+
+2.6 Abandono / Pérdida ( loss, abandonment )
+• Definición.[E]Temoraqueelvínculodesaparezca;unadelas8heridas.
+• Función psicológica. [I] Empuja a conductas de retención (control, complacencia) o de
+anticipacióndeldaño(retirarseprimero).
+• Mecánica interna. [E]Elmiedoalapérdidadisparadefensaantesdequehayaamenaza
+real.
+• Origen.[E]Pérdidastempranas,ausenciaoinconsistenciadeloscuidadores.
+• Manifestaciones. [E][I] Celos, dependencia, dificultad para tolerar la distancia o la
+autonomíadelotro.
+• Señales.[I]Pánicoanteseñalesmenoresdealejamiento;necesidaddecontactoconstante.
+• Riesgos.[I]Provocar,conlaconductaderetención,justoelalejamientoqueseteme.
+• Herramientas. [E] Reconocer el detonante, conectar con la creencia, reemplazar la
+narrativa.
+• Ejemplo.[E]Unsilenciodelaparejasevivecomo“mevaadejar”.
+• Relaciones.Rechazo(2.7),codependencia(2.x),autoabandono.
+2.7 Rechazo ( rejection)
+• Definición. [E] Creencia de no ser digno de afecto; primera de las 8 heridas. Incluye
+humillaciónyvergüenza,conconductasdeocultaciónorepresión.
+• Función psicológica. [I] Protege de la exposición evitando el acercamiento que podría
+confirmarel“novalgo”.
+• Mecánica interna. [E] Lleva a generar distancia de forma involuntaria, lo que termina
+confirmandoeltemorinicial(círculo).
+• Origen.[E]Experienciasdeabuso,abandonoofaltadeafecto.
+• Manifestaciones.[E]Provocardistancia,esconderse,anticiparelrechazo.
+• Señales.[I]Interpretarloneutrocomorechazo;retiradapreventiva.
+• Riesgos.[E]Profecíaautocumplida:elpatróncreaelrechazoqueteme.
+• Herramientas.[E]Trabajarinclusoelrechazo“pequeño”;afirmacionesdevalorpropio.
+• Ejemplo.[E]Rechazardeantemanoaunaparejasana“antesdequemerechace”.
+• Relaciones.Vergüenza/insuficiencia(2.10),valorpropio(2.1),abandono(2.6).
+2.8 Límites ( boundaries)
+• Definición. [E] Capacidad de marcar y respetar fronteras personales. Su vulneración
+(invasion / boundary breach)esunadelas8heridas.
+• Función psicológica. [I]Protegelaidentidadypermitelacercaníasinfusiónniinvasión.
+• Mecánica interna. [E][I] Quien creció con límites invadidos no aprende a ponerlos (se
+somete)olosponeconagresividad(seblinda).
+• Origen.[E]Entornosdondenoserespetóelespaciodelniño.
+• Manifestaciones.[I]Decirsícuandosequieredecirno;resentimientoacumulado;origidez
+defensiva.
+• Señales.[I]Sensacióndeinvasión,agotamientoporcomplacer,culpaalnegarse.
+• Riesgos.[I]Confundirlímiteconcastigooconmuro.
+• Herramientas.[E]Autoconocimiento,responsabilidad,comunicaciónabierta.
+• Ejemplo. [I] Aceptar planes que no se quieren para no decepcionar, y luego guardar
+resentimiento.
+• Relaciones.Complacencia(2.9),resentimiento,valorpropio(2.1).
+2.9 Complacencia ( people pleasing )
+• Definición. [I] Patrón de priorizar la aprobación ajena sobre las propias necesidades.
+Derivadodelasheridasderechazoydeladificultadconloslímites.
+• Función psicológica. [I]Aseguraafectoyevitaconflictoacambiodeautoabandono.
+9
+
+• Mecánica interna. [I]“Sisoyloqueelotroquiere,nomerechazará”.
+• Origen.[E][I]Amorcondicionadoenlainfancia;afectorecibidosoloalcumplirexpectativas.
+• Manifestaciones.[I]Incapacidaddedecirno,sobreadaptación,anticipardeseosajenos.
+• Señales.[I]Agotamiento,pérdidadelpropiocriterio,resentimientosilencioso.
+• Riesgos. [I] Relaciones desequilibradas que confirman la creencia de no valer por uno
+mismo.
+• Herramientas.[E]Límites,valorpropio,sustitucióndelacreenciabase.
+• Ejemplo.[I]Renunciarsistemáticamentealosplanespropiosporlosdelotro.
+• Relaciones.Autoabandono,límites(2.8),rechazo(2.7).
+2.10 Vergüenza / Insuficiencia ( shame, insufficiency )
+• Definición.[E]Sensacióndeque“algoenmíestámal”o“nosoysuficiente”.Unadelas8
+heridas;operapordebajodelumbralconsciente.
+• Función psicológica.[I]Generaocultación,perfeccionismooretiradaparaqueel“defecto”
+nosevea.
+• Mecánica interna. [E] La vergüenza no resuelta sigue dirigiendo la conducta aunque la
+personanolanote.
+• Origen.[E]Crítica,comparaciónorechazotempranos.
+• Manifestaciones.[I]Autocrítica,miedoalaexposición,dificultadpararecibirelogios.
+• Señales.[I]“Nodoylatalla”;necesidaddedemostrarcontinuamenteelpropiovalor.
+• Riesgos.[E]Porsucaráctersubterráneo,seignoraysigueoperando;deahílainsistencia
+entrabajarla.
+• Herramientas.[E]Conciencia,afirmaciones,autocompasión.
+• Ejemplo.[I]Escondererrorespormiedoaconfirmarque“soyunfraude”.
+• Relaciones.Rechazo(2.7),valorpropio(2.1),juicio.
+2.11 Patrones de miedo ( fear patterns )
+• Definición.[E]Elmiedoesunodelostemasdeconcienciadelazonadeherida;estructura
+conductasdefensivasrecurrentes.
+• Función psicológica. [E]Protegeanticipandoamenazas,realesono.
+• Mecánica interna.[E][I]Elmiedoactivaelcuerpoyrestringelarespuestaaataque/huida/bloqueo.
+• Origen.[E]Experienciastempranasdeinseguridadoimpredecibilidad.
+• Manifestaciones.[E]Control,evitación,hipervigilancia.
+• Señales. [I] Necesidad de previsión y certeza; incomodidad ante lo incontrolable (ver
+incertidumbre).
+• Riesgos.[I]Tomarelmiedoporintuiciónyorganizarlavidaentornoaevitar.
+• Herramientas.[E]Espacioentreestímuloyrespuesta;reemplazodenarrativa.
+• Ejemplo.[E]Controlaralaparejaparaprevenirunabandonoimaginado.
+• Relaciones.Incertidumbre,desconfianza,activación(2.14).
+2.12 Conflicto ( conflict)
+• Definición.[E]Episodioenqueseactivanlasheridasdeambosmiembrosyapareceelciclo
+ataque/defensa.
+• Función psicológica. [E]Enelsistema,elconflictonoesunfallosinouna señal:destapa
+laheridaactiva.
+• Mecánica interna. [E]Detonantemutuo→creencias-programaenfrentadas→escaladao
+retirada.
+• Origen.[E]Faltademodelosderesoluciónenlafamiliadeorigen;seevitaosereproduce.
+• Manifestaciones. [E] Discusiones repetidas sobre los mismos temas; montaña rusa de
+cortaryvolver.
+• Señales.[I]Elmismoguionserepitecondistintospretextos.
+• Riesgos.[I]Quedarseenelcontenido(“quiéntienerazón”)sinverelpatrón.
+10
+
+• Herramientas. [E] Lenguaje compartido de los temas; responsabilidad; calma antes de
+reaccionar.
+• Ejemplo.[E]Unadiscusiónporunplanseconvierteenelchoquedelaheridaderechazo
+deunoconladeinvasióndelotro.
+• Relaciones.Espejo(2.13),proyección(2.4),rupturayreparación(ParteIV).
+2.13 Espejo relacional ( relationship as mirror )
+• Definición.[E]Ideadequelaparejamuestraloquecadaunonovedesímismo;larelación
+eselcontextodondelospatronessevuelvenvisiblesymodificables.
+• Función psicológica. [E] Convierte la relación en herramienta de autoconocimiento, no
+soloenfuentedeafecto.
+• Mecánica interna. [E][I]Loquelaparejaactivaenmíseñalamiherida;loquemeirrita
+delotrosuelesermaterialpropioproyectado.
+• Origen.[E]Tesisdiferencialdelsegundolibro:nohacefalta“estarcurado”antesdetener
+pareja;larelaciónmismaesellugardeltrabajo.
+• Manifestaciones.[E]Reaccionesintensasque,miradas,revelancreenciaspropias.
+• Señales.[I]“Siempremepasalomismocontodasmisparejas”.
+• Riesgos.[E][I]Usarelespejopararesponsabilizaralotrodemitrabajo;oforzaralapareja
+a“curarme”.
+• Herramientas.[E]Lenguajecompartidodelostemas;métodode3pasosaplicadoacada
+disparo.
+• Ejemplo.[E]Ladistanciadelotroactivamiheridadeabandono:elespejomemuestrala
+herida,nonecesariamenteunfallodelotro.
+• Relaciones.Proyección(2.4),conflicto(2.12),responsabilidad(1.13).
+2.14 Activación / Regulación emocional ( activation, emotional regulation)
+• Definición. [E][I] Activación: estado de “caer de la paz” ante un detonante. Regulación:
+recuperarelespacioantesdereaccionar.
+• Función psicológica. [E]Laregulacióndevuelvelacapacidaddeelegir;sinella,mandael
+automatismo.
+• Mecánica interna.[E]Elsistemaproponebuscarla calmaantesderesponderencaliente.
+• Origen. [I] La desregulación crónica viene de heridas no integradas y de la ausencia de
+modelosdecalma.
+• Manifestaciones.[E]Reaccionesimpulsivasvsrespuestaspausadas.
+• Señales.[I]Cuerpoactivado(tensión,urgencia)comoavisodequelaheridaestátocada.
+• Riesgos.[I]Confundirregularconreprimir:elsistemadistinguecalmarsedetragarsela
+emoción.
+• Herramientas.[E]Paso1(notar),pausa,calma;presencia.
+• Ejemplo.[E] En vez de responder al mensaje hiriente al instante, esperar a recuperar la
+calma.
+• Relaciones.Detonante(2.3),espacioestímulo-respuesta(1.5),calma(ParteIII,transformación).
+2.15 Codependencia y autoabandono ( codependency , self-abandonment)
+• Definición.[E][I] Autoabandono: dejar de atender las propias necesidades para sostener
+elvínculo.Codependencia:organizarlaidentidadalrededordelapareja.Elsegundolibro
+describe el autoabandono (“aceptar migajas”) sin necesariamente usar el término clínico
+[C].
+• Función psicológica. [I]Aseguralapermanenciadelvínculoacostadelpropiovalor.
+• Mecánica interna. [E]Laheridaderechazo/abandonollevaarenunciaraunomismopara
+noperderalotro.
+• Origen.[E]Amorcondicionadoeinseguridadtemprana.
+• Manifestaciones.[E][I]Tolerarlointolerable,perdercriteriopropio,fusión.
+11
+
+• Señales.[I]“Sinestarelaciónnosoynada”;incapacidaddeestarsolo.
+• Riesgos.[I]Relacionesqueconfirmanlacreenciadenovaler.
+• Herramientas.[E]Valorpropio,límites,responsabilidadsobrelapropiasatisfacción.
+• Ejemplo.[E]Quedarseconunaparejaquenoda,pormiedoalasoledad.
+• Relaciones.Abandono(2.6),complacencia(2.9),valorpropio(2.1).
+2.16 Repetición inconsciente ( pattern repetition )
+• Definición. [E] Tendencia a reproducir los mismos patrones de la infancia en relaciones
+adultasmientrasnoserevisen.
+• Función psicológica. [I] El subconsciente recrea lo conocido buscando, sin saberlo,
+resolverlo.
+• Mecánica interna.[E]Creencias-programanorevisadas→mismaseleccionesyreacciones
+→mismoresultado.
+• Origen.[E]Mecanismosdedefensainstaladosenlainfancia.
+• Manifestaciones.[E]“Siempreacaboigual”;mismotipodeparejaodeconflicto.
+• Señales.[I]Elguionserepiteconpersonasdistintas.
+• Riesgos.[I]Atribuirloamalasuerteenvezdeapatrónpropio.
+• Herramientas. [E] Autoconocimiento del origen; interrumpir el patrón en el espacio
+estímulo-respuesta.
+• Ejemplo.[E]Reproducirelconflictoparentalnoresueltoconlapareja.
+• Relaciones.Niñointerior(2.2),heridas(1.8),espejo(2.13).
+2.17 Conciencia emocional, presencia, compasión y elección consciente
+• Conciencia emocional ( emotional awareness ).[E]Capacidaddeidentificarlaspropias
+emociones,pensamientosypatronesmedianteautoanálisis;condicióndelpaso1.
+• Presencia ( presence).[E][I]Estarenelahora,enelespacioentreestímuloyrespuesta,
+sinserarrastradoporlanarrativamental.
+• Compasión / autocompasión ( compassion). [E][I] Mirar la propia herida sin juicio;
+el sistema sustituye la autocrítica por una perspectiva amable, condición para soltar la
+vergüenza.
+• Elección consciente ( conscious choice ). [E] Núcleo del paso 3: decidir mantener la
+creencialimitanteoreemplazarlaporotramásamplia.Eselactodonderesidelalibertad
+delmodelo.
+• Relaciones.Estos cuatro forman el lado “transformación” del mapa y son la contraparte
+sanadelasheridas.
+2.18 Las heridas restantes (juicio, agobio, desconfianza, incertidumbre)
+• Juicio ( judgment).[E]Sensaciónconstantedeserevaluadoocriticado;llevaaladefensa
+yalaautoexigencia.
+• Agobio / Sobrecarga ( overwhelm).[E]Sentirsedesbordadoporlasdemandasoemociones
+delarelación;llevaalaretiradaoalbloqueo.
+• Desconfianza ( distrust). [E] Sospecha permanente, a menudo ligada a traiciones
+presenciadas;llevaalavigilanciayalcontrol.
+• Incertidumbre (uncertainty).[E]Incomodidadanteloquenosepuedecontrolaroprever;
+llevaalanecesidaddecertezaycontrol.
+• Relaciones.Juntoconrechazo,pérdida,insuficienciaeinvasión,completanlas 8 heridas
+delnivel1(verParteIII).
+12
+
+PARTE III — Recorrido por bloques (Fase 3)
+Reconstrucción por bloques documentados, no por capítulo. La progresión sigue el “Mapa de
+los Temas de Conciencia” (Themes of Consciousness Chart), que organiza el contenido en tres
+secciones: daño, recuperación y comprensión profunda. [E]
+3.1 Los tres niveles / tres tipos de pareja
+[E]Elmapaordenatodarelaciónentresniveles,de“corazóncerrado”a“corazónabierto”.Las
+fuentespúblicasylawebdelosautoreslosdescribencomotrestiposdepareja:
+Nivel Tipodepareja Dinámica Bloquedetemas
+1·Daño Kármica( karmic) Destructiva;
+ataque/defensa;
+montañarusa
+Temasdeherida
+(wounding)
+2·Recuperación InnerWork Constructiva;
+colaborativa;alivio
+Temasde
+transformación
+(healing)
+3·Plenitud Yoga Armónica;unidad;
+consciente
+Temasdeplenitud
+(enlightenment)
+[E] Entre niveles hay dos transiciones: del 1 al 2 (“transición a relación sana”) y del 2 al 3
+(“transiciónarelaciónespiritual”).[I]Elpasonoeslinealnidefinitivo:unaparejapuedeoscilar
+entrenivelessegúneltemaactivo.
+3.2 T esis del bloque 1 — El daño (8 temas de herida)
+[E]Tesis:lospatronesdemalestaradultosestángrabadosdesdelainfanciayproducenconductas
+defensivasreconocibles.Las8heridas:
+1. Rechazo—“nosoydignodeafecto”.Generadistanciainvoluntaria.
+2. Juicio—sensacióndeserevaluado/criticado.
+3. Agobio—sentirsedesbordadoporlarelación.
+4. Pérdida / abandono —temoraqueelvínculodesaparezca.
+5. Desconfianza—sospecha,ligadaatraicionespresenciadas.
+6. Insuficiencia—“nosoybastante”.
+7. Invasión / vulneración de límites —dificultadparamarcarorespetarfronteras.
+8. Incertidumbre—incomodidadanteloincontrolable.
+[E]Cadaheridaseanalizaconsusconductastípicasylosobstáculosquecreaenlarelación.[E]
+Mecanismodeformación:faltadeafectooconflictoparental→creenciabase→mecanismode
+defensa→sabotajedelvínculo.
+3.3 T esis del bloque 2 — La recuperación (temas de transformación)
+[E] Premisa: el pasado no se cambia, pero sí la respuesta presente. La recuperación exige
+conciencia, responsabilidad y voluntad .Pasosprácticosdocumentados:
+• Autoconocimiento— identificar de dónde vienen las reacciones y qué creencia base las
+dispara.
+• Reconocer los detonantes —observarquéactivacadapatrónenunoyenlapareja.
+• Lenguaje compartido —cuandoambosconocenlostemas,dejandereaccionaraciegasy
+nombranloqueocurre.
+13
+
+[E][I] Los temas de esta zona (la contraparte sana de las heridas) incluyencomprensión,
+aceptación, voluntad/motivación, calma y responsabilidad . (Las fuentes públicas describen
+estos estados como el lado de “healing”; los nombres exactos de la lista del libro conviene
+verificarlos contra el original.)
+3.4 T esis del bloque 3 — La plenitud (temas de enlightenment)
+[E]Estadoalquesellegacuandolospatronesdejandegobernarlarelación:laparejadejade
+funcionar desde la herida y pasa a la colaboración consciente. [E][I] Los temas de esta zona
+se describen comoamor y paz interior y libertad y felicidad . La relación se vuelve vía de
+desarrollo,capazdeacelerarlamadurezdeambos.
+3.5 La base del vínculo sano
+[E]Apoyossobrelosquesesostieneunarelaciónsólida,segúnelsegundolibro:
+• Autoestima / valor propio —condiciónparadaryrecibirafecto.
+• Fiabilidad—serpresenciaconstanteyprevisible.
+• Respeto mutuo —basedeconsideraciónrecíproca.
+• Responsabilidad—asumirlapartepropiaenlugardeatribuirlaalotro.
+[E]Lasatisfaccióndelarelaciónprocededeltrabajopersonaldecadauno,nodeloqueaporte
+elotro.
+3.6 El método de 3 pasos (núcleo práctico de ambos libros)
+[E]Procedimientoaplicableacualquierdetonantecotidiano:
+1. Conciencia del detonante (awareness of triggers)—notarelmomentoenquese“caede
+lapaz”eidentificarelpensamientooemociónincómoda,sinjuzgar.
+2. Identificar la creencia-programa(root/program belief)—explorarquécreenciaprofunda
+activaeldetonante;mirarlanarrativainterna,nolaculpaexterna.Enelsegundolibrose
+añade:conectarlaconlaheridayeltemadeconciencia.
+3. Soltar y reemplazar (release and replace)—decidirsisemantienelacreencialimitanteo
+seeligeunanarrativanueva,usandoelespacioentreestímuloyrespuestaparadesplazar
+laperspectivahaciaelvalorpropioylaaceptación.
+3.7 La base de niveles y la Escala de Hawkins
+[I][C]Lasdescripcionesdelmarcoemparentanlosnivelesdelmapaconla Escala de Conciencia
+de David Hawkins [C],queordenaestadosdel20al700+conunumbralen200(Coraje):por
+debajo, estados de contracción (vergüenza 20, culpa 30, miedo 100, ira 150, orgullo 175); por
+encima,estadosdeexpansión(neutralidad250,aceptación350,amor500,paz600,iluminación
+700+).
+[I] Correspondencia con el sistema: los temas de herida viven por debajo de 200; los de
+transformaciónyplenitud,porencima.“Subirdenivel”=pasardelaheridaalatransformación.
+Advertencia [C]: los números de Hawkins provienen de un método de “calibración” (test
+muscular) sin validación científica.Sirvencomomapaconceptual,nocomomedida.Conviene
+decidircuánliteralmentesepresentaestoenunproducto.
+14
+
+PARTE IV — Framework relacional (Fase 4)
+Para cada dinámica: cómo funciona, por qué emerge, qué la mantiene, cómo se transforma dentro
+del modelo Inner Work.
+4.1 Dinámicas de pareja (kármica / Inner Work / Yoga)
+• Cómo funciona. [E]Trespatronesderelaciónsegúnelniveldeconcienciadominante(ver
+3.1).Lakármicaserigeporlasheridas;laInnerWorkporeltrabajoconjunto;laYogapor
+laconcienciaestable.
+• Por qué emerge. [E][I] La pareja kármica nace de la atracción intensa entre heridas
+complementarias: cada uno activa al otro. [C] Las descripciones generales de “relación
+kármica” hablan de atracción magnética, intensidad y ciclos de ruptura; esto es contexto
+externo,noterminologíaconfirmadadellibro.
+• Qué la mantiene. [E] La reacción automática ataque/defensa y la atribución de culpa al
+otro.
+• Cómo se transforma. [E]Cuandoambosdecidenmirarelpatrónytrabajarloenequipo,la
+parejapasadekármicaaInnerWork;conconcienciasostenida,aYoga.
+4.2 Patrones de apego y dependencia emocional
+• Cómo funciona. [E][I] Las heridas de rechazo/abandono producen búsqueda ansiosa de
+cercaníaoevitacióndefensiva.[C]Correspondenciaconestilosdeapego(externa).
+• Por qué emerge. [E]Cuidadoinconsistenteocondicionadoenlainfancia.
+• Qué la mantiene. [E]Elautoabandono(aceptarmigajas)ylacreenciadenovalerporuno
+mismo.
+• Cómo se transforma. [E] Construyendo valor propio y responsabilidad sobre la propia
+satisfacción,demodoqueelvínculoseelijaenvezdenecesitarse.
+4.3 Ciclos de conflicto
+• Cómo funciona.[E]Detonantemutuo→choquedeheridas→escaladaoretirada→distancia
+→reencuentro→repetición.
+• Por qué emerge. [E]Faltademodelosderesoluciónenlafamiliadeorigen.
+• Qué lo mantiene. [I]Discutirelcontenido(“quiéntienerazón”)sinverelpatróndefondo.
+• Cómo se transforma. [E]Lenguajecompartidodelostemas+calma+responsabilidad:
+nombrarlaheridaactivaenlugardeatacar.
+4.4 Comunicación y vulnerabilidad
+• Cómo funciona. [E] La comunicación sana sustituye el reproche por la expresión de la
+propiaexperienciaynecesidad.
+• Por qué emerge (la disfuncional). [E]Elmiedoylavergüenzallevanadefenderseenvez
+demostrarse.
+• Qué la mantiene. [I]Lacreenciadequemostrarseespeligroso(heridasderechazo/juicio).
+• Cómo se transforma.[E][I]Vulnerabilidad:mostrarlaheridaenvezdeladefensa;requiere
+seguridademocionalmutua.
+4.5 Intimidad, proyección y espejo
+• Cómo funciona. [E] La intimidad crece cuando cada uno usa lo que el otro activa como
+informaciónsobresímismo(espejo)enlugardemunición.
+• Por qué emerge la distorsión. [I]Laproyeccióndesplazaalotroloqueunonoreconoce.
+• Qué la mantiene. [I]Responsabilizaralotrodelaspropiasreacciones.
+15
+
+• Cómo se transforma. [E] Aplicando el método de 3 pasos a cada disparo dentro de la
+relación.
+4.6 Seguridad emocional, ruptura y reparación
+• Cómo funciona. [E][I] La seguridad emocional es el clima de apertura y fiabilidad que
+permitemostrarsesintemor.Lareparaciónesvolveralvínculotraslaactivación.
+• Por qué emerge la ruptura. [E] La activación de heridas rompe momentáneamente la
+conexión.
+• Qué mantiene la desconexión. [I]Laculpacruzadaylafaltaderesponsabilidad.
+• Cómo se transforma.[E]Recuperarlacalma,asumirlapartepropia,comunicaryrestaurar
+elrespetomutuoylafiabilidad.
+PARTE V — Ingeniería de conocimiento para IA (Fase 5)
+5.1 T axonomía conceptual
+Sistema Inner Work
+├── Conciencia (awareness)
+│ ├── Self (yo auténtico)
+│ └── Ego (yo condicionado)
+├── Estructura del condicionamiento
+│ ├── Herida (wound)
+│ ├── Creencia-programa
+│ └── Tema de conciencia (15)
+├── Activación
+│ ├── Detonante (trigger)
+│ ├── Niño interior
+│ └── Reacción (ataque / defensa)
+├── Temas de herida (8): rechazo, juicio, agobio, pérdida,
+│ desconfianza, insuficiencia, invasión, incertidumbre
+├── Temas de transformación (5): comprensión, aceptación,
+│ voluntad, calma, responsabilidad
+├── Temas de plenitud (2): amor/paz, libertad/felicidad
+├── Método de 3 pasos: conciencia → creencia → reemplazo
+└── Marco relacional
+├── Tipos de pareja: kármica / Inner Work / Yoga
+├── Espejo y proyección
+├── Pilares: valor propio, fiabilidad, respeto, responsabilidad
+└── Ruptura y reparación
+5.2 Árbol jerárquico (de lo profundo a lo observable)
+1. Conciencia → 2. Herida → 3. Creencia-programa → 4. Tema activo → 5. Detonante → 6.
+Activación→7.Conducta(ataque/defensa)→8.Resultadorelacional→(buclederepetición).
+Elmétodointervieneentre5y7(el“espacio”).
+5.3 Ontología simple (relaciones tipadas)
+• Herida causaCreencia-programa.
+• Creencia-programa sostieneTemadeconciencia.
+• Detonante activaCreencia-programa.
+• Temadeherida produceConductadefensiva.
+16
+
+• Conductadefensiva confirmaHerida(bucle).
+• Temadetransformación neutralizaTemadeherida.
+• Conciencia permiteElecciónconsciente.
+• Elecciónconsciente reemplazaCreencia-programa.
+• Pareja funciona como EspejodelaHerida.
+5.4 Mapa de relaciones (pares clave)
+• Rechazo↔Valorpropio(herida↔antídoto)
+• Abandono↔Responsabilidadsobrelapropiasatisfacción
+• Desconfianza↔Comprensión/aceptación
+• Insuficiencia/vergüenza↔Autocompasión
+• Juicio↔Aceptación
+• Agobio↔Calma/límites
+• Invasión↔Límites
+• Incertidumbre↔Aceptación/voluntad
+5.5 Reglas operativas IF → THEN (para el comportamiento de la IA)
+R1 IF se detecta un detonante emocional en el relato del usuario
+THEN evaluar: (a) necesidad no cubierta, (b) herida activa,
+(c) activación del cuerpo, (d) creencia-programa subyacente.
+R2 IF el usuario atribuye toda la causa a la otra persona (culpa externa)
+THEN devolver el foco a su experiencia interna SIN invalidar el hecho,
+y nombrar la posible herida activa.
+R3 IF aparece una de las 8 heridas
+THEN explicar el patrón (no preguntar si lo conoce),
+vincularlo a su conducta defensiva típica,
+y ofrecer el tema de transformación que lo neutraliza (5.4).
+R4 IF el usuario describe un patrón que se repite en varias relaciones
+THEN señalar repetición inconsciente y origen probable en creencia base.
+R5 IF el usuario está activado (intensidad alta)
+THEN priorizar regulación/calma antes que análisis o decisión.
+R6 IF el usuario pide qué hacer con un disparo concreto
+THEN aplicar el método de 3 pasos: notar → conectar con creencia/tema → reemplazar narrativa.
+R7 IF el contenido roza la calibración de Hawkins, vidas pasadas o test muscular
+THEN tratarlo como mapa conceptual, no como medida; no afirmarlo como hecho.
+R8 IF el usuario no tiene pareja
+THEN aplicar el modelo a relaciones pasadas o a la relación consigo mismo;
+no asumir que el trabajo requiere pareja.
+PARTE VI — Comparación y síntesis (Fase 6)
+6.1 Convergencias
+[E] Ambos libros comparten: la primacía de la conciencia sobre los hechos; los temas de
+17
+
+concienciacomounidaddeanálisis;elmétodode3pasos;elorigeninfantildelcondicionamiento;
+ylametadepasardelaheridaalalibertad.
+6.2 Diferencias
+[E][I]Elprimerlibro( The Inner Work,2019)es individual e intrapsíquico :autorrealización,
+sombra, libertad personal. El segundo (The Inner Work of Relationships , 2024) esrelacional:
+aplicaelmismomotoralvínculodeparejayalniñointeriordentrodelarelación.
+6.3 Qué amplía el segundo libro
+[E]Añade:las8heridasformalizadas,laparejacomoespejo,lostrestiposdepareja,lospilares
+delvínculosano(valorpropio,fiabilidad,respeto,responsabilidad)yellenguajecompartidoentre
+dospersonas.[I]Convierteunmétododeunoenunmétododedos.
+6.4 Evolución del modelo
+[I]Del“yoymiconciencia”al“nosotrosynuestrasconciencias”.Eldetonantedejadesersolo
+interno:ahoralaotrapersonaeselactivadory,alavez,laoportunidaddeverlopropio.
+6.5 Integrated Inner Work Framework (marco unificado)
+[E][I]Unsolomotorcondoscamposdeaplicación:
+Motor:Concienciaobserva→identificaeltemaactivo→rastrealacreencia-programa
+y la herida → en el espacio entre estímulo y respuesta, elige una narrativa nueva →
+repitehastadesplazarlaidentidaddelegoalSelf.
+Campo individual: el detonante es interno; la meta es la libertad personal.Campo
+relacional:eldetonanteloactivalapareja(espejo);lametaesunvínculoconsciente.
+Los pilares (valor propio, fiabilidad, respeto, responsabilidad) sostienen el campo
+relacional. La dirección común es de corazón cerrado (herida) a corazón abierto
+(plenitud).
+PARTE VII — Ensayo final
+La arquitectura del pensamiento Inner Work
+[E][I]ElsistemaInnerWorkpartedeunatesisidealista:laexperiencianolafijanloshechossino
+laconcienciaquelosinterpreta.Sobreesabaseconstruyeunapsicologíadeestados—lostemas
+deconciencia—enlugardeunapsicologíaderasgos.Lapersonano“es”deunamanera;está
+atravesandountema,ylostemaspuedencambiarse.Estodaalmodelosutonooptimistaysu
+orientaciónpráctica:nadaestáfijado,todoesrevisable.
+[E][I]Elmecanismocausalesclaroyrepetible:lainfanciainstalaheridas;lasheridassostienen
+creencias-programa;lascreenciascoloreaneltemadeconcienciaactivo;undetonantepresente
+tocalaheridayelcuerposeactiva;lamentereaccionaenautomáticoconataqueodefensa,y
+laconductaconfirmalaherida,cerrandoelbucle.Laintervenciónocurresiempreenelmismo
+punto:el“espacio”entreestímuloyrespuesta,dondelaconcienciapuedeelegir.Eseespacioes
+laideamásoperativadelsistemaylaquelohaceenseñable.
+Modelo de transformación. [E] No promete borrar el pasado, sino cambiar la respuesta
+presente.Elcambioesincrementalysepracticadisparoadisparoconelmétodode3pasos.La
+18
+
+acumulación de elecciones conscientes desplaza la identidad del yo condicionado al fondo de
+conciencia.Esunmodelodeentrenamiento,nodecurapuntual.
+Modelo relacional. [E] Su aportación más distintiva es tratar la pareja como espejo y como
+contexto de trabajo, no como recompensa de un trabajo ya hecho. Las 8 heridas dan un
+vocabulario común que permite a dos personas nombrar lo que ocurre en vez de reaccionar a
+ciegas.Lospilares—valorpropio,fiabilidad,respeto,responsabilidad—soncriteriosconcretos
+deunvínculosano.
+Fortalezas. [I] Claridad estructural; un método replicable; un mapa que ordena el caos
+emocional; un lenguaje compartido aplicable en pareja; y la integración de responsabilidad
+personal sin caer en la culpa. Es fácil de operacionalizar para una IA porque su lógica es de
+reglas(herida→patrón→antídoto).
+Puntos ciegos. [I][C] (1) Presenta la pareja como vía principal de cambio, lo que puede no
+encajarconquiennotieneparejaonecesitatrabajoindividualoterapéuticoprevio.(2)Labase
+denivelesemparentadaconHawkinsarrastrala“calibración”portestmuscular,sinvalidación
+científica;convieneusarlasolocomometáfora.(3)Elénfasisen“túcreastuexperiencia”puede
+deslizarse hacia responsabilizar a la persona de daños reales (abuso, negligencia) que no son
+cuestión de interpretación. (4) Mezcla registros (psicología, espiritualidad, vidas pasadas) que
+convienesepararsielproductobuscarigor.
+Implicaciones prácticas (para AAQ / Ari). [I]ElsistemadaalaIA:uneje(laheridaactiva),una
+cadenadiagnóstica(herida→creencia→tema→conducta),unguiondeintervención(3pasos),
+unmapadeantídotos(temadetransformaciónporcadaherida)yuncriteriodevínculosano(los
+cuatropilares).Eltrabajodeadaptaciónessepararelnúcleooperativo—sólidoyenseñable—de
+laenvolturaesotérica—prescindibleosuavizable—yvigilarelpuntociegodenoresponsabilizar
+alapersonadeldañorecibido.
+Anexo A — Glosario español / inglés
+Español Original
+Conciencia Awareness
+Yoauténtico Self
+Yocondicionado Ego
+Herida Wound
+Niñointerior Innerchild
+Creencia-programa Program/corebelief
+Temadeconciencia Themeofconsciousness
+Detonante Trigger
+Sombra Shadow
+Proyección Projection
+Valorpropio Self-worth
+Límites Boundaries
+Complacencia Peoplepleasing
+Autoabandono Self-abandonment
+Vergüenza Shame
+Parejakármica Karmiccouple
+Espejo Mirror
+Soltaryreemplazar Releaseandreplace
+19
+
+Anexo B — Índice de reglas IF → THEN
+R1deteccióndedetonante·R2culpaexterna·R3heridadetectada·R4repeticióndepatrón·
+R5altaactivación·R6disparoconcreto·R7contenidoesotérico·R8usuariosinpareja.(Texto
+completoen5.5.)
+Anexo C — Advertencias de validez
+1. LacalibracióndeconcienciadeHawkins(testmuscular)carecedevalidacióncientífica.
+2. Lasnocionesde“vidaspasadas”yrelaciónkármicasonmarcoespiritual,noclínico.
+3. Lacorrespondenciaconlateoríadelapegoyconlaneurobiologíadelsistemanerviosoes
+inferida[I][C],noterminologíaconfirmadadelosautores.
+4. Losnombresexactosdelos15temas(másalládelas8heridas)ysunúmeroprecisopor
+niveldebenverificarsecontraeltextooriginalantesdefijarlosenproducto.
+Fuentes consultadas
+• The Inner Work — ficha y sinopsis (Amazon): https://www.amazon.com/Inner-Work-
+Invitation-Freedom-Happiness/dp/1096714612
+• The Inner Work — resumen (Shortform): https://www.shortform.com/summary/the-inner-
+work-summary-mathew-micheletti-and-ashley-cottrell
+• The Inner Work —resumen(Blinkist):https://www.blinkist.com/en/books/the-inner-work-en
+• The Inner Work of Relationships — ficha (Amazon): https://www.amazon.com/Inner-Work-
+Relationships-Invitation-Relationship/dp/B0CYCJKDR7
+• The Inner Work of Relationships—ficha(Goodreads):https://www.goodreads.com/book/show/210120923-
+the-inner-work-of-relationships
+• The Inner Work of Relationships—resumen(Shortform):https://www.shortform.com/summary/the-
+inner-work-of-relationships-summary-mathew-micheletti-and-ashley-cottrell
+• Seriedelibros—webdelosautores:https://theinnerworkbooks.com/products/inner-work-
+series
+• DavidR.Hawkins, Map of Consciousness Explained(contexto[C]):https://www.penguinrandomhouse.com/books/646113/the-
+map-of-consciousness-explained-by-david-r-hawkins-md-phd/
+20

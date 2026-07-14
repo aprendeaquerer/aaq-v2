@@ -1,0 +1,1967 @@
+Developmental Psychology
+1992, \fol. 28, No. 5,759-775
+Copyright 1992 by the American Psychological Association, Inc.
+The Origins of Attachment Theory:
+John Bowlby and Mary Ainsworth
+Inge Bretherton
+Department of Child and Family Studies
+University of Wisconsin—Madison
+Attachment theory is based on the joint work of John Bowlby (1907-1991) and Mary Salter Ains-
+worth (1913- ). Its developmental history begins in the 1930s, with Bowlby's growing interest
+in the link between maternal loss or deprivation and later personality development and with
+Ainsworth's interest in security theory. Although Bowlby's and Ainsworth's collaboration began in
+1950, it entered its most creative phase much later, after Bowlby had formulated an initial blueprint
+of attachment theory, drawing on ethology, control systems theory, and psychoanalytic thinking,
+and after Ainsworth had visited Uganda, where she conducted the first empirical study of infant-
+mother attachment patterns. This article summarizes Bowlby's and Ainsworth's separate and joint
+contributions to attachment theory but also touches on other theorists and researchers whose work
+influenced them or was influenced by them. The article then highlights some of the major new
+fronts along which attachment theory is currently advancing. The article ends with some specula-
+tions on the future potential of the theory.
+Attachment theory is the joint work of John Bowlby and
+Mary Ainsworth (Ainsworth & Bowlby, 1991). Drawing on con-
+cepts from ethology, cybernetics, information processing, devel-
+opmental psychology, and psychoanalysis, John Bowlby formu-
+lated the basic tenets of the theory. He thereby revolutionized
+our thinking about a child's tie to the mother and its disruption
+through separation, deprivation, and bereavement. Mary Ains-
+worth's innovative methodology not only made it possible to
+test some of Bowlby's ideas empirically but also helped expand
+the theory itself and is responsible for some of the new direc-
+tions it is now taking. Ainsworth contributed the concept of the
+attachment figure as a secure base from which an infant can
+explore the world. In addition, she formulated the concept of
+maternal sensitivity to infant signals and its role in the develop-
+ment of infant-mother attachment patterns.
+The ideas now guiding attachment theory have a long devel-
+opmental history. Although Bowlby and Ainsworth worked in-
+dependently of each other during their early careers, both were
+influenced by Freud and other psychoanalytic thinkers—di-
+rectly in Bowlby's case, indirectly in Ainsworth's. In this article,
+I document the origins of ideas that later became central to
+attachment theory. I then discuss the subsequent period of
+theory building and consolidation. Finally, I review some of the
+new directions in which the theory is currently developing and
+speculate on its future potential. In taking this retrospective
+developmental approach to the origins of attachment theory, I
+am reminded of Freud's (1920/1955) remark:
+I would like to thank Mary Ainsworth and Ursula Bowlby for helpful
+input to a draft of this article. I am also grateful for insightful com-
+ments by three very knowledgeable anonymous reviewers.
+Correspondence concerning this article should be addressed to Inge
+Bretherton, Department of Child and Family Studies, University of
+Wisconsin—Madison, Madison, Wisconsin 53706.
+So long as we trace the development from its final outcome back-
+wards, the chain of events appears continuous, and we feel we have
+gained an insight which is completely satisfactory or even exhaus-
+tive. But if we proceed in the reverse way, if we start from the
+premises inferred from the analysis and try to follow these up to
+the final results, then we no longer get the impression of an inevita-
+ble sequence of events which could not have otherwise been deter-
+mined, (p. 167)
+In elucidating how each idea and methodological advance
+became a stepping stone for the next, my retrospective account
+of the origins of attachment theory makes the process of theory
+building seem planful and orderly. No doubt this was the case to
+some extent, but it may often not have seemed so to the protago-
+nists at the time.
+Origins
+John Bowlby
+After graduating from the University of Cambridge in 1928,
+where he received rigorous scientific training and some instruc-
+tion in what is now called developmental psychology, Bowlby
+performed volunteer work at a school for maladjusted children
+while reconsidering his career goals. His experiences with two
+children at the school set his professional life on course. One
+was a very isolated, remote, affectionless teenager who had
+been expelled from his previous school for theft and had had no
+stable mother figure. The second child was an anxious boy of 7
+or 8 who trailed Bowlby around and who was known as his
+shadow (Ainsworth, 1974). Persuaded by this experience of the
+effects of early family relationships on personality develop-
+ment, Bowlby decided to embark on a career as a child psychia-
+trist (Senn, 1977b).
+Concurrently with his studies in medicine and psychiatry,
+Bowlby undertook training at the British Psychoanalytic Insti-
+759
+
+760 INGE BRETHERTON
+tute. During this period Melanie Klein was a major influence
+there (the institute had three groups: Group A sided with Freud,
+Group B sided with Klein, and the Middle Group sided with
+neither). Bowlby was exposed to Kleinian (Klein, 1932) ideas
+through his training analyst, Joan Riviere, a close associate of
+Klein, and eventually through supervision by Melanie Klein
+herself. Although he acknowledges Riviere and Klein for
+grounding him in the object-relations approach to psychoanaly-
+sis, with its emphasis on early relationships and the pathogenic
+potential of loss (Bowlby, 1969, p. xvii), he had grave reserva-
+tions about aspects of the Kleinian approach to child psycho-
+analysis. Klein held that children's emotional problems are al-
+most entirely due to fantasies generated from internal conflict
+between aggressive and libidinal drives rather than to events in
+the external world. She hence forbade Bowlby to talk to the
+mother of a 3-year-old whom he analyzed under her supervi-
+sion (Bowlby, 1987). This was anathema to Bowlby who, in the
+course of his postgraduate training with two psychoanalytically
+trained social workers at the London Child Guidance Clinic,
+had come to believe that actual family experiences were a much
+more important, if not the basic cause of emotional distur-
+bance.
+Bowlby's plan to counter Klein's ideas through research is
+manifest in an early theoretical paper (1940) in which he pro-
+posed that, like nurserymen, psychoanalysts should study the
+nature of the organism, the properties of the soil, and their
+interaction (p. 23). He goes on to suggest that, for mothers with
+parenting difficulties,
+a weekly interview in which their problems are approached analyt-
+ically and traced back to childhood has sometimes been remark-
+ably effective. Having once been helped to recognize and recap-
+ture the feelings which she herself had as a child and to find that
+they are accepted tolerantly and understandingly, a mother will
+become increasingly sympathetic and tolerant toward the same
+things in her child. (Bowlby, 1940, p. 23)
+These quotations reveal Bowlby's early theoretical and clinical
+interest in the intergenerational transmission of attachment re-
+lations and in the possibility of helping children by helping
+parents. Psychoanalytic object-relations theories later proposed
+by Fairbairn (1952) and Winnicott (1965) were congenial to
+Bowlby, but his thinking had developed independently of them.
+Bowlby's first empirical study, based on case notes from the
+London Child Guidance Clinic, dates from this period. Like
+the boy at the school for maladjusted children, many of the
+clinic patients were affectionless and prone to stealing.
+Through detailed examination of 44 cases, Bowlby was able to
+link their symptoms to histories of maternal deprivation and
+separation.
+Although World War II led to an interruption in Bowlby's
+budding career as a practicing child psychiatrist, it laid further
+groundwork for his career as a researcher. His assignment was
+to collaborate on officer selection procedures with a group of
+distinguished colleagues from the Tavistock Clinic in London,
+an experience that gave Bowlby a level of methodological and
+statistical expertise then unusual for a psychiatrist and psy-
+choanalyst. This training is obvious in the revision of his paper,
+"Forty-Four Juvenile Thieves: Their Characters and Home
+Lives" (Bowlb^ 1944), which includes statistical tests as well as
+detailed case histories.
+At the end of World War II, Bowlby was invited to become
+head of the Children's Department at the Tavistock Clinic. In
+line with his earlier ideas on the importance of family relation-
+ships in child therapy, he promptly renamed it the Department
+for Children and Parents. Indeed, in what is credited as the first
+published paper in family therapy, Bowlby (1949) describes
+how he was often able to achieve clinical breakthroughs by
+interviewing parents about their childhood experiences in the
+presence of their troubled children.
+To Bowlby's chagrin, however, much of the clinical work in
+the department was done by people with a Kleinian orientation
+who, he says, regarded his emphasis on actual family interaction
+patterns as not particularly relevant. He therefore decided to
+found his own research unit whose efforts were focused on
+mother-child separation. Because separation is a clearcut and
+undeniable event, its effects on the child and the parent-child
+relationship were easier to document than more subtle influ-
+ences of parental and familial interaction.
+Mary Ainsworth
+Mary Ainsworth (nee Salter), 6 years younger than Bowlby,
+finished graduate study at the University of Toronto just before
+World War II. Courses with William Blatz had introduced her
+to security theory (Blatz, 1940), which both reformulated and
+challenged Freudian ideas, though Blatz chose not to recognize
+his debt to Freud because of the anti-Freudian climate that
+pervaded the University of Toronto at that time (Ainsworth,
+1983; Blatz 1966).
+One of the major tenets of security theory is that infants and
+young children need to develop a secure dependence on parents
+before launching out into unfamiliar situations. In her disserta-
+tion entitled "An Evaluation of Adjustment Based on the Con-
+cept of Security," Mary Salter (1940) states it this way:
+Familial security in the early stages is of a dependent type and
+forms a basis from which the individual can work out gradually,
+forming new skills and interests in other fields. Where familial
+security is lacking, the individual is handicapped by the lack of
+what might be called a secure base [italics added] from which to
+work. (p. 45)
+Interestingly, Mary Salter's dissertation research included an
+analysis of students' autobiographical narratives in support of
+the validity of her paper-and-pencil self-report scales of famil-
+ial and extrafamilial security, foreshadowing her later penchant
+for narrative methods of data collection. Indeed, few re-
+searchers realize the enormous experience in instrument devel-
+opment and diagnostics she brought to attachment research.
+Like Bowlby's, Mary Salter's professional career was shaped
+by her duties as a military officer during World War II (in the
+Canadian Women's Army Corps). After the war, as a faculty
+member at the University of Toronto, she set out to deepen her
+clinical skills in response to the request to teach courses in
+personality assessment. To prepare herself for this task, she
+signed up for workshops by Bruno Klopfer, a noted expert in
+the interpretation of the Rorschach test. This experience led to
+a coauthored book on the Rorschach technique (Klopfer, Ains-
+worth, Klopfer, & Holt, 1954), which is still in print.
+In 1950 Mary Salter married Leonard Ainsworth and accom-
+
+APA CENTENNIAL: ORIGINS OF ATTACHMENT THEORY 761
+panied him to London, where he completed his doctoral stud-
+ies. Someone there drew her attention to a job advertisement in
+the London Times that happened to involve research, under the
+direction of John Bowlby, into the effect on personality develop-
+ment of separation from the mother in early childhood. As
+Mary Ainsworth acknowledges, joining Bowlby's research unit
+reset the whole direction of her professional career, though nei-
+ther Bowlby nor Ainsworth realized this at the time.
+The Emergence of Attachment Theory
+In 1948,2 years before Ainsworth's arrival, Bowlby had hired
+James Robertson to help him observe hospitalized and institu-
+tionalized children who were separated from their parents. Rob-
+ertson had had impeccable training in naturalistic observation,
+obtained as a conscientious objector during World War II, when
+he was employed as a boilerman in Anna Freud's Hampstead
+residential nursery for homeless children. Anna Freud required
+that all members of the staff, no matter what their training or
+background, write notes on cards about the children's behavior
+(Senn, 1977a), which were then used as a basis for weekly group
+discussions. The thorough training in child observation that
+Robertson thus obtained at the Hampstead residential nursery
+are Anna Freud's lasting personal contribution to the develop-
+ment of attachment theory.
+After 2 years of collecting data on hospitalized children for
+Bowlby's research projects, Robertson protested that he could
+not continue as an uninvolved research worker, but felt com-
+pelled to do something for the children he had been observing.
+On a shoestring budget, with minimal training, a hand-held
+cinecamera, and no artificial lighting, he made the deeply mov-
+ing film, A Two-Year-Old Goes to Hospital (Robertson, 1953a,
+1953b; Robertson & Bowlby, 1952). Foreseeing the potential
+impact of this film, Bowlby insisted that it be carefully planned
+to ensure that no one would later be able to accuse Robertson of
+biased recording. The target child was randomly selected, and
+the hospital clock on the wall served as proof that time sam-
+pling took place at regular periods of the day. Together with
+Spitz's (1947) film, Grief: A Peril in Infancy, Robertson's first
+film helped improve the fate of hospitalized children all over
+the Western world, even though it was initially highly contro-
+versial among the medical establishment.
+When Mary Ainsworth arrived at Bowlby's research unit late
+in 1950, others working there (besides James Robertson) were
+Mary Boston and Dina Rosenbluth. Rudolph Schaffer, whose
+subsequent attachment research is well known (SchafFer &
+Emerson, 1964), joined the group somewhat later, as did Chris-
+toph Heinicke (1956; Heinicke & Westheimer, 1966), who un-
+dertook additional separation and reunion studies, and Tony
+Ambrose (1961), who was interested in early social behavior.
+Mary Ainsworth, who was charged with analyzing James Rob-
+ertson's data, was tremendously impressed with his records of
+children's behavior and decided that she would emulate his
+methods of naturalistic observation were she ever to undertake
+a study of her own (Ainsworth, 1983).
+At this time, Bowlby's earlier writings about the familial expe-
+riences of affectionless children had led Ronald Hargreaves of
+the World Health Organization (WHO) to commission him to
+write a report on the mental health of homeless children in
+postwar Europe. Preparation of the WHO report gave Bowlby
+an opportunity to pick the brains of many practitioners and
+researchers across Europe and the United States who were con-
+cerned with the effects of maternal separation and deprivation
+on young children, including Spitz (1946) and Goldfarb (1943,
+1945). The report was written in 6 months and translated into
+14 languages, with sales of 400,000 copies in the English paper-
+back edition; it was published in 1951 as Maternal Care and
+Mental Health by the WHO. A second edition, entitled Child
+Care and the Growth of Love, with review chapters by Mary
+Ainsworth, was published by Penguin Books in 1965.
+It is interesting to examine the 1951 report from today's per-
+spective. At that time Bowlby still used the terminology of tra-
+ditional psychoanalysis (love object, libidinal ties, ego, and su-
+perego), but his ideas were little short of heretical. Perhaps fol-
+lowing Spitz, he used embryology as a metaphor to portray the
+maternal role in child development:
+If growth is to proceed smoothly, the tissues must be exposed to
+the influence of the appropriate organizer at certain critical pe-
+riods. In the same way, if mental development is to proceed
+smoothly, it would appear to be necessary for the undifferentiated
+psyche to be exposed during certain critical periods to the influ-
+ence of the psychic organizer—the mother. (Bowlby, 1951, p. 53)
+Then, seemingly doing away with the idea that the superego has
+its origin in the resolution of the Oedipus complex, Bowlby
+claims that during the early years, while the child acquires the
+capacity for self-regulation, the mother is a child's ego and su-
+perego:
+It is not surprising that during infancy and early childhood these
+functions are either not operating at all or are doing so most im-
+perfectly. During this phase of life, the child is therefore depen-
+dent on his mother performing them for him. She orients him in
+space and time, provides his environment, permits the satisfac-
+tion of some impulses, restricts others. She is his ego and his
+super-ego. Gradually he learns these arts himself, and as he does,
+the skilled parent transfers the roles to him. This is a slow, subtle
+and continuous process, beginning when he first learns to walk
+and feed himself, and not ending completely until maturity is
+reached.. . . Ego and super-ego development are thus inextric-
+ably bound up with the child's primary human relationships.
+(Bowlby, 1951, p. 53)
+This sounds more Vygotskian than Freudian. Moreover, de-
+spite his disagreements with Kleinian therapy, I detect rem-
+nants of Kleinian ideas in Bowlby's discussions of children's
+violent fantasies on returning to parents after a prolonged sepa-
+ration and "the intense depression that humans experience as a
+result of hating the person they most dearly love and need"
+(Bowlby, 1951, p. 57).
+Bowlby's major conclusion, grounded in the available empiri-
+cal evidence, was that to grow up mentally healthy "the infant
+and young child should experience a warm, intimate, and con-
+tinuous relationship with his mother (or permanent mother
+substitute) in which both find satisfaction and enjoyment"
+(Bowlby, 1951, p. 13). Later summaries often overlook the refer-
+ence to the substitute mother and to the partners' mutual enjoy-
+ment. They also neglect Bowlby's emphasis on the role of social
+networks and on economic as well as health factors in the devel-
+opment of well-functioning mother-child relationships. His
+
+762 INGE BRETHERTON
+call to society to provide support for parents is still not heeded
+today:
+Just as children are absolutely dependent on their parents for suste-
+nance, so in all but the most primitive communities, are parents,
+especially their mothers, dependent on a greater society for eco-
+nomic provision. If a community values its children it must cher-
+ish their parents. (Bowlby, 1951, p. 84)
+True to the era in which the WHO report was written, Bowlby
+emphasized the female parent. In infancy, he comments, fathers
+have their uses, but normally play second fiddle to mother.
+Their prime role is to provide emotional support to their wives'
+mothering.
+The proposition that, to thrive emotionally, children need a
+close and continuous caregiving relationship called for a theo-
+retical explanation. Bowlby was not satisfied with the then
+current psychoanalytic view that love of mother derives from
+sensuous oral gratification, nor did he agree with social learn-
+ing theory's claim that dependency is based on secondary rein-
+forcement (a concept that was itself derived from psychoana-
+lytic ideas). Like Spitz (1946) and Erikson (1950), Bowlby had
+latched on to the concept of critical periods in embryological
+development and was casting about for similar phenomena at
+the behavioral level when, through a friend, he happened upon
+an English translation of Konrad Lorenz's (1935) paper on im-
+printing.
+From then on Bowlby began to mine ethology for useful new
+concepts. Lorenz's (1935) account of imprinting in geese and
+other precocial birds especially intrigued him, because it sug-
+gested that social bond formation need not be tied to feeding.
+In addition, he favored ethological methods of observing ani-
+mals in their natural environment, because this approach was
+so compatible with the methods Robertson had already devel-
+oped at the Tavistock research unit.
+One notable talent that stood Bowlby in great stead through-
+out his professional life was his ability to draw to himself out-
+standing individuals who were willing and able to help him
+acquire expertise in new fields of inquiry that he needed to
+master in the service of theory building. To learn more about
+ethology, Bowlby contacted Robert Hinde, under whose "gener-
+ous and stern guidance" (see Bowlby, 1980b, p. 650) he mastered
+ethological principles to help him find new ways of thinking
+about infant-mother attachment. Conversely, Hinde's fascinat-
+ing studies of individual differences in separation and reunion
+behaviors of group-living rhesus mother-infant dyads (Hinde &
+Spencer-Booth, 1967) were inspired by the contact with Bowlby
+and his co-workers (Hinde, 1991).
+Bowlby's first ethological paper appeared in 1953. Somewhat
+surprisingly, however, various empirical papers on the effects of
+separation, published with his own research team at the very
+same period, show little trace of Bowlby's new thinking, be-
+cause his colleagues were unconvinced that ethology was rele-
+vant to the mother-child relationship (Bowlby, personal com-
+munication, October 1986). Even Mary Ainsworth, though
+much enamored of ethology, was somewhat wary of the direc-
+tion Bowlby's theorizing had begun to take. It was obvious to
+her, she said, that a baby loves his mother because she satisfies
+his needs (Ainsworth, personal communication, January 1992).
+A collaborative paper dating from this period (Bowlby, Ains-
+worth, Boston, & Rosenbluth, 1956) is nevertheless important,
+because it prefigures later work on patterns of attachment by
+Ainsworth. Her contribution to the paper was a system for
+classifying three basic relationship patterns in school-age chil-
+dren who had been reunited with parents after prolonged sana-
+torium stays: those with strong positive feelings toward their
+mothers; those with markedly ambivalent relationships; and a
+third group with nonexpressive, indifferent, or hostile relation-
+ships with mother.
+The Formulation of Attachment Theory
+and the First Attachment Study
+Theoretical Formulations
+Bowlby's first formal statement of attachment theory, build-
+ing on concepts from ethology and developmental psychology,
+was presented to the British Psychoanalytic Society in London
+in three now classic papers: "The Nature of the Child's Tie to
+His Mother" (1958), "Separation Anxiety" (1959), and "Grief
+and Mourning in Infancy and Early Childhood" (1960). By
+1962 Bowlby had completed two further papers (never pub-
+lished; 1962a and b) on defensive processes related to mourn-
+ing. These five papers represent the first basic blueprint of at-
+tachment theory.
+The Nature of the Child's Tie to His Mother. This paper re-
+views and then rejects those contemporary psychoanalytic ex-
+planations for the child's libidinal tie to the mother in which
+need satisfaction is seen as primary and attachment as second-
+ary or derived. Borrowing from Freud's (1905/1953) notion that
+mature human sexuality is built up of component instincts,
+Bowlby proposed that 12-month-olds' unmistakable attach-
+ment behavior is made up of a number of component instinc-
+tual responses that have the function of binding the infant to
+the mother and the mother to the infant. These component
+responses (among them sucking, clinging, and following, as
+well as the signaling behaviors of smiling and crying) mature
+relatively independently during the first year of life and become
+increasingly integrated and focused on a mother figure during
+the second 6 months. Bowlby saw clinging and following as
+possibly more important for attachment than sucking and
+crying.
+To buttress his arguments, Bowlby reviewed data from exist-
+ing empirical studies of infants' cognitive and social develop-
+ment, including those of Piaget (1951,1954), with whose ideas
+he had become acquainted during a series of meetings by the
+"Psychobiology of the Child" study group, organized by the
+same Ronald Hargreaves at the World Health Organization who
+had commissioned Bowlby's 1951 report. These informative
+meetings, also attended by Erik Erikson, Julian Huxley, Baerbel
+Inhelder, Konrad Lorenz, Margaret Mead, and Ludwig von
+Bertalanfly, took place between 1953 and 1956 (proceedings
+were published by Tavistock Publications). For additional evi-
+dence, Bowlby drew on many years of experience as weekly
+facilitator of a support group for young mothers in London.
+After his careful discussion of infant development, Bowlby
+introduced ethological concepts, such as sign stimuli or social
+releasers that "cause" specific responses to be activated and
+shut off or terminated (see Tinbergen, 1951). These stimuli
+
+APA CENTENNIAL: ORIGINS OF ATTACHMENT THEORY 763
+could be external or intrapsychic, an important point in view of
+the fact that some psychoanalysts accused Bowlby of behavior-
+ism because he supposedly ignored mental phenomena.
+Bowlby also took great pains to draw a clear distinction be-
+tween the old social learning theory concept of dependency
+and the new concept of attachment, noting that attachment is
+not indicative of regression, but rather performs a natural,
+healthy function even in adult life.
+Bowlby's new instinct theory raised quite a storm at the Brit-
+ish Psychoanalytic Society. Even Bowlby's own analyst, Joan
+Riviere, protested. Anna Freud, who missed the meeting but
+read the paper, politely wrote: "Dr. Bowlby is too valuable a
+person to get lost to psychoanalysis" (Grosskurth, 1987).
+Separation Anxiety. The second seminal paper (Bowlby,
+1959) builds on observations by Robertson (1953b) and Hein-
+icke (1956; later elaborated as Heinicke & Westheimer, 1966), as
+well as on Harlow and Zimmermann's (1958) groundbreaking
+work on the effects of maternal deprivation in rhesus monkeys.
+Traditional theory, Bowlby claims, can explain neither the in-
+tense attachment of infants and young children to a mother
+figure nor their dramatic responses to separation.
+Robertson (Robertson & Bowlby, 1952) had identified three
+phases of separation response: protest (related to separation
+anxiety), despair (related to grief and mourning), and denial or
+detachment (related to defence mechanisms, especially repres-
+sion). Again drawing on ethological concepts regarding the con-
+trol of behavior, Bowlby maintained that infants and children
+experience separation anxiety when a situation activates both
+escape and attachment behavior but an attachment figure is not
+available.
+The following quote explains, in part, why some psychoana-
+lytic colleagues called Bowlby a behaviorist: "for to have a deep
+attachment for a person (or a place or thing) is to have taken
+them as the terminating object of our instinctual responses"
+(Bowlby, 1959, p. 13). The oddity of this statement derives from
+mixing, in the same sentence, experiential language (to have a
+deep attachment) with explanatory language representing an
+external observer's point of view (the attachment figure as the
+terminating object).
+In this paper Bowlby also took issue with Freud's claim that
+maternal overgratification is a danger in infancy. Freud failed
+to realize, says Bowlby, that maternal pseudoaffection and over-
+protection may derive from a mother's overcompensation for
+unconscious hostility. In Bowlby's view, excessive separation
+anxiety is due to adverse family experiences—such as repeated
+threats of abandonment or rejection by parents—or to a par-
+ent's or sibling's illness or death for which the child feels respon-
+sible.
+Bowlby also pointed out that, in some cases, separation anxi-
+ety can be excessively low or be altogether absent, giving an
+erroneous impression of maturity. He attributes pseudoinde-
+pendence under these conditions to defensive processes. A
+well-loved child, he claims, is quite likely to protest separation
+from parents but will later develop more self-reliance. These
+ideas later reemerged in Ainsworth's classifications of ambiva-
+lent, avoidant, and secure patterns of infant-mother attach-
+ment (Ainsworth, Blehar, Waters, & Wall, 1978).
+Grief and Mourning in Infancy and Early Childhood. In the
+third, most controversial paper, Bowlby (1960) questioned
+Anna Freud's contention that bereaved infants cannot mourn
+because of insufficient ego development and therefore experi-
+ence nothing more than brief bouts of separation anxiety if an
+adequate substitute caregiver is available. In contrast, Bowlby
+(citing Marris, 1958) claimed that grief and mourning processes
+in children and adults appear whenever attachment behaviors
+are activated but the attachment figure continues to be unavail-
+able. He also suggested that an inability to form deep relation-
+ships with others may result when the succession of substitutes
+is too frequent.
+As with the first paper, this paper also drew strong objections
+from many members of the British Psychoanalytic Society. One
+analyst is said to have exclaimed: "Bowlby? Give me Barrabas"
+(Grosskurth, 1987). Controversy also accompanied the pub-
+lished version of this paper in the Psychoanalytic Study of the
+Child. Unbeknownst to Bowlby, rejoinders had been invited
+from Anna Freud (1960), Max Schur (1960), and Rene Spitz
+(1960), all of whom protested various aspects of Bowlby's revi-
+sion of Freudian theory. Spitz (1960) ended his rejoinder by
+saying:
+When submitting new theories we should not violate the principle
+of parsimony in science by offering hypotheses which in contrast
+to existing theory becloud the observational facts, are oversimpli-
+fied, and make no contribution to the better understanding of
+observed phenomena, (p. 93)
+Despite this concerted attack, Bowlby remained a member of
+the British Psychoanalytic Society for the rest of his life, al-
+though he never again used it as a forum for discussing his
+ideas. At a meeting of the society in memory of John Bowlby,
+Eric Rayner (1991) expressed his regret at this turn of events:
+What seems wrong is when a theorist extols his own view by rub-
+bishing others; Bowlby received this treatment.. . .Ourtherapeu-
+tic frame of mind is altered by theory. John Bowlby was a great
+alterer of frames of mind.
+Bowlby's controversial paper on mourning attracted the at-
+tention of Colin Parkes, now well known for his research on
+adult bereavement. Parkes saw the relevance of Bowlby's and
+Robertson's work on mourning in infancy and childhood for
+gaining insight into the process of adult grief. On joining
+Bowlby's research unit at the Tavistock Institute in 1962, Parkes
+set out to study a nonclinic group of widows in their homes to
+chart the course of normal adult grief, about which little was
+known at the time. The findings led to a joint paper with
+Bowlby (Bowlby & Parkes, 1970) in which the phases of separa-
+tion response delineated by Robertson for young children were
+elaborated into four phases of grief during adult life: (a) numb-
+ness, (b) yearning and protest, (c) disorganization and despair,
+and (d) reorganization (see also Parkes, 1972).
+Before the publication of the 1970 paper, Parkes had visited
+Elizabeth Kubler-Ross in Chicago, who was then gathering
+data for her influential book On Death and Dying (1970). The
+phases of dying described in her book (denial, anger, bargain-
+ing, depression, and acceptance) owe much to Bowlby's and
+Robertson's thinking. Bowlby also introduced Parkes to the
+founder of the modern hospice movement, Cicely Saunders.
+Saunders and Parkes used attachment theory and research in
+developing programs for the emotional care of the dying and
+
+764 INGE BRETHERTON
+bereaved. What they found particularly helpful in countering
+negative attitudes to the dying and bereaved was the concept of
+grief as a process toward attaining a new identity rather than as
+a state (Parkes, personal communication, November 1989).
+The First Empirical Study of Attachment:
+Infancy in Uganda
+Let us now return to Mary Ainsworth's work. In late 1953,
+she had left the Tavistock Clinic, obviously quite familiar with
+Bowlby's thinking about ethology but not convinced of its value
+for understanding infant-mother attachment. The Ainsworths
+were headed for Uganda, where Leonard Ainsworth had ob-
+tained a position at the East African Institute of Social Re-
+search at Kampala. With help from the same institute, Mary
+Ainsworth was able to scrape together funds for an observa-
+tional study, but not before writing Bowlby a letter in which she
+called for empirical validation of his ethological notions (Ains-
+worth, January 1992, personal communication).
+Inspired by her analyses of Robertson's data, Ainsworth had
+initially planned an investigation of toddlers' separation re-
+sponses during weaning, but it soon became obvious that the
+old tradition of sending the child away "to forget the breast"
+had broken down. She therefore decided to switch gears and
+observe the development of infant-mother attachment.
+As soon as she began her data collection, Ainsworth was
+struck by the pertinence of Bowlby's ideas. Hence, the first
+study of infant-mother attachment from an ethological per-
+spective was undertaken several years before the publication of
+the three seminal papers in which Bowlby (1958,1959,1960)
+laid out attachment theory.
+Ainsworth recruited 26 families with unweaned babies (ages
+1 -24 months) whom she observed every 2 weeks for 2 hours per
+visit over a period of up to 9 months. Visits (with an interpreter)
+took place in the family living-room, where Ganda women gen-
+erally entertain in the afternoon. Ainsworth was particularly
+interested in determining the onset of proximity-promoting sig-
+nals and behaviors, noting carefully when these signals and be-
+haviors became preferentially directed toward the mother.
+On leaving Uganda in 1955, the Ainsworths moved to Balti-
+more, where Mary Ainsworth began work as a diagnostician
+and part-time clinician at the Sheppard and Enoch Pratt Hospi-
+tal, further consolidating her already considerable assessment
+skills. At the same time, she taught clinical and developmental
+courses at the Johns Hopkins University, where she was initially
+hired as a lecturer. Because of her involvement in diagnostic
+work and teaching, the data from the Ganda project lay fallow
+for several years.
+Refining Attachment Theory and Research:
+Bowlby and Ainsworth
+Before the publication of "The Nature of the Child's Tie to
+His Mother" in 1958, Mary Ainsworth received a preprint of
+the paper from John Bowlby. This event led Bowlby and Ains-
+worth to renew their close intellectual collaboration. Ains-
+worth's subsequent analysis of data from her Ganda project
+(Ainsworth 1963, 1967) influenced and was influenced by
+Bowlby's reformulation of attachment theory (published in
+1969). In this sharing of ideas, Ainsworth's theoretical contribu-
+tion to Bowlby's presentation of the ontogeny of human attach-
+ment cannot be overestimated.
+Findings From Ainsworth's Ganda Project
+The Ganda data (Ainsworth, 1963,1967) were a rich source
+for the study of individual differences in the quality of mother-
+infant interaction, the topic that Bowlby had earlier left aside as
+too difficult to study. Of special note, in light of Ainsworth's
+future work, was an evaluation of maternal sensitivity to infant
+signals, derived from interview data. Mothers who were excel-
+lent informants and who provided much spontaneous detail
+were rated as highly sensitive, in contrast to other mothers who
+seemed imperceptive of the nuances of infant behavior. Three
+infant attachment patterns were observed: Securely attached
+infants cried little and seemed content to explore in the pres-
+ence of mother; insecurely attached infants cried frequently,
+even when held by their mothers, and explored little; and not-
+yet attached infants manifested no differential behavior to the
+mother.
+It turned out that secure attachment was significantly corre-
+lated with maternal sensitivity. Babies of sensitive mothers
+tended to be securely attached, whereas babies of less sensitive
+mothers were more likely to be classified as insecure. Mothers'
+enjoyment of breast-feeding also correlated with infant security.
+These findings foreshadow some of Ainsworth's later work, al-
+though the measures are not yet as sophisticated as those devel-
+oped for subsequent studies.
+Ainsworth presented her initial findings from the Ganda
+project at meetings of the Tavistock Study Group organized by
+Bowlby during the 1960s (Ainsworth, 1963). Participants in-
+vited to these influential gatherings included many now-emi-
+nent infant researchers of diverse theoretical backgrounds (in
+addition to Mary Ainsworth, there were Genevieve Appell,
+Miriam David, Jacob Gewirtz, Hanus Papousek, Heinz
+Prechtl, Harriet Rheingold, Henry Ricciuti, Louis Sander, and
+Peter Wolff), as well as renowned animal researchers such as
+Harry Harlow, Robert Hinde, Charles Kaufmann, Jay Rosen-
+blatt, and Thelma Rowell. Their lively discussions and ensuing
+studies contributed much to the developing field of infant so-
+cial development in general. Importantly for Bowlby, they also
+enriched his ongoing elaboration of attachment theory. Bowlby
+had always believed that he had much to gain from bringing
+together researchers with different theoretical backgrounds
+(e.g., learning theory, psychoanalysis, and ethology), whether or
+not they agreed with his theoretical position. Proceedings of
+these fruitful meetings were published in four volumes entitled
+Determinants of Infant Behaviour (1961,1963,1965, and 1969,
+edited by Brian Foss).
+The Baltimore Project
+In 1963, while still pondering the data from the Ganda study,
+Mary Ainsworth embarked on a second observational project
+whose thoroughness no researcher has since equalled. Again,
+she opted for naturalistic observations, but with interviews
+playing a somewhat lesser role. The 26 participating Baltimore
+families were recruited prenatally, with 18 home visits begin-
+
+APA CENTENNIAL: ORIGINS OF ATTACHMENT THEORY 765
+ning in the first month and ending at 54 weeks. Each visit lasted
+4 hours to make sure that mothers would feel comfortable
+enough to follow their normal routine, resulting in approxi-
+mately 72 hours of data collection per family.
+Raw data took the form of narrative reports, jotted down in
+personal shorthand, marked in 5-minute intervals, and later
+dictated into a tape recorder for transcription. Typed narratives
+from all visits for each quarter of the first year of life were
+grouped together for purposes of analysis.
+A unique (at the time) aspect of Ainsworttis methodology
+was the emphasis on meaningful behavioral patterns in con-
+text, rather than on frequency counts of specific behaviors. This
+approach had roots in her dissertation work, in which she clas-
+sified patterns of familial and extrafamilial dependent and inde-
+pendent security, in her expertise with the Rorschach test, and
+in her work at the Tavistock Institute with Bowlby and Rob-
+ertson.
+Close examination of the narratives revealed the emergence
+of characteristic mother-infant interaction patterns during the
+first 3 months (see Ainsworth et al., 1978; see also Ainsworth,
+1982,1983). Separate analyses were conducted on feeding situa-
+tions (Ainsworth & Bell, 1969), mother-infant face-to-face in-
+teraction (Blehar, Liebermann, & Ainsworth, 1977), crying
+(Bell & Ainsworth, 1972), infant greeting and following (Stay-
+ton & Ainsworth, 1973), the attachment exploration balance
+(Ainsworth, Bell, & Stayton, 1971), obedience (Stayton, Hogan,
+& Ainsworth, 1973), close bodily contact (Ainsworth, Bell, Ble-
+har, & Main, 1971), approach behavior (Tracy, Lamb, & Ains-
+worth, 1976), and affectionate contact (Tracy & Ainsworth,
+1981).
+Striking individual differences were observed in how sensi-
+tively, appropriately, and promptly mothers responded to their
+infants' signals. For some mother-infant pairs, feeding was an
+occasion for smooth cooperation. Other mothers had difficul-
+ties in adjusting their pacing and behavior to the baby's cues. In
+response their babies tended to struggle, choke, and spit up,
+hardly the sensuous oral experience Freud had had in mind.
+Similar distinctive patterns were observed in face-to-face inter-
+actions between mother and infant during the period from 6 to
+15 weeks (Blehar, Lieberman, & Ainsworth, 1977). When
+mothers meshed their own playful behavior with that of their
+babies, infants responded with joyful bouncing, smiling, and
+vocalizing. However, when mothers initiated fact-to-face inter-
+actions silently and with an unsmiling expression, ensuing in-
+teractions were muted and brief. Findings on close bodily con-
+tact resembled those on feeding and fact-to-face interaction, as
+did those on crying. There were enormous variations in how
+many crying episodes a mother ignored and how long she let
+the baby cry. In countering those who argued that maternal
+responsiveness might lead to "spoiling," Bell and Ainsworth
+(1972) conclude that "an infant whose mother's responsiveness
+helps him to achieve his ends develops confidence in his own
+ability to control what happens to him" (p. 1188).
+Maternal sensitivity in the first quarter was associated with
+more harmonious mother-infant relationships in the fourth
+quarter. Babies whose mothers had been highly responsive to
+crying during the early months now tended to cry less, relying
+for communication on facial expressions, gestures, and vocali-
+zations (Bell & Ainsworth, 1972). Similarly, infants whose
+mother had provided much tender holding during the first
+quarter sought contact less often during the fourth quarter, but
+when contact occurred it was rated as more satisfying and affec-
+tionate (Ainsworth, Bell, Blehar, & Main, 1971). Ainsworth
+(Ainsworth et al., 1978) explains these findings by recourse to
+infants' expectations, based on prior satisfying or rejecting expe-
+riences with mother.
+All first-quarter interactive patterns were also related to in-
+fant behavior in a laboratory procedure known as the Strange
+Situation (Ainsworth & Wittig, 1969). This initially very contro-
+versial laboratory procedure for 1-year-olds was originally de-
+signed to examine the balance of attachment and exploratory
+behaviors under conditions of low and high stress, a topic in
+which Harlow (1961) had aroused Ainsworth's interest during
+meetings of the Tavistock group, but which also reminded her
+of an earlier study by Arsenian (1943) on young children in an
+insecure situation and of her dissertation work on security
+theory.
+The Strange Situation is a 20-minute miniature drama with
+eight episodes. Mother and infant are introduced to a labora-
+tory play room where they are later joined by an unfamiliar
+woman. While the stranger plays with the baby, the mother
+leaves briefly and then returns. A second separation ensues
+during which the baby is completely alone. Finally, the stranger
+and then the mother return.
+As expected, Ainsworth found that infants explored the
+playroom and toys more vigorously in the presence of their
+mothers than after a stranger entered or while the mother was
+absent (Ainsworth & Bell, 1970). Although these results were
+theoretically interesting, Ainsworth became much more in-
+trigued with unexpected patterns of infant reunion behaviors,
+which reminded her of responses Robertson had documented
+in children exposed to prolonged separations, and about which
+Bowlby (1959) had theorized in his paper on separation.
+A few of the 1-year-olds from the Baltimore study were sur-
+prisingly angry when the mother returned after a 3-minute (or
+shorter) separation. They cried and wanted contact but would
+not simply cuddle or "sink in" when picked up by the returning
+mother. Instead, they showed their ambivalence by kicking or
+swiping at her. Another group of children seemed to snub or
+avoid the mother on reunion, even though they had often
+searched for her while she was gone. Analyses of home data
+revealed that those infants who had been ambivalent toward or
+avoidant of the mother on reunion in the Strange Situation had
+a less harmonious relationship with her at home than those (a
+majority) who sought proximity, interaction, or contact on re-
+union (Ainsworth, Bell, & Stayton, 1974). Thus originated the
+well-known Strange Situation classification system (Ainsworth
+et al., 1978) which, to Ainsworth's chagrin, has stolen the lime-
+light from her observational findings of naturalistic mother-in-
+fant interaction patterns at home.
+The First Volume in the Attachment Trilogy:
+Attachment and Ethology
+While Ainsworth wrote up the findings from her Ganda
+study for Infancy in Uganda (1967) and was engaged in collect-
+ing data for the Baltimore project, Bowlby worked on the first
+volume of the attachment trilogy, Attachment (1969). When he
+
+766 INGE BRETHERTON
+began this enterprise in 1962, the plan had been for a single
+book. However, as he explains in the preface: "As my study of
+theory progressed it was gradually borne in upon me that the
+field I had set out to plough so light-heartedly was no less than
+the one Freud had started tilling sixty years earlier." In short,
+Bowlby realized that he had to develop a new theory of motiva-
+tion and behavior control, built on up-to-date science rather
+than the outdated psychic energy model espoused by Freud.
+In the first half of Attachment, Bowlby lays the groundwork
+for such a theory, taking pains to document each important
+statement with available research findings. He begins by noting
+that organisms at different levels of the phylogenetic scale regu-
+late instinctive behavior in distinct ways, ranging from primi-
+tive reflexlike "fixed action patterns" to complex plan hierar-
+chies with subgoals. In the most complex organisms, instinctive
+behaviors may be "goal-corrected" with continual on-course
+adjustments (such as a bird of prey adjusting its flight to the
+movements of the prey). The concept of cybernetically con-
+trolled behavioral systems organized as plan hierarchies
+(Miller, Galanter, & Pribram, 1960) thus came to replace
+Freud's concept of drive and instinct. Behaviors regulated by
+such systems need not be rigidly innate, but—depending on the
+organism—can adapt in greater or lesser degrees to changes in
+environmental circumstances, provided these do not deviate
+too much from the organism's environment of evolutionary
+adaptedness. Such flexible organisms pay a price, however, be-
+cause adaptable behavioral systems can more easily be sub-
+verted from their optimal path of development. For humans,
+Bowlby speculates, the environment of evolutionary adapted-
+ness probably resembles that of present-day hunter-gatherer
+societies.
+The ultimate functions of behavioral systems controlling at-
+tachment, parenting, mating, feeding, and exploration are sur-
+vival and procreation. In some cases, the predictable outcome
+of system activation is a time-limited behavior (such as food
+intake), in others it is the time-extended maintenance of an
+organism in a particular relation to its environment (e.g., within
+its own territory or in proximity to particular companions).
+Complex behavioral systems of the kind proposed by Bowlby
+can work with foresight in organisms that have evolved an abil-
+ity to construct internal working models of the environment
+and of their own actions in it (a concept taken over from Craik,
+1943, through the writings of the biologist J. Z. Young, 1964).
+The more adequate an organism's internal working model, the
+more accurately the organism can predict the future. However,
+adds Bowlby, if working models of the environment and self are
+out-of-date or are only half revised after drastic environmental
+change, pathological functioning may ensue. He speculates that
+useful model revision, extension, and consistency checking
+may require conscious processing of model content. In hu-
+mans, communicative processes—initially limited to emo-
+tional or gestural signaling and later including language—also
+permit the intersubjective sharing of model content. On an in-
+trapsychic level, the same processes are useful for self-regula-
+tion and behavioral priority setting.
+In mammals and birds, behavioral systems tend to become
+organized during specific sensitive developmental periods. As
+initial reflexlike behavior chains come under more complex,
+cybernetically controlled organization, the range of stimuli that
+can activate them also becomes more restricted. This is the case
+in imprinting, broadly defined as the restriction of specific in-
+stinctive behaviors to particular individuals or groups of indi-
+viduals during sensitive phases of development as in filial, pa-
+rental, and sexual imprinting.
+Having laid out this general theory of motivation and behav-
+ior regulation in the first half of the volume, Bowlby goes on, in
+the second half, to apply these ideas to the specific domain of
+infant-mother attachment. He defines attachment behavior as
+behavior that has proximity to an attachment figure as a predict-
+able outcome and whose evolutionary function is protection of
+the infant from danger, insisting that attachment has its own
+motivation and is in no way derived from systems subserving
+mating and feeding.
+Although human infants initially direct proximity-promot-
+ing signals fairly indiscriminately to all caregivers, these behav-
+iors become increasingly focused on those primary figures who
+are responsive to the infant's crying and who engage the infant
+in social interaction (Schaffer & Emerson, 1964). Once at-
+tached, locomotor infants are able to use the attachment figure
+as a secure base for exploration of the environment and as a safe
+haven to which to return for reassurance (Ainsworth, 1967;
+Schaffer & Emerson, 1964). How effectively the attachment fig-
+ure can serve in these roles depends on the quality of social
+interaction, especially the attachment figure's sensitivity to the
+infant's signals, although child factors also play a role. Building
+on Ainsworth's Ganda study (1967) and preliminary findings
+from her Baltimore project, Bowlby (1969) comments that
+when interaction between a couple runs smoothly, each party
+manifests intense pleasure in the other's company and especially
+in the other's expression of affection. Conversely, whenever inter-
+action results in persistent conflict each party is likely on occa-
+sion to exhibit intense anxiety or unhappiness, especially when
+the other is rejecting.. . . Proximity and affectionate interchange
+are appraised and felt as pleasurable by both, whereas distance
+and expressions of rejection are appraised as disagreeable or pain-
+ful by both. (p. 242)
+During the preschool years the attachment behavioral sys-
+tem, always complementary to the parental caregiving system,
+undergoes further reorganization as the child attains growing
+insight into the attachment figure's motives and plans. Bowlby
+refers to this stage as goal-corrected partnership. However, in
+emphasizing infant initiative and sensitive maternal respond-
+ing, Bowlby's (1951) earlier theorizing on the mother as the
+child's ego and superego was regrettably lost.
+Consolidation
+The publication of the first volume of the attachment trilogy
+in 1969 coincided with the appearance in print of initial find-
+ings from Ainsworth's Baltimore project (reviewed earlier).
+However, many investigators strongly contested Ainsworth's
+claims regarding the meaning of Strange Situation behavior,
+often because they failed to note that Strange Situation classifi-
+cations had been validated against extensive home observa-
+tions. Some interpreted avoidant infants' behavior as indepen-
+dence. The controversy lesseaed somewhat after the publica-
+tion of Patterns of Attachment (Ainsworth et al., 1978), which
+drew together the results from the Baltimore project and pre-
+
+APA CENTENNIAL: ORIGINS OF ATTACHMENT THEORY 767
+sented findings from other laboratories on the sequelae of at-
+tachment classifications in toddlerhood and early childhood
+(e.g., Main, 1973; Matas, Arend, & Sroufe, 1978).
+During this period, many of Ainsworth's graduate students
+began to publish their own work. Silvia Bell (1970) examined
+the relationship between object permanence and attachment.
+Mary Main (1973) studied secure and insecure toddlers' capac-
+ity to become invested in play activities and problem solving.
+Mary Blehar (1974) undertook the first study of attachment
+and nonmaternal care, and Alicia Lieberman (1977) investi-
+gated attachment and peer relationships in preschoolers. Mary
+Ainsworth's influence is also evident in the fact that many
+Johns Hopkins undergraduate students who had helped with
+the analysis of data from the Baltimore project later produced
+innovative dissertations on attachment-related topics at their
+respective graduate institutions, among them Robert Marvin
+(1972,1977), who wrote on the goal-corrected partnership; Mil-
+ton Kotelchuck (1972), who studied father attachment; Mark
+Cummings (1980), who investigated attachment and day care;
+Mark Greenberg (Greenberg & Marvin, 1979), who examined
+attachment in deaf children; and Everett Waters (1978), who
+documented the longitudinal stability of attachment patterns
+from 12 to 18 months.
+Everett Waters's entry into graduate study at the University of
+Minnesota in 1973 had a profound effect on Alan Sroufe, who
+had read Mary Ainsworth's (1968) theoretical article about ob-
+ject relations and dependency but had not heard of the Strange
+Situation or the Baltimore project (Sroufe, personal communi-
+cation, 1988). Sroufe's contact with Waters led to significant
+empirical and theoretical collaborations. In 1977, Sroufe and
+Waters wrote an influential paper that made attachment as an
+organizational construct accessible to a much larger audience.
+At the same time, Sroufe and Egeland, together with many of
+their students, undertook a large-scale longitudinal study of
+attachment with an at-risk population (disadvantaged mothers).
+The Minnesota study, summarized in Sroufe (1983) but still
+ongoing, stands as the second major longitudinal study of the
+relationship between quality of caregiving as related to security
+of attachment.
+Elsewhere across the United States, much time was spent
+testing the predictive validity of Strange Situation reunion clas-
+sifications. Many researchers sought to train with Mary Ains-
+worth or her former students to learn the procedure and classifi-
+cation system. Hundreds of studies using the Strange Situation
+appeared in print. It often seemed as if attachment and the
+Strange Situation had become synonymous.
+Attachment Theory and Mental Representation
+Separation (Bowlby, 1973) and Loss (Bowlby, 1980a), the sec-
+ond and third volumes in Bowlby's attachment trilogy, were
+slower to make an impact on the field of developmental psychol-
+ogy than the first volume, in part because relevant empirical
+studies lagged behind. Like Attachment, these two volumes
+cover much more theoretical ground that their titles imply.
+Separation
+In this book, Bowlby (1973) revises Freud's (1926/1959)
+theory of signal anxiety, lays out a new approach to Freud's
+(1923/1961,1940/1964) motivational theories, and presents an
+epigenetic model of personality development inspired by Wad-
+dington's (1957) theory of developmental pathways.
+Elaborating on his seminal 1959 paper, Bowlby notes that
+two distinct sets of stimuli elicit fear in children: the presence of
+unlearned and later of culturally acquired clues to danger and/
+or the absence of an attachment figure. Although escape from
+danger and escape to an attachment figure commonly occur
+together, the two classes of behavior are governed by separate
+control systems (observable when a ferocious dog comes be-
+tween a mother and her young child).
+Although Bowlby regarded the systems controlling escape
+and attachment as conceptually distinct, he considers both as
+members of a larger family of stress-reducing and safety-pro-
+moting behavioral systems, whose more general function is that
+of maintaining an organism within a defined relationship to his
+or her environment. Rather than striving for stimulus absence
+as Freud had suggested, Bowlby posits that humans are moti-
+vated to maintain a dynamic balance between familiarity-pre-
+serving, stress-reducing behaviors (attachment to protective in-
+dividuals and to familiar home sites, retreat from the strange
+and novel) and antithetical exploratory and information-seek-
+ing behaviors.
+After revising Freud's theories of fear and motivation,
+Bowlby reexamined Freud's concept of the "inner world" in
+light of modern cognitive theory. In Separation, he expands
+ideas proposed in Attachment by suggesting that, within an
+individual's internal working model of the world, working mod-
+els of self and attachment figure are especially salient. These
+working models, acquired through interpersonal interaction
+patterns, are complementary. If the attachment figure has ac-
+knowledged the infant's needs for comfort and protection while
+simultaneously respecting the infant's need for independent ex-
+ploration of the environment, the child is likely to develop an
+internal working model of self as valued and self-reliant. Con-
+versely, if the parent has frequently rejected the infant's bids for
+comfort or for exploration, the child is likely to construct an
+internal working model of self as unworthy or incompetent.
+With the aid of working models, children predict the attach-
+ment figure's likely behavior and plan their own responses.
+What type of model they construct is therefore of great conse-
+quence.
+In Separation, Bowlby also elucidates the role of internal
+working models in the intergenerational transmission of at-
+tachment patterns. Individuals who grow up to become rela-
+tively stable and self-reliant, he postulates, normally have par-
+ents who are supportive when called upon, but who also permit
+and encourage autonomy. Such parents tend not only to engage
+in fairly frank communication of their own working models of
+self, of their child, and of others, but also indicate to the child
+that these working models are open to questioning and revi-
+sion. For this reason, says Bowlby, the inheritance of mental
+health and of ill health through family microculture is no less
+important, and may well be far more important than is genetic
+inheritance (Bowlby, 1973, p. 323).
+Loss
+In the third volume of the attachment trilogy, Bowlby (1980a)
+uses information processing theories to explain the increasing
+
+768 INGE BRETHERTON
+stability of internal working models as well as their defensive
+distortion. The stability of internal working models derives
+from two sources: (a) patterns of interacting grow less accessible
+to awareness as they become habitual and automatic, and (b)
+dyadic patterns of relating are more resistant to change than
+individual patterns because of reciprocal expectancies.
+Given that old patterns of action and thought guide selective
+attention and information processing in new situations, some
+distortion of incoming information is normal and unavoidable.
+The adequacy of internal working models can be seriously un-
+dermined, however, when defensive exclusion of information
+from awareness interferes with their updating in response to
+developmental and environmental change.
+To explain the workings of defensive processes, Bowlby cites
+evidence showing that incoming information normally under-
+goes many stages of processing before reaching awareness (see
+Dixon, 1971; Erdelyi, 1974). At every stage, some information is
+retained for further processing, and the remainder discarded.
+That this may happen even after information has already un-
+dergone very advanced levels of encoding is shown by dichotic
+listening studies. In these studies, individuals who are pre-
+sented with different messages to each ear through headphones
+are able to selectively attend to one of them. That the unat-
+tended message is nevertheless receiving high-level processing
+becomes obvious when the person alerts to a word of personal
+significance (e.g., the person's name) that has been inserted into
+the unattended message.
+Bowlby proposes that defensive exclusion of information
+from awareness derives from the same processes as selective
+exclusion, although the motivation for the two types of exclu-
+sion differs. Three situations are believed to render children
+particularly prone to engaging in defensive exclusion: situations
+that parents do not wish their children to know about even
+though the children have witnessed them, situations in which
+the children find the parents' behavior too unbearable to think
+about, and situations in which children have done or thought
+about doing something of which they are deeply ashamed.
+Although defensive exclusion protects the individual from
+experiencing unbearable mental pain, confusion, or conflict, it
+is bound to interfere with the accommodation of internal work-
+ing models to external reality. Indeed, a number of clinical stud-
+ies reviewed in Separation (e.g., Cain & Fast, 1972) suggest that
+defensive exclusion leads to a split in internal working models.
+One set of working models—accessible to awareness and dis-
+cussion and based on what a child has been told—represents
+the parent as good and the parent's rejecting behavior as caused
+by the "badness" of the child. The other model, based on what
+the child has experienced but defensively excluded from aware-
+ness, represents the hated or disappointing side of the parent.
+In Loss, Bowlby attempts to shed further light on these re-
+pressive and dissociative phenomena with the aid of Tulving's
+(1972) distinction between episodic and semantic memory. Ac-
+cording to Tulving, autobiographical experience is encoded in
+episodic memory, whereas generic propositions are stored in
+semantic memory, with each memory system possibly using
+distinct storage mechanisms. Generic knowledge may derive
+from information supplied by others and from actual experi-
+ence. Bowlby surmises that severe psychic conflict is likely to
+arise when the two sources of stored information (generaliza-
+tions built on actual experience and on communications from
+others) are highly contradictory. In such cases, defensive exclu-
+sion may be brought to bear on episodic memories of actual
+experience. According to Bowlby, such processes are especially
+likely in bereaved children under 3 years of age.
+Finally, in Loss, Bowlby also considers a more complex re-
+lated problem, namely, the control of simultaneously active be-
+havioral systems. In Attachment and Separation, the interplay
+of behavioral systems was implicitly treated as one of competi-
+tion, not higher level regulation (see also Bretherton & Ains-
+worth, 1974). In Loss, Bowlby posits an executive structure that
+takes the place of Freud's (1923/1961) concept of ego. The cen-
+tral nervous system, Bowlby suggests, is organized in a loosely
+hierarchical way, with an enormous network of two-way com-
+munications among subsystems. At the top of the hierarchy, he
+posits one or perhaps several principal evaluators or controllers,
+closely linked to long-term memory. Their task is to scan incom-
+ing information for relevance. If evaluated as relevant, it may be
+stored in short-term memory to select aspects thereof for fur-
+ther processing.
+Conscious processing is likely to facilitate high-level activi-
+ties such as categorizing, retrieving, comparing, framing plans,
+and inspection of overlearned, automated action systems. In a
+unified personality, Bowlby claims, the principal system or sys-
+tems can access all memories in whatever type of storage they
+are held. However, in some cases the principal system or sys-
+tems may not be unified or capable of unimpeded intercom-
+munication with all subsystems. In this case, particular behav-
+ioral systems may not be activated when appropriate, or signals
+from these behavioral systems may not become conscious al-
+though fragments of defensively excluded information may at
+times seep through.
+Some of the dissociative or repressive phenomena involved in
+the deactivation of the attachment system occur during patho-
+logical mourning. For example, complete or partial disconnec-
+tion of an emotional response from its cause is frequent. When
+the disconnection is only partial, emotional responses may be
+directed away from the person who caused them to third per-
+sons or to the self. Hence, a bereaved person may become mor-
+bidly preoccupied with personal reactions and sufferings rather
+than attributing his or her feelings to the loss of a close relation-
+ship. Similarly, in disordered mourning, a bereaved person's
+disposition toward compulsive caregiving may derive from the
+redirection of attachment behavior. The individual may be tak-
+ing the role of attachment figure instead of seeking care.
+Attachment and Therapy
+This discussion of defensive processes leads into the topic
+that preoccupied Bowlby during the last 10 years of his life: the
+uses of attachment theory in psychotherapy (Bowlby, 1988).
+Under attachment theory, a major goal in psychotherapy is the
+reappraisal of inadequate, outdated working models of self in
+relation to attachment figures, a particularly difficult task if
+important others, especially parents, have forbidden their re-
+view. As psychoanalysts have repeatedly noted, a person with
+inadequate, rigid working models of attachment relations is
+likely to inappropriately impose these models on interactions
+with the therapist (a phenomenon known as transference). The
+
+APA CENTENNIAL: ORIGINS OF ATTACHMENT THEORY 769
+joint task of therapist and client is to understand the origins of
+the client's dysfunctional internal working models of self and
+attachment figures. Toward this end, the therapist can be most
+helpful by serving as a reliable secure base from which an indi-
+vidual can begin the arduous task of exploring and reworking
+his or her internal working models.
+New Directions
+Currently, attachment theory and research are moving for-
+ward along several major fronts, inspired by the second and
+third volumes of Bowlby's attachment trilogy, by methodologi-
+cal advances, and by the infusion into attachment theory of
+complementary theoretical perspectives.
+Attachment and Representation
+As a result of Mary Main's Berkeley study (Main, Kaplan, &
+Cassidy, 1985) and, I think, the publication of the Society for
+Research in Child Development Monograph, Growing Points of
+Attachment Theory and Research (Bretherton & Waters, 1985),
+we are now beginning to empirically explore the psychological,
+internal, or representational aspects of attachment, including
+the intergenerational transmission of attachment patterns that
+had been at the center of Bowlby's interests since his beginnings
+in psychiatry but that are most clearly elaborated in volumes 2
+and 3 of the attachment trilogy (see Bretherton, 1987, 1990,
+1991).
+Interestingly, an additional source of inspiration for the study
+of internal working models came from attempts to translate
+Ainsworth's infant-mother attachment patterns into corre-
+sponding adult patterns. In the Adult Attachment Interview
+(George, Kaplan, & Main, 1984; Main & Goldwyn, in press),
+parents were asked open-ended questions about their attach-
+ment relations in childhood and about the influence of these
+early relations on their own development. Three distinct pat-
+terns of responding were identified: Autonomous-secure par-
+ents gave a clear and coherent account of early attachments
+(whether these had been satisfying or not); preoccupied parents
+spoke of many conflicted childhood memories about attach-
+ment but did not draw them together into an organized, consis-
+tent picture; and, finally, dismissing parents were characterized
+by an inability to remember much about attachment relations
+in childhood. In some of the dismissing interviews, parents'
+parents were idealized on a general level, but influences of early
+attachment experiences on later development were denied. Spe-
+cific memories when they did occur suggested episodes of re-
+jection.
+Not only did the Adult Attachment Interview classifications
+correspond to Ainsworth's secure, ambivalent, and avoidant in-
+fant patterns at a conceptual level, but adult patterns were also
+empirically correlated with infant patterns (e.g., a dismissing
+parent tended to have an avoidant infant; Main & Goldwyn, in
+press). These findings have since been validated for prenatally
+administered interviews by Fonagy, Steele, and Steele (1991)
+and by Ward et al. (1990). Consonant findings were also ob-
+tained in a study of young adults in which Adult Attachment
+Interview classifications were correlated with peer reports (Ko-
+bak&Sceery,1988).
+In addition, representational measures of attachment have
+been devised for use with children. A pictorial separation anxi-
+ety test for adolescents, developed by Hansburg (1972), was
+adapted for younger children by Klagsbrun and Bowlby (1976),
+and more recently revised and validated against observed at-
+tachment patterns by Kaplan (1984) and Slough and Greenberg
+(1991). Likewise, attachment-based doll-story completion tasks
+for preschoolers were validated against behavioral measures by
+Bretherton, Ridgeway, and Cassidy, (1990) and Cassidy (1988).
+In these tests, emotionally open responding tended to be asso-
+ciated with secure attachment classifications or related behav-
+iors.
+Finally, several authors have created interviews that examine
+attachment from the parental as opposed to the filial perspec-
+tive (e.g, Bretherton, Biringen, Ridgeway, Maslin, & Sherman,
+1989; George & Solomon, 1989). In addition, Waters and Deane
+(1985) developed a Q sort that can be used to assess a mother's
+internal working models of her child's attachment to her.
+Attachment Across the Life Span
+A related topic, attachment relationships between adults, be-
+gan in the early 1970s, with studies of adult bereavement
+(Bowlby & Parkes, 1970; Parkes, 1972) and marital separation
+(Weiss, 1973,1977). More recently, interest in adult attachments
+has broadened to encompass marital relationships (Weiss,
+1982, 1991) and has taken a further upsurge with work by
+Shaver and Hazan (1988), who translated Ainsworth's infant
+attachment patterns into adult patterns, pointing out that adults
+who describe themselves as secure, avoidant, or ambivalent
+with respect to romantic relationships report differing patterns
+of parent-child relationships in their families of origin. Finally,
+Cicirelli (1989, 1991) has applied attachment theory to the
+study of middle-aged siblings and their elderly parents. Much
+future work will be needed to delineate more fully the distinct
+qualities of child-adult, child-child, and adult-adult attach-
+ment relationships (see Ainsworth, 1989), as well as their inter-
+play within the family system, a task begun by Byng-Hall (1985)
+and Marvin and Stewart (1990).
+Attachment and Developmental Psychopathology
+Attachment theory and research are also making a notable
+impact on the emerging field of developmental psychopathol-
+ogy (Sroufe, 1988), with longitudinal attachment-based studies
+of families with depression (Radke-Yarrow, Cummings, Kuc-
+zinsky, & Chapman, 1985), of families with maltreatment (e.g.,
+Cicchetti & Barnett, 1991; Crittenden, 1983; Schneider-Rosen,
+Braunwald, Carlson, & Cicchetti, 1985), and of clinical inter-
+ventions in families with low social support (Lieberman &
+Pawl, 1988; Spieker & Booth, 1988) and with behavior-problem
+children (Greenberg & Speltz, 1988). Much of this work is repre-
+sented in a volume on clinical implications of attachment
+(Belsky & Nezworski, 1988). These topics hark back to
+Bowlby's seminal ideas from the 1930s, but they have been
+greatly enriched by Mary Ainsworth's notions on the origins of
+individual differences of attachment patterns.
+
+770 INGE BRETHERTON
+The Ecology of Attachment
+Although we have made progress in examining mother-child
+attachment, much work needs to be done with respect to study-
+ing attachment in the microsystem of the family relationships
+(Bronfenbrenner, 1979). Despite studies by Belsky, Gilstrap,
+and Rovine (1984), Lamb (1978), and Parke and Tinsley (1987)
+that show fathers to be competent, if sometimes less than fully
+participant attachment figures, we still have much to learn re-
+garding father attachment. Another important topic, sibling
+attachment, has been tackled by a few researchers (e.g., Stewart
+& Marvin, 1984; Teti & Ablard, 1989), but triadic studies of
+attachment relationships (modeled on Dunn, 1988) are sorely
+lacking. Especially crucial are attachment-theoretic studies of
+loyalty conflicts, alliances by a dyad vis-a-vis a third family
+member, and enmeshment of a child in the spousal dyad, as
+exemplified in a report by Fish, Belsky, and \bungblade (1991)
+in which insecure attachment in infancy was associated with
+inappropriate involvement in spousal decision making at 4
+years of age. Finally, the interrelations of child temperament
+and developing attachment relationships with other family
+members remain conceptually unclear despite intensive re-
+search efforts (Belsky & Rovine, 1987; Sroufe, 1985).
+The documentation of family and social network factors as
+they affect attachment relations (e.g., Belsky & Isabella, 1988;
+Belsky, Rovine, & Taylor, 1984) has been more successful. In the
+Pennsylvania project, attachment quality at the end of the first
+year was predictable from relative changes in levels of marital
+satisfaction after the child's birth, as well as from parental satis-
+faction with social support, not its frequency.
+An ecological perspective also calls for an examination of
+issues related to dual-worker families, especially in view of the
+continued sex-gender differentiation of parenting. Some femi-
+nist theorists have interpreted attachment theory as supporting
+the traditional view of women as primary earegivers (Cho-
+dorow, 1978; Johnson, 1988). This is not strictly justified, be-
+cause attachment theory does not specify that caregiving must
+be done by mothers or be restricted to females (Marris, 1982).
+Most central to healthy development, according to attachment
+theory, is infants' need for a committed caregiving relationship
+with one or a few adult figures. Although the majority of attach-
+ment studies have focused on mothers because mothers tend to
+most often fill this role, we do have evidence that infants can be
+attached to a hierarchy of figures, including fathers, grandpar-
+ents, and siblings (Schaffer & Emerson, 1964) as well as to day-
+care providers (Howes, Rodning, Galuzzo, & Myers, 1988).
+However, our knowledge about the range of societal options for
+successfully sharing the task of bringing up children is still
+woefully inadequate. The recent spate of studies documenting
+an increased risk of insecure attachment if daycare begins in
+the first year and is extensive in duration (Belsky & Rovine,
+1988; Belsky & Braungart, 1991) is worrisome and needs resolu-
+tion. Cross-cultural studies of attachment and nonparental care
+in countries such as Sweden or Israel may ultimately provide
+more reliable answers.
+Cross-Cultural Studies
+Moving from family and other social networks to the larger
+societal matrix, studies of Strange Situation classifications in
+other cultures have sparked a lively debate on their universal
+versus culture-specific meaning. In a North-German study,
+avoidant classifications were overrepresented (Grossmann,
+Grossmann, Spangler, Suess, & Unzner, 1985), whereas ambi-
+valent classifications were more frequent than expected in
+Israeli kibbutzim (Sagi et al., 1985) and in Japan (Miyake,
+Chen, & Campos, 1985).
+Initially, these findings were interpreted in purely cultural
+terms. Thus, Grossmann et al. (1985) proposed that the high
+incidence of avoidant infants in Germany should not be attrib-
+uted to parental rejection, but rather to a greater parental push
+toward infants' independence. Similarly, the high frequency of
+ambivalent classifications observed in Israeli kibbutzim and
+Japan was attributed to underexposure to strangers (Miyake et
+al., 1985; Sagi et al., 1985). Though persuasive on the surface,
+these explanations were not based on systematic assessments of
+parental beliefs and culturally guided practices.
+More recently, van IJzendoorn and Kroonenberg (1988) ex-
+amined the frequency distributions of Strange Situation classifi-
+cations from over a thousand U.S. and cross-national studies,
+pointing out that valid conclusions about cross-national differ-
+ences should not be drawn from single samples. In addition,
+intercorrelational patterns of home and Strange Situation be-
+havior in North Germany (Grossmann et al., 1985) closely re-
+sembled those in the Ainsworth's Baltimore study, at least in
+part undermining a purely cultural interpretation. Likewise,
+Sagi, Aviezer, Mayseless, Donnell, and Joels (1991) attribute the
+abundance of ambivalent classifications to specific night-time
+caregiving arrangements in the kibbutzim they studied, rather
+than fewer experiences with strangers. Taken in combination,
+these findings suggest that Strange Situation classifications,
+and hence the concept of parental sensitivity, may have more
+cross-cultural validity in industrialized nations than was ini-
+tially believed, but the issue is by no means resolved.
+Systematic work on the more fascinating topic of how differ-
+ent cultures—especially non-Western cultures—fit attachment
+behaviors and relationships into their overall social organiza-
+tion has barely begun. There are, however, some tantalizing
+hints in the ethnographic literature (see Bretherton, 1985, for a
+review). For example, the Micronesian society of Tikopia
+(Firth, 1936) deliberately fosters attachment between an infant
+and its maternal uncle by prescribing face-to-face talk with the
+infant on a regular basis. This maternal uncle is destined to play
+an important quasi-parental role in the life of the child. Along
+somewhat different lines, Balinese mothers control their in-
+fants' exploratory behavior by using fake fear expressions to
+bring the infants back into close proximity to them (Bateson &
+Mead, 1942). In both cultures, a biological system is molded to
+a particular society's purposes (by fostering specific relation-
+ships or controlling exploration).
+A recent study of parent-infant attachment among the Efe
+begins to provide systematic information in this area. The Efe,
+a seminomadic people, live in the African rain forest, subsist-
+ing on foraging, horticulture, and hunting (Tronick, Winn, &
+Morelli, 1985). "Vbung Efe infants receive more care (including
+nursing) from other adult women than from their own mother,
+except at night. Despite this multiple mothering system, by 6
+months, infants begin to insist on a more focalized relationship
+with their own mothers, although other female earegivers con-
+
+APA CENTENNIAL: ORIGINS OF ATTACHMENT THEORY 771
+tinue to play a significant role. Tronick et al. attributed Efe
+practices to their living arrangements, with closely spaced dwell-
+ings that offer little privacy and that make cooperation and
+sharing highly valued behaviors. In sum, attachment behavior
+is heavily overlain with cultural prescriptions, even in a society
+that much more closely resembles the conditions of human
+evolution than our own. To better explore such cultural varia-
+tions in attachment organization, attachment researchers need
+to develop ecologically valid, theory-driven measures, tailored
+to specific cultures and based on a deeper knowledge of par-
+ents' and children's culture-specific folk theories about family
+relationships and attachment.
+Attachment and Public Policy
+Cultural differences in the regulation of attachment behav-
+iors raise important questions about the value diverse societies
+place on attachment relations. In a thought-provoking chapter,
+Marris (1991) points to the fundamental tension between the
+desire to create a secure and predictable social order and the
+desire to maximize one's own opportunities at the expense of
+others. A good society, according to Marris, would be one
+which, as far as is humanly possible, minimizes disruptive
+events, protects each child's experience of attachment from
+harm, and supports family coping. \fet, in order to control un-
+certainty, individuals and families are tempted to achieve cer-
+tainty at the expense of others (i.e., by imposing a greater bur-
+den of uncertainty on them or by providing fewer material and
+social resources). When powerful groups in society promote
+their own control over life circumstances by subordinating and
+marginalizing others, they make it less possible for these
+groups to offer and experience security in their own families.
+Valuing of attachment relations thus has public policy and
+moral implications for society, not just psychological implica-
+tions for attachment dyads. This brings me back to one of
+Bowlby's early statements: "If a community values its children it
+must cherish their parents" (Bowlby, 1951, p. 84).
+Challenging Tasks for Attachment Theory
+In the preceding section I have outlined the many new direc-
+tions into which attachment research is branching out. It is
+difficult to predict which of these efforts will be most fruitful.
+No doubt, additions, revisions, and challenges to the theory
+will continue to arise out of future empirical studies.
+In this final section, however, I would like to focus briefly on
+some of the theoretical tasks that lie ahead. The idea that hu-
+man motivation derives from an interplay of familiarity- and
+novelty-seeking systems needs further exploration, as does the
+notion that the human personality can be conceptualized as a
+hierarchy of interlinked systems. New theoretical treatments of
+defensive processes in the construction of internal working
+models of attachment need to be worked out in relation to
+insights from representational theories and research, and clini-
+cal attachment theory requires the development of an experien-
+tial language akin to that used by other psychoanalytic theories
+of interpersonal relatedness, such as Winnicott (1965) and Sul-
+livan (1953). Most important, in my view, the development of
+internal working models of self and other within-attachment
+relations should be studied in conjunction with new ap-
+proaches to the "dialogic" or "narrative" self, integrating the
+mental health perspective of attachment theory with the per-
+spective of theorists interested in the social construction of
+reality (Hermans, Kempen, & van Loon, 1992).
+These theoretical developments must go hand in hand or be
+followed by new methodological developments. Without Mary
+Ainsworth's work on patterns of attachment in the Strange Situ-
+ation and Mary Main's Adult Attachment Interview that built
+on them, Bowlby's theoretical contributions to developmental
+and clinical psychology would not have had their current influ-
+ence. I predict that, in the future, attachment theory may pro-
+vide the underpinnings of a more general theory of personality
+organization and relationship development. Such a theory
+would build on, but also go beyond, Bowlby's reworking of
+Freud's ideas on motivation, emotion, and development.
+In formulating the basic tenets of attachment theory,
+Bowlby's strategy was, wherever possible, to meticulously test
+intuitive hunches against available empirical findings and con-
+cepts from related domains, thus keeping the theory open to
+change. In his last work—a biography of Charles Darwin—
+Bowlby may have been talking about himself when he said of
+Darwin:
+Since causes are never manifest, the only way of proceeding is to
+propose a plausible theory and then test its explanatory powers
+against further evidence, and in comparison with the power of
+rival theories. . . . Since most theories prove to be untenable,
+advancing them is a hazardous business and requires courage, a
+courage Darwin never lacked. (Bowlby, 1991, p. 412)
+Bowlby and Ainsworth, too, did not lack that courage. To ex-
+plore the full future potential of attachment theory, others will
+need to exercise similar courage in refining, extending, and
+challenging it.
+References
+Ainsworth, M. D. S. (1963). The development of infant-mother inter-
+action among the Ganda. In B. M. Foss (Ed.), Determinants of infant
+behavior (pp. 67-104). New York: Wiley.
+Ainsworth, M. D. S. (1967). Infancy in Uganda: Infant care and the
+growth of love. Baltimore: Johns Hopkins University Press.
+Ainsworth, M. D. S. (1968). Object relations, dependency, and attach-
+ment: A theoretical review of the infant-mother relationship. Child
+Development, 40, 969-1025.
+Ainsworth, M. D. S. (1974). Citation for the G. Stanley Hall Award to
+John Bowlby. Unpublished manuscript.
+Ainsworth, M. D. S. (1982). Attachment: Retrospect and prospect. In
+C. M. Parkes & J. Stevenson-Hinde (Eds.), The place of attachment in
+human behavior (pp. 3-30). New York: Basic Books.
+Ainsworth, M. D. S. (1983). A sketch of a career. In A. N. O'Connoll &
+N. E Russo (Eds.), Models of achievement: Reflections of eminent
+women in psychology (pp. 200-219). New York: Columbia University
+Press.
+Ainsworth, M. D. S. (1989). Attachments beyond infancy. American
+Psychologist, 44, 709-716.
+Ainsworth, M. D. S., & Bell, S. M. (1969). Some contemporary patterns
+in the feeding situation. In A. Ambrose (Ed.), Stimulation in early
+infancy (pp. 133-170). London: Academic Press.
+Ainsworth, M. D. S., & Bell, S. M. (1970). Attachment, exploration, and
+separation: Illustrated by the behavior of one-year-olds in a strange
+situation. Child Development, 41, 49-67.
+
+772 INGE BRETHERTON
+Ainsworth, M. D. S., Bell, S. M., Blehar, M. C, & Main, M. (1971,
+April). Physical contact: A study of infant responsiveness and its rela-
+tion to maternal handling. Paper presented at the biennial meetingof
+the Society for Research in Child Development, Minneapolis, MN.
+Ainsworth, M. D. S., Bell, S. M, & Stayton, D. J. (1971). Individual
+differences in Strange Situation behavior of one-year-olds. In H. R.
+Schaffer (Ed.), The origins of human social relations (pp. 17-57). Lon-
+don: Academic Press.
+Ainsworth, M. D. S., Bell, S. M., & Stayton, D. (1974). Infant-mother
+attachment and social development. In M. P. Richards (Ed.), The
+introduction of the child into a social world (pp. 99-135). London:
+Cambridge University Press.
+Ainsworth, M. D. S., Blehar, M. C, Waters, E., & Wall, S. (1978). Pat-
+terns of attachment: A psychological study of the strange situation.
+Hillsdale, NJ: Erlbaum.
+Ainsworth, M. D. S., & Bowlby, J. (1991). An ethological approach to
+personality development. American Psychologist, 46, 331-341.
+Ainsworth, M. D. S., & Wittig, B. A. (1969). Attachment and the explor-
+atory behaviour of one-year-olds in a strange situation. In B. M. Foss
+(Ed.), Determinants of infant behaviour (Vol. 4, pp. 113-136). Lon-
+don: Methuen.
+Ambrose, J. A. (1961). The development of the smiling response in early
+human infancy: An experimental and theoretical study of their course
+and significance. Unpublished doctoral dissertation, University of
+London.
+Arsenian, J. M. (1943). Young children in an insecure situation. Journal
+of Abnormal and Social Psychology, 38, 225-229.
+Bateson, G., & Mead, M. (1942). Balinese character: A photographic
+analysis. New Ybrk: New Ybrk Academy of Sciences.
+Bell, S. M. (1970). The development of the concept of the object as
+related to infant-mother attachment. Child Development, 41, 291-
+311.
+Bell, S. M., & Ainsworth, M. D. S. (1972). Infant crying and maternal
+responsiveness. Child Development, 43,1171 -1190.
+Belsky, J., & Braungart, J. M. (1991). Are insecure-avoidant infants
+with extensive day-care experience less stressed by and more inde-
+pendent in the Strange Situation? Child Development, 62, 567-571.
+Belsky, J., Gilstrap, B., & Rovine, M. (1984). The Pennsylvania Infant
+and Family Development Project, I: Stability and change in mother-
+infant and father-infant interaction in a family setting at one, three,
+and nine months. Child Development, 55, 692-705.
+Belsky, J., &Isabella, R. (1988). Maternal, infant, and social-contextual
+determinants of attachment security. In J. Belsky & T. Nezworski
+(Eds.), Clinical implications of attachment (pp. 41 -94). Hillsdale, NJ:
+Erlbaum.
+Belsky, J., & Nezworski (1988). Clinical implications of attachment.
+Hillsdale, NJ: Erlbaum.
+Belsky, J., & Rovine, M. J. (1987). Temperament and attachment secu-
+rity in the Strange Situation: An empirical rapprochement. Child
+Development, 58, 787-795.
+Belsky, J., & Rovine, M. J. (1988). Nonmaternal care in the first year of
+life and the security of infant-mother attachment. Child Develop-
+ment, 59, 157-167.
+Belsky, J., Rovine, M., & Fish, M. (in press). The developing family
+system. In M. Gunnar (Ed.), Systems and development: Minnesota
+symposia on child development (Vol. 22). Hillsdale, NJ: Erlbaum.
+Belsky, J., Rovine, M., & Taylor, D. (1984). The Pennsylvania Infant and
+Family Development Project, II: Origins of individual differences in
+infant-mother attachment: Maternal and infant contributions.
+Child Development, 55, 706-717.
+Blatz, W (1940). Hostages to peace: Parents and the children of democ-
+racy. New York: Morrow.
+Blatz, W (1966). Human security. Toronto, Ontario, Canada: University
+of Toronto Press.
+Blehar, M. C. (1974). Anxious attachment and defensive reactions asso-
+ciated with day care. Child Development, 45, 683-692.
+Blehar, M. C, Lieberman, A. F, & Ainsworth, M. D. S. (1977). Early
+face-to-face interaction and its relation to later infant-mother at-
+tachment. Child Development, 48,182-194.
+Bowlby, J. (1940). The influence of early environment in the develop-
+ment of neurosis and neurotic character. International Journal of
+Psycho-Analysis, XXI, 1-25.
+Bowlby, J. (1944). Forty-four juvenile thieves: Their characters and
+home lives. International Journal of Psycho-Analysis, XXV, 19-52.
+Bowlby, J. (1949). The study and reduction of group tensions in the
+family. Human Relations, 2,123-128.
+Bowlby, J. (1951). Maternal care and mental health. World Health Orga-
+nization Monograph (Serial No. 2).
+Bowlby, J. (1958). The nature of the child's tie to his mother. Interna-
+tional Journal of Psycho-Analysis, XXXIX, 1-23.
+Bowlby, J. (1959). Separation anxiety. International Journal of Psycho-
+Analysis, XLI, 1-25.
+Bowlby, J. (1960). Grief and mourning in infancy and early childhood.
+The Psychoanalytic Study of the Child, VX, 3-39.
+Bowlby, J. (1962a). Defences that follow loss: Causation and function.
+Unpublished manuscript, Tavistock Child Development Research
+Unit, London.
+Bowlby, J. (1962b). Loss, detachment and defence. Unpublished manu-
+script, Tavistock Child Development Research Unit, London.
+Bowlby, J. (1965). Childcareandthe growth oj7ove(2nded.). Harmonds-
+worth, England: Pelican Books.
+Bowlby, J. (1969). Attachment and loss, Vol. I: Attachment. New York:
+Basic Books.
+Bowlby, J. (1973). Attachment and loss, Vol. 2: Separation. New York:
+Basic Books.
+Bowlby, J. (1980a). Attachment and loss, Vol. 3: Loss, sadness and depres-
+sion. New York: Basic Books.
+Bowlby, J. (1980b). By ethology out of psycho-analysis: An experiment
+in interbreeding. Animal Behavior, 28, 649-656.
+Bowlby, J. (1987). [Colloquium presented at the University of Virginia].
+Bowlby, J. (1988). A secure base: Parent-child attachment and healthy
+human development. New York: Basic Books.
+Bowlby, J. (1991). Charles Darwin: A new biography. London: Hutchin-
+son.
+Bowlby, J. Ainsworth, M., Boston, M., & Rosenbluth, D. (1956). The
+effects of mother-child separation: A follow-up study. British Jour-
+nal of Medical Psychology, 29, 211-247.
+Bowlby, J. & Parkes, C. M. (1970). Separation and loss within the fam-
+ily. In E. J. Anthony & C. Koupernik (Eds.), The child in his family:
+International Yearbook of Child Psychiatry and Allied Professions (pp.
+197-216). New York: Wiley.
+Bretherton, I. (1985). Attachment theory. Retrospect and prospect. In
+I. Bretherton & E. Waters (Eds.), Growing points of attachment
+theory and research, Monographs of the Society for Research in Ch ild
+Development, 50(1-2, Serial No. 209), 3-35.
+Bretherton, I. (1987). New perspectives on attachment relations: Secu-
+rity, communication, and internal working models. In J. Osofsky
+(Ed.), Handbook of infant development (pp. 1061-1100). New York:
+Wiley.
+Bretherton, I. (1990). Open communication and internal working mod-
+els: Their role in attachment relationships. In R. Thompson (Ed.),
+Socioemotional development (Nebraska Symposium 1987). Lincoln:
+University of Nebraska Press.
+Bretherton, I. (1991). Pouring new wine into old bottles: The social self
+as internal working model. In M. R. Gunnar & L. A. Sroufe (Eds.),
+Self processes and development: The Minnesota symposia on child
+development (Vol. 23, pp. 1-41). Hillsdale, NJ: Erlbaum.
+Bretherton, I., & Ainsworth, M. D. S. (1974). One-year-olds in the
+
+APA CENTENNIAL: ORIGINS OF ATTACHMENT THEORY 773
+Strange Situation. In M. Lewis & L. Rosenblum (Eds.), The origins of
+fear (pp. 134-164). New York: Wiley.
+Bretherton, I., Biringen, Z., Ridgeway, D., Maslin, M, & Sherman, M.
+(1989). Attachment: The parental perspective. Infant Mental Health
+Journal (Special Issue), 10, 203-220.
+Bretherton, I., Ridgeway, D., & Cassidy, J. (1990). Assessing internal
+working models in the attachment relationship: An attachment
+story completion task for 3-year-olds. In M. T. Greenberg, D. Cic-
+chetti, & E. M. Cummings (Eds.), Attachment during the preschool
+years (pp. 272-308). Chicago: University of Chicago Press.
+Bretherton, I., & Waters, E. (1985). Growing points of attachment
+theory and research. Monographs of the Society for Research in Child
+Development, 50(1-2, Serial No. 209).
+Bronfenbrenner (1979). The ecology of human development. Cam-
+bridge, MA: Harvard University Press.
+Byng-Hall, J. (1985). The family script: A useful bridge between theory
+and practice. Journal of Family Therapy, 7, 301-305.
+Cain, A. C, & Fast, I. (1972). Children's disturbed reactions to parent
+suicide. In A. C. Cain (Ed.), Survivors ofsuicide(pp. 93-111). Spring-
+field, IL: Charles C Thomas.
+Cassidy, J. (1988). The self as related to child-mother attachment at six.
+Child Development, 59,121-134.
+Chodorow, N. (1978). The reproduction of mothering: Psychoanalysis
+and the sociology of gender, Berkeley: University of California Press.
+Cicchetti, D., & Barnett, D. (1991). Attachment organization in mal-
+treated preschoolers. Development and Psychopathotogy, 3, 397-
+411.
+Cicirelli, V G. (1989). Feelings of attachment to siblings and well-being
+in later life. Psychology and Aging, 4, 211-216.
+Cicirelli, V G. (1991). Attachment theory in old age: Protection of the
+attached figure. In K. Pillemer & K. McCartney (Eds.), Parent-child
+relations across the life course (pp. 25-42). Hillsdale, NJ: Erlbaum.
+Craik, K. (1943). The nature of explanation. Cambridge, England:
+Cambridge University Press.
+Crittenden, P. M. (1983). The effect of mandatory protective daycare
+on mutual attachment in maltreating mother-infant dyads. Child
+Abuse and Neglect, 7, 297-300.
+Cummings, E. M. (1980). Caregiver stability and day care. Developmen-
+tal Psychology, 16, 31-37.
+Dixon, N. F. (1971). Subliminal perception: The nature of a controversy.
+London: McGraw-Hill.
+Dunn, J. (1988). The beginnings of social understanding. Cambridge,
+MA: Harvard University Press.
+Erdelyi, H. M. (1974). A new look at the new look: Perceptual defense
+and vigilance. Psychological Review, 81,1-25.
+Erikson, E. (1950). Childhood and society. New York: Norton.
+Fairbairn, W R. D. (1952). An object-relations theory of the personality.
+New "Vbrk: Basic Books.
+Firth, R. (1936). We, the Tikopia. London: Allen & Unwin.
+Fish, M., Belsky, J., & Youngblade, L. (1991). Developmental anteced-
+ents and measurement of intergenerational boundary violation in a
+nonclinic sample. Family Psychology, 4, 278-297.
+Fonagy, P., Steele, M. & Steele, H. (1991). Intergenerational patterns of
+attachment: Maternal representations during pregnancy and subse-
+quent infant-mother attachments. Child Development, 62, 891-905.
+Foss, B. M. (1961). Determinants of infant behaviour (Vol. 1). London:
+Methuen.
+Foss, B. M. (1963). Determinants of infant behavior (Vol. 2). London:
+Methuen.
+Foss, B. M. (1965). Determinants of infant behaviour (Vol. 3). London:
+Methuen.
+Foss, B. M. (1969). Determinants of infant behaviour (Vol. 4). London:
+Methuen.
+Freud, A. (1960). Discussion of Dr. John Bowlby's paper. Psychoanaly-
+tic Study of the Child, 15, 53-62.
+Freud, S. (1953). Three essays on the theory of sexuality. In J. Strachey
+(Ed. and Trans.), The standard edition of the complete psychological
+works ofSigmund Freud (Vol. 7, pp. 125-245). London: Hogarth
+Press. (Original work published 1905)
+Freud, S. (1955). The psychogenesis of a case of homosexuality in a
+woman. In J. Strachey (Ed. and Trans.), The standard edition of the
+complete psychological works ofSigmund Freud (Vol. 18, pp. 145-
+172). London: Hogarth Press. (Original work published 1920)
+Freud, S. (1959). Inhibitions, symptoms and anxiety. In J. Strachey (Ed.
+and Trans.), The standard edition of the complete psychological works
+ofSigmund Freud (Vol. 20, pp. 77-175). London: Hogarth Press.
+(Original work published 1926)
+Freud, S. (1961). The ego and the id. In J. Strachey (Ed. and Trans.), The
+standard edition of the complete psychological works ofSigmund
+Freud (Vol. 19, pp. 3-66). London: Hogarth Press. (Original work
+published 1923)
+Freud, S. (1964). An outline of psycho-analysis. In J. Strachey (Ed. and
+Trans.), The standard edition of the complete psychological works of
+SigmundFreud(\ol. 23, pp. 141-207). London: Hogarth Press. (Orig-
+inal work published 1940)
+George, C, Kaplan, N., & Main, M. (1984). Adult attachment interview.
+Unpublished manuscript, University of California, Berkeley.
+George, C, & Solomon, J. (1989). Internal working models of parenting
+and security of attachment at age six. Infant Mental Health Journal,
+10, 222-237.
+Goldfarb, W (1943). The effects of early institutional care on adoles-
+cent personality. Journal of Experimental Education, 14, 441-447.
+Goldfarb, W (1945). Psychological privation in infancy and subsequent
+adjustment. American Journal of Orthopsychiatry, 15, 247-255.
+Greenberg, M. T, & Marvin, R. S. (1979). Attachment patterns in
+profoundly deaf preschool children. Merrill-Palmer Quarterly, 25,
+265-279.
+Greenberg, M. T., & Speltz, (1988). Attachment and the ontogeny of
+conduct problems. In J. Belsky & T. Nezworski (Eds.), Clinical impli-
+cations of attachment (pp. 177-218). Hillsdale, NJ: Erlbaum.
+Grosskurth, P. (1987). Melanie Klein: Her world and her work. Cam-
+bridge, MA: Harvard University Press.
+Grossmann, K., Grossmann, K. E., Spangler, G., Suess, G., & Unzner,
+L. (1985). Maternal sensitivity and newborns' orientation responses
+as related to quality of attachment in Northern Germany. In I. Breth-
+erton & E. Waters (Eds.), Growing points of attachment theory and
+research, Monographs of the Society for Research in Child Develop-
+ment, 50(1-2, Serial No. 209).
+Grossmann, K. E., & Grossmann, K. (1990). The wider concept of
+attachment in cross-cultural research. Human Development, iJ, 31—
+47.
+Hamburg, H. G. (1972). Adolescent separation anxiety: A method for
+the study of adolescent separation problems. Springfield, IL: Charles
+C Thomas.
+Harlow, H. F. (1961). The development of affectional patterns in infant
+monkeys. In B. M. Foss (Ed.), Determinants of infant behaviour (pp.
+75-97). London: Methuen.
+Harlow, H. F, & Zimmermann, R. R. (1958). The development of af-
+fective responsiveness in infant monkeys. Proceedings of the Ameri-
+can Philosophical Society, 102, 501-509.
+Heinicke, C. M. (1956). Some effects of separating two-year-olds from
+their parents: A comparative study. Human Relations, 9,105-176.
+Heinicke, C. M., & Westheimer, I. (1966). Brief separations. New York:
+International Universities Press.
+Hermans, H. J. M., Kempen, H. J. G, & van Loon, R. J. P. (1992). The
+dialogic self. American Psychologist, 47, 23-33.
+
+774 INGE BRETHERTON
+Hinde, R. A. (1991). Relationships, attachment, and culture: A tribute
+to John Bowlby. Infant Mental Health Journal, 12,154-163.
+Hinde, R. A., & Spencer-Booth, Y (1967). The effect of social compan-
+ions on mother-infant relations in rhesus monkeys. In D. Morris
+(Ed.), Primate ethology (pp. 267-286). London: Weidenfeld and Nic-
+olson.
+Howes, C, Rodning, C, Galuzzo, D. C, & Myers, I. (1988). Attachment
+and child care: Relationships with mother and caregiver. Early
+Childhood Research Quarterly, 3, 403-416.
+Johnson, M. M. (1988). Strong mothers, weak wives. Berkeley: Univer-
+sity of California Press.
+Kaplan, N. (1984). Internal representations of separation experiences in
+six-year-olds: Related to actual experiences of separation. Unpub-
+lished master's thesis, University of California, Berkeley.
+Klagsbrun, M., & Bowlby, J. (1976). Responses to separation from par-
+ents: A clinical test for young children. British Journal ofProjective
+Psychology, 21, 7-21.
+Klein, M. (1932). The psycho-analysis of children. London: Hogarth
+Press.
+Klopfer, B., Ainsworth, M. D., Klopfer, W E, & Holt, R. R. (1954).
+Developments in the Rorschach technique (Vol. 1). Yonkers-on-Hud-
+son, NY: World Book.
+Kobak, R. R., & Sceery, A. (1988). Attachment in late adolescence:
+Working models, affect regulation, and perceptions of self and
+others. Child Development, 59,135-146.
+Kotelchuck, M. (1972). The nature of thechild's lieto his father. Unpub-
+lished doctoral dissertation, Harvard University.
+Kubler-Ross, E. (1970). On death and dying. London: Tavistock.
+Lamb, M. E. (1978). Qualitative aspects of mother-infant and father-
+infant attachments in the second year of life. Infant Behavior and
+Development, 1, 265-275.
+Lieberman, A. (1977). Preschoolers' competence with a peer: Rela-
+tions with attachment and peer experience. Child Development, 48,
+1277-1287.
+Lieberman, A. E, & Pawl, J. H. (1988). Clinical applications of attach-
+ment theory. In J. Belsky & T. Nezworski (Eds.), Clinical applications
+of attachment (pp. 327-351). Hilldale, NJ: Erlbaum.
+Lorenz, K. Z. (1935). Der Kumpan in der Umwelt des Vogels [The
+companion in the bird's world]. Journal fuer Omithologie, 83,137-
+213. (Abbreviated English translation published 1937 in Auk, 54,
+245-273.)
+Main, M. (1973). Exploration, play, and cognitive functioning as related
+to child-mother attachment. Unpublished doctoral dissertation,
+Johns Hopkins University, Baltimore.
+Main, M. & Goldwyn, R. (in press). Interview-based adult attachment
+classifications: Related to infant-mother and infant-father attach-
+ment. Developmental Psychology.
+Main, M., Kaplan, K., & Cassidy, J. (1985). Security in infancy, child-
+hood and adulthood: A move to the level of representation. In I.
+Bretherton & E. Waters (Eds.), Growing points of attachment theory
+and research, Monographs of the Society for Research in Child Devel-
+opment, 50(1-2, Serial No. 209), 66-104.
+Marris, P. (1958). Widows and their families. London: Routledge.
+Marris, P. (1982). Attachment and society. In C. M. Parkes & J. Steven-
+son-Hinde (Eds.), The place of attachment in human behavior (pp.
+185-201). New York: Basic Books.
+Marris, P. (1991). The social construction of uncertainty. In C. M.
+Parkes, J. Stevenson-Hinde, & P. Marris (Eds.), Attachment across the
+life cycle (pp. 77-90). London: Routledge.
+Marvin, R. S. (1972). Attachment and cooperative behavior in 2-, 3-, and
+4-year-olds. Unpublished doctoral dissertation, University of Chi-
+cago.
+Marvin, R. S. (1977). An ethological-cognitive model for the attenua-
+tion of mother-child attachment behavior. In T. M. Alloway, L.
+Krames, & P. Pliner (Eds.), Advances in the study of communication
+and affect, Vol. 3: The development of social attachments (pp. 25-60).
+New York: Plenum Press.
+Marvin, R. S., & Stewart, R. B. (1990). A family system framework for
+the study of attachment. In M. Greenberg, D. Cicchetti, & M. Cum-
+mings (Eds.), Attachment beyond the preschool years (pp. 51-86).
+Chicago: University of Chicago Press.
+Matas, L., Arend, R. A., & Sroufe, L. A. (1978). Continuity and adapta-
+tion in the second year: The relationship between quality of attach-
+ment and later competence. Child Development, 49, 547-556.
+Miller, G. A., Galanter, E., & Pribram, K. H. (1960). Plans and the
+structure of behavior. New York: Holt, Rinehart & Winston.
+Miyake, K., Chen, S., & Campos, J. (1985). Infants' temperament,
+mothers' mode of interaction and attachment in Japan: An interim
+report. In I. Bretherton & E. Waters (Eds.), Growing points of attach-
+ment theory and research, Monographs of the Society for Research in
+Child Development, 50(1-2, Serial No. 109), 276-297.
+Parke, R. D, & Tinsley, B. J. (1987). Family interaction in infancy. In
+J. D. Osofsky (Ed.), Handbook of infant development (pp. 579-641).
+New York: Wiley.
+Parkes, C. M. (1972). Bereavement: Studies of grief in adult life. New
+York: International Universities Press.
+Piaget, J. (1951). The origin of intelligence in children. New York: Interna-
+tional Universities Press.
+Piaget, J. (1954). The construction of reality in the child. New York: Basic
+Books.
+Radke-Yarrow, M., Cummings, E. M., Kuczinsky, L., & Chapman, M.
+(1985). Patterns of attachment in two- and three-year-olds in normal
+families and families with parental depression. Child Development,
+56, 884-893.
+Rayner, E. (1991, November). John Bowlby s contribution, a brief sum-
+mary. Paper presented at the meeting of the British Psychoanalytic
+Society held in honor of John Bowlby, London, England.
+Robertson, J. (1953a). A two-year-old goes to hospital'[Film]. Tavistock
+Child Development Research Unit, London (available through the
+Penn State Audiovisual Services, University Park, PA).
+Robertson, J. (1953b). Some responses of young children to loss of
+maternal care. Nursing Care, 49, 382-386.
+Robertson, J., & Bowlby, J. (1952). Responses of young children to
+separation from their mothers. Courrier of the International Chil-
+dren's Centre, Paris, II, 131-140.
+Sagi, A., Aviezer, O., Mayseless, O., Donnell, E, & Joels, T. (1991, April).
+Infant-mother attachment in traditional and nontraditional kibbut-
+zim. Paper presented at the biennial meetings of the Society for
+Research in Child Development, Seattle, WA.
+Sagi, A., Lamb, M. E., Lewkowicz, K. S., Shoham, R., Dvir, R., & Estes,
+D. (1985). Security of infant-mother, -father, and -metapelet among
+kibbutz reared Israeli children. In I. Bretherton & E. Waters (Eds.),
+Growing points of attachment theory and research, Monographs of
+the Society for Research in Child Development, 50(1-2, Serial No.
+209), 257-275.
+Salter, M. D. (1940). An evaluation of adjustment basedupon the concept
+of security: Child Development Series. Toronto, Ontario, Canada: Uni-
+versity of Toronto Press.
+Schaffer, H. R., & Emerson, P. E. (1964). The development of social
+attachments in infancy. Monographs of the Society for Research in
+Child Development, 29 (Serial No. 94).
+Schneider-Rosen, K., Braunwald, K. G. Carlson, Y, & Cicchetti, D.
+(1985). Current perspectives in attachment theory: Illustration from
+the study of maltreated infants. In I. Bretherton & E. Waters (Eds.),
+Growing points of attachment theory and research, Monographs of
+the Society for Research in Child Development, 50(1-2, Serial No.
+209), 194-210.
+
+APA CENTENNIAL: ORIGINS OF ATTACHMENT THEORY 775
+Schur, M. (1960). Discussion of Dr. John Bowlby's paper. Psychoanaly-
+tic Study of the Child, 15, 63-84.
+Senn, M. J. E. (1977a). Interview with James Robertson. Unpublished
+manuscript, National Library of Medicine, Washington DC.
+Senn, M. J. E. (1977b). Interview with John Bowlby. Unpublished manu-
+script, National Library of Medicine, Washington, DC.
+Shaver, P. R., & Hazan, C. (1988). A biased overview of the study of
+love. Journal of Social and Personality Relationships, 5, 473-501.
+Slough, N, & Greenberg, M. (1991). 5-year-olds representations of sep-
+aration from parents: Responses for self and a hypothetical child. In
+W Damon (Series Ed.) & I. Bretherton & M. Watson (Vol. Eds.),
+Children's perspectives on the family (pp. 67-84). San Francisco: Jos-
+sey-Bass.
+Spieker, S., & Booth, C. (1988). Maternal antecedents of attachment
+quality. In J. Belsky & T. Nezworski (Eds.), Clinical implications of
+attachment (pp. 95-135). Hillsdale, NJ: Erlbaum.
+Spitz, R. A. (1946). Anaclitic depression. Psychoanalytic Study of the
+Child, 2, 313-342.
+Spitz, R. A. (1947). Grief: A peril in infancy [Film]. University of Akron
+Psychology Archives, Akron, OH (available through the Penn State
+Audiovisual Services, University Park, PA).
+Spitz, R. A. (1960). Discussion of Dr. John Bowlby's paper. Psychoana-
+lytic Study of the Child, 15, 85-208.
+Sroufe, L. A. (1983). Infant-caregiver attachment and patterns of adap-
+tation in preschool: The roots of maladaptation and competence. In
+M. Perlmutter (Ed.), Minnesota symposium in child psychology (Vol.
+16, pp. 41-81). Hillsdale, NJ: Erlbaum.
+Sroufe, L. A. (1985). Attachment classification from the perspective of
+infant-caregiver relationships and infant temperament. Child Devel-
+opment, 56,1-14.
+Sroufe, L. A. (1988). The role of infant-caregiver attachment in adult
+development. In J. Belsky & T. Nezworski (1988), Clinical implica-
+tions of attachment (pp. 18-38). Hillsdale, NJ: Erlbaum.
+Sroufe, L. A., & Waters, E. (1977). Attachment as an organizational
+construct. Child Development, 49,1184-1199.
+Stayton, D, & Ainsworth, M. D. S. (1973). Development of separation
+behavior in the first year of life. Developmental Psychology, 9, 226-
+235.
+Stayton, D, Hogan, R., & Ainsworth, M. D. S. (1973). Infant obedience
+and maternal behavior: The origins of socialization reconsidered.
+Child Development, 42,1057-1070.
+Stewart, R. B., & Marvin, R. S. (1984). Sibling relations: The role of
+conceptual perspective-taking in the ontogeny of sibling caregiving.
+Child Development, 55,1322-1332.
+Sullivan, H. S. (195 3). The interpersonal theory of psychiatry. New York:
+Norton.
+Teti, D. M., & Ablard, K. E. (1989). Security of attachment and infant-
+sibling relationships: A laboratory study. Child Development, 60,
+1519-1528.
+Tinbergen, N. (1951). The study of instinct. London: Clarendon Press.
+Tracy, R. L., & Ainsworth, M. D. S. (1981). Maternal affectionate behav-
+ior and infant-mother attachment patterns. Child Development, 52,
+1341-1343.
+Tracy, R. L., Lamb, M. E., & Ainsworth, M. D. S. (1976). Infant ap-
+proach behavior as related to attachment. Child Development, 47,
+571-578.
+Tronick, E. Z, Winn, S., & Morelli, G. A. (1985). Multiple caretaking in
+the context of human evolution: Why don't the Efe know the West-
+ern prescription to child care? In M. Reite & T. Field (Eds.), The
+psychobiology of attachment and separation (pp. 293-321). San
+Diego, CA: Academic Press.
+Tulving, E. (1972). Episodic and semantic memory. In E. Tulving & W.
+Donaldson (Eds.), Organization of memory (pp. 382-403). San
+Diego, CA: Academic Press.
+Van Uzendoorn, M. H., & Kroonenberg, P. M. (1988). Cross-cultural
+patterns of attachment: A meta-analysis of the Strange Situation.
+Child Development, 59,147-156.
+Ward, M. J., Carlson, E. A., Altman, S., Levine, L., Greenberg, R. H., &
+Kessler, D. B. (1990, April). Predicting infant-mother attachment
+from adolescents' prenatal working models of relationships. Paper pre-
+sented at the 7th International Conference on Infant Studies, Mon-
+treal, Quebec, Canada.
+Waddington, C. H. (1957). The strategy of the genes. London: Allen &
+Unwin.
+Waters, E. (1978). The reliability and stability of individual differences
+in infant-mother attachment. Child Development, 49, 520-616.
+Waters, E., & Deane, K. E. (1985). Defining and assessing individual
+differences in attachment relationships: Q-methodology and the or-
+ganization of behavior in infancy and early childhood. In I. Brether-
+ton & E. Waters (Eds.), Growing points of attachment theory and
+research, Monographs of the Society for Research in Child Develop-
+ment, 50(1-2, Serial No. 209), 41-65.
+Weiss, R. S. (1973). Loneliness: The experience of emotional and social
+isolation. Cambridge, MA: MIT Press.
+Weiss, R. S. (1977). Marital separation. New York: Basic Books.
+Weiss, R. S. (1982). Attachment in adult life. In C. M. Parkes & J.
+Stevenson-Hinde (Eds.), The place of attachment in human behavior
+(pp. 171-184). New York: Wiley.
+Weiss, R. (1991). The attachment bond in childhood and adulthood. In
+C. M. Parkes, J. Stevenson-Hinde, & P. Marris (Eds.), Attachment
+across the life cycle (pp. 66-76). London: Routledge.
+Winnicott, D. W (1965). The maturational process and the facilitating
+environment. New 'York: International Universities Press.
+Young, J. Z. (1964). A model for the brain. London: Oxford University
+Press.
+Received January 2,1992
+Revision received April 10,1992
+Accepted April 13,1992 •

@@ -1,0 +1,435 @@
+The Inner Work of Relationships
+Investigación profunda del libro de Mathew Micheletti y Ashley Cottrell — las 8
+heridas en formato ficha completa
+Junio 2026
+Índice general
+Nota de método 2
+FASE 1 — Arquitectura del libro 2
+1.1 Tesis central [E] . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.2 La herida y el niño interior [E] . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.3 El mapa de los 15 temas de conciencia [E verificado] . . . . . . . . . . . . . . . . . . 2
+1.4 Correspondencia con Hawkins [I][C] . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.5 Formato de las fichas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+FASE 2 — Las 8 heridas (fichas completas) 3
+Herida 1 — RECHAZO ( Rejection) · Vergüenza · [E verificado] . . . . . . . . . . . . . . . 3
+Herida 2 — JUICIO ( Judgment) · Culpa · [I] . . . . . . . . . . . . . . . . . . . . . . . . . 4
+Herida 3 — AGOBIO / SOBRECARGA ( Overwhelm) · Apatía/impotencia · [I] . . . . . . . 4
+Herida 4 — PÉRDIDA / ABANDONO ( Loss) · Duelo · [I] . . . . . . . . . . . . . . . . . . . 5
+Herida 5 — DESCONFIANZA ( Distrust) · Miedo · [I] . . . . . . . . . . . . . . . . . . . . 5
+Herida 6 — INSUFICIENCIA / INADECUACIÓN ( Inadequacy) · Carencia · [I] . . . . . . . 6
+Herida 7 — VIOLACIÓN / VULNERACIÓN ( Violation) · Ira · [I] . . . . . . . . . . . . . . . 6
+Herida 8 — INSEGURIDAD ( Insecurity) · Miedo a lo incierto · [I] . . . . . . . . . . . . . 7
+FASE 3 — T emas de sanación y de plenitud + método 7
+3.1 Los 5 temas de sanación ( Themes of Healing ) [E nombres / I desarrollo] . . . . . . . 7
+3.2 Los 2 temas de plenitud ( Themes of Enlightenment ) [E nombres / I desarrollo] . . . . 8
+3.3 Mapa herida → antídoto [I] . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.4 El método de 3 pasos [E] . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+FASE 4 — Framework relacional 8
+4.1 Los tres tipos de pareja [E] . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+4.2 La pareja como espejo [E] . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+4.3 Ruptura y reparación [E/I] . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+4.4 Los pilares del vínculo sano [E] . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+FASE 5 — Ingeniería de conocimiento (para Ari) 9
+5.1 Estructura de datos por herida . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+5.2 Reglas IF → THEN . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+FASE 7 — Ensayo 9
+Fuentes 10
+1
+
+Nota de método
+Documento centrado solo en The Inner Work of Relationships (2024). Reconstruye el sistema con
+el formato del propio libro: cada herida ( wound) se explica campo por campo, igual que en sus
+capítulos. No reproduce el texto literal; reformula.
+Etiquetas:
+• [E] Explícito y verificado — confirmado contra el contenido real del libro (mapa de los 15
+temas y ficha de la herida de Rechazo, verificados de primera mano).
+• [I] Inferencia — campo reconstruido a partir de la lógica del sistema y de la correspondencia
+con la escala de Hawkins, porque ese dato no está publicado en fuentes abiertas. No es el
+dato literal del libro ; tiene margen de error y conviene verificarlo contra el original.
+• [C] Contexto externo — marco ajeno traído para situar o aclarar .
+Base de la inferencia [I]: el mapa ordena las 8 heridas de “corazón cerrado” (abajo) a “corazón
+abierto” (arriba) en el mismo orden que los 8 niveles de la escala de conciencia de Hawkins por
+debajo de 200. La captura del libro confirma que Rechazo (la más baja) corresponde a Vergüenza.
+De ahí se deduce la emoción primaria de las demás. Esta correspondencia es coherente pero
+inferida.
+FASE 1 — Arquitectura del libro
+1.1 T esis central [E]
+Los problemas de pareja no son obstáculos: son señales. Cada conflicto destapa una herida de
+infancia que sigue activa en el adulto. La relación es el contexto donde esos patrones se vuelven
+visibles y donde pueden trabajarse; la pareja funciona como espejo. La satisfacción procede del
+trabajo personal de cada uno, no de lo que aporta el otro.
+1.2 La herida y el niño interior [E]
+La herida es una creencia-programa formada en la infancia (con los cuidadores o por el entorno
+emocional) que dirige la conducta adulta sin que la persona lo note. El niño interior guarda esa
+herida y sus necesidades no cubiertas; cuando un disparador la toca, el adulto reacciona con la
+edad emocional de la herida.
+1.3 El mapa de los 15 temas de conciencia [E verificado]
+De CLOSED HEART (abajo) a OPEN HEART (arriba):
+Zona Tipo de pareja Dinámica
+Temas (de abajo a
+arriba)
+Wounding (herida) Karmic Couples Destructiva ·
+Sufrimiento ·
+Ataque/Defensa
+Rejection, Judgment,
+Overwhelm, Loss,
+Distrust, Inadequacy ,
+Violation, Insecurity
+(8)
+Transición a relación
+sana
+Healing (sanación) Inner Work Couples Constructiva · Alivio
+· Colaborativa
+Accountability , Ease,
+Motivation,
+Acceptance,
+Understanding (5)
+2
+
+Zona Tipo de pareja Dinámica
+Temas (de abajo a
+arriba)
+Transición a relación
+espiritual
+Enlightenment
+(plenitud)
+Yoga Couples Armónica · Éxtasis ·
+Unidad
+Love & Inner Peace,
+Freedom &
+Happiness (2)
+1.4 Correspondencia con Hawkins [I][C]
+Herida Nivel Hawkins Emoción primaria
+Rejection (Rechazo) Vergüenza (20) Vergüenza [E]
+Judgment (Juicio) Culpa (30) Culpa [I]
+Overwhelm (Agobio) Apatía (50) Impotencia/apatía [I]
+Loss (Pérdida) Aflicción (75) Duelo [I]
+Distrust (Desconfianza) Miedo (100) Miedo [I]
+Inadequacy (Insuficiencia) Deseo (125) Carencia/afán [I]
+Violation (Violación) Ira (150) Ira [I]
+Insecurity (Inseguridad) Orgullo (175) Miedo a lo incierto/orgullo [I]
+Advertencia [C]: la calibración de Hawkins (test muscular) no tiene validación científica; aquí
+se usa solo como ordenador conceptual.
+1.5 Formato de las fichas
+Cada herida usa los campos del libro: Disparadores en relación · Creencia-programa
+raíz · Emoción primaria · Traumas · Necesidades no cubiertas del niño interior ·
+Pensamientos · Defensa sobrecompensada · Defensa infracompensada · Problemas de
+relación comunes · Cómo afronta los retos · Qué nos enseña · Sanación individual ·
+Afirmaciones · Cómo apoyar a la pareja con esta herida.
+FASE 2 — Las 8 heridas (fichas completas)
+Herida 1 — RECHAZO ( Rejection) · Vergüenza · [E verificado]
+• Disparadores en relación: rechazo, negligencia, abandono.
+• Creencia-programa raíz: “no soy digno de amor” ( I am unlovable ).
+• Emoción primaria: vergüenza.
+• Traumas: abuso físico/emocional, abuso sexual, divorcio parental, humillación, vergüenza,
+pobreza, adopción, racismo/prejuicio, negligencia, abandono, vergüenza religiosa,
+infidelidad, infertilidad, deformidad/discapacidad.
+• Necesidades no cubiertas del niño interior: sentirse querido, afecto constante, presencia
+fiable, reaseguro, previsibilidad, compromiso, límites respetados.
+• Pensamientos: “no merezco amor”, “no soy suficiente”, “todos me rechazan”, “soy feo”, “no
+me quieren”, “me odio”.
+• Defensa sobrecompensada: desapego emocional, evasión, proyección, ley del hielo,
+autoabsorción, gaslighting, hiperindependencia, rechazar a otros.
+• Defensa infracompensada: autocrítica, autosabotaje, autorrechazo, autodescuido, miedo
+al abandono, aislamiento, retirada, evitación, frío y caliente.
+3
+
+• Problemas de relación comunes: relación volátil, inestabilidad, ruptura intermitente
+(on-off), perseguir-evitar , autoabandono, manipulación, baja autoestima, incapacidad de
+regularse.
+• Cómo afronta los retos: negación, gaslight, evasión, autosabotaje, buscar destruir , huir ,
+evitar .
+• Qué nos enseña: rechazar el abuso vivido; poner límites a la conducta dañina propia y
+ajena.
+• Sanación individual: separar el valor propio del trauma vivido; discernir el origen de
+la vergüenza; reconstruir la autoestima desde una base nueva; entornos nuevos; rituales
+simbólicos (corte de vínculo, ho’oponopono).
+• Afirmaciones: “es sano identificar el abuso”, “devuelvo esta vergüenza a quien me la dio”,
+“siempre soy digno de amor”, “los límites son sanos”, “yo importo”, “no merecí el abuso”.
+• Cómo apoyar a la pareja: respetar sus límites, incluirla en tu vida, conducta previsible y
+constante, reaseguro, presencia fiable, afecto constante, compasión con sus disparadores,
+mantener el compromiso, conocer sus necesidades de niño interior , reafirmar su valor más
+allá del trauma.
+Herida 2 — JUICIO ( Judgment) · Culpa · [I]
+• Disparadores en relación: crítica, ser culpado, ser evaluado moralmente, equivocarse.
+• Creencia-programa raíz: “hay algo malo en mí / en lo que hago” ( I am bad / wrong ).
+• Emoción primaria: culpa (el episodio del pódcast de los autores la asocia a la “culpa
+internalizada”).
+• Traumas: hipercrítica parental, castigo, comparación, entornos moralistas o religiosos
+rígidos, perfeccionismo impuesto, humillación pública.
+• Necesidades no cubiertas: aceptación incondicional, aprobación, permiso para
+equivocarse, validación.
+• Pensamientos: “siempre hago algo mal”, “me van a criticar”, “tengo que ser perfecto”, “es
+culpa mía”.
+• Defensa sobrecompensada: criticar a otros, control, perfeccionismo, rigidez moral,
+defensividad, necesidad de tener razón.
+• Defensa infracompensada: autocrítica, culpa crónica, disculparse en exceso, parálisis por
+miedo al error , complacer .
+• Problemas de relación comunes: discusiones sobre quién tiene razón, reproche,
+defensividad, dificultad para disculparse o recibir feedback.
+• Cómo afronta los retos: justificar , defender , culpar o culparse, corregir .
+• Qué nos enseña: distinguir la culpa sana de la culpa heredada; soltar el juicio propio y
+ajeno.
+• Sanación individual: separar la acción de la identidad; autoperdón; revisar las normas
+internalizadas.
+• Afirmaciones: “puedo equivocarme y seguir siendo válido”, “suelto el juicio”, “mi valor no
+depende de ser perfecto”.
+• Cómo apoyar a la pareja: no criticar , dar seguridad ante los errores, separar conducta de
+identidad, paciencia.
+Herida 3 — AGOBIO / SOBRECARGA ( Overwhelm) · Apatía/impotencia ·
+[I]
+• Disparadores en relación: demandas, exceso de responsabilidad, intensidad emocional
+del otro, presión.
+• Creencia-programa raíz: “no puedo con todo / es demasiado / no puedo sostenerlo”.
+• Emoción primaria: impotencia, desbordamiento (zona de apatía).
+• Traumas: parentalización (niño que cuidó de adultos), responsabilidades tempranas
+excesivas, caos familiar , padres emocionalmente demandantes, negligencia por sobrecarga.
+4
+
+• Necesidades no cubiertas: apoyo, descanso, que alguien sostenga, contención, no ser
+responsable de todo.
+• Pensamientos: “es demasiado”, “no puedo”, “todo depende de mí”, “necesito desconectar”.
+• Defensa sobrecompensada: hipercontrol, hacerlo todo, no pedir ayuda, rigidez.
+• Defensa infracompensada: bloqueo, evasión, desconexión, colapso, huida, procrastinación.
+• Problemas de relación comunes: retirada bajo estrés, dificultad para estar presente en
+el conflicto, sensación de asfixia.
+• Cómo afronta los retos: evitar , colapsar , huir , desconectar .
+• Qué nos enseña: pedir ayuda y poner límites a lo que se asume.
+• Sanación individual: delegar; regular el sistema nervioso; permiso para descansar;
+repartir la carga.
+• Afirmaciones: “puedo pedir ayuda”, “no soy responsable de todo”, “puedo ir a mi ritmo”.
+• Cómo apoyar a la pareja: no abrumar , dar espacio, repartir tareas, paciencia ante su
+retirada, ritmo suave.
+Herida 4 — PÉRDIDA / ABANDONO ( Loss) · Duelo · [I]
+• Disparadores en relación: separación, distancia, finales, abandono, duelo.
+• Creencia-programa raíz: “todo lo que amo lo pierdo / me van a dejar”.
+• Emoción primaria: aflicción, duelo.
+• Traumas: muerte de un ser querido, abandono, divorcio, ausencia de cuidador , pérdidas
+repetidas, separaciones tempranas.
+• Necesidades no cubiertas: permanencia, constancia, presencia estable, seguridad de que
+el vínculo dura.
+• Pensamientos: “me va a dejar”, “me voy a quedar solo”, “no puedo retenerlo”.
+• Defensa sobrecompensada: control, aferramiento, celos, vigilancia, anticipar la pérdida.
+• Defensa infracompensada: dependencia, miedo a estar solo, retirarse primero para no ser
+abandonado, melancolía.
+• Problemas de relación comunes: dependencia, celos, dificultad con la autonomía del otro,
+ansiedad ante la distancia.
+• Cómo afronta los retos: aferrarse o anticipar la pérdida.
+• Qué nos enseña: tolerar la impermanencia; que la distancia no es abandono.
+• Sanación individual: elaborar duelos pendientes; construir seguridad interna; tolerar la
+separación.
+• Afirmaciones: “puedo sostener la distancia”, “estar solo no es ser abandonado”, “el amor
+no exige fusión”.
+• Cómo apoyar a la pareja: presencia fiable, avisar de las ausencias, constancia, no
+desaparecer en el conflicto.
+Herida 5 — DESCONFIANZA ( Distrust) · Miedo · [I]
+• Disparadores en relación: traición, mentira, secretismo, infidelidad, incoherencia.
+• Creencia-programa raíz: “no puedo confiar en nadie / me van a traicionar”.
+• Emoción primaria: miedo.
+• Traumas: infidelidad vivida o presenciada, mentiras de cuidadores, promesas rotas, traición,
+ambiente impredecible.
+• Necesidades no cubiertas: honestidad, coherencia, transparencia, fiabilidad, seguridad.
+• Pensamientos: “me está engañando”, “esconde algo”, “no puedo bajar la guardia”.
+• Defensa sobrecompensada: control, vigilancia, posesividad, interrogar , revisar , celos.
+• Defensa infracompensada: cerrarse, no mostrarse, poner a prueba al otro, distancia
+preventiva.
+• Problemas de relación comunes: celos, control, dificultad con la intimidad, poner a
+prueba a la pareja.
+• Cómo afronta los retos: vigilar , controlar , dudar , poner a prueba.
+5
+
+• Qué nos enseña: distinguir la intuición del miedo heredado; reconstruir la confianza por
+pasos.
+• Sanación individual: trabajar la traición original; permitir vulnerabilidad gradual;
+distinguir presente de pasado.
+• Afirmaciones: “puedo confiar con calma”, “el presente no es el pasado”, “merezco
+honestidad”.
+• Cómo apoyar a la pareja: transparencia, coherencia, cumplir lo prometido, no esconder ,
+paciencia.
+Herida 6 — INSUFICIENCIA / INADECUACIÓN ( Inadequacy) · Carencia ·
+[I]
+• Disparadores en relación: comparación, competición, no estar a la altura, exigencia de
+rendimiento.
+• Creencia-programa raíz: “no soy suficiente / no valgo lo bastante”.
+• Emoción primaria: carencia, afán de demostrar (zona de deseo).
+• Traumas: comparación con hermanos, exigencia de logros, amor condicionado al
+rendimiento, críticas a la capacidad, carencias.
+• Necesidades no cubiertas: ser valorado por quién se es y no por lo que logra; aceptación;
+sentir suficiencia.
+• Pensamientos: “no doy la talla”, “tengo que demostrar más”, “otros son mejores”.
+• Defensa sobrecompensada: perfeccionismo, logro compulsivo, presumir , competir , buscar
+estatus.
+• Defensa infracompensada: rendirse, no intentarlo, compararse, autodescalificarse.
+• Problemas de relación comunes: necesidad de validación, competir con la pareja, no
+sentirse suficiente para el otro.
+• Cómo afronta los retos: demostrar o rendirse.
+• Qué nos enseña: que el valor es inherente y no se gana; soltar la medida externa.
+• Sanación individual: separar valor de logro; reconocer la propia suficiencia; soltar la
+comparación.
+• Afirmaciones: “soy suficiente tal como soy”, “no tengo que ganarme el amor”, “mi valor no
+se mide”.
+• Cómo apoyar a la pareja: valorar quién es y no solo lo que hace; reconocimiento; no
+comparar .
+Herida 7 — VIOLACIÓN / VULNERACIÓN ( Violation) · Ira · [I]
+• Disparadores en relación: invasión de límites, control, falta de respeto, abuso, que se
+ignore el “no”.
+• Creencia-programa raíz: “no estoy a salvo / mis límites no importan”.
+• Emoción primaria: ira.
+• Traumas: abuso físico/sexual/emocional, invasión de la privacidad, control excesivo, falta
+de respeto al cuerpo o al espacio, manipulación.
+• Necesidades no cubiertas: seguridad, respeto, autonomía corporal, límites honrados,
+protección.
+• Pensamientos: “me están invadiendo”, “tengo que defenderme”, “no respetan mi espacio”.
+• Defensa sobrecompensada: agresividad, muros, hipervigilancia, ataque, rigidez defensiva,
+control.
+• Defensa infracompensada: someterse, no poner límites, congelarse, permitir la invasión,
+disociar .
+• Problemas de relación comunes: conflictos por límites y control, reactividad, dificultad
+con la cercanía.
+• Cómo afronta los retos: atacar o someterse.
+• Qué nos enseña: poner y sostener límites sanos; usar la ira como información.
+6
+
+• Sanación individual: recuperar la autonomía; aprender a decir no; trabajar la seguridad
+corporal.
+• Afirmaciones: “tengo derecho a mis límites”, “mi no es válido”, “estoy a salvo”.
+• Cómo apoyar a la pareja: respetar los límites siempre, pedir permiso, no presionar ,
+conducta respetuosa y predecible.
+Herida 8 — INSEGURIDAD ( Insecurity) · Miedo a lo incierto · [I]
+• Disparadores en relación: incertidumbre, cambios, imprevisibilidad, falta de control,
+ambigüedad.
+• Creencia-programa raíz: “el mundo no es seguro / no puedo controlar lo que viene”.
+• Emoción primaria: miedo a lo incierto, con defensa de orgullo/autosuficiencia.
+• Traumas: ambiente impredecible, inestabilidad, cambios bruscos, falta de estructura,
+inseguridad económica o emocional.
+• Necesidades no cubiertas: estabilidad, previsibilidad, estructura, seguridad, claridad.
+• Pensamientos: “necesito saber qué va a pasar”, “no puedo relajarme”, “algo malo va a
+ocurrir”.
+• Defensa sobrecompensada: control, planificación excesiva, necesidad de certeza, rigidez,
+autosuficiencia orgullosa.
+• Defensa infracompensada: ansiedad, indecisión, evitar riesgos, buscar reaseguro
+constante.
+• Problemas de relación comunes: necesidad de certezas, dificultad con la espontaneidad,
+ansiedad ante lo indefinido.
+• Cómo afronta los retos: controlar o evitar .
+• Qué nos enseña: tolerar la incertidumbre; aceptar lo que no se controla.
+• Sanación individual: aceptación de la incertidumbre; regulación de la ansiedad; confianza
+en la propia capacidad de afrontar .
+• Afirmaciones: “puedo estar bien sin certeza”, “afronto lo que venga”, “soltar el control me
+da paz”.
+• Cómo apoyar a la pareja: dar previsibilidad y claridad, avisar de los cambios, estabilidad,
+reaseguro.
+FASE 3 — T emas de sanación y de plenitud + método
+3.1 Los 5 temas de sanación ( Themes of Healing ) [E nombres / I
+desarrollo]
+Son los estados de la pareja Inner Work; cada uno es el antídoto de la zona de herida. De abajo a
+arriba:
+1. Responsabilidad ( Accountability). Asumir la parte propia en lugar de culpar . Antídoto
+del ataque/defensa. Es el primer escalón fuera de la herida.
+2. Soltura / Calma ( Ease). Regular el sistema nervioso y dejar de reaccionar en caliente.
+Antídoto del agobio y la reactividad.
+3. Motivación ( Motivation). Voluntad activa de mirar y trabajar el patrón. Antídoto de la
+resignación.
+4. Aceptación ( Acceptance). Aceptar lo que es, en uno y en el otro, sin exigir que cambie
+para estar bien. Antídoto del juicio.
+5. Comprensión ( Understanding). Ver el patrón completo —el propio y el del otro— y
+entender de dónde viene. Antídoto de la desconfianza y el malentendido.
+7
+
+3.2 Los 2 temas de plenitud ( Themes of Enlightenment ) [E nombres / I
+desarrollo]
+Estados de la pareja Yoga, corazón abierto:
+1. Amor y Paz Interior ( Love & Inner Peace ). Vínculo desde la presencia, no desde la
+necesidad.
+2. Libertad y Felicidad ( Freedom & Happiness ). La relación como espacio de desarrollo
+mutuo, sin dependencia.
+3.3 Mapa herida → antídoto [I]
+Herida Tema de sanación que la neutraliza
+Rechazo Aceptación + valor propio
+Juicio Aceptación
+Agobio Soltura/Calma
+Pérdida Comprensión + seguridad interna
+Desconfianza Comprensión
+Insuficiencia Aceptación
+Violación Responsabilidad + límites
+Inseguridad Aceptación de la incertidumbre
+3.4 El método de 3 pasos [E]
+1. Conciencia del disparador: notar el momento en que se cae de la calma, sin juzgar .
+2. Conectar con la creencia y la herida: identificar qué creencia-programa y qué herida se
+han activado.
+3. Soltar y reemplazar: elegir una narrativa nueva en el espacio entre estímulo y respuesta.
+FASE 4 — Framework relacional
+4.1 Los tres tipos de pareja [E]
+• Kármica (Karmic): dos heridas que se activan mutuamente; ciclo de atracción intensa,
+conflicto y ruptura intermitente; dinámica de ataque/defensa.
+• Inner Work: la pareja decide mirar el patrón y trabajarlo en equipo; aparece el alivio y la
+colaboración.
+• Yoga: vínculo consciente y estable; presencia, unidad.
+[I] No es lineal: una misma pareja puede moverse entre niveles según la herida activa en cada
+momento.
+4.2 La pareja como espejo [E]
+Lo que la pareja activa señala la herida propia; lo que más molesta del otro suele ser material
+propio no integrado (proyección). El trabajo es usar cada disparo como información sobre uno
+mismo, no como munición.
+4.3 Ruptura y reparación [E/I]
+La activación de las heridas rompe la conexión momentáneamente (ruptura). La reparación es:
+recuperar la calma, asumir la parte propia, comunicar desde la experiencia y no desde el reproche,
+y restaurar el respeto y la fiabilidad.
+8
+
+4.4 Los pilares del vínculo sano [E]
+Valor propio, fiabilidad, respeto mutuo y responsabilidad. Sobre ellos se sostiene la relación; sin
+ellos, la herida gobierna.
+FASE 5 — Ingeniería de conocimiento (para Ari)
+5.1 Estructura de datos por herida
+Cada herida es un registro con: nombre, nivel_hawkins, creencia_raiz, emocion_primaria,
+disparadores[], necesidades_nino_interior[], pensamientos[], defensa_sobrecompensada[],
+defensa_infracompensada[], problemas_relacion[], que_ensena, sanacion_individual[],
+afirmaciones[], apoyo_pareja[], tema_sanacion_antidoto.
+5.2 Reglas IF → THEN
+R1 IF el usuario describe "no me quieren / no merezco amor / me van a rechazar"
+THEN herida = Rechazo; emoción = vergüenza; antídoto = aceptación + valor propio.
+R2 IF describe "es culpa mía / me critican / tengo que ser perfecto"
+THEN herida = Juicio; emoción = culpa; antídoto = aceptación + separar acción de identidad.
+R3 IF describe "no puedo con todo / me supera / necesito desaparecer"
+THEN herida = Agobio; emoción = impotencia; antídoto = calma + pedir ayuda + límites.
+R4 IF describe "me va a dejar / lo voy a perder / miedo a la distancia"
+THEN herida = Pérdida; emoción = duelo; antídoto = comprensión + seguridad interna.
+R5 IF describe "no me fío / me oculta algo / me van a traicionar"
+THEN herida = Desconfianza; emoción = miedo; antídoto = comprensión + confianza gradual.
+R6 IF describe "no soy suficiente / tengo que demostrar / me comparo"
+THEN herida = Insuficiencia; emoción = carencia; antídoto = aceptación + valor inherente.
+R7 IF describe "no respetan mis límites / me invaden / tengo que defenderme"
+THEN herida = Violación; emoción = ira; antídoto = responsabilidad + límites.
+R8 IF describe "necesito controlar / no soporto la incertidumbre / algo malo pasará"
+THEN herida = Inseguridad; emoción = miedo a lo incierto; antídoto = aceptación de la incertidumbre.
+R9 SIEMPRE: aplicar el método de 3 pasos (notar → conectar herida/creencia → reemplazar).
+R10 SIEMPRE: las heridas inferidas [I] son hipótesis; confirmar con el usuario antes de afirmarlas.
+FASE 7 — Ensayo
+[E][I] The Inner Work of Relationships traslada el motor del primer libro al vínculo de pareja. Su
+aportación es doble: un mapa ordenado de 15 estados que van del corazón cerrado al abierto, y
+una ficha clínica por cada herida que convierte un malestar difuso en algo nombrable y trabajable.
+La idea de la pareja como espejo es el giro central: el conflicto deja de ser un problema a evitar
+y pasa a ser el lugar donde se ve la herida.
+9
+
+La estructura es sólida y fácil de operacionalizar: cada herida tiene creencia, emoción, defensa y
+antídoto, lo que permite a una IA diagnosticar e intervenir con lógica de reglas. Los puntos ciegos
+son los mismos del sistema: la base de Hawkins arrastra una calibración sin validación científica;
+el énfasis en “tu experiencia la creas tú” puede deslizarse a responsabilizar a la persona de daños
+reales (abuso), algo que la propia ficha de Rechazo matiza al hablar de “rechazar el abuso vivido”;
+y presenta la pareja como vía principal, lo que no encaja con quien no la tiene. Para AAQ, el
+núcleo aprovechable es el sistema herida → defensa → antídoto y los pilares del vínculo sano; lo
+prescindible es la envoltura esotérica.
+Fuentes
+• Capturas del libro aportadas por la usuaria (mapa de los 15 temas y ficha de la herida de
+Rechazo) — verificación directa.
+• Ficha y sinopsis del libro (Amazon): https://www .amazon.com/Inner-Work-Relationships-
+Invitation-Relationship/dp/B0CYCJKDR7
+• Goodreads: https://www .goodreads.com/book/show/210120923-the-inner-work-of-relationships
+• Resumen de Shortform: https://www .shortform.com/summary/the-inner-work-of-relationships-
+summary-mathew-micheletti-and-ashley-cottrell
+• Pódcast de los autores (The Inner Work Podcast / The Yoga Couple): https://theyogacouple.podbean.com/
+• David R. Hawkins, Map of Consciousness (contexto [C]): https://www .penguinrandomhouse.com/books/646113/the-
+map-of-consciousness-explained-by-david-r-hawkins-md-phd/
+10

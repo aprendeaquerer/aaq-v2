@@ -1,18 +1,23 @@
 """File-backed knowledge brain.
 
-Markdown articles under /brain/knowledge are the source of truth. This first
-retriever is intentionally simple so article structure can stabilize before an
-embedding index is introduced.
+The canonical knowledge source is the JSONL generated from the unified AAQ
+knowledge documents. Legacy Markdown trees are deliberately not loaded: if the
+canonical artifact is unavailable, the knowledge brain stays empty instead of
+silently bringing retired content back.
 """
 
+import json
 import re
 from functools import lru_cache
 from pathlib import Path
-from typing import Dict, Iterable, List, Tuple
+from typing import Dict, Iterable, List, Optional, Tuple
 
 from app.services.brain.types import KnowledgeChunk
 
 SUPPORTED_DOMAINS = ("attachment", "relationships", "polarity", "somatics", "self_improvement")
+CANONICAL_KNOWLEDGE_JSONL = (
+    "output/slack_codex_inbox/1783473037_022699/knowledge_output/aaq_knowledge_chunks.jsonl"
+)
 NON_CONTENT_SECTIONS = {"source notes", "related concepts"}
 AUXILIARY_CONTENT_SECTIONS = {"example eldric language"}
 BREAKUP_ARTICLE_IDS = {"jay-shetty-move-on-from-ex", "old-templates-breakup-no-contact-grief"}
@@ -276,20 +281,140 @@ def packaged_brain_root() -> Path:
     return Path(__file__).resolve().parents[2] / "data" / "brain" / "knowledge"
 
 
+def project_root() -> Path:
+    return Path(__file__).resolve().parents[4]
+
+
+def canonical_chunks_path() -> Path:
+    return project_root() / CANONICAL_KNOWLEDGE_JSONL
+
+
 @lru_cache(maxsize=1)
 def _load_chunks() -> Tuple[KnowledgeChunk, ...]:
-    root = brain_root() if brain_root().exists() else packaged_brain_root()
-    if not root.exists():
-        return ()
+    return tuple(_load_canonical_jsonl_chunks(canonical_chunks_path()))
+
+
+def _load_canonical_jsonl_chunks(path: Path) -> List[KnowledgeChunk]:
+    if not path.exists():
+        return []
 
     chunks: List[KnowledgeChunk] = []
-    for path in root.rglob("*.md"):
-        if "templates" in path.parts or path.name == "README.md":
-            continue
-        article = _parse_article(path)
-        if article:
-            chunks.extend(_article_to_chunks(article))
-    return tuple(chunks)
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            if not line.strip():
+                continue
+            raw = json.loads(line)
+            chunk = _canonical_record_to_chunk(raw)
+            if chunk:
+                chunks.append(chunk)
+    return chunks
+
+
+def _canonical_record_to_chunk(raw: Dict) -> Optional[KnowledgeChunk]:
+    text = str(raw.get("text") or "").strip()
+    if not text:
+        return None
+    if _is_canonical_navigation_or_meta_record(raw, text):
+        return None
+
+    chunk_id = str(raw.get("chunk_id") or "").strip()
+    if not chunk_id:
+        return None
+
+    topics = [str(tag).strip() for tag in raw.get("retrieval_tags", []) if str(tag).strip()]
+    source_title = str(raw.get("source_title") or raw.get("source_file") or "AAQ knowledge").strip()
+    outline_context = str(raw.get("outline_context") or "").strip()
+    page_start = raw.get("page_start")
+    page_end = raw.get("page_end")
+    page_label = ""
+    if page_start and page_end:
+        page_label = f"p. {page_start}" if page_start == page_end else f"pp. {page_start}-{page_end}"
+    bot_usage_note = str(raw.get("bot_usage_note") or "").strip()
+    source_file = str(raw.get("source_file") or "").strip()
+    source_notes = "; ".join(
+        item for item in (source_file, page_label, bot_usage_note) if item
+    )
+
+    return KnowledgeChunk(
+        id=chunk_id,
+        article_id=chunk_id,
+        title=source_title,
+        section=outline_context or page_label,
+        content=text,
+        domain=_domain_from_canonical_tags(topics, text),
+        language="es",
+        polarity_lane=_polarity_lane_from_canonical_tags(topics, text),
+        topics=topics,
+        source_notes=source_notes,
+    )
+
+
+def _is_canonical_navigation_or_meta_record(raw: Dict, text: str) -> bool:
+    outline_context = str(raw.get("outline_context") or "").strip().lower()
+    page_start = raw.get("page_start")
+    lowered = text.lower()
+    if page_start == 1:
+        return True
+    if outline_context == "nota preliminar":
+        return True
+    if isinstance(page_start, int) and page_start <= 15 and text.count(". .") > 20:
+        return True
+    return "índice general" in lowered or "indice general" in lowered
+
+
+def _domain_from_canonical_tags(tags: List[str], text: str) -> str:
+    tag_set = set(tags)
+    lowered = text.lower()
+    if tag_set.intersection({"verguenza_sombra_nino_interior"}):
+        return "self_improvement"
+    if tag_set.intersection({"apego_ansioso", "apego_evitativo", "apego_seguro", "apego_desorganizado"}):
+        return "attachment"
+    if tag_set.intersection({"polaridad", "pat_stedman_hombres"}):
+        return "polarity"
+    relationship_tags = {"conflicto_reparacion", "dating_eleccion_pareja", "duelo_ruptura", "codependencia"}
+    if (
+        tag_set.intersection({"regulacion_emocional", "practicas_ejercicios"})
+        and not tag_set.intersection(relationship_tags)
+        and any(
+            cue in lowered
+            for cue in (
+                "somatic",
+                "somatics",
+                "somatica",
+                "somático",
+                "somática",
+                "cuerpo",
+                "sistema nervioso",
+                "respiracion",
+                "respiración",
+                "breathwork",
+                "visualizacion",
+                "visualización",
+            )
+        )
+    ):
+        return "somatics"
+    if tag_set.intersection(relationship_tags):
+        return "relationships"
+    return _domain_from_text(text)
+
+
+def _domain_from_text(text: str) -> str:
+    routed_domains = route_domains(text[:5000])
+    return routed_domains[0] if routed_domains else "relationships"
+
+
+def _polarity_lane_from_canonical_tags(tags: List[str], text: str) -> str:
+    if "pat_stedman_hombres" in tags:
+        return "masculine_advice"
+    lowered = text.lower()
+    if "mujer" in lowered or "femenin" in lowered:
+        return "feminine_advice"
+    if "hombre" in lowered or "masculin" in lowered:
+        return "masculine_advice"
+    if "polaridad" in tags:
+        return "shared_principle"
+    return ""
 
 
 def _parse_article(path: Path) -> Dict:
@@ -428,6 +553,19 @@ def _score_chunk(
     term_score = sum(1 for term in terms if term in haystack)
     topic_score = len(terms.intersection(set(chunk.topics))) * 2
     score = term_score + topic_score
+    topic_tags = set(chunk.topics)
+    if "pat_stedman_hombres" in topic_tags and terms.intersection({"pat", "stedman", "hombre", "hombres", "masculino"}):
+        score += 4
+    if "duelo_ruptura" in topic_tags and terms.intersection({"ruptura", "ex", "duelo", "soltar"}):
+        score += 3
+    if "conflicto_reparacion" in topic_tags and terms.intersection({"conflicto", "reparar", "discusion", "discusión"}):
+        score += 3
+    if "practicas_ejercicios" in topic_tags and terms.intersection({"practica", "práctica", "ejercicio", "somatica", "somática"}):
+        score += 3
+    if "somatics" in routed_domains and topic_tags.intersection({"regulacion_emocional", "practicas_ejercicios"}):
+        score += 4
+    if "somatics" in routed_domains and chunk.domain == "somatics":
+        score += 3
     has_specific_match = score > 0 or bool(polarity_lane_context) or bool(attachment_style_context)
     if chunk.domain in routed_domains and has_specific_match:
         score += 3
@@ -486,6 +624,14 @@ def _phrase_score(text: str, phrases: Tuple[str, ...]) -> int:
 
 def _is_attachment_style_chunk(chunk: KnowledgeChunk, style: str) -> bool:
     topics = set(chunk.topics)
+    canonical_style_tags = {
+        "anxious": "apego_ansioso",
+        "avoidant": "apego_evitativo",
+        "disorganized": "apego_desorganizado",
+        "secure": "apego_seguro",
+    }
+    if canonical_style_tags.get(style) in topics:
+        return True
     if f"{style}_attachment" in topics:
         return True
     return chunk.article_id in ATTACHMENT_STYLE_ARTICLE_IDS.get(style, set())
@@ -530,7 +676,11 @@ def _looks_like_breakup_context(message: str) -> bool:
 
 def _is_breakup_recovery_chunk(chunk: KnowledgeChunk) -> bool:
     topics = set(chunk.topics)
-    return chunk.article_id in BREAKUP_ARTICLE_IDS or bool(topics.intersection(BREAKUP_TOPICS))
+    return (
+        chunk.article_id in BREAKUP_ARTICLE_IDS
+        or bool(topics.intersection(BREAKUP_TOPICS))
+        or "duelo_ruptura" in topics
+    )
 
 
 def _is_early_investment_chunk(chunk: KnowledgeChunk) -> bool:
@@ -538,7 +688,7 @@ def _is_early_investment_chunk(chunk: KnowledgeChunk) -> bool:
 
 
 def _is_active_conflict_chunk(chunk: KnowledgeChunk) -> bool:
-    return chunk.article_id in ACTIVE_CONFLICT_ARTICLE_IDS
+    return chunk.article_id in ACTIVE_CONFLICT_ARTICLE_IDS or "conflicto_reparacion" in set(chunk.topics)
 
 
 def _looks_like_early_investment_context(message: str) -> bool:
@@ -560,7 +710,12 @@ def _looks_like_dating_context(message: str) -> bool:
 def _is_dating_chunk(chunk: KnowledgeChunk) -> bool:
     if chunk.domain not in {"relationships", "attachment"}:
         return False
-    return chunk.article_id in DATING_ARTICLE_IDS or "dating" in set(chunk.topics)
+    topics = set(chunk.topics)
+    return (
+        chunk.article_id in DATING_ARTICLE_IDS
+        or "dating" in topics
+        or "dating_eleccion_pareja" in topics
+    )
 
 
 def _terms(text: str) -> List[str]:

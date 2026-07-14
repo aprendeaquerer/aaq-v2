@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-07-08T05:04:28",
+  "slack_channel": "C0BF6RHTJPK",
+  "slack_thread_ts": "1783473037.022699",
+  "source_zip": "/Users/pedro/AAQ/output/slack_codex_inbox/1783473037_022699/Archivo.zip",
+  "outputs": {
+    "markdown_full": "/Users/pedro/AAQ/output/slack_codex_inbox/1783473037_022699/knowledge_output/aaq_knowledge_bot_estructurado.md",
+    "chunks_jsonl": "/Users/pedro/AAQ/output/slack_codex_inbox/1783473037_022699/knowledge_output/aaq_knowledge_chunks.jsonl",
+    "guide_markdown": "/Users/pedro/AAQ/output/slack_codex_inbox/1783473037_022699/knowledge_output/aaq_knowledge_guia_uso_bot.md",
+    "pdf_full": "/Users/pedro/AAQ/output/slack_codex_inbox/1783473037_022699/knowledge_output/aaq_knowledge_bot_estructurado.pdf"
+  },
+  "sources": [
+    {
+      "source_id": "canon",
+      "file": "AAQ_Base_Conocimiento_Canonica.pdf",
+      "pages": 328,
+      "outline_entries": 678,
+      "characters": 1169310
+    },
+    {
+      "source_id": "pat_stedman",
+      "file": "AAQ_Pat_Stedman_Nucleo_Conceptual.pdf",
+      "pages": 59,
+      "outline_entries": 137,
+      "characters": 198995
+    }
+  ],
+  "chunks": 387
+}

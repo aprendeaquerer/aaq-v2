@@ -8,7 +8,7 @@ const BRAIN_TABS: { id: BrainTab; label: string }[] = [
   { id: 'data', label: 'Data Brain' },
   { id: 'knowledge', label: 'Knowledge Brain' },
   { id: 'live', label: 'Live Fill' },
-  { id: 'tests', label: 'Personality Tests' },
+  { id: 'new-tests', label: 'New Personality Test' },
 ];
 
 export default function BrainWindow({ initialTab }: { initialTab: BrainTab }) {
