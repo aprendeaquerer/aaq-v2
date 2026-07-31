@@ -22,6 +22,7 @@ from app.services.brain.prompt_composer import compose_brain_prompt
 from app.services.brain.coaching_planner import compose_session_prompt, update_coaching_plan
 from app.services import state_machine as sm
 from app.services import test_service
+from app.services import safety
 from app.data.test_questions import get_style_description, get_relationship_description
 
 # Guest message limit
@@ -97,6 +98,13 @@ async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRe
     """Main chat orchestrator."""
     language = request.language or "es"
     user_id = user.user_id if user else request.guest_id
+
+    # Safety rails: crisis signals (suicide/self-harm, partner or domestic
+    # violence, sexual assault, a minor in danger) override every other flow
+    # (guest limit, paywall, test states) and return fixed, verified resources.
+    crisis_category = safety.detect_crisis(request.message)
+    if crisis_category:
+        return await _handle_crisis(db, user_id, request.message.strip(), crisis_category, language, request.debug)
 
     # Enforce guest limit
     if not user and user_id:
@@ -495,6 +503,48 @@ async def _handle_conversation(
         data=data,
         language=language,
     )
+
+
+# --- Safety ---
+
+async def _handle_crisis(
+    db: AsyncSession,
+    user_id: Optional[str],
+    message: str,
+    category: str,
+    language: str,
+    debug: bool = False,
+) -> ChatResponse:
+    """Short-circuit the normal flow with a fixed, verified safety response.
+
+    Deliberately skips AI calls, profile capture, and memory capture: the reply
+    must be deterministic, and sensitive crisis disclosures should not be stored
+    as profile fields or memory candidates.
+    """
+    safety_text = safety.build_safety_response(category, language)
+
+    if user_id:
+        # Persist so the exchange stays visible on session resume.
+        await _save_message(db, user_id, "user", message, language)
+        await _save_message(db, user_id, "assistant", safety_text, language)
+
+    data = {"message": safety_text, "safety": True, "safety_category": category}
+    if debug:
+        data["debug"] = {
+            "enabled": True,
+            "mode": "safety_rail",
+            "reasoning_summary": "A crisis pattern was detected, so the safety rail returned fixed resources instead of an AI reply.",
+            "steps": [
+                {
+                    "stage": "safety_detection",
+                    "title": "Crisis pattern matched",
+                    "detail": f"Category '{category}' was detected deterministically; the AI flow was bypassed.",
+                    "payload": {"category": category, "language": language},
+                }
+            ],
+        }
+
+    return ChatResponse(type="conversation", data=data, language=language)
 
 
 # --- Helper functions ---
