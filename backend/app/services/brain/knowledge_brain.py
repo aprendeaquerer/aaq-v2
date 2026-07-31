@@ -7,6 +7,8 @@ silently bringing retired content back.
 """
 
 import json
+import logging
+import os
 import re
 from functools import lru_cache
 from pathlib import Path
@@ -14,8 +16,18 @@ from typing import Dict, Iterable, List, Optional, Tuple
 
 from app.services.brain.types import KnowledgeChunk
 
+logger = logging.getLogger(__name__)
+
 SUPPORTED_DOMAINS = ("attachment", "relationships", "polarity", "somatics", "self_improvement")
-CANONICAL_KNOWLEDGE_JSONL = "output/libro_metodo/aaq_libro_chunks.jsonl"
+
+# The corpus must live INSIDE backend/ so it is included in the Docker image:
+# the image is built with backend/ as its context, so anything at the repo root
+# (the old output/... location) never reaches the running container and the
+# knowledge brain silently starts empty.
+PACKAGED_KNOWLEDGE_JSONL = "data/knowledge/aaq_libro_chunks.jsonl"
+# Kept only so a checkout that still has the corpus at the repo root keeps
+# working locally. Not available in the deployed image.
+LEGACY_KNOWLEDGE_JSONL = "output/libro_metodo/aaq_libro_chunks.jsonl"
 NON_CONTENT_SECTIONS = {"source notes", "related concepts"}
 AUXILIARY_CONTENT_SECTIONS = {"example eldric language"}
 BREAKUP_ARTICLE_IDS = {"jay-shetty-move-on-from-ex", "old-templates-breakup-no-contact-grief"}
@@ -283,13 +295,41 @@ def project_root() -> Path:
     return Path(__file__).resolve().parents[4]
 
 
+def backend_app_root() -> Path:
+    return Path(__file__).resolve().parents[2]
+
+
+def candidate_chunks_paths() -> List[Path]:
+    """Every place the canonical corpus may live, most reliable first."""
+    candidates: List[Path] = []
+    override = os.getenv("KNOWLEDGE_JSONL_PATH", "").strip()
+    if override:
+        candidates.append(Path(override))
+    candidates.append(backend_app_root() / PACKAGED_KNOWLEDGE_JSONL)
+    candidates.append(project_root() / LEGACY_KNOWLEDGE_JSONL)
+    return candidates
+
+
 def canonical_chunks_path() -> Path:
-    return project_root() / CANONICAL_KNOWLEDGE_JSONL
+    for candidate in candidate_chunks_paths():
+        if candidate.exists():
+            return candidate
+    return candidate_chunks_paths()[-1]
 
 
 @lru_cache(maxsize=1)
 def _load_chunks() -> Tuple[KnowledgeChunk, ...]:
-    return tuple(_load_canonical_jsonl_chunks(canonical_chunks_path()))
+    path = canonical_chunks_path()
+    chunks = tuple(_load_canonical_jsonl_chunks(path))
+    if chunks:
+        logger.info("Knowledge brain loaded %d chunks from %s", len(chunks), path)
+    else:
+        logger.error(
+            "Knowledge brain is EMPTY: no corpus found. Looked in: %s. "
+            "Eldric will answer without any retrieved knowledge.",
+            ", ".join(str(p) for p in candidate_chunks_paths()),
+        )
+    return chunks
 
 
 def _load_canonical_jsonl_chunks(path: Path) -> List[KnowledgeChunk]:
