@@ -15,9 +15,7 @@ from typing import Dict, Iterable, List, Optional, Tuple
 from app.services.brain.types import KnowledgeChunk
 
 SUPPORTED_DOMAINS = ("attachment", "relationships", "polarity", "somatics", "self_improvement")
-CANONICAL_KNOWLEDGE_JSONL = (
-    "output/slack_codex_inbox/1783473037_022699/knowledge_output/aaq_knowledge_chunks.jsonl"
-)
+CANONICAL_KNOWLEDGE_JSONL = "output/libro_metodo/aaq_libro_chunks.jsonl"
 NON_CONTENT_SECTIONS = {"source notes", "related concepts"}
 AUXILIARY_CONTENT_SECTIONS = {"example eldric language"}
 BREAKUP_ARTICLE_IDS = {"jay-shetty-move-on-from-ex", "old-templates-breakup-no-contact-grief"}
