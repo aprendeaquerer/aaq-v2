@@ -49,8 +49,14 @@ async def health():
 
 @app.get("/status")
 async def status():
+    from app.services.brain import knowledge_brain
+
     return {
         "status": "ok",
         "version": "2.0.0",
         "ai_provider": settings.AI_PROVIDER,
+        # Surfaced so an empty knowledge brain is visible from outside instead
+        # of failing silently (the corpus used to live outside the Docker image).
+        "knowledge_chunks": len(knowledge_brain.list_knowledge_chunks()),
+        "knowledge_source": str(knowledge_brain.canonical_chunks_path()),
     }
