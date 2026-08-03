@@ -473,6 +473,10 @@ async def _handle_conversation(
             "payload": {
                 "updated": coaching_plan is not None,
                 "drift": coaching_plan.get("drift") if coaching_plan else None,
+                "tipo_turno": _conversation_field(coaching_plan, "tipo_turno"),
+                "movimiento": _conversation_field(coaching_plan, "movimiento"),
+                "hueco_pendiente": _conversation_field(coaching_plan, "hueco_pendiente"),
+                "reparto": _conversation_field(coaching_plan, "reparto"),
                 "error": planner_error,
             },
         })
@@ -708,6 +712,16 @@ def _build_profile_context(profile: Optional[UserProfile]) -> List[str]:
     if profile.relationship_status and profile.relationship_status != "unknown":
         context.append(f"Dinamica de relacion: {profile.relationship_status}.")
     return context
+
+
+def _conversation_field(plan: Optional[Dict[str, object]], field: str) -> object:
+    """Read one field of the conversation state for the debug panel."""
+    if not isinstance(plan, dict):
+        return None
+    conversacion = plan.get("conversacion")
+    if not isinstance(conversacion, dict):
+        return None
+    return conversacion.get(field)
 
 
 def _active_knowledge_query(plan: Optional[Dict[str, object]]) -> str:

@@ -8,6 +8,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.coaching_plan import CoachingPlan
 from app.services.ai.base import AIProvider
+from app.services.brain.conversation_flow import (
+    componer_bloque_movimiento,
+    decidir_movimiento,
+)
 from app.services.brain.types import BrainContext
 
 
@@ -17,10 +21,35 @@ Tu unica salida es un objeto JSON valido, sin markdown ni texto alrededor.
 
 En cada turno:
 1. Lee el mensaje nuevo dentro de la conversacion.
-2. Clasifica drift: "profundiza", "rodeo", "objetivo_nuevo", "corrige" o "nada".
-3. Mantiene una pila con un unico objetivo "activo"; los demas quedan "aparcado" o "cerrado".
-4. Formula hipotesis apoyadas en hechos y en el KNOWLEDGE disponible.
-5. Decide el siguiente movimiento de la sesion y si toca ensenar un concepto.
+2. Clasifica tipo_turno: "crisis", "duda", "descarga", "situacion" o "seguimiento".
+3. Clasifica drift: "profundiza", "rodeo", "objetivo_nuevo", "corrige" o "nada".
+4. Rellena la ficha de contexto de seis huecos con lo que ya sabes.
+5. Mantiene una pila con un unico objetivo "activo"; los demas quedan "aparcado" o "cerrado".
+6. Formula hipotesis apoyadas en hechos y en el KNOWLEDGE disponible.
+7. Decide el siguiente movimiento de la sesion y si toca ensenar un concepto.
+
+TIPO DE TURNO
+- "crisis": senal de suicidio, autolesion, violencia, agresion sexual o menor en peligro.
+- "duda": pregunta concreta e informativa. No abre bucle de coaching.
+- "descarga": relato emocional sin peticion de solucion.
+- "situacion": problema concreto con hechos. Abre el bucle completo.
+- "seguimiento": vuelve despues de un paso acordado en un turno anterior.
+
+FICHA DE CONTEXTO (seis huecos fijos)
+- "hecho": secuencia observable, que paso y en que orden.
+- "frecuencia": cuantas veces, desde cuando.
+- "conducta_propia": que hace el usuario cuando pasa.
+- "intentos": que ha probado ya y con que resultado.
+- "objetivo": que quiere que sea distinto.
+- "supuesto": lo que da por hecho sin verificar, sobre todo sobre la otra persona.
+- Cada hueco tiene status "pending", "filled" o "skipped", y "valor" con lo sabido.
+- Marca "filled" solo con datos observables que el usuario haya dado o que consten en perfil o memoria.
+- Marca "skipped" tras 3 turnos preguntando sin respuesta, o si ese dato no cambiaria la respuesta.
+- "supuesto" se marca "pending" en cuanto el usuario afirme algo sobre la otra persona como si fuera un hecho.
+
+BANDERAS
+- "resistencia": true si el usuario rechaza o ignora la lectura o el paso que Eldric acaba de dar.
+- "hecho_nuevo": true si aparece un hecho que cambia la lectura ya dada.
 
 REGLAS
 - Un rodeo aporta contexto o desahogo, pero no crea un objetivo nuevo.
@@ -38,7 +67,18 @@ REGLAS
 
 Devuelve esta forma:
 {
+  "tipo_turno": "crisis | duda | descarga | situacion | seguimiento",
   "drift": "profundiza | rodeo | objetivo_nuevo | corrige | nada",
+  "resistencia": false,
+  "hecho_nuevo": false,
+  "ficha": {
+    "hecho": {"status": "pending | filled | skipped", "valor": null},
+    "frecuencia": {"status": "pending | filled | skipped", "valor": null},
+    "conducta_propia": {"status": "pending | filled | skipped", "valor": null},
+    "intentos": {"status": "pending | filled | skipped", "valor": null},
+    "objetivo": {"status": "pending | filled | skipped", "valor": null},
+    "supuesto": {"status": "pending | filled | skipped", "valor": null}
+  },
   "tema_de_fondo": "string | null",
   "objetivos": [{
     "id": "obj_1",
@@ -83,19 +123,43 @@ async def update_coaching_plan(
         max_tokens=1800,
     )
     plan = _parse_plan(raw)
+    plan["conversacion"] = _advance_conversation(stored, plan)
     await _store_plan(db, user_id, plan)
     return plan
+
+
+def _advance_conversation(
+    stored: Optional[Dict[str, object]],
+    plan: Dict[str, object],
+) -> Dict[str, object]:
+    """Run the deterministic move director on top of what the planner reported."""
+
+    previo = stored.get("conversacion") if isinstance(stored, dict) else None
+    _, estado = decidir_movimiento(
+        previo=previo if isinstance(previo, dict) else None,
+        tipo_turno=plan.get("tipo_turno"),
+        ficha=plan.get("ficha"),
+        drift=plan.get("drift"),
+        resistencia=bool(plan.get("resistencia")),
+        hecho_nuevo=bool(plan.get("hecho_nuevo")),
+    )
+    return estado
 
 
 def compose_session_prompt(base_prompt: str, plan: Optional[Dict[str, object]]) -> str:
     if not plan:
         return base_prompt
+
+    # The move director applies to every turn, including the ones with no active
+    # objective (a plain question, a first venting message).
+    prompt = base_prompt + componer_bloque_movimiento(plan.get("conversacion"))
+
     active = next(
         (item for item in plan.get("objetivos", []) if isinstance(item, dict) and item.get("estado") == "activo"),
         None,
     )
     if not active:
-        return base_prompt
+        return prompt
     filled = [
         f"{slot.get('key')} = {slot.get('valor')}"
         for slot in active.get("slots", [])
@@ -112,9 +176,10 @@ def compose_session_prompt(base_prompt: str, plan: Optional[Dict[str, object]]) 
         f"Tema de fondo: {plan.get('tema_de_fondo') or 'ninguno'}",
         f"Lo que ya sabes: {'; '.join(filled) if filled else 'ningun slot critico lleno'}",
         f"Lo que falta: {pending.get('pregunta') if pending else 'nada critico'}",
-        f"Siguiente movimiento obligatorio: {plan.get('next_move', '')}",
-        "Conduce ese movimiento ahora. No preguntes al usuario como quiere seguir ni le pidas permiso para explorar el siguiente paso.",
-        "Si hace falta un dato critico, integra como maximo una pregunta sobre un hecho observable o la experiencia propia del usuario.",
+        f"Contenido del siguiente movimiento: {plan.get('next_move', '')}",
+        "Conduce ese contenido ahora, con la forma que marca la CONDUCCION DE LA CONVERSACION.",
+        "Si las dos se contradicen, manda la CONDUCCION DE LA CONVERSACION.",
+        "No preguntes al usuario como quiere seguir ni le pidas permiso para explorar el siguiente paso.",
     ]
     if active.get("confianza", 0) > 0.7 and not active.get("enunciado"):
         session.append("Enuncia en una frase afirmativa hacia donde vais en esta sesion; no pidas confirmacion.")
@@ -128,7 +193,7 @@ def compose_session_prompt(base_prompt: str, plan: Optional[Dict[str, object]]) 
             f"Practica opcional: {teach.get('practica', '')}",
             "Entregalo en 2-3 frases llanas, aterrizalo en su caso y ofrece una sola practica. No cites libro ni autor salvo que lo pidan.",
         ])
-    return base_prompt + "\n".join(session)
+    return prompt + "\n".join(session)
 
 
 async def delete_coaching_plan(db: AsyncSession, user_id: str) -> None:
