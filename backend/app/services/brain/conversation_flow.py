@@ -47,11 +47,27 @@ FICHA_ORDEN = ("hecho", "objetivo", "supuesto", "intentos", "conducta_propia", "
 # Holes that only make sense once there is a concrete fact on the table.
 FICHA_REQUIERE_HECHO = ("frecuencia", "conducta_propia", "intentos")
 
+# A hole can stay empty forever if the user never answers. After this many turns of
+# asking for "intentos", the engine stops letting it block the action step.
+TURNOS_MAX_PIDIENDO_INTENTOS = 2
+
+# No move may run more than this many turns in a row. Without it, a planner that keeps
+# reporting new facts traps the loop in "explicar" and the user never gets a step.
+TURNOS_MAX_MISMO_MOVIMIENTO = 2
+
+# A new fact invalidates the reading, but only once per objective. Otherwise the loop
+# can be reset indefinitely and never advances.
+RESETS_MAX_POR_HECHO_NUEVO = 1
+
 _ESTADO_INICIAL = {
     "tipo_turno": "situacion",
     "movimiento": None,
     "movimiento_anterior": None,
     "turnos_recoger_seguidos": 0,
+    "turnos_mismo_movimiento": 0,
+    "turnos_pidiendo_intentos": 0,
+    "intentos_agotado": False,
+    "resets_por_hecho_nuevo": 0,
     "lectura_dada": False,
     "propuesta_dada": False,
     "paso_dado": False,
@@ -76,8 +92,15 @@ def _normalizar_estado(previo: Optional[Dict[str, object]]) -> Dict[str, object]
     if not isinstance(reparto, dict):
         reparto = {}
     estado["reparto"] = {mov: int(reparto.get(mov, 0) or 0) for mov in MOVIMIENTOS}
-    estado["turnos_recoger_seguidos"] = int(estado.get("turnos_recoger_seguidos") or 0)
-    estado["rechazos"] = int(estado.get("rechazos") or 0)
+    for contador in (
+        "turnos_recoger_seguidos",
+        "turnos_mismo_movimiento",
+        "turnos_pidiendo_intentos",
+        "resets_por_hecho_nuevo",
+        "rechazos",
+    ):
+        estado[contador] = int(estado.get(contador) or 0)
+    estado["intentos_agotado"] = bool(estado.get("intentos_agotado"))
     return estado
 
 
@@ -104,15 +127,29 @@ def umbral_explicar(ficha: Dict[str, str]) -> bool:
     return "hecho" in llenos and "objetivo" in llenos and len(llenos) >= 3
 
 
-def umbral_proponer(ficha: Dict[str, str]) -> bool:
-    """On top of the reading, Eldric needs to know what was already tried."""
-    return umbral_explicar(ficha) and ficha.get("intentos") in ("filled", "skipped")
+def umbral_proponer(ficha: Dict[str, str], intentos_agotado: bool = False) -> bool:
+    """On top of the reading, Eldric needs to know what was already tried.
+
+    `intentos_agotado` covers the user who simply never answers that question: after a
+    couple of tries the engine stops treating it as a blocker, otherwise the loop can
+    never reach an action step.
+    """
+    if not umbral_explicar(ficha):
+        return False
+    return intentos_agotado or ficha.get("intentos") in ("filled", "skipped")
 
 
-def siguiente_hueco(ficha: Dict[str, str]) -> Optional[str]:
-    """The one hole Eldric may ask about this turn, or None if nothing is missing."""
+def siguiente_hueco(ficha: Dict[str, str], priorizar_intentos: bool = False) -> Optional[str]:
+    """The one hole Eldric may ask about this turn, or None if nothing is missing.
+
+    Once a reading has been given, `intentos` jumps the queue: it is the only hole
+    standing between the conversation and an action step.
+    """
+    orden = FICHA_ORDEN
+    if priorizar_intentos:
+        orden = ("intentos",) + tuple(k for k in FICHA_ORDEN if k != "intentos")
     hay_hecho = ficha.get("hecho") == "filled"
-    for key in FICHA_ORDEN:
+    for key in orden:
         if ficha.get(key) != "pending":
             continue
         if key in FICHA_REQUIERE_HECHO and not hay_hecho:
@@ -129,12 +166,13 @@ def _avance(movimiento: Optional[str]) -> str:
 
 
 def _preferido(estado: Dict[str, object], ficha: Dict[str, str], drift: str) -> str:
+    agotado = bool(estado.get("intentos_agotado"))
     if estado["paso_dado"]:
         return "recoger" if drift == "profundiza" else "resolver"
     if not estado["lectura_dada"]:
         return "explicar" if umbral_explicar(ficha) else "recoger"
     if not estado["propuesta_dada"]:
-        return "proponer" if umbral_proponer(ficha) else "recoger"
+        return "proponer" if umbral_proponer(ficha, agotado) else "recoger"
     return "resolver"
 
 
@@ -161,9 +199,19 @@ def decidir_movimiento(
             propuesta_dada=False,
             paso_dado=False,
             turnos_recoger_seguidos=0,
+            turnos_mismo_movimiento=0,
+            turnos_pidiendo_intentos=0,
+            intentos_agotado=False,
+            resets_por_hecho_nuevo=0,
             rechazos=0,
         )
-    elif drift == "corrige" or hecho_nuevo:
+    elif drift == "corrige":
+        estado["lectura_dada"] = False
+        estado["propuesta_dada"] = False
+    elif hecho_nuevo and estado["resets_por_hecho_nuevo"] < RESETS_MAX_POR_HECHO_NUEVO:
+        # A genuinely new fact invalidates the reading, but a planner that reports one
+        # every turn must not be able to keep the conversation in "explicar" forever.
+        estado["resets_por_hecho_nuevo"] += 1
         estado["lectura_dada"] = False
         estado["propuesta_dada"] = False
 
@@ -192,8 +240,20 @@ def decidir_movimiento(
             else:
                 movimiento = "proponer"
 
+        # No move runs three turns in a row. Without this a planner that keeps
+        # reporting new facts pins the loop to "explicar" and no step ever arrives.
+        if (
+            movimiento == estado.get("movimiento")
+            and estado["turnos_mismo_movimiento"] >= TURNOS_MAX_MISMO_MOVIMIENTO
+        ):
+            movimiento = _avance(movimiento)
+
         # Debt of context: no action step before asking what was already tried.
-        if movimiento == "resolver" and ficha_norm.get("intentos") == "pending":
+        if (
+            movimiento == "resolver"
+            and ficha_norm.get("intentos") == "pending"
+            and not estado["intentos_agotado"]
+        ):
             movimiento = "proponer"
 
         # Two refusals in a row: change the move, never repeat or insist.
@@ -201,9 +261,13 @@ def decidir_movimiento(
             movimiento = _avance(movimiento)
             estado["rechazos"] = 0
 
-    estado["movimiento_anterior"] = estado.get("movimiento")
+    anterior = estado.get("movimiento")
+    estado["movimiento_anterior"] = anterior
     estado["movimiento"] = movimiento
     estado["tipo_turno"] = tipo
+    estado["turnos_mismo_movimiento"] = (
+        estado["turnos_mismo_movimiento"] + 1 if movimiento == anterior else 1
+    )
 
     if movimiento == "recoger":
         estado["turnos_recoger_seguidos"] += 1
@@ -220,45 +284,77 @@ def decidir_movimiento(
     if movimiento in MOVIMIENTOS:
         estado["reparto"][movimiento] += 1
 
-    estado["hueco_pendiente"] = siguiente_hueco(ficha_norm)
+    hueco = siguiente_hueco(ficha_norm, priorizar_intentos=bool(estado["lectura_dada"]))
+    if hueco == "intentos":
+        estado["turnos_pidiendo_intentos"] += 1
+        if estado["turnos_pidiendo_intentos"] >= TURNOS_MAX_PIDIENDO_INTENTOS:
+            estado["intentos_agotado"] = True
+
+    estado["hueco_pendiente"] = hueco
     estado["ficha"] = ficha_norm
     return movimiento, estado
 
 
+# Applied to every move. These three come straight from the failures the
+# 300-conversation QA run counted most often: opening with a summary of what the user
+# just said (70 hits), more than one question in a turn (14) and blending moves (23).
+_REGLAS_COMUNES = [
+    "NO abras la respuesta resumiendo ni repitiendo lo que el usuario acaba de decir. "
+    "La primera frase ya tiene que aportar algo que el no haya dicho.",
+    "APERTURAS PROHIBIDAS, ninguna respuesta puede empezar asi: \"Entendido\" · \"Entonces\" · "
+    "\"O sea que\" · \"Vale,\" · \"Lo que me cuentas\" · \"Si te he entendido bien\" · "
+    "\"Por lo que dices\" · \"Veo que\" · \"Resumiendo\" · \"Asi que\" · repetir sus hechos en fila. "
+    "Empieza por el dato nuevo, por la lectura o por la pregunta, no por el resumen.",
+    "Haz SOLO este movimiento. No adelantes el siguiente ni metas dos en la misma respuesta.",
+    "No menciones ningun hecho que el usuario no haya contado. Si te falta, preguntalo o callatelo.",
+    "Antes de enviar, cuenta los signos de interrogacion de tu respuesta y comprueba que cumples "
+    "el limite de este movimiento.",
+]
+
 _INSTRUCCIONES = {
     "recoger": [
         "MOVIMIENTO DE ESTE TURNO: RECOGER.",
-        "Registra lo que hay sin ponerle etiqueta emocional y sin resumir lo que acaba de decir.",
-        "2 a 4 lineas. Prohibido dar plan, consejo o practica en este turno.",
+        "Registra lo que hay sin ponerle etiqueta emocional.",
+        "2 a 4 lineas. Prohibido dar plan, consejo, practica o lectura del patron en este turno.",
         "Puedes cerrar con UNA sola pregunta, la del hueco pendiente, o con ninguna.",
+        "UN solo signo de interrogacion en toda la respuesta, o ninguno. Dos es un fallo.",
+        "La pregunta va a un hecho observable o a su propia experiencia. Nunca a causas, nunca a lo "
+        "que piensa o siente otra persona, nunca a que identifique su patron.",
     ],
     "explicar": [
         "MOVIMIENTO DE ESTE TURNO: EXPLICAR.",
-        "Conecta tu los hechos y nombra el patron en afirmativo. Esta lectura es tu trabajo, no la del usuario.",
+        "Conecta tu los hechos y NOMBRA EL PATRON en afirmativo. Si acabas la respuesta sin haber "
+        "nombrado un patron, el turno no vale. Esta lectura es tu trabajo, no la del usuario.",
         "Orden: que esta pasando, por que funciona asi, que lo mantiene.",
         "4 a 8 lineas, apoyado en el knowledge recuperado y aterrizado en su caso concreto.",
-        "PROHIBIDO preguntar en este turno: cero signos de interrogacion.",
+        "PROHIBIDO preguntar: CERO signos de interrogacion en toda la respuesta, ni siquiera "
+        "retoricos, ni siquiera un 'no?' o un 'es asi?' al final.",
+        "Tampoco des aqui el plan ni la practica: eso es el movimiento siguiente.",
         "Si te falta contexto, da igualmente la lectura parcial y di en una linea que dato la afinaria.",
     ],
     "proponer": [
         "MOVIMIENTO DE ESTE TURNO: PROPONER.",
         "Convierte la lectura en que se puede hacer, con el criterio de por que.",
         "Una recomendacion principal. Alternativas solo si hay una decision real: maximo dos, con el coste de cada una.",
-        "4 a 6 lineas. Todavia no bajes a plan con fechas.",
-        "Sin preguntas, salvo que el usuario tenga que elegir entre dos opciones reales.",
+        "4 a 6 lineas. Todavia no bajes a plan con fechas ni a un paso concreto.",
+        "CERO signos de interrogacion, salvo el unico caso de pedirle que elija entre dos opciones reales.",
+        "No pidas permiso para seguir. Nada de 'te parece si', 'quieres que veamos' ni 'como lo ves'.",
     ],
     "resolver": [
         "MOVIMIENTO DE ESTE TURNO: RESOLVER.",
         "Baja la propuesta a una accion concreta para esta semana.",
-        "Di que hace, cuando, y en que se va a fijar para saber si funciono.",
+        "Los tres datos son obligatorios: que hace exactamente, cuando lo hace, y en que se va a "
+        "fijar para saber si funciono. Si falta alguno, el paso no vale.",
         "UN SOLO paso, aunque el plan interno tenga varios. El resto te lo guardas.",
-        "3 a 5 lineas. Sin preguntas.",
+        "3 a 5 lineas. CERO signos de interrogacion.",
         "El paso no puede repetir algo que el usuario ya probo y no le funciono.",
+        "No prometas el resultado. Di que va a observar, no lo que va a conseguir.",
     ],
     "duda": [
         "MOVIMIENTO DE ESTE TURNO: RESPONDER LA DUDA.",
         "Responde claro y directo con el knowledge disponible. No abras el bucle de coaching.",
         "No conviertas una duda sencilla en un plan largo ni en una exploracion.",
+        "Como mucho UNA pregunta al final, y solo si sin ese dato no puedes responder.",
     ],
     "seguimiento": [
         "MOVIMIENTO DE ESTE TURNO: SEGUIMIENTO.",
@@ -266,10 +362,14 @@ _INSTRUCCIONES = {
         "Si lo hizo y funciono: nombra que funciono y por que, y da el siguiente paso.",
         "Si lo hizo y no funciono: vuelve a recoger el hecho. El fallo es un dato.",
         "Si no lo hizo: una sola pregunta al motivo practico. Si ya son dos veces, cambia el paso por uno mas pequeno, no lo repitas.",
+        "UN solo signo de interrogacion en toda la respuesta, o ninguno.",
     ],
     "crisis": [
         "MOVIMIENTO DE ESTE TURNO: SEGURIDAD.",
-        "La seguridad va antes que cualquier estrategia. Aplica las reglas de seguridad y orienta a ayuda real.",
+        "La seguridad va antes que cualquier estrategia de relacion, polaridad o atraccion.",
+        "Corta el coaching de pareja. No sigas con el caso como si nada.",
+        "Nombra lo que ves sin juzgar ni minimizar, y orienta a ayuda real con un recurso concreto.",
+        "No pidas detalles que no necesitas y no des tacticas para ocultar, vigilar o convencer a nadie.",
     ],
 }
 
@@ -286,6 +386,7 @@ def componer_bloque_movimiento(estado: Optional[Dict[str, object]]) -> str:
 
     bloque = ["\n\nCONDUCCION DE LA CONVERSACION (interna: no la cites ni nombres las fases)"]
     bloque.extend(lineas)
+    bloque.extend(_REGLAS_COMUNES)
 
     hueco = estado.get("hueco_pendiente")
     if movimiento in ("recoger", "seguimiento") and hueco in FICHA_PREGUNTAS:

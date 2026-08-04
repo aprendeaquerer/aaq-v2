@@ -71,3 +71,36 @@ def test_chunks_have_content():
     for chunk in kb.list_knowledge_chunks()[:50]:
         assert chunk.id
         assert chunk.content.strip()
+
+
+# --- Retrieval targeting (gap found by the QA run of 2026-08-03) ---
+
+CURRENT_PARTNER_QUERIES = [
+    "lleva tres semanas contestandome tarde y ya paso de escribirle",
+    "discutimos por las tareas de casa y siempre acabamos igual",
+    "siento que ya no me cuenta las cosas como antes",
+]
+
+BREAKUP_QUERIES = [
+    "lo dejamos hace un mes y no consigo superar a mi ex",
+    "rompimos en enero y sigo mirando su instagram",
+]
+
+
+def _topics(query):
+    return [set(chunk.topics) for chunk in kb.retrieve_knowledge(query, "es", 4)]
+
+
+@pytest.mark.parametrize("query", CURRENT_PARTNER_QUERIES)
+def test_current_partner_queries_do_not_retrieve_breakup_material(query):
+    """The QA run found 32 conversations where someone asking about their current
+    partner was answered with material about getting over an ex."""
+    for topics in _topics(query):
+        assert "duelo_ruptura" not in topics, f"{query} -> {topics}"
+
+
+@pytest.mark.parametrize("query", BREAKUP_QUERIES)
+def test_actual_breakups_still_retrieve_breakup_material(query):
+    topics = _topics(query)
+    assert topics, query
+    assert any("duelo_ruptura" in t for t in topics), f"{query} -> {topics}"

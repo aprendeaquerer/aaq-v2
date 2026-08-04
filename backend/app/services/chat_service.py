@@ -384,7 +384,7 @@ async def _handle_conversation(
 
     # Retrieve file-backed knowledge brain and database-backed user memory brain.
     # Use recent user context so short follow-ups still retrieve the right articles.
-    brain_query = _build_retrieval_query(history, message)
+    brain_query = _build_retrieval_query(history, message, profile)
     brain_context = await build_brain_context(db, user_id, brain_query, language)
 
     profile_context = _build_profile_context(profile)
@@ -659,7 +659,11 @@ async def _load_history(db: AsyncSession, user_id: str, limit: int = 50) -> List
     return trimmed
 
 
-def _build_retrieval_query(history: List[Dict[str, str]], message: str) -> str:
+def _build_retrieval_query(
+    history: List[Dict[str, str]],
+    message: str,
+    profile: Optional[UserProfile] = None,
+) -> str:
     user_messages = [
         msg["content"].strip()
         for msg in history
@@ -668,7 +672,20 @@ def _build_retrieval_query(history: List[Dict[str, str]], message: str) -> str:
     recent = user_messages[-4:]
     if not recent or recent[-1] != message.strip():
         recent.append(message.strip())
-    return "\n".join(recent)[-1800:]
+    query = "\n".join(recent)[-1800:]
+
+    # The retriever decides between current-relationship and breakup material from cues
+    # in the query. A short follow-up ("y ahora que hago") carries none, so the known
+    # relationship situation from the profile is appended to keep that decision stable.
+    if profile is not None:
+        situacion = " ".join(
+            str(value)
+            for value in (getattr(profile, "tipo_relacion", None), getattr(profile, "nombre_pareja", None))
+            if value
+        ).strip()
+        if situacion:
+            query = f"{query}\n[situacion: {situacion}]"
+    return query
 
 
 async def _get_profile(db: AsyncSession, user_id: str) -> Optional[UserProfile]:
