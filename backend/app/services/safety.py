@@ -25,8 +25,15 @@ SUICIDE = "suicide"
 PARTNER_VIOLENCE = "partner_violence"
 SEXUAL_ASSAULT = "sexual_assault"
 MINOR_SAFETY = "minor_safety"
+COERCIVE_CONTROL = "coercive_control"
 
-CRISIS_PRIORITY = (SUICIDE, PARTNER_VIOLENCE, SEXUAL_ASSAULT, MINOR_SAFETY)
+CRISIS_PRIORITY = (
+    SUICIDE,
+    PARTNER_VIOLENCE,
+    SEXUAL_ASSAULT,
+    MINOR_SAFETY,
+    COERCIVE_CONTROL,
+)
 
 SUPPORTED_LANGUAGES = ("es", "en", "ru")
 
@@ -52,6 +59,28 @@ _PATTERNS = {
         "autolesionarme", "cortarme las venas", "no vale la pena vivir",
         "mejor estar muerto", "mejor estar muerta", "no aguanto mas y quiero acabar",
         "desaparecer para siempre",
+        # Spanish, passive ideation. The 300-conversation QA run showed these are how
+        # people actually phrase it, and none of them matched before.
+        "estarian mejor sin mi", "estaria mejor sin mi", "estarias mejor sin mi",
+        "todos estarian mejor sin mi", "mi familia estaria mejor sin mi",
+        "seria mejor sin mi", "sobra en este mundo", "estorbo a todos",
+        "dejar de existir", "quiero dejar de existir", "ojala no existiera",
+        "preferiria no existir", "no quiero existir",
+        "mejor no despertar", "ojala no despertar", "preferiria no despertar",
+        "no volver a despertar", "no despertarme mas",
+        "quiero desaparecer", "ojala desapareciera", "ojala desapareciese",
+        "no le veo sentido a nada", "no le encuentro sentido a nada",
+        "nada tiene sentido ya", "ya nada tiene sentido", "no tengo ganas de seguir",
+        "no me quedan ganas de vivir", "no le veo salida a esto y quiero acabar",
+        # English, passive ideation
+        "better off without me", "everyone would be better off without me",
+        "wish i didn't exist", "wish i didnt exist", "stop existing",
+        "don't want to wake up", "dont want to want to wake up", "dont want to wake up",
+        "wish i could disappear", "no reason to keep going",
+        # Russian, passive ideation
+        "всем было бы лучше без меня", "лучше бы меня не было",
+        "хочу исчезнуть", "не хочу просыпаться", "ни в чём нет смысла",
+        "ни в чем нет смысла",
         # English
         "want to die", "i wanna die", "kill myself", "killing myself",
         "end my life", "end it all", "take my own life", "suicidal", "suicide",
@@ -76,6 +105,23 @@ _PATTERNS = {
         "no me deja ver a", "me amenaza", "amenaza con pegarme", "amenaza con matarme",
         "tengo miedo de mi novio", "tengo miedo de mi pareja", "tengo miedo de mi marido",
         "me agrede", "violencia de genero", "violencia domestica", "me da miedo mi pareja",
+        # Spanish, violence described without naming the aggressor. The QA run showed
+        # "me pega" on its own never matched, because every pattern required a subject.
+        "me pega", "me pego", "me pegaba", "me pegan", "me ha pegado", "me habia pegado",
+        "me abofetea", "me dio una bofetada", "me da bofetadas", "me da hostias",
+        "me zarandea", "me zarandeo", "me agarro del cuello", "me agarra del cuello",
+        "me ahoga", "me ahogo con las manos", "me estrangula", "me estrangulo",
+        "me tira cosas", "me tiro un vaso", "me arrincona", "me acorrala",
+        "me sujeta a la fuerza", "me retiene a la fuerza", "me hace danio fisico",
+        "acaba a golpes", "termina a golpes", "se pone violento", "se puso violento",
+        "se pone violenta", "se puso violenta",
+        # English
+        "he slapped me", "she slapped me", "slapped me", "grabbed me by the neck",
+        "he strangles me", "he shoved me", "throws things at me", "gets violent",
+        "got violent", "corners me",
+        # Russian
+        "он меня ударил", "она меня ударила", "он поднял на меня руку",
+        "хватает меня за горло", "швыряет в меня",
         # English
         "he hits me", "she hits me", "my boyfriend hits me", "my partner hits me",
         "my husband hits me", "he beats me", "beats me", "he hit me", "he punched me",
@@ -119,8 +165,74 @@ _PATTERNS = {
         "жестокое обращение с ребёнком", "жестокое обращение с ребенком",
         "насилие над ребёнком", "насилие над ребенком", "ребёнок в опасности",
         "ребенок в опасности", "бьют ребёнка", "бьют ребенка", "издеваются над ребёнком",
+        # Spanish, a child exposed to violence at home
+        "pega a mis hijos", "amenaza a mis hijos", "mi hijo tiene miedo de su padre",
+        "mi hija tiene miedo de su padre", "lo ven mis hijos", "delante de los ninos",
+    ],
+    COERCIVE_CONTROL: [
+        # Spanish. Control, surveillance and isolation are violence under Spanish law
+        # and the 016 line covers them. The QA run showed Eldric coached straight
+        # through these without ever naming the risk.
+        "me controla el movil", "me revisa el movil", "revisa mi movil",
+        "me mira el movil", "me revisa el whatsapp", "me revisa los mensajes",
+        "me revisa el correo", "me pide la contrasena", "me pide las contrasenas",
+        "quiere mis contrasenas", "me exige la contrasena",
+        "me controla la ubicacion", "me exige saber donde estoy",
+        "tiene mi ubicacion siempre", "me hace mandarle la ubicacion",
+        "controla con quien hablo", "controla lo que gasto", "me controla el dinero",
+        "me controla todo", "me lo controla todo",
+        "me aisla", "me aisla de mis amigos", "me ha aislado", "me aislaba de",
+        "me alejo de mis amigos a la fuerza", "no me deja ver a mis amigos",
+        "no me deja ver a mi familia", "no me deja quedar con",
+        "me castiga si", "me deja de hablar si", "me retira la palabra si",
+        "tengo que pedirle permiso", "me prohibe", "me prohibe ver",
+        "me obliga a borrar", "me obliga a dejar de",
+        "me hace un interrogatorio", "me interroga cada vez",
+        "control coercitivo",
+        # English
+        "checks my phone", "goes through my phone", "wants my passwords",
+        "demands my password", "tracks my location", "controls my money",
+        "isolates me", "cut me off from my friends", "won't let me see my friends",
+        "wont let me see my friends", "punishes me if", "i have to ask permission",
+        "coercive control",
+        # Russian
+        "проверяет мой телефон", "требует пароль", "следит за мной",
+        "не разрешает видеться с друзьями", "контролирует мои деньги",
+        "изолирует меня",
     ],
 }
+
+# "me pega" without a subject is the way people actually report being hit, but in
+# ordinary Spanish it also means "it suits me" ("ese plan no me pega") and takes
+# inanimate subjects ("el sol me pega de lleno"). These patterns only count when none
+# of the innocuous senses is present in the message.
+_SENTIDOS_INOCUOS = (
+    # "it suits me" / "it goes with"
+    "no me pega", "no le pega", "me pega la gana", "me pega el rollo",
+    "me pega mucho", "me pega nada", "pega con",
+    # inanimate subjects
+    "el sol", "sol me pega", "el aire", "el viento", "la luz", "el calor",
+    "la musica", "la cancion", "el bajo", "el altavoz",
+    # clothes and style
+    "vestido", "camisa", "camiseta", "zapatos", "pantalon", "chaqueta",
+    "color", "peinado", "corte de pelo",
+)
+
+_AMBIGUOS = {
+    "me pega": _SENTIDOS_INOCUOS,
+    "me pegan": _SENTIDOS_INOCUOS,
+    "me pego": _SENTIDOS_INOCUOS + ("me pego un tiro",),
+}
+
+
+def _pattern_matches(pattern: str, normalized: str) -> bool:
+    """Whether a pattern counts as a hit, after discounting its innocuous senses."""
+    if pattern not in normalized:
+        return False
+    for excepcion in _AMBIGUOS.get(pattern, ()):
+        if excepcion in normalized:
+            return False
+    return True
 
 
 def detect_crisis(message: str) -> Optional[str]:
@@ -133,7 +245,7 @@ def detect_crisis(message: str) -> Optional[str]:
     normalized = _normalize(message)
     for category in CRISIS_PRIORITY:
         for pattern in _PATTERNS[category]:
-            if pattern in normalized:
+            if _pattern_matches(pattern, normalized):
                 return category
     return None
 
@@ -229,6 +341,39 @@ _MESSAGES = {
             "• Всероссийский телефон доверия: 8-800-2000-122\n"
             "• Найти линию помощи: findahelpline.com/countries/ru\n\n"
             "Если это случилось недавно или тебе угрожает опасность, звони 112."
+        ),
+    },
+    COERCIVE_CONTROL: {
+        "es": (
+            "Lo que describes tiene nombre: control. Revisar el móvil, exigir contraseñas o la "
+            "ubicación, decidir con quién puedes quedar o castigarte con silencio son formas de "
+            "violencia, aunque nadie te haya puesto una mano encima.\n\n"
+            "En España:\n"
+            "• Atención a la violencia contra la mujer: 016 (24 h, gratuito y confidencial, no deja "
+            "rastro en la factura; también WhatsApp 600 000 016)\n"
+            "• Emergencias: 112\n\n"
+            "El 016 orienta también en estos casos, aunque no haya golpes y aunque no quieras "
+            "denunciar. Si quieres, seguimos hablando de tu situación."
+        ),
+        "en": (
+            "What you're describing has a name: control. Checking your phone, demanding passwords "
+            "or your location, deciding who you can see, or punishing you with silence are forms of "
+            "abuse, even when no one has laid a hand on you.\n\n"
+            "• US National Domestic Violence Hotline: 1-800-799-7233 (24/7)\n"
+            "• Find a local helpline: findahelpline.com\n"
+            "• Emergency: 911 (US) / 999 (UK) / 112 (EU)\n\n"
+            "A hotline can help with this too, even without physical violence and even if you're not "
+            "ready to report anything. If you want, we can keep talking about your situation."
+        ),
+        "ru": (
+            "У того, что ты описываешь, есть название: контроль. Проверять телефон, требовать пароли "
+            "или геолокацию, решать, с кем тебе видеться, наказывать молчанием — это формы насилия, "
+            "даже если тебя никто не бил.\n\n"
+            "• Всероссийский телефон доверия: 8-800-2000-122\n"
+            "• Найти линию помощи: findahelpline.com/countries/ru\n"
+            "• Экстренные службы: 112\n\n"
+            "Горячая линия помогает и в таких случаях, даже без физического насилия. Если хочешь, "
+            "продолжим разговор о твоей ситуации."
         ),
     },
     MINOR_SAFETY: {

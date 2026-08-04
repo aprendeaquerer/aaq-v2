@@ -137,6 +137,12 @@ def retrieve_knowledge(message: str, language: str = "es", limit: int = 6) -> Li
         )
         if breakup_context and _is_breakup_recovery_chunk(chunk):
             score += 5
+        elif _is_breakup_recovery_chunk(chunk):
+            # Breakup and grief material is a large slice of the corpus, so on a query
+            # with no clear signal it floated to the top and Eldric answered a question
+            # about a current partner with content about getting over an ex. Without a
+            # breakup cue it now has to earn its place on term overlap alone.
+            score -= 4
         if active_partner_context:
             if _is_active_conflict_chunk(chunk):
                 score += 4

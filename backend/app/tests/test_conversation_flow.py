@@ -85,19 +85,26 @@ def test_threshold_reached_moves_to_explaining_without_waiting():
     assert movimiento == "explicar"
 
 
-def test_debt_of_context_blocks_the_step_until_attempts_are_known():
+def test_debt_of_context_blocks_the_step_until_attempts_have_been_asked_for():
+    """No action step before asking what was already tried.
+
+    The engine asks twice; if the user never answers it stops treating the hole as a
+    blocker, otherwise a silent user could never be given a step at all.
+    """
     llena = ficha(hecho="filled", objetivo="filled", supuesto="filled")
     estado = estado_inicial()
     movimiento, estado = avanzar(estado, ficha=llena)
     assert movimiento == "explicar"
-    # Reading given, attempts unknown: it can only gather, never resolve.
+
+    # Reading given, attempts unknown: it gathers, and asks precisely for attempts.
     movimiento, estado = avanzar(estado, ficha=llena)
     assert movimiento == "recoger"
-    movimiento, estado = avanzar(estado, ficha=llena)
-    assert movimiento == "recoger"
-    movimiento, estado = avanzar(estado, ficha=llena)
-    assert movimiento == "proponer"
+    assert estado["hueco_pendiente"] == "intentos"
     assert estado["paso_dado"] is False
+
+    # It cannot jump to a step off the back of a single unanswered question.
+    movimiento, estado = avanzar(estado, ficha=llena)
+    assert movimiento != "resolver"
 
 
 def test_full_loop_reaches_the_step():
@@ -208,9 +215,90 @@ def test_explaining_block_forbids_questions():
     assert "Que paso exactamente?" not in bloque
 
 
+def test_every_move_block_carries_the_common_rules():
+    """The three failures the QA run counted most: opening with a summary, more than
+    one question, and blending two moves in one answer."""
+    from app.services.brain.conversation_flow import _INSTRUCCIONES
+
+    for movimiento in _INSTRUCCIONES:
+        bloque = componer_bloque_movimiento({"movimiento": movimiento, "ficha": ficha()})
+        assert "resumiendo" in bloque, movimiento
+        assert "SOLO este movimiento" in bloque, movimiento
+        assert "no haya contado" in bloque, movimiento
+        # "Entendido: ..." opened 43 of the 90 conversations in the validation run.
+        assert "APERTURAS PROHIBIDAS" in bloque, movimiento
+        assert "Entendido" in bloque, movimiento
+
+
+def test_moves_that_deliver_forbid_every_question_mark():
+    from app.services.brain.conversation_flow import _INSTRUCCIONES
+
+    for movimiento in ("explicar", "proponer", "resolver"):
+        bloque = componer_bloque_movimiento({"movimiento": movimiento, "ficha": ficha()})
+        assert "CERO signos de interrogacion" in bloque, movimiento
+
+
+def test_gathering_moves_cap_the_question_count():
+    for movimiento in ("recoger", "seguimiento"):
+        bloque = componer_bloque_movimiento({"movimiento": movimiento, "ficha": ficha()})
+        assert "UN solo signo de interrogacion" in bloque, movimiento
+
+
+def test_crisis_block_stops_the_coaching():
+    bloque = componer_bloque_movimiento({"movimiento": "crisis", "ficha": ficha()})
+    assert "Corta el coaching" in bloque
+    assert "recurso concreto" in bloque
+
+
 def test_block_is_empty_without_state():
     assert componer_bloque_movimiento(None) == ""
     assert componer_bloque_movimiento({}) == ""
+
+
+# --- traps found by the 300-conversation synthetic run --------------------------
+
+
+def test_a_planner_reporting_new_facts_every_turn_cannot_pin_the_loop_to_explaining():
+    """The bug the QA run surfaced: hecho_nuevo reset the reading on every turn, so
+    Eldric explained forever and never reached a step."""
+    llena = ficha(hecho="filled", objetivo="filled", supuesto="filled")
+    estado = estado_inicial()
+    movimientos = []
+    for _ in range(6):
+        movimiento, estado = avanzar(estado, ficha=llena, hecho_nuevo=True)
+        movimientos.append(movimiento)
+    assert movimientos.count("explicar") <= 3
+    assert "proponer" in movimientos
+
+
+def test_no_move_runs_three_turns_in_a_row():
+    llena = ficha(hecho="filled", objetivo="filled", supuesto="filled", intentos="filled")
+    estado = estado_inicial()
+    movimientos = []
+    for _ in range(8):
+        movimiento, estado = avanzar(estado, ficha=llena, drift="corrige")
+        movimientos.append(movimiento)
+    for a, b, c in zip(movimientos, movimientos[1:], movimientos[2:]):
+        assert not (a == b == c), f"tres turnos seguidos de {a}: {movimientos}"
+
+
+def test_attempts_hole_jumps_the_queue_once_a_reading_is_given():
+    llena = ficha(hecho="filled", objetivo="filled", supuesto="filled")
+    estado = estado_inicial()
+    _, estado = avanzar(estado, ficha=llena)
+    assert estado["lectura_dada"] is True
+    _, estado = avanzar(estado, ficha=llena)
+    assert estado["hueco_pendiente"] == "intentos"
+
+
+def test_a_user_who_never_says_what_they_tried_still_gets_a_step():
+    llena = ficha(hecho="filled", objetivo="filled", supuesto="filled")
+    estado = estado_inicial()
+    movimientos = []
+    for _ in range(6):
+        movimiento, estado = avanzar(estado, ficha=llena)
+        movimientos.append(movimiento)
+    assert "resolver" in movimientos, movimientos
 
 
 def test_session_prompt_injects_the_move_even_without_an_active_objective():
