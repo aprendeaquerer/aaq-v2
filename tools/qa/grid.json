@@ -1,0 +1,3002 @@
+[
+  {
+    "id": "qa-001",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-002",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-003",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-004",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-005",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-006",
+    "estilo": "secure",
+    "tipo_turno": "duda",
+    "relacion": "soltero",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-007",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "ruptura reciente",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-008",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "divorcio",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-009",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "reconciliacion",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-010",
+    "estilo": "avoidant",
+    "tipo_turno": "seguimiento",
+    "relacion": "distancia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-011",
+    "estilo": "disorganized",
+    "tipo_turno": "resistencia",
+    "relacion": "citas",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-012",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-013",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-014",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-015",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-016",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-017",
+    "estilo": "disorganized",
+    "tipo_turno": "duda",
+    "relacion": "ruptura reciente",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-018",
+    "estilo": "secure",
+    "tipo_turno": "duda",
+    "relacion": "divorcio",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-019",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "reconciliacion",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-020",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "distancia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-021",
+    "estilo": "avoidant",
+    "tipo_turno": "seguimiento",
+    "relacion": "citas",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-022",
+    "estilo": "avoidant",
+    "tipo_turno": "resistencia",
+    "relacion": "noviazgo",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-023",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-024",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-025",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": "violencia_pareja"
+  },
+  {
+    "id": "qa-026",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-027",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-028",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "divorcio",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-029",
+    "estilo": "disorganized",
+    "tipo_turno": "duda",
+    "relacion": "reconciliacion",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-030",
+    "estilo": "secure",
+    "tipo_turno": "descarga",
+    "relacion": "distancia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-031",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "citas",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-032",
+    "estilo": "anxious",
+    "tipo_turno": "seguimiento",
+    "relacion": "noviazgo",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-033",
+    "estilo": "avoidant",
+    "tipo_turno": "resistencia",
+    "relacion": "relacion estable",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-034",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-035",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-036",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-037",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-038",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-039",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "reconciliacion",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-040",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "distancia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-041",
+    "estilo": "disorganized",
+    "tipo_turno": "descarga",
+    "relacion": "citas",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-042",
+    "estilo": "secure",
+    "tipo_turno": "descarga",
+    "relacion": "noviazgo",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-043",
+    "estilo": "anxious",
+    "tipo_turno": "seguimiento",
+    "relacion": "relacion estable",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-044",
+    "estilo": "anxious",
+    "tipo_turno": "resistencia",
+    "relacion": "convivencia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-045",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-046",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-047",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-048",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-049",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-050",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": "ideacion_suicida"
+  },
+  {
+    "id": "qa-051",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "citas",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-052",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "noviazgo",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-053",
+    "estilo": "disorganized",
+    "tipo_turno": "descarga",
+    "relacion": "relacion estable",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-054",
+    "estilo": "secure",
+    "tipo_turno": "seguimiento",
+    "relacion": "convivencia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-055",
+    "estilo": "anxious",
+    "tipo_turno": "resistencia",
+    "relacion": "matrimonio",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-056",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-057",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-058",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-059",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-060",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-061",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "citas",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-062",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "noviazgo",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-063",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "relacion estable",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-064",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "convivencia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-065",
+    "estilo": "disorganized",
+    "tipo_turno": "seguimiento",
+    "relacion": "matrimonio",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-066",
+    "estilo": "secure",
+    "tipo_turno": "resistencia",
+    "relacion": "soltero",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-067",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-068",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-069",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-070",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-071",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-072",
+    "estilo": "secure",
+    "tipo_turno": "duda",
+    "relacion": "noviazgo",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-073",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "relacion estable",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-074",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "convivencia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-075",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": "agresion_sexual"
+  },
+  {
+    "id": "qa-076",
+    "estilo": "avoidant",
+    "tipo_turno": "seguimiento",
+    "relacion": "soltero",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-077",
+    "estilo": "disorganized",
+    "tipo_turno": "resistencia",
+    "relacion": "ruptura reciente",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-078",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-079",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-080",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-081",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-082",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-083",
+    "estilo": "disorganized",
+    "tipo_turno": "duda",
+    "relacion": "relacion estable",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-084",
+    "estilo": "secure",
+    "tipo_turno": "duda",
+    "relacion": "convivencia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-085",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "matrimonio",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-086",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "soltero",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-087",
+    "estilo": "avoidant",
+    "tipo_turno": "seguimiento",
+    "relacion": "ruptura reciente",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-088",
+    "estilo": "avoidant",
+    "tipo_turno": "resistencia",
+    "relacion": "divorcio",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-089",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-090",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-091",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-092",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-093",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-094",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "convivencia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-095",
+    "estilo": "disorganized",
+    "tipo_turno": "duda",
+    "relacion": "matrimonio",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-096",
+    "estilo": "secure",
+    "tipo_turno": "descarga",
+    "relacion": "soltero",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-097",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "ruptura reciente",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-098",
+    "estilo": "anxious",
+    "tipo_turno": "seguimiento",
+    "relacion": "divorcio",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-099",
+    "estilo": "avoidant",
+    "tipo_turno": "resistencia",
+    "relacion": "reconciliacion",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-100",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": "menor_en_peligro"
+  },
+  {
+    "id": "qa-101",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-102",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-103",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-104",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-105",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "matrimonio",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-106",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "soltero",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-107",
+    "estilo": "disorganized",
+    "tipo_turno": "descarga",
+    "relacion": "ruptura reciente",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-108",
+    "estilo": "secure",
+    "tipo_turno": "descarga",
+    "relacion": "divorcio",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-109",
+    "estilo": "anxious",
+    "tipo_turno": "seguimiento",
+    "relacion": "reconciliacion",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-110",
+    "estilo": "anxious",
+    "tipo_turno": "resistencia",
+    "relacion": "distancia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-111",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-112",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-113",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-114",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-115",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-116",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "soltero",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-117",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "ruptura reciente",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-118",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "divorcio",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-119",
+    "estilo": "disorganized",
+    "tipo_turno": "descarga",
+    "relacion": "reconciliacion",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-120",
+    "estilo": "secure",
+    "tipo_turno": "seguimiento",
+    "relacion": "distancia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-121",
+    "estilo": "anxious",
+    "tipo_turno": "resistencia",
+    "relacion": "citas",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-122",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-123",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-124",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-125",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": "violencia_pareja"
+  },
+  {
+    "id": "qa-126",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-127",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "ruptura reciente",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-128",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "divorcio",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-129",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "reconciliacion",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-130",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "distancia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-131",
+    "estilo": "disorganized",
+    "tipo_turno": "seguimiento",
+    "relacion": "citas",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-132",
+    "estilo": "secure",
+    "tipo_turno": "resistencia",
+    "relacion": "noviazgo",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-133",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-134",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-135",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-136",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-137",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-138",
+    "estilo": "secure",
+    "tipo_turno": "duda",
+    "relacion": "divorcio",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-139",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "reconciliacion",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-140",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "distancia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-141",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "citas",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-142",
+    "estilo": "avoidant",
+    "tipo_turno": "seguimiento",
+    "relacion": "noviazgo",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-143",
+    "estilo": "disorganized",
+    "tipo_turno": "resistencia",
+    "relacion": "relacion estable",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-144",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-145",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-146",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-147",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-148",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-149",
+    "estilo": "disorganized",
+    "tipo_turno": "duda",
+    "relacion": "reconciliacion",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-150",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": "ideacion_suicida"
+  },
+  {
+    "id": "qa-151",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "citas",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-152",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "noviazgo",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-153",
+    "estilo": "avoidant",
+    "tipo_turno": "seguimiento",
+    "relacion": "relacion estable",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-154",
+    "estilo": "avoidant",
+    "tipo_turno": "resistencia",
+    "relacion": "convivencia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-155",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-156",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-157",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-158",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-159",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-160",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "distancia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-161",
+    "estilo": "disorganized",
+    "tipo_turno": "duda",
+    "relacion": "citas",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-162",
+    "estilo": "secure",
+    "tipo_turno": "descarga",
+    "relacion": "noviazgo",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-163",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "relacion estable",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-164",
+    "estilo": "anxious",
+    "tipo_turno": "seguimiento",
+    "relacion": "convivencia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-165",
+    "estilo": "avoidant",
+    "tipo_turno": "resistencia",
+    "relacion": "matrimonio",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-166",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-167",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-168",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-169",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-170",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-171",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "citas",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-172",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "noviazgo",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-173",
+    "estilo": "disorganized",
+    "tipo_turno": "descarga",
+    "relacion": "relacion estable",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-174",
+    "estilo": "secure",
+    "tipo_turno": "descarga",
+    "relacion": "convivencia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-175",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": "agresion_sexual"
+  },
+  {
+    "id": "qa-176",
+    "estilo": "anxious",
+    "tipo_turno": "resistencia",
+    "relacion": "soltero",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-177",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-178",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-179",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-180",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-181",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-182",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "noviazgo",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-183",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "relacion estable",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-184",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "convivencia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-185",
+    "estilo": "disorganized",
+    "tipo_turno": "descarga",
+    "relacion": "matrimonio",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-186",
+    "estilo": "secure",
+    "tipo_turno": "seguimiento",
+    "relacion": "soltero",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-187",
+    "estilo": "anxious",
+    "tipo_turno": "resistencia",
+    "relacion": "ruptura reciente",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-188",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-189",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-190",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-191",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-192",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-193",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "relacion estable",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-194",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "convivencia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-195",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "matrimonio",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-196",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "soltero",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-197",
+    "estilo": "disorganized",
+    "tipo_turno": "seguimiento",
+    "relacion": "ruptura reciente",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-198",
+    "estilo": "secure",
+    "tipo_turno": "resistencia",
+    "relacion": "divorcio",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-199",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-200",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": "menor_en_peligro"
+  },
+  {
+    "id": "qa-201",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-202",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-203",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-204",
+    "estilo": "secure",
+    "tipo_turno": "duda",
+    "relacion": "convivencia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-205",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "matrimonio",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-206",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "soltero",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-207",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "ruptura reciente",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-208",
+    "estilo": "avoidant",
+    "tipo_turno": "seguimiento",
+    "relacion": "divorcio",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-209",
+    "estilo": "disorganized",
+    "tipo_turno": "resistencia",
+    "relacion": "reconciliacion",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-210",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-211",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-212",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-213",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-214",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-215",
+    "estilo": "disorganized",
+    "tipo_turno": "duda",
+    "relacion": "matrimonio",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-216",
+    "estilo": "secure",
+    "tipo_turno": "duda",
+    "relacion": "soltero",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-217",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "ruptura reciente",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-218",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "divorcio",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-219",
+    "estilo": "avoidant",
+    "tipo_turno": "seguimiento",
+    "relacion": "reconciliacion",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-220",
+    "estilo": "avoidant",
+    "tipo_turno": "resistencia",
+    "relacion": "distancia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-221",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-222",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-223",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-224",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-225",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": "violencia_pareja"
+  },
+  {
+    "id": "qa-226",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "soltero",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-227",
+    "estilo": "disorganized",
+    "tipo_turno": "duda",
+    "relacion": "ruptura reciente",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-228",
+    "estilo": "secure",
+    "tipo_turno": "descarga",
+    "relacion": "divorcio",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-229",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "reconciliacion",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-230",
+    "estilo": "anxious",
+    "tipo_turno": "seguimiento",
+    "relacion": "distancia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-231",
+    "estilo": "avoidant",
+    "tipo_turno": "resistencia",
+    "relacion": "citas",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-232",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "noviazgo",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-233",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-234",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-235",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-236",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-237",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "ruptura reciente",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-238",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "divorcio",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-239",
+    "estilo": "disorganized",
+    "tipo_turno": "descarga",
+    "relacion": "reconciliacion",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-240",
+    "estilo": "secure",
+    "tipo_turno": "descarga",
+    "relacion": "distancia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-241",
+    "estilo": "anxious",
+    "tipo_turno": "seguimiento",
+    "relacion": "citas",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-242",
+    "estilo": "anxious",
+    "tipo_turno": "resistencia",
+    "relacion": "noviazgo",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-243",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "relacion estable",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-244",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-245",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-246",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-247",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-248",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "divorcio",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-249",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "reconciliacion",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-250",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": "ideacion_suicida"
+  },
+  {
+    "id": "qa-251",
+    "estilo": "disorganized",
+    "tipo_turno": "descarga",
+    "relacion": "citas",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-252",
+    "estilo": "secure",
+    "tipo_turno": "seguimiento",
+    "relacion": "noviazgo",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-253",
+    "estilo": "anxious",
+    "tipo_turno": "resistencia",
+    "relacion": "relacion estable",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-254",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "convivencia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-255",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-256",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-257",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-258",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-259",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "reconciliacion",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-260",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "distancia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-261",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "citas",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-262",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "noviazgo",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-263",
+    "estilo": "disorganized",
+    "tipo_turno": "seguimiento",
+    "relacion": "relacion estable",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-264",
+    "estilo": "secure",
+    "tipo_turno": "resistencia",
+    "relacion": "convivencia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-265",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-266",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-267",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-268",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-269",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-270",
+    "estilo": "secure",
+    "tipo_turno": "duda",
+    "relacion": "distancia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-271",
+    "estilo": "anxious",
+    "tipo_turno": "duda",
+    "relacion": "citas",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-272",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "noviazgo",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-273",
+    "estilo": "avoidant",
+    "tipo_turno": "descarga",
+    "relacion": "relacion estable",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-274",
+    "estilo": "avoidant",
+    "tipo_turno": "seguimiento",
+    "relacion": "convivencia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-275",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "matrimonio",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": "agresion_sexual"
+  },
+  {
+    "id": "qa-276",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "soltero",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-277",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-278",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-279",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-280",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-281",
+    "estilo": "disorganized",
+    "tipo_turno": "duda",
+    "relacion": "citas",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-282",
+    "estilo": "secure",
+    "tipo_turno": "duda",
+    "relacion": "noviazgo",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-283",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "relacion estable",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-284",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "convivencia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-285",
+    "estilo": "avoidant",
+    "tipo_turno": "seguimiento",
+    "relacion": "matrimonio",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-286",
+    "estilo": "avoidant",
+    "tipo_turno": "resistencia",
+    "relacion": "soltero",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-287",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "ruptura reciente",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-288",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": null
+  },
+  {
+    "id": "qa-289",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 19,
+    "crisis": null
+  },
+  {
+    "id": "qa-290",
+    "estilo": "anxious",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 23,
+    "crisis": null
+  },
+  {
+    "id": "qa-291",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "citas",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 26,
+    "crisis": null
+  },
+  {
+    "id": "qa-292",
+    "estilo": "avoidant",
+    "tipo_turno": "duda",
+    "relacion": "noviazgo",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 29,
+    "crisis": null
+  },
+  {
+    "id": "qa-293",
+    "estilo": "disorganized",
+    "tipo_turno": "duda",
+    "relacion": "relacion estable",
+    "nucleo": "desconfianza",
+    "genero": "mujer",
+    "edad": 32,
+    "crisis": null
+  },
+  {
+    "id": "qa-294",
+    "estilo": "secure",
+    "tipo_turno": "descarga",
+    "relacion": "convivencia",
+    "nucleo": "insuficiencia",
+    "genero": "hombre",
+    "edad": 35,
+    "crisis": null
+  },
+  {
+    "id": "qa-295",
+    "estilo": "anxious",
+    "tipo_turno": "descarga",
+    "relacion": "matrimonio",
+    "nucleo": "vulneracion de limites",
+    "genero": "mujer",
+    "edad": 38,
+    "crisis": null
+  },
+  {
+    "id": "qa-296",
+    "estilo": "anxious",
+    "tipo_turno": "seguimiento",
+    "relacion": "soltero",
+    "nucleo": "inseguridad",
+    "genero": "hombre",
+    "edad": 42,
+    "crisis": null
+  },
+  {
+    "id": "qa-297",
+    "estilo": "avoidant",
+    "tipo_turno": "resistencia",
+    "relacion": "ruptura reciente",
+    "nucleo": "rechazo",
+    "genero": "mujer",
+    "edad": 46,
+    "crisis": null
+  },
+  {
+    "id": "qa-298",
+    "estilo": "avoidant",
+    "tipo_turno": "situacion",
+    "relacion": "divorcio",
+    "nucleo": "juicio",
+    "genero": "hombre",
+    "edad": 51,
+    "crisis": null
+  },
+  {
+    "id": "qa-299",
+    "estilo": "disorganized",
+    "tipo_turno": "situacion",
+    "relacion": "reconciliacion",
+    "nucleo": "desbordamiento",
+    "genero": "mujer",
+    "edad": 56,
+    "crisis": null
+  },
+  {
+    "id": "qa-300",
+    "estilo": "secure",
+    "tipo_turno": "situacion",
+    "relacion": "distancia",
+    "nucleo": "perdida",
+    "genero": "hombre",
+    "edad": 60,
+    "crisis": "menor_en_peligro"
+  }
+]
