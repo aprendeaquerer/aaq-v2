@@ -69,6 +69,8 @@ _PATTERNS = {
         "mejor no despertar", "ojala no despertar", "preferiria no despertar",
         "no volver a despertar", "no despertarme mas",
         "quiero desaparecer", "ojala desapareciera", "ojala desapareciese",
+        "mejor no haber nacido", "no haber nacido", "ojala no hubiera nacido",
+        "ojala no hubiese nacido", "mejor no nacer", "no deberia haber nacido",
         "no le veo sentido a nada", "no le encuentro sentido a nada",
         "nada tiene sentido ya", "ya nada tiene sentido", "no tengo ganas de seguir",
         "no me quedan ganas de vivir", "no le veo salida a esto y quiero acabar",
@@ -77,6 +79,8 @@ _PATTERNS = {
         "wish i didn't exist", "wish i didnt exist", "stop existing",
         "don't want to wake up", "dont want to want to wake up", "dont want to wake up",
         "wish i could disappear", "no reason to keep going",
+        "better if i had never been born", "wish i was never born",
+        "wish i had never been born", "shouldn't have been born",
         # Russian, passive ideation
         "всем было бы лучше без меня", "лучше бы меня не было",
         "хочу исчезнуть", "не хочу просыпаться", "ни в чём нет смысла",

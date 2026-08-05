@@ -282,6 +282,33 @@ def test_no_move_runs_three_turns_in_a_row():
         assert not (a == b == c), f"tres turnos seguidos de {a}: {movimientos}"
 
 
+def test_reset_drifts_cannot_defeat_the_anti_repeat_rule():
+    """The trace that made the third run collapse to 0.7% action steps: the planner
+    emitted "corrige" and "objetivo_nuevo" on alternate turns, and every reset cleared
+    the counter that is supposed to stop a move repeating."""
+    llena = ficha(hecho="filled", objetivo="filled", supuesto="filled", intentos="filled")
+    estado = estado_inicial()
+    drifts = ["nada", "profundiza", "profundiza", "corrige", "objetivo_nuevo",
+              "corrige", "objetivo_nuevo", "corrige"]
+    movimientos = []
+    for d in drifts:
+        movimiento, estado = avanzar(estado, ficha=llena, drift=d)
+        movimientos.append(movimiento)
+    for a, b, c in zip(movimientos, movimientos[1:], movimientos[2:]):
+        assert not (a == b == c), f"tres turnos seguidos de {a}: {movimientos}"
+    assert "proponer" in movimientos, movimientos
+
+
+def test_a_planner_that_corrects_every_turn_still_reaches_a_step():
+    llena = ficha(hecho="filled", objetivo="filled", supuesto="filled", intentos="filled")
+    estado = estado_inicial()
+    movimientos = []
+    for _ in range(8):
+        movimiento, estado = avanzar(estado, ficha=llena, drift="corrige")
+        movimientos.append(movimiento)
+    assert "resolver" in movimientos, movimientos
+
+
 def test_attempts_hole_jumps_the_queue_once_a_reading_is_given():
     llena = ficha(hecho="filled", objetivo="filled", supuesto="filled")
     estado = estado_inicial()
@@ -336,3 +363,22 @@ def test_malformed_state_and_card_do_not_crash():
     )
     assert movimiento == "recoger"
     assert estado["reparto"]["recoger"] == 1
+
+
+def test_no_move_hands_the_direction_back_to_the_user():
+    """Reported from production: Eldric closed with "¿Cómo te gustaría abordar este tema
+    con ella?". The next move is Eldric's decision, never the user's."""
+    from app.services.brain.conversation_flow import _INSTRUCCIONES
+
+    for movimiento in _INSTRUCCIONES:
+        bloque = componer_bloque_movimiento({"movimiento": movimiento, "ficha": ficha()})
+        assert "NUNCA delegues en el usuario" in bloque, movimiento
+        assert "como te gustaria abordarlo" in bloque, movimiento
+
+
+def test_no_move_lets_eldric_read_the_other_person_s_mind():
+    from app.services.brain.conversation_flow import _INSTRUCCIONES
+
+    for movimiento in _INSTRUCCIONES:
+        bloque = componer_bloque_movimiento({"movimiento": movimiento, "ficha": ficha()})
+        assert "No atribuyas a la otra persona" in bloque, movimiento
