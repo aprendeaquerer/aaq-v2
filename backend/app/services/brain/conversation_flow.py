@@ -55,9 +55,9 @@ TURNOS_MAX_PIDIENDO_INTENTOS = 2
 # reporting new facts traps the loop in "explicar" and the user never gets a step.
 TURNOS_MAX_MISMO_MOVIMIENTO = 2
 
-# A new fact invalidates the reading, but only once per objective. Otherwise the loop
-# can be reset indefinitely and never advances.
-RESETS_MAX_POR_HECHO_NUEVO = 1
+# A new fact or a correction invalidates the reading, but only so many times. A planner
+# that reports one every turn would otherwise keep the loop in "explicar" forever.
+RESETS_MAX_DE_LECTURA = 2
 
 _ESTADO_INICIAL = {
     "tipo_turno": "situacion",
@@ -67,7 +67,7 @@ _ESTADO_INICIAL = {
     "turnos_mismo_movimiento": 0,
     "turnos_pidiendo_intentos": 0,
     "intentos_agotado": False,
-    "resets_por_hecho_nuevo": 0,
+    "resets_de_lectura": 0,
     "lectura_dada": False,
     "propuesta_dada": False,
     "paso_dado": False,
@@ -96,7 +96,7 @@ def _normalizar_estado(previo: Optional[Dict[str, object]]) -> Dict[str, object]
         "turnos_recoger_seguidos",
         "turnos_mismo_movimiento",
         "turnos_pidiendo_intentos",
-        "resets_por_hecho_nuevo",
+        "resets_de_lectura",
         "rechazos",
     ):
         estado[contador] = int(estado.get(contador) or 0)
@@ -159,10 +159,17 @@ def siguiente_hueco(ficha: Dict[str, str], priorizar_intentos: bool = False) -> 
 
 
 def _avance(movimiento: Optional[str]) -> str:
+    """The move after this one. After the last one the loop starts again.
+
+    "resolver" wraps back to "recoger": two action steps in a row means the next one
+    needs fresh context, not a third step nobody asked for.
+    """
     if movimiento not in MOVIMIENTOS:
         return "explicar"
     indice = MOVIMIENTOS.index(movimiento)
-    return MOVIMIENTOS[min(indice + 1, len(MOVIMIENTOS) - 1)]
+    if indice == len(MOVIMIENTOS) - 1:
+        return "recoger"
+    return MOVIMIENTOS[indice + 1]
 
 
 def _preferido(estado: Dict[str, object], ficha: Dict[str, str], drift: str) -> str:
@@ -191,27 +198,23 @@ def decidir_movimiento(
     drift = drift if isinstance(drift, str) else "nada"
     tipo = tipo_turno if tipo_turno in TIPOS_TURNO else "situacion"
 
-    # Going back: a new objective resets the loop, a correction or a new fact
-    # invalidates the reading already given.
+    # Going back. Note what is NOT reset here: `turnos_mismo_movimiento`. That counter
+    # is what stops a move repeating, and the third QA run showed a planner emitting
+    # "corrige" and "objetivo_nuevo" on alternate turns, which cleared the counter every
+    # time and let Eldric explain three turns in a row anyway.
     if drift == "objetivo_nuevo":
         estado.update(
             lectura_dada=False,
             propuesta_dada=False,
             paso_dado=False,
             turnos_recoger_seguidos=0,
-            turnos_mismo_movimiento=0,
             turnos_pidiendo_intentos=0,
             intentos_agotado=False,
-            resets_por_hecho_nuevo=0,
+            resets_de_lectura=0,
             rechazos=0,
         )
-    elif drift == "corrige":
-        estado["lectura_dada"] = False
-        estado["propuesta_dada"] = False
-    elif hecho_nuevo and estado["resets_por_hecho_nuevo"] < RESETS_MAX_POR_HECHO_NUEVO:
-        # A genuinely new fact invalidates the reading, but a planner that reports one
-        # every turn must not be able to keep the conversation in "explicar" forever.
-        estado["resets_por_hecho_nuevo"] += 1
+    elif (drift == "corrige" or hecho_nuevo) and estado["resets_de_lectura"] < RESETS_MAX_DE_LECTURA:
+        estado["resets_de_lectura"] += 1
         estado["lectura_dada"] = False
         estado["propuesta_dada"] = False
 
@@ -307,6 +310,14 @@ _REGLAS_COMUNES = [
     "Empieza por el dato nuevo, por la lectura o por la pregunta, no por el resumen.",
     "Haz SOLO este movimiento. No adelantes el siguiente ni metas dos en la misma respuesta.",
     "No menciones ningun hecho que el usuario no haya contado. Si te falta, preguntalo o callatelo.",
+    "NUNCA delegues en el usuario por donde seguir. Prohibidas estas preguntas y sus variantes: "
+    "\"como te gustaria abordarlo?\" · \"que te gustaria hacer?\" · \"como lo plantearias?\" · "
+    "\"que crees que deberias hacer?\" · \"por donde quieres empezar?\" · \"que opcion ves?\" · "
+    "\"como lo enfocarias?\" · \"cual seria tu siguiente paso?\". El siguiente paso lo decides tu "
+    "y lo dices en afirmativo. Si preguntas, es por un dato que te falta, nunca por la direccion.",
+    "No atribuyas a la otra persona sentimientos, intenciones ni interpretaciones como si fueran "
+    "hechos. Nada de \"ella puede sentir que...\", \"el lo interpreta como...\". Habla de lo "
+    "observable y de lo que le pasa al usuario.",
     "Antes de enviar, cuenta los signos de interrogacion de tu respuesta y comprueba que cumples "
     "el limite de este movimiento.",
 ]

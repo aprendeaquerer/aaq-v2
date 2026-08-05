@@ -19,6 +19,7 @@ from app.services.brain.debug_trace import build_conversation_debug, build_state
 from app.services.brain.memory_capture import capture_candidate_memories
 from app.services.brain.profile_capture import capture_profile_fields
 from app.services.brain.prompt_composer import compose_brain_prompt
+from app.services.brain.response_filter import limpiar_respuesta
 from app.services.brain.coaching_planner import compose_session_prompt, update_coaching_plan
 from app.services import state_machine as sm
 from app.services import test_service
@@ -437,6 +438,12 @@ async def _handle_conversation(
         ai_error = f"{type(exc).__name__}: {str(exc)[:500]}"
         response_text = _get_ai_error_message(language)
 
+    # Opening the answer by restating the user was the most repeated failure across
+    # four QA runs and never moved with prompt rules. This strips it deterministically.
+    filtro_aplicado: List[str] = []
+    if language == "es" and not ai_error:
+        response_text, filtro_aplicado = limpiar_respuesta(response_text, message)
+
     # Save assistant message
     await _save_message(db, user_id, "assistant", response_text, language)
 
@@ -477,6 +484,7 @@ async def _handle_conversation(
                 "movimiento": _conversation_field(coaching_plan, "movimiento"),
                 "hueco_pendiente": _conversation_field(coaching_plan, "hueco_pendiente"),
                 "reparto": _conversation_field(coaching_plan, "reparto"),
+                "filtro_apertura": filtro_aplicado,
                 "error": planner_error,
             },
         })

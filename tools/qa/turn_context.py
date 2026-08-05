@@ -40,6 +40,7 @@ from app.services.ai.prompts import get_eldric_prompt  # noqa: E402
 from app.services.brain.conversation_flow import decidir_movimiento  # noqa: E402
 from app.services.brain.knowledge_brain import retrieve_knowledge  # noqa: E402
 from app.services.brain.prompt_composer import compose_brain_prompt  # noqa: E402
+from app.services.brain.response_filter import limpiar_respuesta  # noqa: E402
 from app.services.brain.types import BrainContext  # noqa: E402
 
 
@@ -229,10 +230,17 @@ def main() -> None:
         ultimo_eldric = next(
             (t["content"] for t in reversed(conv["turns"]) if t["role"] == "eldric"), None
         )
-        conv["turns"].append({
-            "role": "eldric",
-            "content": _validar_texto(args.prev_eldric, "Eldric", ultimo_eldric),
-        })
+        ultimo_usuario = next(
+            (t["content"] for t in reversed(conv["turns"]) if t["role"] == "user"), ""
+        )
+        # Production filters the reply before sending it. The harness must too, or the
+        # report measures a text the user would never have seen.
+        texto, filtro = limpiar_respuesta(
+            _validar_texto(args.prev_eldric, "Eldric", ultimo_eldric), ultimo_usuario
+        )
+        conv["turns"].append({"role": "eldric", "content": texto})
+        if filtro:
+            conv.setdefault("filtros", []).append({"turno": len(conv["turns"]), "reglas": filtro})
 
     if args.close:
         eldric = [t for t in conv["turns"] if t["role"] == "eldric"]
