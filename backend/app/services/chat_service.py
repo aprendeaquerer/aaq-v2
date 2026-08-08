@@ -1,6 +1,7 @@
 """Chat service - orchestrates state machine, AI calls, knowledge injection, and conversation persistence."""
 
 import json
+import logging
 from typing import Dict, List, Optional
 
 from sqlalchemy import select, func, delete
@@ -26,6 +27,8 @@ from app.services import test_service
 from app.services import safety
 from app.data.test_questions import get_style_description, get_relationship_description
 
+logger = logging.getLogger(__name__)
+
 # Guest message limit
 GUEST_MESSAGE_LIMIT = 15
 
@@ -48,17 +51,38 @@ async def handle_reset(
     if not user_id:
         return ChatResponse(type="reset", data={"success": False, "reason": "no_user"})
 
-    await db.execute(delete(UserMemory).where(UserMemory.user_id == user_id))
-    await db.execute(delete(Conversation).where(Conversation.user_id == user_id))
-    await db.execute(delete(CoachingPlan).where(CoachingPlan.user_id == user_id))
-    await db.execute(delete(TestState).where(TestState.user_id == user_id))
+    # Each table is deleted and committed on its own. The previous version ran every
+    # delete in one transaction with a single commit at the end: if any one of them
+    # raised (this app's tables mix a couple of migration generations, so a stray
+    # type/constraint mismatch on any single table is plausible), NOTHING committed
+    # and the whole request 500'd with no memory actually cleared. Isolating each
+    # delete means one bad table can't block the others, and we log exactly which
+    # one failed instead of losing the reason in a generic 500.
+    tables = [
+        ("user_memories", delete(UserMemory).where(UserMemory.user_id == user_id)),
+        ("conversations", delete(Conversation).where(Conversation.user_id == user_id)),
+        ("coaching_plans", delete(CoachingPlan).where(CoachingPlan.user_id == user_id)),
+        ("test_states", delete(TestState).where(TestState.user_id == user_id)),
+    ]
     if user:
-        await db.execute(delete(UserProfile).where(UserProfile.user_id == user_id))
-    await db.commit()
+        tables.append(("user_profiles", delete(UserProfile).where(UserProfile.user_id == user_id)))
+
+    failed_tables: List[str] = []
+    for table_name, statement in tables:
+        try:
+            await db.execute(statement)
+            await db.commit()
+        except Exception:
+            await db.rollback()
+            logger.exception("chat/reset: failed to clear %s for user_id=%s", table_name, user_id)
+            failed_tables.append(table_name)
 
     _guest_counts.pop(user_id, None)
 
-    return ChatResponse(type="reset", data={"success": True})
+    data: Dict[str, object] = {"success": not failed_tables}
+    if failed_tables:
+        data["failed_tables"] = failed_tables
+    return ChatResponse(type="reset", data=data)
 
 
 async def handle_session(
@@ -374,6 +398,7 @@ async def _handle_conversation(
         profile_updates = await capture_profile_fields(db, user_id, message)
     except Exception as exc:
         await db.rollback()
+        logger.exception("handle_conversation: profile capture failed for user_id=%s", user_id)
         profile_capture_error = f"{type(exc).__name__}: {str(exc)[:300]}"
 
     if profile_updates:
@@ -404,6 +429,13 @@ async def _handle_conversation(
         )
     except Exception as exc:
         await db.rollback()
+        # Silent before this: when the planner call fails (bad JSON from the model,
+        # timeout, whatever) coaching_plan stays None, compose_session_prompt skips
+        # the whole conduction block, and Eldric answers with no movement discipline
+        # at all — no "recoger before advice", no ban on questions in "explicar", etc.
+        # That's a plausible explanation for turns that read as generic advice-dumping.
+        # Logging it here is what makes that diagnosable instead of guessed at.
+        logger.exception("handle_conversation: coaching planner failed for user_id=%s", user_id)
         planner_error = f"{type(exc).__name__}: {str(exc)[:300]}"
 
     knowledge_query = _active_knowledge_query(coaching_plan)
@@ -435,6 +467,7 @@ async def _handle_conversation(
             max_tokens=1000,
         )
     except Exception as exc:
+        logger.exception("handle_conversation: AI call failed for user_id=%s", user_id)
         ai_error = f"{type(exc).__name__}: {str(exc)[:500]}"
         response_text = _get_ai_error_message(language)
 
@@ -453,6 +486,7 @@ async def _handle_conversation(
         captured_memories = await capture_candidate_memories(db, user_id, message, language)
     except Exception as exc:
         await db.rollback()
+        logger.exception("handle_conversation: memory capture failed for user_id=%s", user_id)
         memory_capture_error = f"{type(exc).__name__}: {str(exc)[:300]}"
 
     data = {"message": response_text}
@@ -576,12 +610,14 @@ async def _capture_guided_message_data(
         profile_updates = await capture_profile_fields(db, user_id, message)
     except Exception as exc:
         await db.rollback()
+        logger.exception("_capture_guided_message_data: profile capture failed for user_id=%s", user_id)
         profile_capture_error = f"{type(exc).__name__}: {str(exc)[:300]}"
 
     try:
         memory_candidates = await capture_candidate_memories(db, user_id, message, language)
     except Exception as exc:
         await db.rollback()
+        logger.exception("_capture_guided_message_data: memory capture failed for user_id=%s", user_id)
         memory_capture_error = f"{type(exc).__name__}: {str(exc)[:300]}"
 
     return {
