@@ -12,12 +12,13 @@ legitimate:
     "Bien. El primer paso es hablar..."     -> "Bien." is filler, the rest is content
     "Entonces la evidencia es que nada..."  -> a reading, not a restatement
 
-Only four shapes are removed, and never at the cost of content:
+Only five shapes are removed, and never at the cost of content:
 
     R1  bare marker + . or ,   -> drop the marker
     R2  bare marker + :        -> drop the whole sentence (it is a summary list)
     R3  restating connector    -> drop the connector
     R4  first sentence is a verbatim echo of the user -> drop that sentence
+    R5  first sentence is a reflection of the user's emotional state -> drop that sentence
 
 Anything that would leave a stub, or a sentence starting with a pronoun that refers
 back to what was removed, is left untouched. Safety-rail messages are never touched.
@@ -25,7 +26,16 @@ back to what was removed, is left untouched. Safety-rail messages are never touc
 Deliberately conservative. Measured on 710 real user->Eldric pairs it changes 5% of
 replies and never breaks one, but it only removes about 9% of what the judge flags as
 "opens by restating": most of those are paraphrases, not echoes, and cutting a
-paraphrase risks cutting a genuine reading. That part stays a prompt problem.
+paraphrase risks cutting a genuine reading.
+
+R5 covers the biggest remaining slice of that gap: "Estas sintiendo ansiedad por..." /
+"Tu preocupacion se centra en..." are paraphrases in Eldric's own words, so R4's
+overlap check (which compares against the user's vocabulary) never fires on them. R5
+instead recognises the *shape* of a reflection-of-feeling opener directly: a subject
+naming an emotion, followed by a vague relational verb ("se centra en", "tiene que ver
+con", "viene de"...), with no causal reasoning in the same sentence. A sentence that
+also explains *why* in the same breath (it contains "porque", "ya que"...) is left
+alone, since cutting it would cut a genuine reading, not just a mirror.
 """
 
 from __future__ import annotations
@@ -87,6 +97,46 @@ _ALTERNATIVA = lambda opciones: "|".join(re.escape(o) for o in opciones)  # noqa
 _R1 = re.compile(rf"^\s*({_ALTERNATIVA(MARCADORES)})\s*[.,;!]+\s+", re.IGNORECASE)
 _R2 = re.compile(rf"^\s*({_ALTERNATIVA(MARCADORES)})\s*:\s*", re.IGNORECASE)
 _R3 = re.compile(rf"^\s*({_ALTERNATIVA(CONECTORES)})\s*[,:]?\s+", re.IGNORECASE)
+
+
+# --- R5: reflecting the user's emotional state as an opener ----------------
+#
+# "Nunca abras la respuesta reflejando su estado emocional" is a prompt rule, but the
+# QA runs kept showing it anyway: it is the model's single strongest reflex. Unlike
+# R4, these openers are Eldric's own paraphrase, not the user's words, so they need
+# their own vocabulary and shape rather than an overlap check.
+
+EMOCIONES = (
+    "ansiedad", "miedo", "temor", "preocupacion", "preocupación", "tristeza", "angustia",
+    "culpa", "enfado", "rabia", "ira", "frustracion", "frustración", "inseguridad",
+    "confusion", "confusión", "dolor", "verguenza", "vergüenza", "celos", "estres",
+    "estrés", "agobio", "malestar", "inquietud", "nerviosismo", "desconfianza", "soledad",
+)
+
+# A relational verb vague enough that naming it adds nothing the user didn't already
+# say. A sentence that instead explains a mechanism ("porque...", "cuando...") is not
+# matched here — see _CONECTORES_CAUSALES below.
+_VERBOS_REFLEXION = (
+    "se centra en", "se debe a", "tiene que ver con", "esta relacionada con",
+    "está relacionada con", "esta relacionado con", "está relacionado con",
+    "viene de", "surge de", "proviene de", "gira en torno a", "es sobre", "va sobre",
+)
+
+# If either of these appears in the sentence, it is doing real explanatory work
+# alongside naming the feeling, so R5 must not touch it.
+_CONECTORES_CAUSALES = ("porque", "ya que", "dado que", "puesto que", "debido a")
+
+_R5_INICIO = re.compile(
+    r"^\s*(estás|estas)\s+sinti(e|é)ndo\b"
+    r"|^\s*(sientes|notas|percibes)\b.{0,40}?\b(" + _ALTERNATIVA(EMOCIONES) + r")\b"
+    r"|^\s*(tu|su|esa|ese|esta|este)\s+(\w+\s+){0,2}(" + _ALTERNATIVA(EMOCIONES) + r")\b"
+    r".{0,60}?\b(" + _ALTERNATIVA(_VERBOS_REFLEXION) + r")\b",
+    re.IGNORECASE,
+)
+
+# Reflection openers rarely arrive alone: "Estas sintiendo X. Y es Z." often chains two
+# in a row. Bounded so a genuine multi-sentence reading can never be eaten.
+_R5_MAX_FRASES = 2
 
 
 def _es_rail_de_seguridad(texto: str) -> bool:
@@ -155,6 +205,33 @@ def _es_recapitulacion(frase: str, mensaje_usuario: str) -> bool:
     return (len(repetidas) / len(de_eldric)) >= SOLAPE_MINIMO and nuevas <= NUEVAS_MAXIMO
 
 
+def _es_reflejo_emocional(frase: str) -> bool:
+    if not _R5_INICIO.match(frase):
+        return False
+    baja = frase.lower()
+    return not any(conector in baja for conector in _CONECTORES_CAUSALES)
+
+
+def _quitar_reflejos_emocionales(texto: str) -> Tuple[str, bool]:
+    """Strip up to `_R5_MAX_FRASES` leading sentences that only mirror the user's
+    feeling. Stops as soon as a sentence does not match, leaves too little behind,
+    or would dangle a reference — never eats a genuine reading."""
+    trabajo = texto
+    aplicado = False
+    for _ in range(_R5_MAX_FRASES):
+        primera, resto = _cortar_primera_frase(trabajo)
+        if not (
+            resto.strip()
+            and len(resto.strip()) >= MINIMO_RESTANTE
+            and not _empieza_por_anaforico(resto)
+            and _es_reflejo_emocional(primera)
+        ):
+            break
+        trabajo = _capitalizar(resto)
+        aplicado = True
+    return trabajo, aplicado
+
+
 def limpiar_respuesta(texto: str, mensaje_usuario: str = "") -> Tuple[str, List[str]]:
     """Return the cleaned reply and the list of rules that fired.
 
@@ -196,6 +273,12 @@ def limpiar_respuesta(texto: str, mensaje_usuario: str = "") -> Tuple[str, List[
         if len(resto.strip()) >= MINIMO_RESTANTE and not _empieza_por_anaforico(resto):
             trabajo = _capitalizar(resto)
             aplicadas.append("conector-de-recapitulacion")
+
+    # R5: the opening sentence(s) just mirror the user's feeling back, in Eldric's own
+    # words. Runs before R4 because it targets the paraphrase R4 cannot see.
+    trabajo, aplicado_r5 = _quitar_reflejos_emocionales(trabajo)
+    if aplicado_r5:
+        aplicadas.append("reflejo-emocional-de-apertura")
 
     # R4: the first sentence just hands the user their own facts back.
     if mensaje_usuario:
