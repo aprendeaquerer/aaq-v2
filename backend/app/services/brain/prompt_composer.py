@@ -33,9 +33,13 @@ def compose_brain_prompt(base_prompt: str, context: BrainContext) -> str:
     if sections:
         sections.append(
             "\n\nRESPONSE STRATEGY:\n"
-            "Use the knowledge naturally, not as a citation dump. "
-            "Prefer one clear insight and one grounded next step. "
-            "If memory is present, refer to it gently and only when useful."
+            "Use the knowledge naturally, not as a citation dump. Ground it in her concrete "
+            "case, not as a general lecture. This is source material for whichever movement "
+            "the CONDUCCION DE LA CONVERSACION block (further below, if present) assigns to "
+            "this turn — it does not by itself mean you should explain, propose, or give a "
+            "next step now. If that block says this turn only gathers, gathering is still all "
+            "you do, even with knowledge in hand. If memory is present, refer to it gently and "
+            "only when useful."
         )
 
     return base_prompt + "".join(sections)
