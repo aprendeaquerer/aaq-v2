@@ -55,6 +55,10 @@ PLACEHOLDERS = re.compile(
 )
 MIN_CARACTERES = 25
 
+# Conversations shorter than this cannot show the full loop, and the fifth run proved
+# it: a batch of 2-turn conversations dragged the whole balance measurement with them.
+MIN_TURNOS_ELDRIC = 5
+
 
 def _validar_texto(texto: str, quien: str, previo: Optional[str] = None) -> str:
     limpio = (texto or "").strip()
@@ -250,10 +254,11 @@ def main() -> None:
                 f"{len(conv.get('trazas') or [])} trazas. Cada turno de Eldric tiene que salir de "
                 "una llamada con --user y --planner. No completes la conversacion a mano."
             )
-        if len(eldric) < 2:
+        if len(eldric) < MIN_TURNOS_ELDRIC:
             raise SystemExit(
-                f"ERROR: solo {len(eldric)} turnos de Eldric. Una conversacion necesita al menos 2 "
-                "para poder juzgarla."
+                f"ERROR: solo {len(eldric)} turnos de Eldric. Una conversacion necesita al menos "
+                f"{MIN_TURNOS_ELDRIC} para medir el reparto de movimientos: con menos, el bucle no "
+                "llega a un paso de accion y las cifras salen sesgadas. Sigue la conversacion."
             )
         _save(path, conv)
         print(json.dumps({"ok": True, "turns": len(conv["turns"]), "eldric": len(eldric)}, ensure_ascii=False))
