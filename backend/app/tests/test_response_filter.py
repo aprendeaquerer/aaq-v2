@@ -161,3 +161,78 @@ def test_r4_never_leaves_a_dangling_reference():
     respuesta = "Sandra quiere mas intimidad. Eso es lo que hace que te cierres cada vez mas."
     limpio, _ = limpiar_respuesta(respuesta, usuario)
     assert limpio == respuesta
+
+
+# --- R5: reflecting the user's emotional state, in Eldric's own words ------
+#
+# These openers do not share vocabulary with the user's message, so R4's overlap
+# check never catches them. That is exactly the gap R5 exists to close.
+
+
+def test_estas_sintiendo_opener_is_dropped():
+    texto = (
+        "Estás sintiendo una gran ansiedad respecto a la relación con tu novio, especialmente "
+        "sobre si él está bien o mal contigo. " + LARGO
+    )
+    limpio, reglas = limpiar_respuesta(texto, "que no quiera seguir conmigo")
+    assert limpio == LARGO
+    assert "reflejo-emocional-de-apertura" in reglas
+
+
+def test_tu_emocion_se_centra_en_opener_is_dropped():
+    texto = (
+        "Tu ansiedad se centra en la preocupación de que tu novio no quiera continuar la relación. "
+        "Este tipo de temor puede generar una activación emocional intensa y hacer que te "
+        "concentres en sus comportamientos o en la dinámica de la relación."
+    )
+    limpio, reglas = limpiar_respuesta(texto, "que no quiera seguir conmigo")
+    assert limpio.startswith("Este tipo de temor")
+    assert "reflejo-emocional-de-apertura" in reglas
+
+
+def test_up_to_two_chained_reflection_openers_are_dropped():
+    """"Estas sintiendo X. Y esta relacionado con Z." chains two reflections before
+    any real content arrives."""
+    texto = (
+        "Estás sintiendo mucho miedo por lo que pueda pasar. Tu miedo tiene que ver con no saber "
+        "que va a pasar despues. " + LARGO
+    )
+    limpio, reglas = limpiar_respuesta(texto, "no se que va a pasar")
+    assert limpio == LARGO
+    assert "reflejo-emocional-de-apertura" in reglas
+
+
+@pytest.mark.parametrize("emocion", ["miedo", "tristeza", "culpa", "inseguridad", "frustración"])
+def test_every_emotion_word_is_covered(emocion):
+    texto = f"Sientes {emocion} por como ha ido todo esto. " + LARGO
+    limpio, reglas = limpiar_respuesta(texto)
+    assert limpio == LARGO
+    assert "reflejo-emocional-de-apertura" in reglas
+
+
+def test_a_reading_that_names_a_feeling_with_its_cause_is_not_touched():
+    """This is the actual job of EXPLICAR: naming the feeling AND why it happens in
+    the same sentence. R5 must never eat a real reading."""
+    texto = (
+        "Tu ansiedad crece porque interpretas su silencio como rechazo, y por eso revisas el "
+        "movil cada pocos minutos aunque eso no cambie nada."
+    )
+    limpio, reglas = limpiar_respuesta(texto, "no me contesta y me agobio")
+    assert limpio == texto
+    assert reglas == []
+
+
+def test_naming_a_pattern_without_reflection_vocabulary_is_not_touched():
+    texto = (
+        "Tu patron es claro: cuando el tarda en responder, tu escribes otra vez, y eso confirma "
+        "el mismo ciclo cada semana."
+    )
+    limpio, reglas = limpiar_respuesta(texto)
+    assert limpio == texto
+    assert reglas == []
+
+
+def test_r5_never_leaves_a_dangling_reference():
+    texto = "Estás sintiendo mucha rabia por lo ocurrido. Eso es lo que te hace explotar tan rapido."
+    limpio, _ = limpiar_respuesta(texto)
+    assert limpio == texto
