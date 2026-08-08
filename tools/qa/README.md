@@ -29,6 +29,12 @@ python3 tools/qa/aggregate_report.py \
     --validez <validez.json> --out-md informe.md --out-json informe.json
 ```
 
+**Usa 7 turnos por conversación, no 5.** Con 5, el reparto objetivo (30% recoger, 30% explicar,
+20% proponer, 20% resolver) es aritméticamente inalcanzable: dos turnos de recoger y dos de explicar
+ya son el 80%, y el paso de acción casi nunca cabe. Medido sobre las mismas conversaciones de la
+tanda 5, pasar de 5 a 7 turnos sube los pasos de acción del 1,6% al 13,8% sin tocar una línea del
+motor.
+
 `--validez` excluye las transcripciones que rompió el propio arnés. Sin ese filtro las cifras
 mienten: en la primera tanda, 75 de 300 conversaciones estaban corruptas.
 

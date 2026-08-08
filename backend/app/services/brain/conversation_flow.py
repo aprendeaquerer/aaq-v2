@@ -59,11 +59,23 @@ TURNOS_MAX_MISMO_MOVIMIENTO = 2
 # that reports one every turn would otherwise keep the loop in "explicar" forever.
 RESETS_MAX_DE_LECTURA = 2
 
+# Total gathering turns allowed per objective, consecutive or not. The debt of value
+# only caps them back to back, so a loop that alternates recoger / explicar / recoger
+# still spent almost half its turns asking. Past this, Eldric has to deliver.
+TOPE_RECOGER_POR_OBJETIVO = 3
+
+# Same idea for the reading. A planner that corrects or reports a new fact keeps
+# invalidating it, and the fifth run spent 47% of its turns explaining. Two readings
+# per objective is enough; past that, move on with the one you have.
+TOPE_EXPLICAR_POR_OBJETIVO = 2
+
 _ESTADO_INICIAL = {
     "tipo_turno": "situacion",
     "movimiento": None,
     "movimiento_anterior": None,
     "turnos_recoger_seguidos": 0,
+    "recoger_en_objetivo": 0,
+    "explicar_en_objetivo": 0,
     "turnos_mismo_movimiento": 0,
     "turnos_pidiendo_intentos": 0,
     "intentos_agotado": False,
@@ -94,6 +106,8 @@ def _normalizar_estado(previo: Optional[Dict[str, object]]) -> Dict[str, object]
     estado["reparto"] = {mov: int(reparto.get(mov, 0) or 0) for mov in MOVIMIENTOS}
     for contador in (
         "turnos_recoger_seguidos",
+        "recoger_en_objetivo",
+        "explicar_en_objetivo",
         "turnos_mismo_movimiento",
         "turnos_pidiendo_intentos",
         "resets_de_lectura",
@@ -122,9 +136,15 @@ def _llenos(ficha: Dict[str, str]) -> set:
 
 
 def umbral_explicar(ficha: Dict[str, str]) -> bool:
-    """Minimum context before Eldric may name a pattern: fact + goal + one more."""
+    """Minimum context before Eldric may name a pattern.
+
+    This used to require the goal. People rarely state one out loud, so the fourth run
+    spent 44% of its turns stuck in "recoger" waiting for a hole that never filled. A
+    concrete fact plus two other observables is enough to read a pattern; the goal
+    still counts as one of the two.
+    """
     llenos = _llenos(ficha)
-    return "hecho" in llenos and "objetivo" in llenos and len(llenos) >= 3
+    return "hecho" in llenos and len(llenos) >= 3
 
 
 def umbral_proponer(ficha: Dict[str, str], intentos_agotado: bool = False) -> bool:
@@ -208,6 +228,8 @@ def decidir_movimiento(
             propuesta_dada=False,
             paso_dado=False,
             turnos_recoger_seguidos=0,
+            recoger_en_objetivo=0,
+            explicar_en_objetivo=0,
             turnos_pidiendo_intentos=0,
             intentos_agotado=False,
             resets_de_lectura=0,
@@ -226,18 +248,28 @@ def decidir_movimiento(
         movimiento = "duda"
     elif tipo == "seguimiento":
         movimiento = "seguimiento"
-    elif tipo == "descarga":
-        # Venting stays in listening unless the value debt is due and there is
-        # enough context to say something useful.
-        if estado["turnos_recoger_seguidos"] >= 2 and umbral_explicar(ficha_norm):
+    elif tipo == "descarga" and not (
+        estado["lectura_dada"] and umbral_proponer(ficha_norm, bool(estado["intentos_agotado"]))
+    ):
+        # Venting stays in listening, but three turns of pure listening with nothing
+        # delivered is the debt of value in its worst form, card or no card. And once a
+        # reading has landed and the card supports a proposal, the person has stopped
+        # venting and started working, whatever the classifier still calls the turn.
+        if estado["turnos_recoger_seguidos"] >= 2 and (
+            umbral_explicar(ficha_norm) or estado["turnos_recoger_seguidos"] >= 3
+        ):
             movimiento = "explicar"
         else:
             movimiento = "recoger"
     else:
         movimiento = _preferido(estado, ficha_norm, drift)
 
-        # Debt of value: never a third consecutive listening turn.
-        if movimiento == "recoger" and estado["turnos_recoger_seguidos"] >= 2:
+        # Debt of value: never a third consecutive listening turn, and never more than
+        # TOPE_RECOGER_POR_OBJETIVO gathering turns in the same objective overall.
+        if movimiento == "recoger" and (
+            estado["turnos_recoger_seguidos"] >= 2
+            or estado["recoger_en_objetivo"] >= TOPE_RECOGER_POR_OBJETIVO
+        ):
             if not estado["lectura_dada"]:
                 movimiento = "explicar"
             else:
@@ -250,6 +282,13 @@ def decidir_movimiento(
             and estado["turnos_mismo_movimiento"] >= TURNOS_MAX_MISMO_MOVIMIENTO
         ):
             movimiento = _avance(movimiento)
+
+        # Two readings per objective is the cap: a planner that keeps correcting must
+        # not be able to hold the conversation in "explicar" indefinitely.
+        if movimiento == "explicar" and estado["explicar_en_objetivo"] >= TOPE_EXPLICAR_POR_OBJETIVO:
+            movimiento = "proponer" if umbral_proponer(
+                ficha_norm, bool(estado["intentos_agotado"])
+            ) else "recoger"
 
         # Debt of context: no action step before asking what was already tried.
         if (
@@ -274,11 +313,13 @@ def decidir_movimiento(
 
     if movimiento == "recoger":
         estado["turnos_recoger_seguidos"] += 1
+        estado["recoger_en_objetivo"] += 1
     elif movimiento in MOVIMIENTOS:
         estado["turnos_recoger_seguidos"] = 0
 
     if movimiento == "explicar":
         estado["lectura_dada"] = True
+        estado["explicar_en_objetivo"] += 1
     elif movimiento == "proponer":
         estado["propuesta_dada"] = True
     elif movimiento == "resolver":

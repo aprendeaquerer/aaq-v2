@@ -30,7 +30,7 @@ def avanzar(estado, tipo_turno="situacion", **kwargs):
 # --- thresholds -------------------------------------------------------------
 
 
-def test_umbral_explicar_needs_fact_goal_and_one_more():
+def test_umbral_explicar_needs_a_fact_and_two_more_observables():
     assert not umbral_explicar(ficha(hecho="filled", objetivo="filled"))
     assert umbral_explicar(ficha(hecho="filled", objetivo="filled", supuesto="filled"))
     assert not umbral_explicar(ficha(objetivo="filled", supuesto="filled", frecuencia="filled"))
@@ -382,3 +382,97 @@ def test_no_move_lets_eldric_read_the_other_person_s_mind():
     for movimiento in _INSTRUCCIONES:
         bloque = componer_bloque_movimiento({"movimiento": movimiento, "ficha": ficha()})
         assert "No atribuyas a la otra persona" in bloque, movimiento
+
+
+# --- balance of moves (point 2 of the fourth run: 44% gathering, 4% action) ---
+
+
+def test_the_goal_is_no_longer_required_to_read_a_pattern():
+    """People rarely state a goal, and requiring it stalled the loop in gathering."""
+    sin_objetivo = ficha(hecho="filled", frecuencia="filled", conducta_propia="filled")
+    assert umbral_explicar(sin_objetivo)
+    movimiento, _ = avanzar(estado_inicial(), ficha=sin_objetivo)
+    assert movimiento == "explicar"
+
+
+def test_a_bare_fact_is_still_not_enough():
+    assert not umbral_explicar(ficha(hecho="filled"))
+    assert not umbral_explicar(ficha(hecho="filled", frecuencia="filled"))
+
+
+def test_gathering_is_capped_per_objective_not_just_consecutively():
+    """Alternating recoger / explicar / recoger kept gathering near half the turns."""
+    vacia = ficha()
+    estado = estado_inicial()
+    movimientos = []
+    for _ in range(10):
+        movimiento, estado = avanzar(estado, ficha=vacia, drift="corrige")
+        movimientos.append(movimiento)
+    assert movimientos.count("recoger") <= 4, movimientos
+
+
+def test_venting_delivers_by_the_third_turn_even_with_an_empty_card():
+    estado = estado_inicial()
+    movimientos = []
+    for _ in range(4):
+        movimiento, estado = avanzar(estado, tipo_turno="descarga", ficha=ficha())
+        movimientos.append(movimiento)
+    assert "explicar" in movimientos, movimientos
+
+
+def test_a_new_objective_gives_back_the_gathering_budget():
+    vacia = ficha()
+    estado = estado_inicial()
+    for _ in range(6):
+        _, estado = avanzar(estado, ficha=vacia)
+    _, estado = avanzar(estado, ficha=vacia, drift="objetivo_nuevo")
+    assert estado["recoger_en_objetivo"] <= 1
+
+
+def test_a_five_turn_situation_reaches_an_action_step():
+    """The shape of a real test conversation: the card fills gradually."""
+    fichas = [
+        ficha(hecho="filled"),
+        ficha(hecho="filled", supuesto="filled"),
+        ficha(hecho="filled", supuesto="filled", conducta_propia="filled"),
+        ficha(hecho="filled", supuesto="filled", conducta_propia="filled", intentos="filled"),
+        ficha(hecho="filled", supuesto="filled", conducta_propia="filled", intentos="filled", objetivo="filled"),
+    ]
+    estado = estado_inicial()
+    movimientos = []
+    for f in fichas:
+        movimiento, estado = avanzar(estado, ficha=f)
+        movimientos.append(movimiento)
+    assert "explicar" in movimientos, movimientos
+    assert "proponer" in movimientos, movimientos
+    assert "resolver" in movimientos, movimientos
+
+
+def test_venting_that_turns_into_a_request_stops_being_venting():
+    """The fifth run had a batch where every turn was labelled "descarga", so the loop
+    could never propose anything even with a full card and a reading already given."""
+    completa = ficha(hecho="filled", objetivo="filled", supuesto="filled", intentos="filled")
+    estado = estado_inicial()
+    movimientos = []
+    for _ in range(5):
+        movimiento, estado = avanzar(estado, tipo_turno="descarga", ficha=completa)
+        movimientos.append(movimiento)
+    assert "proponer" in movimientos, movimientos
+    assert "resolver" in movimientos, movimientos
+
+
+def test_venting_with_a_thin_card_still_only_listens():
+    estado = estado_inicial()
+    movimiento, estado = avanzar(estado, tipo_turno="descarga", ficha=ficha(hecho="filled"))
+    assert movimiento == "recoger"
+
+
+def test_two_readings_per_objective_is_the_cap():
+    """A planner that keeps correcting must not hold the loop in "explicar"."""
+    completa = ficha(hecho="filled", objetivo="filled", supuesto="filled", intentos="filled")
+    estado = estado_inicial()
+    movimientos = []
+    for _ in range(6):
+        movimiento, estado = avanzar(estado, ficha=completa, drift="corrige")
+        movimientos.append(movimiento)
+    assert movimientos.count("explicar") <= 2, movimientos
