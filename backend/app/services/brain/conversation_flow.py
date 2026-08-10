@@ -251,13 +251,15 @@ def decidir_movimiento(
     elif tipo == "descarga" and not (
         estado["lectura_dada"] and umbral_proponer(ficha_norm, bool(estado["intentos_agotado"]))
     ):
-        # Venting stays in listening, but three turns of pure listening with nothing
-        # delivered is the debt of value in its worst form, card or no card. And once a
-        # reading has landed and the card supports a proposal, the person has stopped
-        # venting and started working, whatever the classifier still calls the turn.
-        if estado["turnos_recoger_seguidos"] >= 2 and (
-            umbral_explicar(ficha_norm) or estado["turnos_recoger_seguidos"] >= 3
-        ):
+        # Venting stays in listening, but the debt of value applies here too: after two
+        # turns of pure listening Eldric delivers a reading, full card or not. This used
+        # to allow a third gathering turn when the card was thin, and a live run on
+        # 2026-08-10 showed exactly what that buys: three near-identical questions in a
+        # row ("que paso?", "que significa fatal?", "hubo alguna situacion?") to a user
+        # who had already given the fact in her first message. A partial reading on turn
+        # three beats a third question every time; componer_bloque_movimiento already
+        # tells the model to deliver it even with missing context.
+        if estado["turnos_recoger_seguidos"] >= 2:
             movimiento = "explicar"
         else:
             movimiento = "recoger"
@@ -366,9 +368,15 @@ _REGLAS_COMUNES = [
 _INSTRUCCIONES = {
     "recoger": [
         "MOVIMIENTO DE ESTE TURNO: RECOGER.",
-        "Registra lo que hay sin ponerle etiqueta emocional.",
+        "Si el usuario acaba de expresar malestar (\"fatal\", \"muy mal\", \"hecha polvo\"), "
+        "reconocelo en UNA frase corta y concreta antes de preguntar. Reconocer no es analizar: "
+        "una linea, sin nombrar patrones ni explicar por que se siente asi.",
+        "Registra lo que hay. No interpretes ni etiquetes lo que cuenta.",
         "2 a 4 lineas. Prohibido dar plan, consejo, practica o lectura del patron en este turno.",
         "Puedes cerrar con UNA sola pregunta, la del hueco pendiente, o con ninguna.",
+        "NO vuelvas a pedir un dato que el usuario ya haya dado en cualquier turno anterior. Si su "
+        "ultima respuesta repite algo ya dicho, esa pregunta ya fallo: pregunta por otro hueco o "
+        "avanza sin preguntar.",
         "UN solo signo de interrogacion en toda la respuesta, o ninguno. Dos es un fallo.",
         "La pregunta va a un hecho observable o a su propia experiencia. Nunca a causas, nunca a lo "
         "que piensa o siente otra persona, nunca a que identifique su patron.",
