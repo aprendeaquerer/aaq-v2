@@ -483,3 +483,24 @@ def test_two_readings_per_objective_is_the_cap():
         movimiento, estado = avanzar(estado, ficha=completa, drift="corrige")
         movimientos.append(movimiento)
     assert movimientos.count("explicar") <= 2, movimientos
+
+
+def test_feelings_questions_are_banned_in_every_move():
+    """Live conversation 2026-08-10: "¿Como te sientes desde que dejaste a tu novio?"
+    followed one turn later by another feelings probe. Emotions are acknowledged when
+    they show up, never extracted by interrogation — the card has no feelings slot."""
+    for movimiento in ("recoger", "explicar", "proponer", "resolver", "duda", "seguimiento"):
+        bloque = componer_bloque_movimiento({"movimiento": movimiento, "ficha": ficha()})
+        assert "PROHIBIDO preguntar por emociones" in bloque, movimiento
+        assert "como te sientes" in bloque, movimiento
+
+
+def test_referring_the_user_to_someone_else_is_banned():
+    """Live conversation 2026-08-10: "¿Has intentado hablar con alguien sobre esto?".
+    The product IS the place where she is talking about it; the only referral allowed
+    is the safety move."""
+    for movimiento in ("recoger", "explicar", "proponer", "resolver", "duda", "seguimiento"):
+        bloque = componer_bloque_movimiento({"movimiento": movimiento, "ficha": ficha()})
+        assert "hablar del tema con otras personas" in bloque, movimiento
+    rail = componer_bloque_movimiento({"movimiento": "crisis", "ficha": ficha()})
+    assert "orientar a ayuda real es obligatorio" in rail
