@@ -139,6 +139,31 @@ _R5_INICIO = re.compile(
 _R5_MAX_FRASES = 2
 
 
+# --- R6: the empathic echo ---------------------------------------------------
+#
+# A live conversation on 2026-08-10 showed the two shapes everything above misses:
+#
+#     "Entiendo que dejaste a tu novio. ¿Como te sientes...?"
+#     "Te sientes fatal tras haber dejado la relacion. ¿Que ha pasado...?"
+#
+# R1 needs punctuation right after the marker ("Entiendo."), so "Entiendo que..."
+# slides past. R5 anchors on "sientes/notas" at the very start and on a noun from
+# EMOCIONES, so "Te sientes fatal..." (pronoun first, adjective feeling) never fires.
+# Both are pure mirror: they hand the user her own words back and delay the actual
+# move. The causal guard from R5 applies here too — "Te sientes asi porque..." is a
+# reading doing real work and must not be cut.
+
+_R6_ECO = re.compile(
+    r"^\s*(entiendo|comprendo|veo|imagino|se|sé)\s+que\b"
+    r"|^\s*te\s+(sientes|encuentras|noto|veo)\b",
+    re.IGNORECASE,
+)
+
+# Unlike the other rules, what remains after cutting an echo is often just the
+# question — and a bare question is a complete gathering turn, not a stub.
+_MINIMO_RESTANTE_R6 = 25
+
+
 def _es_rail_de_seguridad(texto: str) -> bool:
     bajo = texto.lower()
     return sum(1 for senal in _SENALES_RAIL if senal in bajo) >= 2
@@ -280,6 +305,19 @@ def limpiar_respuesta(texto: str, mensaje_usuario: str = "") -> Tuple[str, List[
     if aplicado_r5:
         aplicadas.append("reflejo-emocional-de-apertura")
 
+    # R6: the empathic echo ("Entiendo que...", "Te sientes fatal tras..."). Same
+    # causal guard as R5: a sentence that explains why is a reading, not an echo.
+    primera, resto = _cortar_primera_frase(trabajo)
+    if (
+        resto.strip()
+        and len(resto.strip()) >= _MINIMO_RESTANTE_R6
+        and not _empieza_por_anaforico(resto)
+        and _R6_ECO.match(primera)
+        and not any(c in primera.lower() for c in _CONECTORES_CAUSALES)
+    ):
+        trabajo = _capitalizar(resto)
+        aplicadas.append("eco-empatico-de-apertura")
+
     # R4: the first sentence just hands the user their own facts back.
     if mensaje_usuario:
         primera, resto = _cortar_primera_frase(trabajo)
@@ -293,6 +331,7 @@ def limpiar_respuesta(texto: str, mensaje_usuario: str = "") -> Tuple[str, List[
             aplicadas.append("recapitulacion-sin-marcador")
 
     limpio = trabajo.strip()
-    if not limpio or len(limpio) < MINIMO_RESTANTE:
+    minimo_final = _MINIMO_RESTANTE_R6 if "eco-empatico-de-apertura" in aplicadas else MINIMO_RESTANTE
+    if not limpio or len(limpio) < minimo_final:
         return original, []
     return limpio, aplicadas
