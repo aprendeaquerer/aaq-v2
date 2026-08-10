@@ -347,7 +347,8 @@ def decidir_movimiento(
 _REGLAS_COMUNES = [
     "NO abras la respuesta resumiendo ni repitiendo lo que el usuario acaba de decir. "
     "La primera frase ya tiene que aportar algo que el no haya dicho.",
-    "APERTURAS PROHIBIDAS, ninguna respuesta puede empezar asi: \"Entendido\" · \"Entonces\" · "
+    "APERTURAS PROHIBIDAS, ninguna respuesta puede empezar asi: \"Entendido\" · \"Entiendo que\" · "
+    "\"Te sientes\" · \"Entonces\" · "
     "\"O sea que\" · \"Vale,\" · \"Lo que me cuentas\" · \"Si te he entendido bien\" · "
     "\"Por lo que dices\" · \"Veo que\" · \"Resumiendo\" · \"Asi que\" · repetir sus hechos en fila. "
     "Empieza por el dato nuevo, por la lectura o por la pregunta, no por el resumen.",
@@ -369,8 +370,11 @@ _INSTRUCCIONES = {
     "recoger": [
         "MOVIMIENTO DE ESTE TURNO: RECOGER.",
         "Si el usuario acaba de expresar malestar (\"fatal\", \"muy mal\", \"hecha polvo\"), "
-        "reconocelo en UNA frase corta y concreta antes de preguntar. Reconocer no es analizar: "
-        "una linea, sin nombrar patrones ni explicar por que se siente asi.",
+        "reconocelo en UNA frase corta que NO repita sus palabras ni sus hechos. Bien: \"Eso "
+        "duele\", \"Es un golpe\", \"Duro dia entonces\". PROHIBIDO el espejo: \"Te sientes "
+        "fatal\", \"Entiendo que lo dejaste\", \"Veo que estas mal\" — eso es devolverle lo que "
+        "acaba de decir. Reconocer es responder, no repetir. Sin nombrar patrones ni explicar "
+        "por que se siente asi.",
         "Registra lo que hay. No interpretes ni etiquetes lo que cuenta.",
         "2 a 4 lineas. Prohibido dar plan, consejo, practica o lectura del patron en este turno.",
         "Puedes cerrar con UNA sola pregunta, la del hueco pendiente, o con ninguna.",
