@@ -236,3 +236,50 @@ def test_r5_never_leaves_a_dangling_reference():
     texto = "Estás sintiendo mucha rabia por lo ocurrido. Eso es lo que te hace explotar tan rapido."
     limpio, _ = limpiar_respuesta(texto)
     assert limpio == texto
+
+
+# --- R6: the empathic echo --------------------------------------------------
+#
+# Both example texts below are verbatim from a live conversation on 2026-08-10.
+
+
+def test_entiendo_que_followed_by_a_restatement_is_dropped():
+    texto = "Entiendo que dejaste a tu novio. ¿Cómo te sientes desde que tomaste esa decisión?"
+    limpio, reglas = limpiar_respuesta(texto, "ayer lo deje con mi novio")
+    assert "eco-empatico-de-apertura" in reglas
+    assert limpio == "¿Cómo te sientes desde que tomaste esa decisión?"
+
+
+def test_te_sientes_fatal_mirror_is_dropped():
+    texto = (
+        "Te sientes fatal tras haber dejado la relación. ¿Qué ha pasado desde entonces "
+        "que te ha llevado a sentirte así?"
+    )
+    limpio, reglas = limpiar_respuesta(texto, "fatal")
+    assert "eco-empatico-de-apertura" in reglas
+    assert limpio.startswith("¿Qué ha pasado")
+
+
+def test_an_echo_with_a_causal_explanation_is_a_reading_and_survives():
+    """"Te sientes asi porque..." explains a mechanism; cutting it would cut the reading."""
+    texto = (
+        "Te sientes fatal porque acabas de romper el vinculo que ordenaba tu semana, y el "
+        "sistema de apego tarda en aceptar que la puerta esta cerrada."
+    )
+    limpio, reglas = limpiar_respuesta(texto, "fatal")
+    assert "eco-empatico-de-apertura" not in reglas
+    assert limpio == texto
+
+
+def test_a_genuine_acknowledgment_is_not_an_echo():
+    """"Eso duele" responds instead of mirroring; the filter must leave it alone."""
+    texto = "Eso duele. ¿Qué pasó justo antes de que tomaras la decisión?"
+    limpio, reglas = limpiar_respuesta(texto, "ayer lo deje con mi novio")
+    assert reglas == []
+    assert limpio == texto
+
+
+def test_r6_never_leaves_a_stub():
+    limpio, reglas = limpiar_respuesta("Entiendo que fue duro. ¿Y ahora?", "fue duro")
+    assert limpio == "Entiendo que fue duro. ¿Y ahora?"
+    assert "eco-empatico-de-apertura" not in reglas
