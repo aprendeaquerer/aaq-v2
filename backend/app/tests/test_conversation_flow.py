@@ -168,11 +168,18 @@ def test_a_plain_question_does_not_open_the_loop():
     assert estado["lectura_dada"] is False
 
 
-def test_venting_stays_in_gathering_while_the_card_is_empty():
+def test_venting_listens_two_turns_then_delivers_even_with_an_empty_card():
+    """Regression for a live conversation on 2026-08-10: three near-identical gathering
+    questions in a row to a user who said "ayer lo deje con mi novio" and then "fatal".
+    Venting used to get a third listening turn when the card was thin; now the debt of
+    value applies the same as everywhere else — two turns listening, then a reading,
+    partial if it has to be."""
     estado = estado_inicial()
-    for _ in range(3):
+    for _ in range(2):
         movimiento, estado = avanzar(estado, tipo_turno="descarga", ficha=ficha())
         assert movimiento == "recoger"
+    movimiento, estado = avanzar(estado, tipo_turno="descarga", ficha=ficha())
+    assert movimiento == "explicar"
 
 
 def test_venting_delivers_once_there_is_enough_context():
