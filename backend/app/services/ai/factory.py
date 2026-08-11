@@ -18,5 +18,6 @@ def get_ai_provider() -> AIProvider:
             _provider = OpenAIProvider(
                 api_key=settings.OPENAI_API_KEY,
                 model=settings.OPENAI_MODEL,
+                reasoning_effort=settings.OPENAI_REASONING_EFFORT,
             )
     return _provider

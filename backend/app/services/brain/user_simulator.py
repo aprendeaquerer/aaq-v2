@@ -186,6 +186,7 @@ async def generate_user_turn(request: SimulateUserTurnRequest) -> SimulateUserTu
         messages=messages,
         temperature=0.9,
         max_tokens=220,
+        reasoning_effort="none",
     )
 
     message = _clean(raw)

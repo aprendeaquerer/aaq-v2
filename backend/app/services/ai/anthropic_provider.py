@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import Dict, List, Optional
 
 import anthropic
 
@@ -16,6 +16,7 @@ class AnthropicProvider(AIProvider):
         messages: List[Dict[str, str]],
         temperature: float = 0.7,
         max_tokens: int = 1000,
+        reasoning_effort: Optional[str] = None,
     ) -> str:
         response = await self.client.messages.create(
             model=self.model,

@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import Dict, List, Optional
 
 from openai import AsyncOpenAI
 
@@ -6,9 +6,27 @@ from app.services.ai.base import AIProvider
 
 
 class OpenAIProvider(AIProvider):
-    def __init__(self, api_key: str, model: str = "gpt-4o-mini"):
+    _REASONING_EFFORTS = {"none", "low", "medium", "high", "xhigh", "max"}
+
+    def __init__(
+        self,
+        api_key: str,
+        model: str = "gpt-5.6-luna",
+        reasoning_effort: str = "low",
+    ):
+        self._validate_reasoning_effort(reasoning_effort)
         self.client = AsyncOpenAI(api_key=api_key)
         self.model = model
+        self.reasoning_effort = reasoning_effort
+
+    @classmethod
+    def _validate_reasoning_effort(cls, value: str) -> None:
+        if value not in cls._REASONING_EFFORTS:
+            allowed = ", ".join(sorted(cls._REASONING_EFFORTS))
+            raise ValueError(f"Unsupported OpenAI reasoning effort {value!r}; use one of: {allowed}")
+
+    def _supports_reasoning(self) -> bool:
+        return self.model.startswith(("gpt-5", "o1", "o3", "o4"))
 
     async def chat(
         self,
@@ -16,12 +34,22 @@ class OpenAIProvider(AIProvider):
         messages: List[Dict[str, str]],
         temperature: float = 0.7,
         max_tokens: int = 1000,
+        reasoning_effort: Optional[str] = None,
     ) -> str:
-        full_messages = [{"role": "system", "content": system_prompt}] + messages
-        response = await self.client.chat.completions.create(
-            model=self.model,
-            messages=full_messages,
-            temperature=temperature,
-            max_tokens=max_tokens,
-        )
-        return response.choices[0].message.content
+        effort = reasoning_effort or self.reasoning_effort
+        self._validate_reasoning_effort(effort)
+        request: Dict[str, object] = {
+            "model": self.model,
+            "instructions": system_prompt,
+            "input": messages,
+            "max_output_tokens": max_tokens,
+        }
+        if self._supports_reasoning():
+            request["reasoning"] = {"effort": effort}
+            if effort == "none":
+                request["temperature"] = temperature
+        else:
+            request["temperature"] = temperature
+
+        response = await self.client.responses.create(**request)
+        return response.output_text or ""
