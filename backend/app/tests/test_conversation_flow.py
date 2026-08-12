@@ -206,19 +206,20 @@ def test_follow_up_is_its_own_move():
 # --- prompt block -----------------------------------------------------------
 
 
-def test_gathering_block_carries_exactly_one_question():
+def test_gathering_block_points_the_final_question_at_the_pending_hole():
     _, estado = avanzar(estado_inicial(), ficha=ficha())
     bloque = componer_bloque_movimiento(estado)
     assert "RECOGER" in bloque
     assert "Que paso exactamente?" in bloque
 
 
-def test_explaining_block_forbids_questions():
+def test_explaining_block_teaches_the_reading_and_checks_it_with_the_final_question():
     llena = ficha(hecho="filled", objetivo="filled", supuesto="filled")
     _, estado = avanzar(estado_inicial(), ficha=llena)
     bloque = componer_bloque_movimiento(estado)
     assert "EXPLICAR" in bloque
-    assert "PROHIBIDO preguntar" in bloque
+    assert "NOMBRA EL PATRON" in bloque
+    assert "confirmaria o la desmentiria" in bloque
     assert "Que paso exactamente?" not in bloque
 
 
@@ -237,18 +238,27 @@ def test_every_move_block_carries_the_common_rules():
         assert "Entendido" in bloque, movimiento
 
 
-def test_moves_that_deliver_forbid_every_question_mark():
-    from app.services.brain.conversation_flow import _INSTRUCCIONES
-
-    for movimiento in ("explicar", "proponer", "resolver"):
+def test_every_move_teaches_and_ends_with_one_excellent_question():
+    """Owner's spec 2026-08-11: every reply teaches something from the book and always
+    ends with a single excellent question — that question is what keeps the user
+    writing. The crisis rail is the only exception."""
+    for movimiento in ("recoger", "explicar", "proponer", "resolver", "duda", "seguimiento"):
         bloque = componer_bloque_movimiento({"movimiento": movimiento, "ficha": ficha()})
-        assert "CERO signos de interrogacion" in bloque, movimiento
+        assert "TERMINA SIEMPRE con UNA pregunta" in bloque, movimiento
+        assert "PREGUNTA EXCELENTE" in bloque, movimiento
+        assert "UNA sola interrogacion" in bloque, movimiento
+        assert "ensenanza" in bloque.lower(), movimiento
 
 
-def test_gathering_moves_cap_the_question_count():
-    for movimiento in ("recoger", "seguimiento"):
-        bloque = componer_bloque_movimiento({"movimiento": movimiento, "ficha": ficha()})
-        assert "UN solo signo de interrogacion" in bloque, movimiento
+def test_the_reply_shape_leans_on_what_is_known_about_the_user():
+    bloque = componer_bloque_movimiento({"movimiento": "recoger", "ficha": ficha()})
+    assert "CONTEXTO DEL USUARIO" in bloque
+    assert "cuanto mas sabes de esta persona" in bloque
+
+
+def test_the_crisis_rail_does_not_get_the_question_requirement():
+    bloque = componer_bloque_movimiento({"movimiento": "crisis", "ficha": ficha()})
+    assert "TERMINA SIEMPRE con UNA pregunta" not in bloque
 
 
 def test_crisis_block_stops_the_coaching():
