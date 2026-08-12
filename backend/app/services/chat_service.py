@@ -455,7 +455,11 @@ async def _handle_conversation(
         base_prompt += "\n\nCONTEXTO DEL USUARIO:\n" + "\n".join(profile_context)
 
     system_prompt = compose_brain_prompt(base_prompt, brain_context)
-    system_prompt = compose_session_prompt(system_prompt, coaching_plan)
+    # 2026-08-12, reset a cero por decision de la propietaria: el bloque de conduccion
+    # y de sesion NO se inyecta. El planificador sigue corriendo (alimenta el panel de
+    # depuracion y conserva el estado), pero su texto no llega al modelo. Para
+    # reactivarlo: system_prompt = compose_session_prompt(system_prompt, coaching_plan)
+    _ = compose_session_prompt  # conservado a proposito; ver comentario
 
     # Call AI
     ai_error = None
@@ -471,11 +475,13 @@ async def _handle_conversation(
         ai_error = f"{type(exc).__name__}: {str(exc)[:500]}"
         response_text = _get_ai_error_message(language)
 
-    # Opening the answer by restating the user was the most repeated failure across
-    # four QA runs and never moved with prompt rules. This strips it deterministically.
+    # 2026-08-12, reset a cero por decision de la propietaria: el filtro de aperturas
+    # (R1-R6) queda desactivado junto con el resto de reglas. El modulo y sus tests se
+    # conservan; para reactivarlo, descomenta la llamada.
     filtro_aplicado: List[str] = []
-    if language == "es" and not ai_error:
-        response_text, filtro_aplicado = limpiar_respuesta(response_text, message)
+    # if language == "es" and not ai_error:
+    #     response_text, filtro_aplicado = limpiar_respuesta(response_text, message)
+    _ = limpiar_respuesta  # conservado a proposito; ver comentario
 
     # Save assistant message
     await _save_message(db, user_id, "assistant", response_text, language)
