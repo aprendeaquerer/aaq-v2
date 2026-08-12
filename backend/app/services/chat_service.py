@@ -20,8 +20,6 @@ from app.services.brain.debug_trace import build_conversation_debug, build_state
 from app.services.brain.memory_capture import capture_candidate_memories
 from app.services.brain.profile_capture import capture_profile_fields
 from app.services.brain.prompt_composer import compose_brain_prompt
-from app.services.brain.response_filter import limpiar_respuesta
-from app.services.brain.coaching_planner import compose_session_prompt, update_coaching_plan
 from app.services import state_machine as sm
 from app.services import test_service
 from app.services import safety
@@ -126,7 +124,8 @@ async def handle_message(db: AsyncSession, user: Optional[User], request: ChatRe
 
     # Safety rails: crisis signals (suicide/self-harm, partner or domestic
     # violence, sexual assault, a minor in danger) override every other flow
-    # (guest limit, paywall, test states) and return fixed, verified resources.
+    # and return fixed, verified resources. 2026-08-12: unica pieza que sobrevive
+    # al reset a cero, hasta que la propietaria disene el rail nuevo.
     crisis_category = safety.detect_crisis(request.message)
     if crisis_category:
         return await _handle_crisis(db, user_id, request.message.strip(), crisis_category, language, request.debug)
@@ -415,37 +414,9 @@ async def _handle_conversation(
 
     profile_context = _build_profile_context(profile)
     ai = get_ai_provider()
-    coaching_plan = None
-    planner_error = None
-    try:
-        coaching_plan = await update_coaching_plan(
-            db=db,
-            user_id=user_id,
-            message=message,
-            history=history,
-            profile_context=profile_context,
-            brain_context=brain_context,
-            ai=ai,
-        )
-    except Exception as exc:
-        await db.rollback()
-        # Silent before this: when the planner call fails (bad JSON from the model,
-        # timeout, whatever) coaching_plan stays None, compose_session_prompt skips
-        # the whole conduction block, and Eldric answers with no movement discipline
-        # at all — no "recoger before advice", no ban on questions in "explicar", etc.
-        # That's a plausible explanation for turns that read as generic advice-dumping.
-        # Logging it here is what makes that diagnosable instead of guessed at.
-        logger.exception("handle_conversation: coaching planner failed for user_id=%s", user_id)
-        planner_error = f"{type(exc).__name__}: {str(exc)[:300]}"
 
-    knowledge_query = _active_knowledge_query(coaching_plan)
-    if knowledge_query:
-        brain_context = await build_brain_context(
-            db,
-            user_id,
-            f"{brain_query}\n{knowledge_query}",
-            language,
-        )
+    # 2026-08-12: el planificador de coaching y el motor de movimientos se eliminaron
+    # del repo junto con el resto de reglas, por decision de la propietaria.
 
     # Build system prompt
     base_prompt = get_eldric_prompt(language)
@@ -455,11 +426,6 @@ async def _handle_conversation(
         base_prompt += "\n\nCONTEXTO DEL USUARIO:\n" + "\n".join(profile_context)
 
     system_prompt = compose_brain_prompt(base_prompt, brain_context)
-    # 2026-08-12, reset a cero por decision de la propietaria: el bloque de conduccion
-    # y de sesion NO se inyecta. El planificador sigue corriendo (alimenta el panel de
-    # depuracion y conserva el estado), pero su texto no llega al modelo. Para
-    # reactivarlo: system_prompt = compose_session_prompt(system_prompt, coaching_plan)
-    _ = compose_session_prompt  # conservado a proposito; ver comentario
 
     # Call AI
     ai_error = None
@@ -474,14 +440,6 @@ async def _handle_conversation(
         logger.exception("handle_conversation: AI call failed for user_id=%s", user_id)
         ai_error = f"{type(exc).__name__}: {str(exc)[:500]}"
         response_text = _get_ai_error_message(language)
-
-    # 2026-08-12, reset a cero por decision de la propietaria: el filtro de aperturas
-    # (R1-R6) queda desactivado junto con el resto de reglas. El modulo y sus tests se
-    # conservan; para reactivarlo, descomenta la llamada.
-    filtro_aplicado: List[str] = []
-    # if language == "es" and not ai_error:
-    #     response_text, filtro_aplicado = limpiar_respuesta(response_text, message)
-    _ = limpiar_respuesta  # conservado a proposito; ver comentario
 
     # Save assistant message
     await _save_message(db, user_id, "assistant", response_text, language)
@@ -509,25 +467,6 @@ async def _handle_conversation(
             response_text=response_text,
             ai_error=ai_error,
         )
-        trace["steps"].append({
-            "stage": "coaching_planner",
-            "title": "Private coaching roadmap updated",
-            "detail": (
-                "The active objective and next coaching move were recalculated from context and retrieved knowledge."
-                if not planner_error
-                else "The planner failed, so Eldric continued with the base coaching rules and retrieved knowledge."
-            ),
-            "payload": {
-                "updated": coaching_plan is not None,
-                "drift": coaching_plan.get("drift") if coaching_plan else None,
-                "tipo_turno": _conversation_field(coaching_plan, "tipo_turno"),
-                "movimiento": _conversation_field(coaching_plan, "movimiento"),
-                "hueco_pendiente": _conversation_field(coaching_plan, "hueco_pendiente"),
-                "reparto": _conversation_field(coaching_plan, "reparto"),
-                "filtro_apertura": filtro_aplicado,
-                "error": planner_error,
-            },
-        })
         trace["steps"].append({
             "stage": "profile_capture",
             "title": "Structured profile fields captured",
@@ -781,25 +720,6 @@ def _build_profile_context(profile: Optional[UserProfile]) -> List[str]:
     return context
 
 
-def _conversation_field(plan: Optional[Dict[str, object]], field: str) -> object:
-    """Read one field of the conversation state for the debug panel."""
-    if not isinstance(plan, dict):
-        return None
-    conversacion = plan.get("conversacion")
-    if not isinstance(conversacion, dict):
-        return None
-    return conversacion.get(field)
-
-
-def _active_knowledge_query(plan: Optional[Dict[str, object]]) -> str:
-    if not plan:
-        return ""
-    for objective in plan.get("objetivos", []):
-        if not isinstance(objective, dict) or objective.get("estado") != "activo":
-            continue
-        query = objective.get("knowledge_query")
-        return query.strip() if isinstance(query, str) else ""
-    return ""
 
 
 def _attach_state_debug(
