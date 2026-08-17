@@ -9,9 +9,18 @@ from app.routers import auth, brain, chat, profile, payment, memory
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup
+    # Startup: index the book for meaning-based search. Fired as a background
+    # task on purpose — it makes ~7 embedding calls, and the app has to answer
+    # health checks immediately. Until it finishes, retrieval falls back to the
+    # old keyword search, so the first messages after a deploy still work.
+    import asyncio
+
+    from app.services.brain import semantic_index
+
+    index_task = asyncio.create_task(semantic_index.ensure_index())
     yield
     # Shutdown
+    index_task.cancel()
 
 
 app = FastAPI(
@@ -49,7 +58,7 @@ async def health():
 
 @app.get("/status")
 async def status():
-    from app.services.brain import knowledge_brain
+    from app.services.brain import knowledge_brain, semantic_index
 
     return {
         "status": "ok",
@@ -59,4 +68,7 @@ async def status():
         # of failing silently (the corpus used to live outside the Docker image).
         "knowledge_chunks": len(knowledge_brain.list_knowledge_chunks()),
         "knowledge_source": str(knowledge_brain.canonical_chunks_path()),
+        # Same reason: if the meaning-based index never built, the bot silently
+        # degrades to the old word search. That has to be visible from outside.
+        "semantic_search": semantic_index.index_status(),
     }
