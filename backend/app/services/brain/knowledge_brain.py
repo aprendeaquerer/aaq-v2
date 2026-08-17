@@ -30,6 +30,31 @@ PACKAGED_KNOWLEDGE_JSONL = "data/knowledge/aaq_libro_chunks.jsonl"
 LEGACY_KNOWLEDGE_JSONL = "output/libro_metodo/aaq_libro_chunks.jsonl"
 NON_CONTENT_SECTIONS = {"source notes", "related concepts"}
 AUXILIARY_CONTENT_SECTIONS = {"example eldric language"}
+
+# Part 12 of the book is the operating manual: written for whoever does the
+# coaching, not for the person being coached. Its 54 chunks are a question bank
+# ("cuando no te contesta, que haces exactamente en las siguientes dos horas?"),
+# work itineraries by pattern, example dialogues, a chapter on how NOT to answer,
+# and a glossary.
+#
+# Retrieval handed those to the model in the same channel as everything else and
+# labelled as material to answer from, so Eldric could read the coach's own
+# question bank out loud or recite an itinerary at the user. Excluded from
+# retrieval, not from the corpus: the material is good, it is addressed to the
+# wrong reader. Feeding it back as instructions, in its own channel, is worth
+# doing later — it is the method itself.
+INTERNAL_METHOD_SECTION_MARKERS = ("parte 12", "manual operativo")
+
+
+def is_internal_method_chunk(chunk: KnowledgeChunk) -> bool:
+    """True for material addressed to the coach rather than to the user."""
+    section = (chunk.section or "").lower()
+    return any(marker in section for marker in INTERNAL_METHOD_SECTION_MARKERS)
+
+
+def retrievable_chunks() -> List[KnowledgeChunk]:
+    """The corpus minus what is not meant for the user to read."""
+    return [chunk for chunk in _load_chunks() if not is_internal_method_chunk(chunk)]
 BREAKUP_ARTICLE_IDS = {"jay-shetty-move-on-from-ex", "old-templates-breakup-no-contact-grief"}
 BREAKUP_TOPICS = {"breakup_recovery", "breakup-grief", "closure"}
 EARLY_INVESTMENT_ARTICLE_IDS = {"nathalie-emotionally-invested-too-quickly"}
@@ -112,7 +137,7 @@ STOPWORDS = {
 
 
 def retrieve_knowledge(message: str, language: str = "es", limit: int = 6) -> List[KnowledgeChunk]:
-    chunks = _load_chunks()
+    chunks = retrievable_chunks()
     if not chunks:
         return []
 

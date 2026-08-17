@@ -104,3 +104,39 @@ def test_actual_breakups_still_retrieve_breakup_material(query):
     topics = _topics(query)
     assert topics, query
     assert any("duelo_ruptura" in t for t in topics), f"{query} -> {topics}"
+
+
+# --- the operating manual is not material for the user (2026-08-17) -----------
+
+
+def test_the_operating_manual_never_reaches_retrieval():
+    """Part 12 is written for whoever does the coaching: a question bank, work
+    itineraries, example dialogues, a chapter on how NOT to answer. Retrieval used
+    to hand it to the model as material to answer from, so Eldric could read the
+    coach's own question bank out loud to the user."""
+    from app.services.brain.knowledge_brain import retrievable_chunks
+
+    for chunk in retrievable_chunks():
+        assert "Parte 12" not in chunk.section, chunk.section
+        assert "Manual operativo" not in chunk.section, chunk.section
+
+
+def test_the_manual_is_excluded_from_retrieval_not_from_the_corpus():
+    """The material is good, it is just addressed to the wrong reader — so it
+    stays loaded and visible, it only stops being answer material."""
+    from app.services.brain.knowledge_brain import list_knowledge_chunks, retrievable_chunks
+
+    todo = list_knowledge_chunks()
+    recuperable = retrievable_chunks()
+
+    assert len(todo) > len(recuperable)
+    assert any("Manual operativo" in c.section for c in todo)
+
+
+def test_the_rest_of_the_book_survives_the_exclusion():
+    """Guard against a marker that is too broad quietly emptying the corpus."""
+    from app.services.brain.knowledge_brain import retrievable_chunks
+
+    secciones = " ".join(c.section for c in retrievable_chunks())
+    for parte in ("Parte 5", "Parte 9", "Parte 10", "Parte 11"):
+        assert parte in secciones, parte
