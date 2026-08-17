@@ -112,9 +112,12 @@ async def ensure_index() -> bool:
         if _build_failed:
             return False
 
-        from app.services.brain.knowledge_brain import list_knowledge_chunks
+        # retrievable_chunks(), not the whole corpus: Part 12 is the operating
+        # manual, written for the coach. Indexing it would let a question bank or
+        # an itinerary surface as material to answer the user from.
+        from app.services.brain.knowledge_brain import retrievable_chunks
 
-        chunks = list_knowledge_chunks()
+        chunks = retrievable_chunks()
         if not chunks:
             logger.warning("semantic_index: the corpus is empty, nothing to index")
             _build_failed = True
